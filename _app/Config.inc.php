@@ -20,7 +20,7 @@ define('SITENAME', 'INFORONDONIA');
 define('SITEDESC', 'As principais notícias de Rondônia, Brasil e Mundo. Coberturas de Eventos e Videos você encontra aqui. INFORONDONIA - Informação é a nossa prioridade! ');
 
 // DEFINE A BASE DO SITE ####################
-define('HOME', 'http://192.168.0.149/servidor/inforondonia/2016');
+define('HOME', 'http://localhost/servidor/inforondonia/2016');
 define('THEME', 'inforondonia');
 
 define('INCLUDE_PATH', HOME . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . THEME);
