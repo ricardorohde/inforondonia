@@ -164,8 +164,15 @@ body{ background-color: #F1F1F1; }
 .box_eventos .evento_dadosdate{ width: 100%; font-size: 0.75em; font-style: italic; padding-top: 3px; float: left;}
 .box_eventos .evento_dadosalbum{ width: 100%; font-size: 0.9375em; font-weight: bold; float: left;}
 .box_eventos .evento_dadoslocal{ width: 100%; font-size: 0.875em; padding-top: 3px; float: left;}
-
-
+/*=== DENÚNCIA ===*/
+.box_denuncia{ width: 100%; float: left;}
+.box_denuncia .denuncia_txt{ width: 100%; float: left; font-size: 1.0em; color: #34314B; text-align: justify;}
+.box_denuncia .denuncia_form{ width: 100%; margin-top: 10px; float: left;}
+.denuncia_form input{ width: 100%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; float: left;}
+.denuncia_form input.denuncia_cidade{ width: 35%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; float: left;}
+.denuncia_form input.denuncia_uf{ width: 10%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; margin-left: 1%; float: left}
+.denuncia_form input.denuncia_telefone{ width: 35%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; clear: left;}
+.denuncia_form textarea{ width: 100%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; float: left;}
 
 @media (max-width: 1280px){
     .main_header_menu ul li a{ color: #34314B; padding: 15px 7px;}
