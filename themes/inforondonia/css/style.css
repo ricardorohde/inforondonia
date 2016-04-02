@@ -243,10 +243,10 @@ body{ background-color: #F1F1F1; }
     /*=== PADROES PAGINAS ===*/
     .header_content, .content_pag{ padding: 2%;}
     /*=== NOTICIAS ===*/
-    .box_news_image{ width: 100%; float: left;}
-    .box_news_dados{ width: 100%; padding-top: 1%; float: left;}
+    .box_news .news_image{ width: 100%;}
+    .box_news .news_dados{ width: 100%; padding-top: 1%;}
     /*=== COLUNISTAS ===*/
-    .box_colunista{ width: 100%; margin-bottom: 2%; float: left;}
+    .box_colunista{ width: 100%; margin-bottom: 2%;}
     /*=== EVENTOS ===*/
-    .box_eventos{ width: 100%; margin-bottom: 2%; float: left;}
+    .box_eventos{ width: 100%; margin-bottom: 2%;}
 }
