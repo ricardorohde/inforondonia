@@ -13,7 +13,7 @@
                     </div>
                     <div class="denuncia_alert">
                         <?php
-                        require ('/_app/Library/recaptcha/src/autoload.php');
+                        require ('./_app/Library/recaptcha/src/autoload.php');
                         $siteKey = '6Le3hBwTAAAAAKNI-8h4SB3fZ0IcsQe5K2t07Fwa';
                         $secret = '6Le3hBwTAAAAANfBspVekYZcAIivxGKHLlnExLCp';
 
