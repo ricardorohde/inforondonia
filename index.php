@@ -39,6 +39,7 @@ Check::UserOnline();
     <script src="<?= HOME; ?>/_cdn/jquery.js"></script>
     <script src="<?= HOME; ?>/_cdn/_plugins.conf.js"></script>
     <script src="<?= HOME; ?>/_cdn/_scripts.conf.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?hl=pt-BR' async defer></script>    
 </html>
 <?php
 ob_end_flush();

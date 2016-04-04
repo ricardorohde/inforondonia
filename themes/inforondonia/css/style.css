@@ -9,14 +9,35 @@ body{ background-color: #F1F1F1; }
 .content{ width: 80%; margin: 0 10%;}
 .btn_mais{ margin-top: 10px; margin-right: 5px; text-align: center; float: right; padding: 5px; border-radius: 0.2em;}
 .btn_maisnoticias{ background: #2A8B53; color: #FFF;}
+.btn_maisnoticias:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
 .btn_maiseventos{ background: #0D75FF; color: #FFF;}
+.btn_maiseventos:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
 .btn_maisvideos{ background: #C6394B; color: #FFF;}
+.btn_maisvideos:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
 .btn_maiscolunas{ background: #663366; color: #FFF;}
+.btn_maiscolunas:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
 .margin_bottom{ margin-bottom: 10px;}
 .banner{ border: 1px solid #CCC; border-radius: 0.3em; background: #FFF;}
 .ratio4{  width: 100%; height: 0; padding-bottom: 75%; position: relative; float: left;}
 .ratio16{  width: 100%; height: 0; padding-bottom: 56.25%; position: relative; float: left;}
 .ratio_element{ width: 100%; height: 100%; left: 0; top: 0; position: absolute;}
+.alert { padding: 15px; margin-bottom: 10px; border: 1px solid transparent; border-radius: 4px;}
+.alert h4 { margin-top: 0; color: inherit;}
+.alert .alert-link { font-weight: bold;}
+.alert > p, .alert > ul { margin-bottom: 0;}
+.alert > p + p { margin-top: 5px;}
+.alert-success { color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6;}
+.alert-success hr { border-top-color: #c9e2b3;}
+.alert-success .alert-link { color: #2b542c;}
+.alert-info { color: #31708f; background-color: #d9edf7; border-color: #bce8f1;}
+.alert-info hr { border-top-color: #a6e1ec;}
+.alert-info .alert-link { color: #245269;}
+.alert-warning { color: #8a6d3b; background-color: #fcf8e3; border-color: #faebcc;}
+.alert-warning hr { border-top-color: #f7e1b5;}
+.alert-warning .alert-link { color: #66512c;}
+.alert-danger { color: #a94442; background-color: #f2dede; border-color: #ebccd1;}
+.alert-danger hr { border-top-color: #e4b9c0;}
+.alert-danger .alert-link { color: #843534;}
 /*=== TOPO ===*/
 .main_header{ width: 100%; border-top: 0.3125em solid #35314E; float: left; background: url(../images/bg-topo.jpg) center top no-repeat;}
 .main_header .box_header_logords{ width: 30%; padding: 2% 1%; float: left;}
@@ -167,12 +188,18 @@ body{ background-color: #F1F1F1; }
 /*=== DENÚNCIA ===*/
 .box_denuncia{ width: 100%; float: left;}
 .box_denuncia .denuncia_txt{ width: 100%; float: left; font-size: 1.0em; color: #34314B; text-align: justify;}
+.box_denuncia .denuncia_alert{ width: 100%; float: left;}
 .box_denuncia .denuncia_form{ width: 100%; margin-top: 10px; float: left;}
-.denuncia_form input{ width: 100%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; float: left;}
-.denuncia_form input.denuncia_cidade{ width: 35%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; float: left;}
-.denuncia_form input.denuncia_uf{ width: 10%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; margin-left: 1%; float: left}
-.denuncia_form input.denuncia_telefone{ width: 35%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; clear: left;}
-.denuncia_form textarea{ width: 100%; font-size: 0.875em; padding: 1%; margin-bottom: 1%; float: left;}
+.denuncia_form .form_input{ width: 100%; margin-bottom: 10px; float: left;}
+.denuncia_form .form_input label{ color: #35314E; font-weight: bold;}
+.denuncia_form .form_input input{ width: 100%; font-size: 0.875em; padding: 8px; float: left;}
+.denuncia_form .form_input .denuncia_cidade{ width: 35%; display: block;}
+.denuncia_form .form_input .denuncia_uf{ width: 10%; display: block;}
+.denuncia_form .form_input .denuncia_telefone{ width: 35%; display: block;}
+.denuncia_form .form_input textarea{ width: 100%; font-size: 0.875em; padding: 8px; margin-bottom: 10px; float: left;}
+.denuncia_form .form_input .denuncia_captcha{ width: 100%; float: left;}
+.denuncia_form .form_input .denuncia_send{ width: 39%; font-size: 1.0em; color: #FFF; border: none; border-radius: 3px; margin-top: 1%; background: #35314E;}
+.denuncia_form .form_input .denuncia_send:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
 
 @media (max-width: 1280px){
     .main_header_menu ul li a{ color: #34314B; padding: 15px 7px;}
