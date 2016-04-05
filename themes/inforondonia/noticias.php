@@ -7,17 +7,34 @@
                 <span class="header_line"></span>
             </header>
             <article class="content_pag">
-                <?php for ($n = 1; $n <= 9; $n++): ?>
-                    <div class="box_news">
-                        <div class="news_image"><img src="https://placeimg.com/400/200/animals"></div>
-                        <div class="news_dados">
-                            <div class="news_dadosdate"><i class="fa fa-calendar"></i> 01/04/2016 20:46 hrs</div>
-                            <div class="news_dadoscateg">POLICIAL</div>
-                            <div class="news_dadostitle">Operação Bloqueio captura foragidos e recupera dois veículos em 24 horas de ação em Porto Velho </div>
-                            <div class="news_dadospreview">As primeiras 24 horas da operação Bloqueio em Porto Velho resultaram na recuperação de dois veículos e três recapturas de forag [..]</div>
-                        </div>
-                    </div>
-                <?php endfor; ?>
+                <?php
+                $getPage = (!empty($Link->getlocal()[1]) ? $Link->getlocal()[1] : 1);
+                $Pager = new Pager(HOME . '/noticias/');
+                $Pager->ExePager($getPage, 10);
+
+                $ReadNewsAll = new Read;
+                $ReadNewsAll->ExeRead('noticias', "WHERE titulo != :titulo ORDER BY id DESC LIMIT :limit OFFSET :offset", "titulo=''&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
+
+                if (!$ReadNewsAll->getResult()):
+                    WSErro('Desculpe, ainda não há nenhuma <br><b>NOTICIA</b> cadastrada!', WS_INFOR);
+                else:
+                    $View = new View;
+                    $tpl_noticias = $View->Load('noticias');
+
+                    foreach ($ReadNewsAll->getResult() as $n):
+                        $n['titulo'] = Check::Words($n['titulo'], 16);
+                        $n['noticia'] = strip_tags($n['noticia']);
+                        $n['noticia'] = Check::Words($n['noticia'], 36);
+                        $n['data'] = date('d/m/Y H:i', strtotime($n['data']));
+                        $View->Show($n, $tpl_noticias);
+                    endforeach;
+
+                    echo '<nav>';
+                    $Pager->ExePaginator('noticias', "WHERE titulo != :t ORDER BY id DESC", "t=''");
+                    echo $Pager->getPaginator();
+                    echo '</nav>';
+                endif;
+                ?>
             </article>
         </div>
     </div>

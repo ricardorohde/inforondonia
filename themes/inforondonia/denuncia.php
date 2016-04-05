@@ -43,7 +43,6 @@
                                 <label for="denuncia_email">E-mail</label>
                                 <input type="text" name="denuncia_email" class="denuncia_email" placeholder="Informe seu E-mail">
                             </div>
-
                             <div class="form_input">                                
                                 <label for="denuncia_cidade" class="denuncia_cidade">Cidade</label>
                                 <input type="text" name="denuncia_cidade" class="denuncia_cidade" placeholder="Informe sua Cidade">
