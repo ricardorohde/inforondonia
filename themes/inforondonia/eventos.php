@@ -7,16 +7,30 @@
                 <span class="header_line"></span>
             </header>
             <article class="content_pag">
-                <?php for ($n = 1; $n <= 9; $n++): ?>
-                    <div class="box_eventos">
-                        <div class="evento_image"><img src="https://placeimg.com/400/200/tech"></div>
-                        <div class="evento_dados">
-                            <div class="evento_dadosdate"><i class="fa fa-calendar"></i>  01/04/2016</div>
-                            <div class="evento_dadosalbum"><i class="fa fa-camera"></i> Galeria de Fotos - SEMAS 'Momento Mulher'</div>
-                            <div class="evento_dadoslocal"><i class="fa fa-map-marker"></i> CTG - Rolim de Moura - RO</div>                            
-                        </div>
-                    </div>
-                <?php endfor; ?>
+                <?php
+                $getPage = (!empty($Link->getlocal()[1]) ? $Link->getlocal()[1] : 1);
+                $Pager = new Pager(HOME . '/eventos/');
+                $Pager->ExePager($getPage, 12);
+
+                $eventos = new Read;
+                $eventos->ExeRead("eventos", "WHERE evento != :e ORDER BY id DESC LIMIT :limit OFFSET :offset", "e=''&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
+                if (!$eventos->getResult()):
+                    WSErro('Desculpe, ainda não há nenhum <b>EVENTO</b> cadastrado!', WS_INFOR);
+                else:
+                    $View = new View;
+                    $tpl_eventos = $View->Load('eventos');
+                    foreach ($eventos->getResult() as $e):
+                        $e['evento'] = Check::Words($e['evento'], 5);
+                        $e['data'] = date('d/m/Y', strtotime($e['data']));
+                        $View->Show($e, $tpl_eventos);
+                    endforeach;
+                endif;
+
+                echo '<nav>';
+                $Pager->ExePaginator('eventos', "WHERE evento != :e ORDER BY id DESC", "e=''");
+                echo $Pager->getPaginator();
+                echo '</nav>';
+                ?>
             </article>
         </div>
     </div>

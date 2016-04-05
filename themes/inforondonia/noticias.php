@@ -13,7 +13,7 @@
                 $Pager->ExePager($getPage, 10);
 
                 $ReadNewsAll = new Read;
-                $ReadNewsAll->ExeRead('noticias', "WHERE titulo != :titulo ORDER BY id DESC LIMIT :limit OFFSET :offset", "titulo=''&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
+                $ReadNewsAll->ExeRead('noticias n, noticias_categoria nc', "WHERE titulo != :titulo AND n.categoria = nc.cat_url ORDER BY id DESC LIMIT :limit OFFSET :offset", "titulo=''&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
 
                 if (!$ReadNewsAll->getResult()):
                     WSErro('Desculpe, ainda não há nenhuma <br><b>NOTICIA</b> cadastrada!', WS_INFOR);
@@ -23,8 +23,7 @@
 
                     foreach ($ReadNewsAll->getResult() as $n):
                         $n['titulo'] = Check::Words($n['titulo'], 16);
-                        $n['noticia'] = strip_tags($n['noticia']);
-                        $n['noticia'] = Check::Words($n['noticia'], 36);
+                        $n['noticia'] = Check::Words(strip_tags($n['noticia']), 36);
                         $n['data'] = date('d/m/Y H:i', strtotime($n['data']));
                         $View->Show($n, $tpl_noticias);
                     endforeach;
