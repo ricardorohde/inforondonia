@@ -9,7 +9,7 @@
             <article class="content_pag">
                 <div class="box_denuncia">
                     <div class="denuncia_txt">
-                        Faça agora mesmo sua denúncia. Mandem-nos fotos, vídeos, reclamações, sugestões, sobre o que esta acontecendo com seu município, todas as denúncias serão investigadas e se forem verídicas serão feitas matérias para mostrar o descaso, e as sugestões serão sempre bem vidas para a melhoria do <b>PORTAL <?= SITENAME; ?></b>.<br> Seus dados serão guardados em sigílo e não aparecerão para o público. 
+                        Faça agora mesmo sua denúncia. Envie-nos fotos, vídeos, reclamações, sugestões, sobre o que esta acontecendo com seu município, todas as denúncias serão investigadas e se forem verídicas serão feitas matérias para mostrar o descaso, e as sugestões serão sempre bem vidas para a melhoria do <b>PORTAL <?= SITENAME; ?></b>.<br> Seus dados serão guardados em sigílo e não aparecerão para o público. 
                     </div>
                     <div class="denuncia_alert">
                         <?php

@@ -300,4 +300,9 @@ body{ background-color: #F1F1F1; }
     .box_colunista{ width: 100%; margin-bottom: 2%;}
     /*=== EVENTOS ===*/
     .box_eventos{ width: 100%; margin-bottom: 2%;}
+    /*=== DENUNCIA ===*/
+    .denuncia_form .form_input .denuncia_cidade{ width: 100%; display: block;}
+    .denuncia_form .form_input .denuncia_uf{ width: 35%; display: block;}
+    .denuncia_form .form_input .denuncia_telefone{ width: 50%; display: block;}
+
 }
