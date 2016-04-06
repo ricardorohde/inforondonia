@@ -16,7 +16,7 @@
                 $ReadNewsAll->ExeRead('noticias n, noticias_categoria nc', "WHERE titulo != :titulo AND n.categoria = nc.cat_url ORDER BY id DESC LIMIT :limit OFFSET :offset", "titulo=''&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
 
                 if (!$ReadNewsAll->getResult()):
-                    WSErro('Desculpe, ainda não há nenhuma <br><b>NOTICIA</b> cadastrada!', WS_INFOR);
+                    WSErro('Desculpe, ainda não há nenhuma <b>NOTICIA</b> cadastrada!', WS_INFOR);
                 else:
                     $View = new View;
                     $tpl_noticias = $View->Load('noticias');
