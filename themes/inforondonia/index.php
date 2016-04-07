@@ -2,7 +2,8 @@
     <span class="main_contacao">
         <?php
         $data_atual = date('Y-m-d');
-        echo '<b>Rolim de Moura,  ' . Check::DataExt($data_atual) . ' - Dólar R$ ' . Cotacao::Dolar()['cotacao'] . ' <i class="'. Cotacao::Dolar()['status'] .' fa fa-long-arrow-'. Cotacao::Dolar()['status'] .'"></i> - Euro R$ ' . Cotacao::Euro()['cotacao'] . ' <i class="'. Cotacao::Euro()['status'] .' fa fa-long-arrow-'. Cotacao::Euro()['status'] .' "></i></b>';
+        $Contacao = new Cotacao;
+        '<b>' . CIDADE . ' - ' . UF . ',  ' . Check::DataExt($data_atual) . ' - ' . $Contacao->getDolar() . ' - ' . $Contacao->getEuro() . '</b>';
         ?>
     </span>
     <div class="main_content">
@@ -153,8 +154,9 @@
                     </header>
                     <div class="main_grp_tempo">
                         <?php
-                        $uf = 'RO';
-                        $city = 'ROLIM DE MOURA';
+                        $uf = UF;
+                        $city = strtoupper(CIDADE);
+
                         $city_url = rawurlencode(strtolower($city . '-' . $uf));
                         $file_temp = 'http://developers.agenciaideias.com.br/tempo/json/' . $city_url;
                         $file_tempget = file_get_contents($file_temp);

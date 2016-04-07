@@ -1,4 +1,5 @@
 <?php
+
 //CONFIGURAÇÕES NO PHP
 setlocale(LC_TIME, 'portuguese');
 date_default_timezone_set("America/Manaus");
@@ -18,6 +19,8 @@ define('MAILHOST', 'servidordeenvio');
 // DEFINE IDENTIDADE DO SITE ################
 define('SITENAME', 'INFORONDONIA');
 define('SITEDESC', 'As principais notícias de Rondônia, Brasil e Mundo. Coberturas de Eventos e Videos você encontra aqui. INFORONDONIA - Informação é a nossa prioridade! ');
+define('CIDADE', 'Rolim de Moura');
+define('UF', 'RO');
 
 // DEFINE A BASE DO SITE ####################
 define('HOME', 'http://localhost/servidor/inforondonia/2016');
