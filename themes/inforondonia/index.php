@@ -1,13 +1,8 @@
 <main class="content">
     <span class="main_contacao">
         <?php
-        $file_cota = 'http://developers.agenciaideias.com.br/cotacoes/json';
-        $file_cotaget = file_get_contents($file_cota);
-        $file_cotaread = json_decode($file_cotaget, true);
-        $dolar_cota = str_replace('.', ',', $file_cotaread['dolar']['cotacao']);
-        $euro_cota = str_replace('.', ',', $file_cotaread['euro']['cotacao']);
         $data_atual = date('Y-m-d');
-        echo '<b>Rolim de Moura,  ' . Check::DataExt($data_atual) . ' - Dólar R$ ' . $dolar_cota . ' - Euro R$ ' . $euro_cota . '</b>';
+        echo '<b>Rolim de Moura,  ' . Check::DataExt($data_atual) . ' - Dólar R$ ' . Cotacao::Dolar()['cotacao'] . ' <i class="'. Cotacao::Dolar()['status'] .' fa fa-long-arrow-'. Cotacao::Dolar()['status'] .'"></i> - Euro R$ ' . Cotacao::Euro()['cotacao'] . ' <i class="'. Cotacao::Euro()['status'] .' fa fa-long-arrow-'. Cotacao::Euro()['status'] .' "></i></b>';
         ?>
     </span>
     <div class="main_content">
