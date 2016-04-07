@@ -19,11 +19,11 @@ class Cotacao {
      * <b>Inciar Dados:</b> Iniciar GET dos dados!
      */
     function __construct() {
-        if (!file_get_contents(self::ApiUrl)):
+        $this->Data = file_get_contents(self::ApiUrl);
+        if (!$this->Data):
             $this->Error = ["Não foi possivel estabelecer conexão com a API.", WS_ALERT];
             $this->Result = false;
         else:
-            $this->Data = file_get_contents(self::ApiUrl);
             $this->Data = json_decode($this->Data, TRUE);
             $this->Result = true;
         endif;
@@ -31,40 +31,43 @@ class Cotacao {
 
     //Return Array Dolar
     public function Dolar() {
-        $cotacao = str_replace('.', ',', $this->Data->dolar->cotacao);
-        return array(
+        $this->Data['dolar']['cotacao'] = str_replace('.',',',$this->Data['dolar']['cotacao']);
+        $this->Data['atualizacao'] = explode(' ', $this->Data['atualizacao']);
+        $this->Data['atualizacao'] = $this->Data['atualizacao'][0];
+        $this->Data = [
             "tipo" => 'dolar',
-            "cotacao" => $cotacao,
-            "variacao" => self::$content->dolar->variacao,
-            "status" => self::getVariation(self::$content->dolar->variacao),
-            "atualizado" => self::$content->atualizacao
-        );
+            "cotacao" => $this->Data['dolar']['cotacao'],
+            "variacao" => $this->Data['dolar']['variacao'],
+            "status" => $this->getVariation($this->Data['dolar']['variacao']),
+            "atualizado" => $this->Data['atualizacao']
+        ];
+        return $this->Data;
     }
 
     //Return Array Euro
-    public static function Euro() {
-        self::init();
-        $cotacao = str_replace('.', ',', self::$content->euro->cotacao);
-        return array(
+    public function Euro() {
+        $this->Data['euro']['cotacao'] = str_replace('.',',',$this->Data['euro']['cotacao']);
+        $this->Data = [
             "tipo" => 'euro',
-            "cotacao" => $cotacao,
-            "variacao" => self::$content->euro->variacao,
-            "status" => self::getVariation(self::$content->euro->variacao),
-            "atualizado" => self::$content->atualizacao
-        );
+            "cotacao" => $this->Data['euro']['cotacao'],
+            "variacao" => $this->Data['euro']['variacao'],
+            "status" => $this->getVariation($this->Data['euro']['variacao']),
+            "atualizado" => $this->Data['atualizacao']
+        ];
+        return $this->Data;
     }
 
     //Return Array Bovespa
-    public static function Bovespa() {
-        self::init();
-        $cotacao = str_replace('.', ',', self::$content->bovespa->cotacao);
-        return array(
+    public function Bovespa() {
+         $this->Data['bovespa']['cotacao'] = str_replace('.',',',$this->Data['bovespa']['cotacao']);
+        $this->Data = [
             "tipo" => 'bovespa',
-            "cotacao" => $cotacao,
-            "variacao" => self::$content->bovespa->variacao,
-            "status" => self::getVariation(self::$content->bovespa->variacao),
-            "atualizado" => self::$content->atualizacao
-        );
+            "cotacao" => $this->Data['bovespa']['cotacao'],
+            "variacao" => $this->Data['bovespa']['variacao'],
+            "status" => $this->getVariation($this->Data['bovespa']['variacao']),
+            "atualizado" => $this->Data['atualizacao']
+        ];
+        return $this->Data;
     }
 
     /**
@@ -91,12 +94,18 @@ class Cotacao {
      */
 
     //Return Return getVariation
-    public static function getVariation($variation) {
+    private function getVariation($variation) {
         if (strpos($variation, "+")):
             return "up";
         else:
             return "down";
         endif;
+    }
+    
+    private function setMoeda($moeda){
+        $convMoeda = (str_replace('.', ',', $moeda));
+        $rMoeda = round($convMoeda,2);
+        return $rMoeda;
     }
 
 }
