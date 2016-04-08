@@ -2,8 +2,9 @@
     <span class="main_contacao">
         <?php
         $data_atual = date('Y-m-d');
-        $Contacao = new Cotacao;
-        '<b>' . CIDADE . ' - ' . UF . ',  ' . Check::DataExt($data_atual) . ' - ' . $Contacao->getDolar() . ' - ' . $Contacao->getEuro() . '</b>';
+        $Dolar = new Cotacao;
+        $Euro = new Cotacao;
+        echo '<b>' . CIDADE . ' - ' . UF . ',  ' . Check::DataExt($data_atual) . ' - ' . $Dolar->getDolar() . ' - ' . $Euro->getEuro() . '</b>';
         ?>
     </span>
     <div class="main_content">

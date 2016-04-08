@@ -173,6 +173,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .rodape{ width: 100%; padding: 2% 0; font-size: 0.875em; color: #FFF; margin-top: 10px; float: left; background: #37384E;}
 .rodape .copyright{ width: 50%; text-align: left; float: left;}
 .rodape .developer{ width: 50%; text-align: right; float: right;}
+.rodape .developer a{color: #FFF;}
 /*=== PAGINAS PADRÃO ===*/
 .header_content, .content_pag{ width: 100%; padding: 1%; float: left; background: #FFF;}
 .header_content .header_title{ font-size: 1.5em; color: #35314E; float: left;}

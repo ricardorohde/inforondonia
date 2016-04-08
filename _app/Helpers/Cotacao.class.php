@@ -94,7 +94,7 @@ class Cotacao {
     //Converte a Data de Atualização para dd/mm/aaaa.
     private function setAtualizado() {
         $this->Data['atualizacao'] = explode(' ', $this->Data['atualizacao']);
-        $this->Data['atualizacao'] = date('d/m/Y H:i:s', $this->Data['atualizacao'][0].' '.$this->Data['atualizacao'][2]);
+        $this->Data['atualizacao'] = date('d/m/Y', strtotime(Check::Data($this->Data['atualizacao'][0])));
     }
 
     //Set Dados DOLAR.
