@@ -1,3 +1,17 @@
+//::: Funções :::
+$(function () {
+    $('.mobmenu').click(function () {
+        $('.main_header_menu ul').slideToggle();
+        $(this).toggleClass('active');
+        return false;
+    });
+
+    $('.debug').each(function () {
+        $(this).after('<p style="color: #fff; background: #333; padding: 10px">' + $(this).width() + 'px</p>');
+    });
+});
+
+//::: Facebook :::
 (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id))

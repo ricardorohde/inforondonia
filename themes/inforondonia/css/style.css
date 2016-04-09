@@ -169,6 +169,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .main_right_tv{ width: 100%; margin-bottom: 10px; float: left;}
 .banner_mainright_small{ width: 100%; padding: 1%; margin-top: 10px; float: left;}
 .banner_main_full{ width: 100%; height: 140px; margin-top: 10px; float: left;}
+.banner_news_full{ width: 100%; height: 140px; margin-top: 10px; float: left;}
 /*=== RODAPE ===*/
 .rodape{ width: 100%; padding: 2% 0; font-size: 0.875em; color: #FFF; margin-top: 10px; float: left; background: #37384E;}
 .rodape .copyright{ width: 50%; text-align: left; float: left;}
@@ -177,6 +178,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 /*=== PAGINAS PADRÃO ===*/
 .header_content, .content_pag{ width: 100%; padding: 1%; float: left; background: #FFF;}
 .header_content .header_title{ font-size: 1.5em; color: #35314E; float: left;}
+.header_content .header_subtitle{ width: 100%; font-size: 1.0em; color: #333; padding: 3px 0 0 0; float: left;}
 .header_content .header_tagline{ font-size: 1.0em; color: #333; padding: 8px 0 0 10px; float: left;}
 .header_content .header_line{ width: 100%; border-bottom: 2px solid #35314E; float: left;}
 /*=== NOTICIAS ===*/
@@ -187,6 +189,21 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .box_news .news_dadoscateg{ width: 100%; font-size: 0.875em; color: #2A8B53; font-weight: bold; padding-top: 5px; float: left;}
 .box_news .news_dadostitle{ width: 100%; font-size: 1.1em; color: #333; font-weight: 500; padding-top: 3px; float: left;}
 .box_news .news_dadospreview{ width: 100%; font-size: 0.875em; color: #999; font-weight: 300; padding-top: 3px; float: left;}
+/*=== NOTICIA ===*/
+.header_social{ width: 100%; margin-top: 10px; float: left;}
+.header_social a.rds_facebook,
+.header_social a.rds_twitter,
+.header_social a.rds_googleplus,
+.header_social a.rds_whatsapp{ float: left; margin-left: 5px;}
+.header_social a.rds_facebook {color: #3B5998;}
+.header_social a.rds_twitter {color: #55ACEE;}
+.header_social a.rds_googleplus {color: #E02E2E;}
+.header_social a.rds_whatsapp{ color: #FFF; float: left; }
+.header_social a.rds_whatsapp i { padding: 1.5px 4px; margin-top: 2px; background: #5BBE4A; border-radius: 3px; font-size: 1.5em;}
+.header_social a.rds_print{ color: #34314B; float: right;}
+.article_news_image{ width: 100%; float: left;}
+.article_news_chars{ width: 100%; float: left;}
+
 /*=== COLUNISTAS ===*/
 .box_colunista{ width: 32.33%; margin: 0 0.5% 1% 0.5%; padding-bottom: 3px; border-bottom: 1px solid #cbcbcb; float: left;}
 .box_colunista .colunista_image{ width: 100%; float: left;}
