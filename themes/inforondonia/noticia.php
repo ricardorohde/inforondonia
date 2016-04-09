@@ -30,6 +30,9 @@ endif;
                 </figure>
                 <div class="article_news_chars"><?= $noticia; ?></div>
                 <div class="banner banner_news_full"></div>
+                <div class="article_news_moreimg">
+                    
+                </div>
             </article>
         </div>
     </div>
