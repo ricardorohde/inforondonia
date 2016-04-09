@@ -29,6 +29,7 @@ endif;
                     </a>
                 </figure>
                 <div class="article_news_chars"><?= $noticia; ?></div>
+                <div class="banner banner_news_full"></div>
             </article>
         </div>
     </div>
