@@ -15,11 +15,11 @@ endif;
                 <span class="header_line"></span>
                 <div class="banner banner_news_full"></div>
                 <div class="header_social">
-                    <a href="http://www.facebook.com/inforondonia" title="Compartilhar no Facebook" class="rds_facebook"><i class="fa fa-facebook-square fa-2x"></i></a>
-                    <a href="#" title="Compartilhar no Twitter" class="rds_twitter"><i class="fa fa-twitter-square fa-2x"></i></a>
-                    <a href="#" title="Compartilhar no Google+" class="rds_googleplus"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?= HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Facebook" class="rds_facebook"><i class="fa fa-facebook-square fa-2x"></i></a>
+                    <a href="https://twitter.com/home?status=<?= HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Twitter" class="rds_twitter"><i class="fa fa-twitter-square fa-2x"></i></a>
+                    <a href="https://plus.google.com/share?url=<?= HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Google+" class="rds_googleplus"><i class="fa fa-google-plus-square fa-2x"></i></a>
                     <a href="whatsapp://send?text=<?= $titulo . ' ' . HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Whatsapp" class="rds_whatsapp"><i class="fa fa-whatsapp fa-2x"></i></a>
-                    <a href="#" title="Imprimir Notícia" class="rds_print"><i class="fa fa-print fa-2x"></i> Imprimir</a>
+                    <a href="" title="Imprimir Notícia" id="print" class="rds_print"><i class="fa fa-print fa-2x"></i> Imprimir</a>
                 </div>
             </header>
             <article class="content_pag">
@@ -31,7 +31,7 @@ endif;
                 <div class="article_news_chars"><?= $noticia; ?></div>
                 <div class="banner banner_news_full"></div>
                 <div class="article_news_moreimg">
-                    
+
                 </div>
             </article>
         </div>
