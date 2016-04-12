@@ -198,7 +198,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .header_social a.rds_facebook {color: #3B5998;}
 .header_social a.rds_twitter {color: #55ACEE;}
 .header_social a.rds_googleplus {color: #E02E2E;}
-.header_social a.rds_whatsapp{ color: #FFF; float: left; }
+.header_social a.rds_whatsapp{ color: #FFF; float: left; display: none; }
 .header_social a.rds_whatsapp i { padding: 1.5px 4px; margin-top: 2px; background: #5BBE4A; border-radius: 3px; font-size: 1.5em;}
 .header_social a.rds_print{ color: #34314B; float: right;}
 .article_news_image{ width: 100%; float: left;}
@@ -316,6 +316,8 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
     /*=== NOTICIAS ===*/
     .box_news .news_image{ width: 100%;}
     .box_news .news_dados{ width: 100%; padding-top: 1%;}
+    /*=== NOTICIA ===*/
+    .header_social a.rds_whatsapp{ display: block;}
     /*=== COLUNISTAS ===*/
     .box_colunista{ width: 100%; margin-bottom: 2%;}
     /*=== EVENTOS ===*/
