@@ -9,7 +9,7 @@ endif;
 <div class="content">
     <div class="main_left">
         <div class="main_content">
-            <header class="header_content">                
+            <header class="header_content">
                 <h1 class="header_title"><?= $titulo; ?></h1>
                 <p class="header_subtitle"><?= $subtitulo; ?></p>
                 <span class="header_line"></span>
@@ -32,6 +32,17 @@ endif;
                 <div class="banner banner_news_full"></div>
                 <div class="article_news_moreimg">
 
+                </div>
+                <div class="article_news_morenews">
+                    <header class="header_morenews">
+                        <h1 class="header_morenews_vin">Outras Notícias</h1>
+                    </header>
+                    <div class="content_morenews">
+                        <div class="box_morenews">
+                            
+                        </div>
+                        
+                    </div>
                 </div>
             </article>
         </div>

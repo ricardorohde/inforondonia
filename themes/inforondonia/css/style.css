@@ -177,10 +177,11 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .rodape .developer a{color: #FFF;}
 /*=== PAGINAS PADRÃO ===*/
 .header_content, .content_pag{ width: 100%; padding: 1%; float: left; background: #FFF;}
+.header_content .header_category{ font-size: 1.5em; color: #35314E; float: left;}
 .header_content .header_title{ font-size: 1.5em; color: #35314E; float: left;}
 .header_content .header_subtitle{ width: 100%; font-size: 1.0em; color: #333; padding: 3px 0 0 0; float: left;}
 .header_content .header_tagline{ font-size: 1.0em; color: #333; padding: 8px 0 0 10px; float: left;}
-.header_content .header_line{ width: 100%; border-bottom: 2px solid #35314E; float: left;}
+.header_content .header_line{ width: 100%; border-bottom: 4px solid #35314E; float: left;}
 /*=== NOTICIAS ===*/
 .box_news{ width: 100%; padding: 1%; border-bottom: 1px solid #cbcbcb; margin-bottom: 10px; float: left; background: #f4f4f4;}
 .box_news .news_image{ width: 27.9%; float: left;}
@@ -204,6 +205,12 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .article_news_image{ width: 100%; float: left;}
 .article_news_chars{ width: 100%; float: left; text-align: justify;}
 .article_news_chars p { margin-bottom: 10px;}
+.article_news_moreimg{ width: 100%; float: left;}
+.article_news_morenews{ width: 100%; float: left;}
+.header_morenews{ width: 100%; margin-top: 10px; border-top: #34314B 4px solid;}
+.header_morenews_vin{ width: 100%; float: left;}
+.content_morenews{ width: 100%; float: left;}
+
 /*=== COLUNISTAS ===*/
 .box_colunista{ width: 32.33%; margin: 0 0.5% 1% 0.5%; padding-bottom: 3px; border-bottom: 1px solid #cbcbcb; float: left;}
 .box_colunista .colunista_image{ width: 100%; float: left;}
