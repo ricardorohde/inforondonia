@@ -81,7 +81,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .main_left{ width: 70%; float: left;}
 .main_right{ width: 28%; float: right;}
 .slide_content{ width: 100%; float: left;}
-/*============= SLIDE ==============*/
+/*=== SLIDE ===*/
 section#slide{ width: 100%; height: 100%; max-width: 885px; max-height: 445px; background: #FFF; display: block; overflow: hidden;}
 section#slide section#buttons{ display: none; position: absolute; margin: 5px; z-index: 9; }
 section#slide section#buttons a{ background: #37384e; width: 50px; height: 40px; display: inline-block; text-align: center; line-height: 35px; color: #FFF; font-size: 1.6em; text-decoration: none;}
@@ -90,7 +90,7 @@ section#slide ul{ list-style: none; display: table; position: relative;}
 section#slide ul li{  width: 100%; max-width: 885px; display: inline-block; position: relative;}
 section#slide ul li img{ width: 100%; height: 100%;}
 section#slide ul li span{ width: 97%; background: #37384e; display: table; padding: 2%; position: absolute; bottom: 0; margin: 10px 0 10px 5%; font-size: 1.1em; color: #FFF; border-left: 10px solid #35314e;}
-
+/*=== CONT MEIO ===*/
 .banner_mainleft_full{ width: 100%; height: 140px; margin-top: 5px; float: left;}
 .main_blc_lastnews{ width: 100%; margin-top: 10px; float: left; background: #FFF;}
 .main_box_lastnews{ width: 30.3%; margin: 2% 1.5%; float: left;}
@@ -228,14 +228,13 @@ section#slide ul li span{ width: 97%; background: #37384e; display: table; paddi
 .morenews_dados{ width: 100%; float: left;}
 .morenews_datetime{ width: 100%; font-size: 0.8125em; float: left; color: #999;}
 .morenews_title{ width: 100%; font-size: 0.875em; float: left; color: #000;}
-
 /*=== COLUNISTAS ===*/
 .box_colunista{ width: 32.33%; margin: 0 0.5% 1% 0.5%; padding-bottom: 3px; border-bottom: 1px solid #cbcbcb; float: left;}
 .box_colunista .colunista_image{ width: 100%; float: left;}
 .box_colunista .colunista_dados{ width: 100%; float: left;}
-.box_colunista .colunista_dadosnome{ width: 100%; font-size: 0.9375em; font-weight: bold; float: left;}
-.box_colunista .colunista_dadosultpost{ width: 100%; font-size: 0.875em; padding-top: 3px; float: left;}
-.box_colunista .colunista_dadosdate{ width: 100%; font-size: 0.75em; font-style: italic; padding-top: 3px; float: left;}
+.box_colunista .colunista_dadosnome{ width: 100%; font-size: 0.9375em; font-weight: bold; float: left; color: #000;}
+.box_colunista .colunista_dadosultpost{ width: 100%; font-size: 0.875em; padding-top: 3px; float: left; color: #999;}
+.box_colunista .colunista_dadosdate{ width: 100%; font-size: 0.75em; font-style: italic; padding-top: 3px; float: left; color: #333;}
 /*=== TV ===*/
 .play_tv{ width: 100%; float: left;}
 /*=== EVENTOS ===*/
@@ -247,6 +246,12 @@ section#slide ul li span{ width: 97%; background: #37384e; display: table; paddi
 .box_eventos .evento_dadosdate{ width: 100%; font-size: 0.75em; font-style: italic; padding-top: 3px; float: left;}
 .box_eventos .evento_dadosalbum{ width: 100%; font-size: 0.9375em; font-weight: bold; float: left;}
 .box_eventos .evento_dadoslocal{ width: 100%; font-size: 0.875em; padding-top: 3px; float: left;}
+/*=== VÍDEOS ===*/
+.box_video{ width: 32.33%; margin: 0 0.5% 1% 0.5%; padding-bottom: 3px; border-bottom: 1px solid #cbcbcb; float: left;}
+.box_video a{ color: #245269;}
+.box_video a:hover{ color: #34314B;}
+.box_video .box_video_img{ width: 100%; float: left;}
+.box_video .box_video_tit{ width: 100%; min-height: 40px; font-size: 0.9375em; font-weight: bold; float: left;}
 /*=== DENÚNCIA ===*/
 .box_denuncia{ width: 100%; float: left;}
 .box_denuncia .denuncia_txt{ width: 100%; float: left; font-size: 1.0em; color: #34314B; text-align: justify;}

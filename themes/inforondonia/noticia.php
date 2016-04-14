@@ -36,7 +36,7 @@ endif;
                     $OutrasFotos->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = :tipo", "idtipo={$id}&tipo=N");
                     if ($OutrasFotos->getResult()):
                         foreach ($OutrasFotos->getResult() as $fotos):
-                            echo '<div class="boxfoto">';
+                            echo '<div class="boxfotos">';
                             echo '<img alt="' . $titulo . '" title="' . $titulo . '" src="' . HOME . '/tim.php?src=' . HOME . '/uploads/' . $fotos['foto'] . '&w=870"/>';
                             echo '</div>';
                         endforeach;

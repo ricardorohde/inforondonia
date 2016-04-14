@@ -65,102 +65,12 @@ class Seo {
         switch ($this->File):
             //SEO:: INDEX
             case 'index':
-                $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: DIRETORIA
-            case 'diretoria':
-                $this->Data = [SITENAME . " - Diretoria", "Lista da Diretoria ACIRM", HOME . '/diretoria', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: CONSELHOS
-            case 'conselhos':
-                $this->Data = [SITENAME . " - Conselhos", "Lista dos Conselhos ACIRM", HOME . '/conselhos', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: EQUIPE
-            case 'equipe':
-                $this->Data = [SITENAME . " - Equipe", "Lista da Equipe ACIRM", HOME . '/equipe', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: LINKS
-            case 'links':
-                $this->Data = [SITENAME . " - Links", "Lista de Links ACIRM", HOME . '/links', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: INSTITUCIONAL
-            case 'institucional':
-                $this->Data = [SITENAME . " - Institucional", "Informações institucionais sobre a ACIRM", HOME . '/institucional', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: EVENTOS
-            case 'eventos':
-                $this->Data = [SITENAME . " - Cobertura de Eventos", "Galeria de Eventos da ACIRM", HOME . '/eventos', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: EVENTO (EXIBIR)
-            case 'evento':
-                $ReadSeo->ExeRead("eventos", "WHERE url_name = :link", "link={$this->Link}");
-                if (!$ReadSeo->getResult()):
-                    $this->seoData = null;
-                    $this->seoTags = null;
-                else:
-                    $extract = extract($ReadSeo->getResult()[0]);
-                    $this->seoData = $ReadSeo->getResult()[0];
-                    $this->Data = ["Evento: {$evento}" . ' - ' . SITENAME, "Exibição do evento: {$evento}", HOME . "/evento/{$url_name}", $foto];
-                endif;
-                break;
-
-            //SEO:: PRODUTOS E SERVIÇOS
-            case 'produtos-servicos':
-                $this->Data = [SITENAME . " - Produtos e Serviços", "Produtos e Serviços da ACIRM", HOME . '/produtos-servicos', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: PRODUTO (EXIBIR)
-            case 'produto':
-                $ReadSeo->ExeRead("produtos", "WHERE url_name = :link", "link={$this->Link}");
-                if (!$ReadSeo->getResult()):
-                    $this->seoData = null;
-                    $this->seoTags = null;
-                else:
-                    $extract = extract($ReadSeo->getResult()[0]);
-                    $prodDesc = Check::Words($descricao, 70);
-                    $this->seoData = $ReadSeo->getResult()[0];
-                    $this->Data = ["Produto: {$nome}" . ' - ' . SITENAME, "{$prodDesc}", HOME . "/produto/{$url_name}", HOME . "/uploads/{$foto}"];
-                endif;
-                break;
-
-            //SEO:: EMPREGOS
-            case 'empregos':
-                $this->Data = [SITENAME . " - Banco de empregos", "A ACIRM oferece o contato entre o candidato e o empregador para facilitar a contratação.", HOME . '/empregos', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEOO:: PAINEL DE CANDIDATO
-            case 'painel_candidato':
-                $this->Data = [SITENAME . " - Painel Candidato", "A ACIRM oferece o contato entre o candidato e o empregador para facilitar a contratação.", HOME . '/painel_candidato', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-            
-            //SEO:: VIDEOS
-            case 'videos':
-                $this->Data = [SITENAME . " - Galeria de Videos", "Galeria de Videos da ACIRM", HOME . '/videos', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: VIDEO (PLAYER)
-            case 'video':
-                $ReadSeo->ExeRead("videos", "WHERE url_name = :link", "link={$this->Link}");
-                if (!$ReadSeo->getResult()):
-                    $this->seoData = null;
-                    $this->seoTags = null;
-                else:
-                    $extract = extract($ReadSeo->getResult()[0]);
-                    $this->seoData = $ReadSeo->getResult()[0];
-                    $this->Data = ["Video: {$titulo}" . ' - ' . SITENAME, "Exibição do video: {$titulo}", HOME . "/video/{$url_name}", $foto];
-                endif;
+                $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo_topo.png'];
                 break;
 
             //SEO:: NOTICIAS
             case 'noticias':
-                $this->Data = [SITENAME . " - Notícias", "Todas as noticias sobre a ACIRM", HOME . '/noticias', INCLUDE_PATH . '/images/logo-topo.png'];
+                $this->Data = [SITENAME . " - Notícias", "Notícias de Rondônia, Brasil e do mundo.", HOME . '/noticias', INCLUDE_PATH . '/images/logo_topo.png'];
                 break;
 
             //SEO:: NOTICIA (LER)
@@ -176,37 +86,78 @@ class Seo {
                 endif;
                 break;
 
-            //SEO:: REVISTAS
-            case 'revistas':
-                $this->Data = [SITENAME . " - Revistas", "Revistas ACIRM e arquivos.", HOME . '/revistas', INCLUDE_PATH . '/images/logo-topo.png'];
+            //SEO:: COLUNISTAS
+            case 'colunistas':
+                $this->Data = [SITENAME . " - Colunistas", "Colunistas INFORONDONIA, veja os posts de nossos colunistas.", HOME . '/noticias', INCLUDE_PATH . '/images/logo_topo.png'];
                 break;
 
-            //SEO:: ASSOCIE
-            case 'associe':
-                $this->Data = [SITENAME . " - Associe-se", "Torne-se um associado ACIRM", HOME . '/associe/' . $this->Link, INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: CURSOS
-            case 'cursos':
-                $this->Data = [SITENAME . " - Cursos", "Os melhores cursos, para te ajudar no seu empreendimento.", HOME . '/cursos', INCLUDE_PATH . '/images/logo-topo.png'];
-                break;
-
-            //SEO:: CURSO (EXIBIR)
-            case 'curso':
-                $ReadSeo->ExeRead("cursos", "WHERE url_name = :link", "link={$this->Link}");
+            //SEO:: COLUNISTA (LER)
+            case 'colunista':
+                $ReadSeo->ExeRead("usuarios", "WHERE url_name = :link", "link={$this->Link}");
                 if (!$ReadSeo->getResult()):
                     $this->seoData = null;
                     $this->seoTags = null;
                 else:
                     $extract = extract($ReadSeo->getResult()[0]);
                     $this->seoData = $ReadSeo->getResult()[0];
-                    $this->Data = ["Curso: {$curso}" . ' - ' . SITENAME, "Detalhes sobre o curso: {$curso}", HOME . "/curso/{$url_name}", HOME . "/uploads/{$foto}"];
+                    $this->Data = ["Colunista: {$nome} - " . SITENAME, "Todos os posts de {$nome}", HOME . "/colunista/{$url_name}", $foto];
                 endif;
                 break;
 
-            //SEO:: CONTATO
-            case 'contato':
-                $this->Data = [SITENAME . " - Entre em contato conosco", "Entre em contato com a ACIRM", HOME . '/contato/' . $this->Link, INCLUDE_PATH . '/images/logo-topo.png'];
+            //SEO:: TV INFORONDONIA
+            case 'tv-inforondonia':
+                $this->Data = [SITENAME . " - TV INFORONDONIA", "Acompanhe ao vivo a transmissão da TV INFORONDONIA", HOME . '/tv-inforondonia', INCLUDE_PATH . '/images/logo_topo.png'];
+                break;
+
+            //SEO:: EVENTOS
+            case 'eventos':
+                $this->Data = [SITENAME . " - Cobertura de Eventos", "Nossa galeria de eventos INFORONDONIA", HOME . '/eventos', INCLUDE_PATH . '/images/logo_topo.png'];
+                break;
+
+            //SEO:: EVENTO (EXIBIR)
+            case 'evento':
+                $ReadSeo->ExeRead("eventos", "WHERE url_name = :link", "link={$this->Link}");
+                if (!$ReadSeo->getResult()):
+                    $this->seoData = null;
+                    $this->seoTags = null;
+                else:
+                    $extract = extract($ReadSeo->getResult()[0]);
+                    $this->seoData = $ReadSeo->getResult()[0];
+                    $this->Data = ["Evento: {$evento}" . ' - ' . SITENAME, "Exibição do evento: {$evento}", HOME . "/evento/{$url_name}", $foto];
+                endif;
+                break;
+
+            //SEO:: VIDEOS
+            case 'videos':
+                $this->Data = [SITENAME . " - Galeria de Videos", "Nossa galeria de vídeos INFORONDONIA", HOME . '/videos', INCLUDE_PATH . '/images/logo_topo.png'];
+                break;
+
+            //SEO:: VIDEO (PLAYER)
+            case 'video':
+                $ReadSeo->ExeRead("videos", "WHERE url_name = :link", "link={$this->Link}");
+                if (!$ReadSeo->getResult()):
+                    $this->seoData = null;
+                    $this->seoTags = null;
+                else:
+                    $extract = extract($ReadSeo->getResult()[0]);
+                    $this->seoData = $ReadSeo->getResult()[0];
+                    $this->Data = ["Video: {$titulo}" . ' - ' . SITENAME, "Exibição do video: {$titulo}", HOME . "/video/{$url_name}", $foto];
+                endif;
+                break;
+
+            //SEO:: MIDIA KIT
+            case 'midia-kit':
+                $this->Data = [SITENAME . " - Mídia KIT", "Kit de mídia para divulgação no INFORONDONIA", HOME . '/midia-kit', INCLUDE_PATH . '/images/logo_topo.png'];
+                break;
+
+            //SEO:: DENUNCIA
+            case 'denuncia':
+                $this->Data = [SITENAME . " - Faça sua Denúncia", "Faça sua denúncia, envie fotos e videos, nossa equipe esta levantando a verícidade dos fatos", HOME . '/denuncia', INCLUDE_PATH . '/images/logo_topo.png'];
+                break;
+
+            //SEO:: QUEM SOMOS
+            case 'quem-somos':
+                $this->Data = [SITENAME . " - Quem Somos", "Um pouco sobre nós, a história do INFORONDONIA", HOME . '/quem-somos', INCLUDE_PATH . '/images/logo_topo.png'];
                 break;
 
             //SEO:: 404
