@@ -45,105 +45,116 @@
                 <div class="box box-primary">
                     <div class="box-header"><h3 class="box-title">Dados do Perfil</h3></div>
                     <div class="box-body">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="nome">Nome</label>
-                                    <input type="text" name="nome" class="form-control" id="nome" value="<?= isset($dados['nome']) ? $dados['nome'] : ''; ?>" placeholder="Informe o nome do usuário">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="email">E-mail</label>
-                                    <input type="email" name="email" class="form-control" id="email" value="<?= isset($dados['email']) ? $dados['email'] : ''; ?>" placeholder="Informe o e-mail do usuário">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-2">
-                                    <label for="data_nasc">Data de Nascimento:</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="nome">Nome</label>
+                                            <input type="text" name="nome" class="form-control" id="nome" value="<?= isset($dados['nome']) ? $dados['nome'] : ''; ?>" placeholder="Informe o nome do usuário">
                                         </div>
-                                        <input type="text" name="data_nasc" class="form-control" id="data_nasc" value="<?= isset($dados['data_nasc']) ? $dados['data_nasc'] : ''; ?>" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="email">E-mail</label>
+                                            <input type="email" name="email" class="form-control" id="email" value="<?= isset($dados['email']) ? $dados['email'] : ''; ?>" placeholder="Informe o e-mail do usuário">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="data_nasc">Data de Nascimento:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" name="data_nasc" class="form-control" id="data_nasc" value="<?= isset($dados['data_nasc']) ? $dados['data_nasc'] : ''; ?>" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="sexo">Sexo</label>
+                                            <select name="sexo" class="form-control" id="sexo">
+                                                <option value="" <?= ($dados['sexo'] == '') ? ' selected="selected"' : ''; ?>>Selecione uma opção</option>
+                                                <option value="1" <?= ($dados['sexo'] == 1) ? ' selected="selected"' : ''; ?>>Masculino</option>
+                                                <option value="2" <?= ($dados['sexo'] == 2) ? ' selected="selected"' : ''; ?>>Feminino</option>
+                                                <option value="3" <?= ($dados['sexo'] == 3) ? ' selected="selected"' : ''; ?>>Não quero informar</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="colunista">É Colunista?</label>
+                                            <select name="colunista" class="form-control" id="sexo">
+                                                <option value="nao" <?= ($dados['colunista'] == 'nao') ? ' selected="selected"' : ''; ?>>Não</option>
+                                                <option value="sim" <?= ($dados['colunista'] == 'sim') ? ' selected="selected"' : ''; ?>>Sim</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="foto">Foto do Perfil</label>
+                                            <div class="help-image"><img src="../uploads/<?= $dados['foto']; ?>" class="img-responsive"></div>
+                                            <input type="file" name="foto" class="form-control" id="foto">
+                                            <p class="help-block">Selecione a foto do perfil do usuário.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <label for="sexo">Sexo</label>
-                                    <select name="sexo" class="form-control" id="sexo">
-                                        <option value="" <?= ($dados['sexo'] == '') ? ' selected="selected"' : ''; ?>>Selecione uma opção</option>
-                                        <option value="1" <?= ($dados['sexo'] == 1) ? ' selected="selected"' : ''; ?>>Masculino</option>
-                                        <option value="2" <?= ($dados['sexo'] == 2) ? ' selected="selected"' : ''; ?>>Feminino</option>
-                                        <option value="3" <?= ($dados['sexo'] == 3) ? ' selected="selected"' : ''; ?>>Não quero informar</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="foto">Foto do Perfil</label>
-                                    <input type="file" name="foto" class="form-control" id="foto">
-                                    <p class="help-block">Selecione a foto do perfil do usuário.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-3 col-xs-8">
-                                    <label for="colunista">É Colunista?</label>
-                                    <select name="colunista" class="form-control" id="sexo">
-                                        <option value="nao" <?= ($dados['colunista'] == 'nao') ? ' selected="selected"' : ''; ?>>Não</option>
-                                        <option value="sim" <?= ($dados['colunista'] == 'sim') ? ' selected="selected"' : ''; ?>>Sim</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="box box-primary">
-                    <div class="box-header"><h3 class="box-title">Dados de Acesso</h3></div>
-                    <div class="box-body">
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <label for="altDadosAcess">
-                                    <input type="checkbox" name="altDadosAcess" id="altDadosAcess" />
-                                    Alterar os dados de acesso?<br>
-                                </label>
-                            </div>
-                        </div>
+                    <div class="box box-primary">
+                        <div class="box-header"><h3 class="box-title">Dados de Acesso</h3></div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label for="altDadosAcess">
+                                                <input type="checkbox" name="altDadosAcess" id="altDadosAcess" />
+                                                Alterar os dados de acesso?<br>
+                                            </label>
+                                        </div>
+                                    </div>
 
-                        <div class="form-group dadosAcess">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <label for="login">Login</label>
-                                    <input type="text" name="login" class="form-control" id="login" value="<?= isset($dados['login']) ? $dados['login'] : ''; ?>" placeholder="Informe o login do usuário">
+                                    <div class="form-group dadosAcess">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label for="login">Login</label>
+                                                <input type="text" name="login" class="form-control" id="login" value="<?= isset($dados['login']) ? $dados['login'] : ''; ?>" placeholder="Informe o login do usuário">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group dadosAcess">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label for="senha">Senha</label>
+                                                <input type="password" name="senha" class="form-control" id="senha" value="<?= isset($dados['senha']) ? $dados['senha'] : ''; ?>" placeholder="Informe a senha do usuário">
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="box-footer">
+                                        <input type="submit" name="SendPostForm" value="Editar" class="btn btn-flat btn-primary"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group dadosAcess">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <label for="senha">Senha</label>
-                                    <input type="password" name="senha" class="form-control" id="senha" value="<?= isset($dados['senha']) ? $dados['senha'] : ''; ?>" placeholder="Informe a senha do usuário">
-                                </div>
-                            </div>
-                        </div><br>
-                        <div class="box-footer">
-                            <input type="submit" name="SendPostForm" value="Editar" class="btn btn-flat btn-primary"/>
                         </div>
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </section>

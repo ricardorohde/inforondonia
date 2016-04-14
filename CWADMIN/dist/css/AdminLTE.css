@@ -4064,3 +4064,7 @@ Gradient Background colors
     white-space: normal!important;
   }
 }
+
+
+/*=== CUSTOM ===*/
+.help-image{ width: 100%; float: left; margin-bottom: 10px;}

@@ -118,8 +118,6 @@ endif;
         <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
         <!-- ChartJS 1.0.1 -->
         <script src="plugins/chartjs/Chart.min.js" type="text/javascript"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js" type="text/javascript"></script>
 
         <!-- Page script -->
         <script src="plugins/custom.js" type="text/javascript"></script>
