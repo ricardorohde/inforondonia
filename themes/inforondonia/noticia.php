@@ -31,7 +31,17 @@ endif;
                 <div class="article_news_chars"><?= $noticia; ?></div>
                 <div class="banner banner_news_full"></div>
                 <div class="article_news_moreimg">
-
+                    <?php
+                    $OutrasFotos = new Read;
+                    $OutrasFotos->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = :tipo", "idtipo={$id}&tipo=N");
+                    if ($OutrasFotos->getResult()):
+                        foreach ($OutrasFotos->getResult() as $fotos):
+                            echo '<div class="boxfoto">';
+                            echo '<img alt="' . $titulo . '" title="' . $titulo . '" src="' . HOME . '/tim.php?src=' . HOME . '/uploads/' . $fotos['foto'] . '&w=870"/>';
+                            echo '</div>';
+                        endforeach;
+                    endif;
+                    ?>
                 </div>
                 <div class="article_news_morenews">
                     <header class="header_morenews">

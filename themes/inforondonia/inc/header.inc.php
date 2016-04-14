@@ -3,9 +3,9 @@
         <div class="box_header_logords">
             <a href="<?= HOME; ?>" title="<?= SITENAME; ?> - Informação é a nossa prioridade!"><h1 class="main_header_logo"><?= SITENAME; ?> - Informação é a nossa prioridade!</h1></a>
             <div class="main_header_rds">
-                <a href="http://www.facebook.com/inforondonia" title="<?= SITENAME; ?> no Facebook" class="rds_facebook"><i class="fa fa-facebook-square fa-2x"></i></a>
-                <a href="#" title="<?= SITENAME; ?> no Twitter" class="rds_twitter"><i class="fa fa-twitter-square fa-2x"></i></a>
-                <a href="#" title="<?= SITENAME; ?> no Google+" class="rds_googleplus"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                <a href="http://www.facebook.com/inforondonia" title="<?= SITENAME; ?> no Facebook" class="rds_facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+                <a href="https://twitter.com/inforondonia" title="<?= SITENAME; ?> no Twitter" class="rds_twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+                <a href="#" title="<?= SITENAME; ?> no Google+" class="rds_googleplus"><i class="fa fa-google-plus-square fa-2x" target="_blank"></i></a>
             </div>
         </div>
         <div class="box_header_banners">
@@ -23,6 +23,7 @@
                     <li><a href="<?= HOME . '/colunistas'; ?>">COLUNISTAS</a></li>
                     <li><a href="<?= HOME . '/tv-inforondonia'; ?>">TV <?= SITENAME; ?></a></li>
                     <li><a href="<?= HOME . '/eventos'; ?>">EVENTOS</a></li>
+                    <li><a href="<?= HOME . '/videos'; ?>">VíDEOS</a></li>
                     <li><a href="<?= HOME . '/midia-kit'; ?>">MÍDIA KIT</a></li>
                     <li><a href="<?= HOME . '/denuncia'; ?>">DENÚNCIA</a></li>
                     <li><a href="<?= HOME . '/quem-somos'; ?>">QUEM SOMOS</a></li>

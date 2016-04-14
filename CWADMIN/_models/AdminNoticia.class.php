@@ -28,7 +28,7 @@ class AdminNoticia {
         $this->setData();
         if ($this->Data['foto']):
             $upload = new Upload;
-            $upload->Image($this->Data['foto'], $this->Data['titulo'], 640, 'noticias');
+            $upload->Image($this->Data['foto'], $this->Data['titulo'], 1024, 'noticias');
         endif;
         if (isset($upload) && $upload->getResult()):
             $this->Data['foto'] = $upload->getResult();
@@ -53,7 +53,7 @@ class AdminNoticia {
         if (is_array($this->Data['foto'])):
             $this->fotoDelete($this->Id);
             $upload = new Upload;
-            $upload->Image($this->Data['foto'], $this->Data['titulo'], 640, 'noticias');
+            $upload->Image($this->Data['foto'], $this->Data['titulo'], 1024, 'noticias');
         endif;
         if (isset($upload) && $upload->getResult()):
             $this->Data['foto'] = $upload->getResult();
@@ -121,7 +121,7 @@ class AdminNoticia {
             foreach ($gbFiles as $gbUpload):
                 $i++;
                 $ImgName = "tipo-{$this->Tipo}-id-{$this->Id}-" . (substr(md5(time() + $i), 0, 5));
-                $gbSend->Image($gbUpload, $ImgName, 640, "banco_fotos");
+                $gbSend->Image($gbUpload, $ImgName, 1024, "banco_fotos");
 
                 if ($gbSend->getResult()):
                     $gbImage = $gbSend->getResult();

@@ -9,17 +9,55 @@
     </span>
     <div class="main_content">
         <div class="main_left">
-            <div class="slide_content"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/01.jpg' . '&w=890&h=445'; ?>" alt="Titulo" title="Titulo"></div>
+            <div class="slide_content">
+                <section id="slide">
+                    <section id="buttons">
+                        <a href="#" class="prev">&laquo;</a>
+                        <a href="#" class="next">&raquo;</a>
+                    </section>
+                    <ul>
+                        <?php
+                        $News = new Read;
+                        $News->ExeRead("noticias", "WHERE titulo != :tit AND destaque = :dest ORDER BY id DESC LIMIT :limit OFFSET :offset", "tit=''&dest=sim&limit=5&offset=0");
+                        if ($News->getResult()):
+                            foreach ($News->getResult() as $sNews):
+                                ?>
+                                <li>
+                                    <a href="<?= HOME . '/noticia/' . $sNews['url_name']; ?>" title="<?= $sNews['titulo']; ?>">
+                                        <span><?= $sNews['titulo']; ?></span>
+                                        <img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $sNews['foto'] . '&w=890&h=445'; ?>" title="<?= $sNews['titulo']; ?>" alt="<?= $sNews['titulo']; ?>">
+                                    </a>
+                                </li>     
+                                <?php
+                            endforeach;
+                        endif;
+                        ?>
+                    </ul>    
+                </section>
+            </div>
             <div class="banner banner_mainleft_full"></div>
             <div class="main_blc_lastnews">
-                <?php for ($l = 1; $l <= 3; $l++): ?>
-                    <div class="main_box_lastnews">
-                        <div class="main_box_lastnews_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/01.jpg' . '&w=425&h=175'; ?>" alt="Titulo" title="Titulo"></div>
-                        <div class="main_box_lastnews_cat"><b>IMÓVEIS</b></div>
-                        <div class="main_box_lastnews_tit">Rolim de Moura – Prefeitura inicia construção da primeira ponte de ...</div>
-                        <div class="main_box_lastnews_dat"><i class="fa fa-clock-o"></i> 17/03/2016 01:37 hrs</div>
-                    </div>
-                <?php endfor; ?>
+                <?php
+                $News->setPlaces("tit=''&dest=sim&limit=3&offset=5");
+                if ($News->getResult()):
+                    foreach ($News->getResult() as $nDest):
+                        $nDest['categoria'] = strtoupper($nDest['categoria']);
+                        $nDest['titulo'] = Check::Words($nDest['titulo'], 14);
+                        $nDest['data'] = date('d/m/Y H:i', strtotime($nDest['data']));
+                        ?>
+                        <div class="main_box_lastnews">
+                            <a href="<?= HOME . '/noticia/' . $nDest['url_name']; ?>" title="<?= $nDest['titulo']; ?>">
+                                <div class="main_box_lastnews_img">
+                                    <img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $nDest['foto'] . '&w=425&h=175'; ?>" title="<?= $nDest['titulo']; ?>" alt="<?= $nDest['titulo']; ?>"></div>
+                                <div class="main_box_lastnews_cat"><b><?= $nDest['categoria']; ?></b></div>
+                                <div class="main_box_lastnews_tit"><?= $nDest['titulo']; ?></div>
+                                <div class="main_box_lastnews_dat"><i class="fa fa-clock-o"></i>  <?= $nDest['data']; ?> hrs</div>
+                            </a>
+                        </div>
+                        <?php
+                    endforeach;
+                endif;
+                ?>
             </div>
         </div>
         <div class="main_right">
@@ -34,18 +72,29 @@
                     <h1>Notícias</h1>
                     <h2>Veja outras notícias</h2>
                 </hgroup>
-                <a href="#" class="btn_mais btn_maisnoticias">Mais Notícias</a>
+                <a href="<?= HOME.'/noticias'; ?>" class="btn_mais btn_maisnoticias">Mais Notícias</a>
             </header>
             <div class="main_grp_outrasnoticias">
-                <?php for ($l = 1; $l <= 16; $l++): ?>
-                    <div class="main_box_outrasnoticias">
-                        <div class="main_box_outrasnoticias_ico"><i class="fa fa-newspaper-o"></i></div>
-                        <div class="main_box_outrasnoticias_inf">
-                            <div class="main_box_outrasnoticias_dat"><i class="fa fa-clock-o"></i> 17/03/2016 01:37 hrs</div>
-                            <div class="main_box_outrasnoticias_tit">Rolim de Moura – Prefeitura inicia construção da primeira...</div>
+                <?php
+                $News->setPlaces("tit=''&dest=nao&limit=14&offset=8");
+                if ($News->getResult()):
+                    foreach ($News->getResult() as $nOutras):
+                        $nOutras['titulo'] = Check::Words($nOutras['titulo'], 20);
+                        $nOutras['data'] = date('d/m/Y H:i', strtotime($nOutras['data']));
+                        ?>
+                        <div class="main_box_outrasnoticias">
+                            <a href="<?= HOME . '/noticia/' . $nOutras['url_name']; ?>" title="<?= $nOutras['titulo']; ?>">
+                                <div class="main_box_outrasnoticias_ico"><i class="fa fa-newspaper-o"></i></div>
+                                <div class="main_box_outrasnoticias_inf">
+                                    <div class="main_box_outrasnoticias_dat"><i class="fa fa-clock-o"></i> <?= $nOutras['data']; ?> hrs</div>
+                                    <div class="main_box_outrasnoticias_tit"><?= $nOutras['titulo']; ?></div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                <?php endfor; ?>
+                        <?php
+                    endforeach;
+                endif;
+                ?>
             </div>
         </div>
         <div class="main_rightblc">
@@ -59,7 +108,9 @@
                     <a href="#" class="btn_mais btn_maiseventos">Mais Eventos</a>
                 </header>
                 <div class="main_grp_eventos">
-                    <?php for ($l = 1; $l <= 8; $l++): ?>
+                    <?php
+                    for ($l = 1; $l <= 8; $l++):
+                        ?>
                         <div class="main_box_eventos">
                             <div class="main_box_eventos_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/01.jpg' . '&w=425&h=175'; ?>" alt="Titulo" title="Titulo" ></div>
                             <div class="main_box_eventos_dat"><i class="fa fa-calendar"></i> 17/03/2016</div>
@@ -82,7 +133,9 @@
                     <a href="#" class="btn_mais btn_maisvideos">Mais Vídeos</a>
                 </header>
                 <div class="main_grp_videos">
-                    <?php for ($l = 1; $l <= 4; $l++): ?>
+                    <?php
+                    for ($l = 1; $l <= 4; $l++):
+                        ?>
                         <div class="main_box_videos">
                             <div class="main_box_videos_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/01.jpg' . '&w=425&h=175'; ?>" alt="Titulo" title="Titulo"></div>
                             <div class="main_box_videos_tit">Rolim de Moura – Prefeitura inicia pontes ...</div>
@@ -104,7 +157,9 @@
                         <a href="#" class="btn_mais btn_maiscolunas">Mais Colunas</a>
                     </header>
                     <div class="main_grp_colunas">
-                        <?php for ($l = 1; $l <= 4; $l++): ?>
+                        <?php
+                        for ($l = 1; $l <= 4; $l++):
+                            ?>
                             <div class="main_box_colunas">
                                 <div class="main_box_colunas_imgname">
                                     <div class="main_box_colunas_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/01.jpg' . '&w=170&h=100'; ?>" alt="Titulo" title="Titulo"></div>
@@ -138,7 +193,9 @@
                         </hgroup>
                     </header>
                     <div class="main_grp_acessadas">
-                        <?php for ($l = 1; $l <= 5; $l++): ?>
+                        <?php
+                        for ($l = 1; $l <= 5; $l++):
+                            ?>
                             <div class="main_box_outrasnoticias">
                                 <div class="main_box_outrasnoticias_ico"><i class="fa fa-newspaper-o"></i></div>
                                 <div class="main_box_outrasnoticias_inf">

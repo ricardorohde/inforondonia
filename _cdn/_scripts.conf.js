@@ -1,3 +1,11 @@
+$(document).ready(function () {
+    //Cycle Efeito de Slide nos Banners
+    $('.slide').cycle({
+        fx: 'fade',
+        speed: 1000
+    });
+});
+
 //::: Funções :::
 $(function () {
     //Menu Mobile
