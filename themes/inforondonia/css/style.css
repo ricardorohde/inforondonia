@@ -206,10 +206,15 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .article_news_chars{ width: 100%; float: left; text-align: justify;}
 .article_news_chars p { margin-bottom: 10px;}
 .article_news_moreimg{ width: 100%; float: left;}
-.article_news_morenews{ width: 100%; float: left;}
-.header_morenews{ width: 100%; margin-top: 10px; border-top: #34314B 4px solid;}
-.header_morenews_vin{ width: 100%; float: left;}
-.content_morenews{ width: 100%; float: left;}
+.article_news_morenews{ width: 100%; margin-top: 10px; border: 1px solid #CCC; border-top: 4px solid #34314B; border-radius: 5px; float: left;}
+.header_morenews{ width: 100%; float: left; }
+.header_morenews_vin{ width: 100%; float: left; padding-left: 5px; color: #34314B}
+.content_morenews{ width: 100%; padding: 5px; float: left;}
+.box_morenews{ width: 24.2%; margin-right: 1%; float: left;}
+.box_morenews:nth-child(4n+0){ margin-right: 0;}
+.morenews_dados{ width: 100%; float: left;}
+.morenews_datetime{ width: 100%; font-size: 0.8125em; float: left; color: #999;}
+.morenews_title{ width: 100%; font-size: 0.875em; float: left; color: #000;}
 
 /*=== COLUNISTAS ===*/
 .box_colunista{ width: 32.33%; margin: 0 0.5% 1% 0.5%; padding-bottom: 3px; border-bottom: 1px solid #cbcbcb; float: left;}
@@ -276,6 +281,9 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
     .main_grp_outrasnoticias .main_box_outrasnoticias:nth-child(n+14){ display: block !important; }
     .main_box_eventos{ width: 48%; margin: 2% 1%; float: left;}
     .main_box_eventos:nth-child(n+7){ display: none;}
+    /*=== NOTICIA ===*/
+    .box_morenews{ width: 32%; margin-right: 1.9%; float: left;}
+    .box_morenews:nth-child(3n+0){margin-right: 0; display: none;}
 }
 @media (max-width: 640px){
     /*=== TOPO ===*/
@@ -325,6 +333,10 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
     .box_news .news_dados{ width: 100%; padding-top: 1%;}
     /*=== NOTICIA ===*/
     .header_social a.rds_whatsapp{ display: block;}
+    .box_morenews{ width: 100%; margin-bottom: 10px;}
+    .box_morenews:nth-child(3n+0){display: block;}
+    .morenews_datetime{ font-size: 0.8125em;}
+    .morenews_title{ font-size: 0.9375em; }
     /*=== COLUNISTAS ===*/
     .box_colunista{ width: 100%; margin-bottom: 2%;}
     /*=== EVENTOS ===*/
