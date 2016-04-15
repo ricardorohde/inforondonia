@@ -1,6 +1,8 @@
 <main class="content">
     <span class="main_contacao">
         <?php
+        $ReadMain = new Read;
+
         $data_atual = date('Y-m-d');
         $Dolar = new Cotacao;
         $Euro = new Cotacao;
@@ -17,10 +19,9 @@
                     </section>
                     <ul>
                         <?php
-                        $News = new Read;
-                        $News->ExeRead("noticias", "WHERE titulo != :tit AND destaque = :dest ORDER BY id DESC LIMIT :limit OFFSET :offset", "tit=''&dest=sim&limit=5&offset=0");
-                        if ($News->getResult()):
-                            foreach ($News->getResult() as $sNews):
+                        $ReadMain->ExeRead("noticias", "WHERE titulo != :tit AND destaque = :dest ORDER BY id DESC LIMIT :limit OFFSET :offset", "tit=''&dest=sim&limit=5&offset=0");
+                        if ($ReadMain->getResult()):
+                            foreach ($ReadMain->getResult() as $sNews):
                                 ?>
                                 <li>
                                     <a href="<?= HOME . '/noticia/' . $sNews['url_name']; ?>" title="<?= $sNews['titulo']; ?>">
@@ -38,9 +39,9 @@
             <div class="banner banner_mainleft_full"></div>
             <div class="main_blc_lastnews">
                 <?php
-                $News->setPlaces("tit=''&dest=sim&limit=3&offset=5");
-                if ($News->getResult()):
-                    foreach ($News->getResult() as $nDest):
+                $ReadMain->setPlaces("tit=''&dest=sim&limit=3&offset=5");
+                if ($ReadMain->getResult()):
+                    foreach ($ReadMain->getResult() as $nDest):
                         $nDest['categoria'] = strtoupper($nDest['categoria']);
                         $nDest['titulo'] = Check::Words($nDest['titulo'], 14);
                         $nDest['data'] = date('d/m/Y H:i', strtotime($nDest['data']));
@@ -72,13 +73,13 @@
                     <h1>Notícias</h1>
                     <h2>Veja outras notícias</h2>
                 </hgroup>
-                <a href="<?= HOME.'/noticias'; ?>" class="btn_mais btn_maisnoticias">Mais Notícias</a>
+                <a href="<?= HOME . '/noticias'; ?>" class="btn_mais btn_maisnoticias">Mais Notícias</a>
             </header>
             <div class="main_grp_outrasnoticias">
                 <?php
-                $News->setPlaces("tit=''&dest=nao&limit=14&offset=8");
-                if ($News->getResult()):
-                    foreach ($News->getResult() as $nOutras):
+                $ReadMain->setPlaces("tit=''&dest=nao&limit=14&offset=8");
+                if ($ReadMain->getResult()):
+                    foreach ($ReadMain->getResult() as $nOutras):
                         $nOutras['titulo'] = Check::Words($nOutras['titulo'], 20);
                         $nOutras['data'] = date('d/m/Y H:i', strtotime($nOutras['data']));
                         ?>
@@ -105,18 +106,27 @@
                         <h1>Eventos</h1>
                         <h2>Cobertura de Eventos</h2>
                     </hgroup>
-                    <a href="#" class="btn_mais btn_maiseventos">Mais Eventos</a>
+                    <a href="<?= HOME . '/eventos'; ?>" class="btn_mais btn_maiseventos">Mais Eventos</a>
                 </header>
                 <div class="main_grp_eventos">
                     <?php
-                    for ($l = 1; $l <= 8; $l++):
-                        ?>
-                        <div class="main_box_eventos">
-                            <div class="main_box_eventos_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/01.jpg' . '&w=425&h=175'; ?>" alt="Titulo" title="Titulo" ></div>
-                            <div class="main_box_eventos_dat"><i class="fa fa-calendar"></i> 17/03/2016</div>
-                            <div class="main_box_eventos_tit">Rolim de Moura – Prefeitura inicia construção da ...</div>
-                        </div>
-                    <?php endfor; ?>
+                    $ReadMain->ExeRead("eventos", "WHERE evento != :evento AND destaque = :dest ORDER BY id DESC LIMIT 8", "evento=''&dest=sim");
+                    if ($ReadMain->getResult()):
+                        foreach ($ReadMain->getResult() as $eventos):
+                            $eventos['evento'] = Check::Words($eventos['evento'], 20);
+                            $eventos['data'] = date('d/m/Y', strtotime($eventos['data']));
+                            ?>
+                            <div class="main_box_eventos">
+                                <a href="<?= HOME . '/evento/' . $eventos['url_name']; ?>" title="<?= $eventos['evento']; ?>">
+                                    <div class="main_box_eventos_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $eventos['foto'] . '&w=425&h=175'; ?>" alt="<?= $eventos['evento']; ?>" title="<?= $eventos['evento']; ?>" ></div>
+                                    <div class="main_box_eventos_dat"><i class="fa fa-calendar"></i> <?= $eventos['data']; ?></div>
+                                    <div class="main_box_eventos_tit"><?= $eventos['evento']; ?></div>
+                                </a>
+                            </div>
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
                 </div>
             </div>
             <div class="banner banner_mainright_meio"></div>
@@ -130,17 +140,25 @@
                         <h1>VÍDEOS</h1>
                         <h2>Clique para assistir</h2>
                     </hgroup>
-                    <a href="#" class="btn_mais btn_maisvideos">Mais Vídeos</a>
+                    <a href="<?= HOME . '/videos'; ?>" class="btn_mais btn_maisvideos">Mais Vídeos</a>
                 </header>
                 <div class="main_grp_videos">
                     <?php
-                    for ($l = 1; $l <= 4; $l++):
-                        ?>
-                        <div class="main_box_videos">
-                            <div class="main_box_videos_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/01.jpg' . '&w=425&h=175'; ?>" alt="Titulo" title="Titulo"></div>
-                            <div class="main_box_videos_tit">Rolim de Moura – Prefeitura inicia pontes ...</div>
-                        </div>
-                    <?php endfor; ?>
+                    $ReadMain->ExeRead("videos", "WHERE titulo != :tit AND destaque = :dest ORDER BY id DESC LIMIT 4", "tit=''&dest=sim");
+                    if ($ReadMain->getResult()):
+                        foreach ($ReadMain->getResult() as $videos):
+                            $videos['titulo'] = Check::Words($videos['titulo'], 20);
+                            ?>
+                            <div class="main_box_videos">
+                                <a href="<?= HOME . '/video/' . $videos['url_name']; ?>" title="<?= $videos['titulo']; ?>">
+                                    <div class="main_box_videos_img"><img src="<?= $videos['foto']; ?>" alt="<?= $videos['titulo'] ?>" title="<?= $videos['titulo'] ?>"></div>
+                                    <div class="main_box_videos_tit"><?= $videos['titulo'] ?></div>
+                                </a>
+                            </div>
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
                 </div>
             </div>
             <div class="main_blc_banners_meio">
@@ -154,7 +172,7 @@
                             <h1>COLUNAS</h1>
                             <h2>Posts dos colunistas</h2>
                         </hgroup>
-                        <a href="#" class="btn_mais btn_maiscolunas">Mais Colunas</a>
+                        <a href="<?= HOME . '/colunistas'; ?>" class="btn_mais btn_maiscolunas">Mais Colunas</a>
                     </header>
                     <div class="main_grp_colunas">
                         <?php
@@ -169,38 +187,6 @@
                                     <div class="main_box_colunas_tit">Sobre o Coração</div>
                                     <div class="main_box_colunas_pre">A ciência ensina que é o cérebro o órgão por excelência que...</div>
                                     <div class="main_box_colunas_dat"><i class="fa fa-clock-o"></i> 17/03/2016 01:37 hrs</div>
-                                </div>
-                            </div>
-                        <?php endfor; ?>
-                    </div>
-                </div>
-                <div class="main_blc_enquete">
-                    <header>
-                        <h1>ENQUETE</h1>
-
-                    </header>
-                    <div class="main_grp_enquete">
-
-                    </div>
-                </div>
-            </div>
-            <div class="main_blc_acessadastempo">
-                <div class="main_blc_acessadas">
-                    <header>
-                        <hgroup>
-                            <h1>MAIS ACESSADAS</h1>
-                            <h2>As notícias mais acessadas</h2>
-                        </hgroup>
-                    </header>
-                    <div class="main_grp_acessadas">
-                        <?php
-                        for ($l = 1; $l <= 5; $l++):
-                            ?>
-                            <div class="main_box_outrasnoticias">
-                                <div class="main_box_outrasnoticias_ico"><i class="fa fa-newspaper-o"></i></div>
-                                <div class="main_box_outrasnoticias_inf">
-                                    <div class="main_box_outrasnoticias_dat"><i class="fa fa-clock-o"></i> 17/03/2016 01:37 hrs</div>
-                                    <div class="main_box_outrasnoticias_tit">Rolim de Moura – Prefeitura inicia construção da primeira...</div>
                                 </div>
                             </div>
                         <?php endfor; ?>
@@ -238,6 +224,47 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="main_blc_acessadastempo">
+                <div class="main_blc_acessadas">
+                    <header>
+                        <hgroup>
+                            <h1>MAIS ACESSADAS</h1>
+                            <h2>As notícias mais acessadas</h2>
+                        </hgroup>
+                    </header>
+                    <div class="main_grp_acessadas">
+                        <?php
+                        $ReadMain->ExeRead("noticias", "WHERE titulo != :tit ORDER BY contador DESC LIMIT 5 ", "tit=''");
+                        if ($ReadMain->getResult()):
+                            foreach ($ReadMain->getResult() as $Rank):
+                                $Rank['data'] = date('d/m/Y H:i', strtotime($Rank['data']));
+                                ?>
+                                <div class="main_box_outrasnoticias">
+                                    <a href="<?= HOME . '/noticia/' . $Rank['url_name']; ?>" title="<?= $Rank['titulo']; ?>">
+                                        <div class="main_box_outrasnoticias_ico"><i class="fa fa-newspaper-o"></i></div>
+                                        <div class="main_box_outrasnoticias_inf">
+                                            <div class="main_box_outrasnoticias_dat"><i class="fa fa-clock-o"></i> <?= $Rank['data']; ?> hrs</div>
+                                            <div class="main_box_outrasnoticias_tit"><?= $Rank['titulo']; ?></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <?php
+                            endforeach;
+                        endif;
+                        ?>
+                    </div>
+                </div>
+                <div class="main_blc_enquete">
+                    <header>
+                        <h1>ENQUETE</h1>
+
+                    </header>
+                    <div class="main_grp_enquete">
+
+                    </div>
+                </div>
+
             </div>
         </div>
 
