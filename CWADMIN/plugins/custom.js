@@ -34,8 +34,7 @@ $(document).ready(function () {
 });
 
 $(function () {
-    //Datemask dd/mm/yyyy
-    $("[data-mask]").inputmask();
+    $("[data-mask]").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/aaaa"});
     $("[datetime-mask]").inputmask("datetime");
     $("[phone-mask]").inputmask("(99) 9999-9999");
 

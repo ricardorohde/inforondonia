@@ -16,7 +16,7 @@
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li <?= empty($getexe) ? 'class="active"' : ''?>>
+            <li <?= empty($getexe) ? 'class="active"' : '' ?>>
                 <a href="painel.php">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
@@ -28,9 +28,9 @@
             if ($menu->getResult()):
                 foreach ($menu->getResult() as $mn):
                     $idMenu = $mn['id_menu'];
-                     $case = explode('/', $getexe);
+                    $case = explode('/', $getexe);
                     ?>
-                    <li class="treeview <?= $case[0]== $mn['case'] ? 'active' : ''; ?>">
+                    <li class="treeview <?= $case[0] == $mn['case'] ? 'active' : ''; ?>">
                         <a href="#">
                             <i class="fa <?= $mn['ico_menu']; ?>"></i>
                             <span><?= $mn['titulo']; ?></span>
@@ -65,12 +65,14 @@
                                         <?php
                                     else:
                                         ?>
-                                        <li><a href="painel.php?exe=<?= $sm['case'] . '/' . $sm['pagina'] ?>"><i class="fa <?= $sm['ico_menu'] ?>"></i> <?= $sm['titulo']; ?></a></li>
-                                        <?php
-                                        endif;
-                                    endforeach;
-                                endif;
-                                ?>
+                                        <li <?= $getexe == $sm['case'] . '/' . $sm['pagina'] ? 'class="active"' : ''; ?>>
+                                            <a href="painel.php?exe=<?= $sm['case'] . '/' . $sm['pagina'] ?>"><i class="fa <?= $sm['ico_menu'] ?>"></i> <?= $sm['titulo']; ?></a>
+                                        </li>
+                                    <?php
+                                    endif;
+                                endforeach;
+                            endif;
+                            ?>
                         </ul>
                     </li>
                     <?php

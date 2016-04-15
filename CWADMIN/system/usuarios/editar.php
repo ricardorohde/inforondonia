@@ -107,7 +107,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label for="foto">Foto do Perfil</label>
-                                            <div class="help-image"><img src="../uploads/<?= $dados['foto']; ?>" class="img-responsive"></div>
+                                            <div class="help-image"><img src="../uploads/<?= $dados['foto']; ?>" class="img-thumbnail img-responsive"></div>
                                             <input type="file" name="foto" class="form-control" id="foto">
                                             <p class="help-block">Selecione a foto do perfil do usuário.</p>
                                         </div>

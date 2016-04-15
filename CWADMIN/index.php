@@ -7,6 +7,7 @@ require('../_app/Config.inc.php');
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="http://www.creativewebsites.com.br/midia/favicon.ico" />
         <title>PAINEL DE CONTROLE v.4.0 - CREATIVE WEBSITES</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
@@ -27,9 +28,10 @@ require('../_app/Config.inc.php');
     <body class="login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="painel.php"><b>PAINEL DE CONTROLE</b></a>
+                <a href="painel.php"><b>CW ADMIN 4.0</b></a>
             </div><!-- /.login-logo -->
             <div class="login-box-body">
+                <div class="login-logo"><img src="dist/img/logo-topo.png"></div>
                 <p class="login-box-msg">
                     <?php
                     $login = new Login(1);
@@ -72,9 +74,6 @@ require('../_app/Config.inc.php');
                         </div><!-- /.col -->
                     </div>
                 </form>
-                <br>
-                <a href="#">Esqueceu sua Senha?</a>
-
             </div><!-- /.login-box-body -->
         </div><!-- /.login-box -->
 

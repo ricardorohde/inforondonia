@@ -12,9 +12,13 @@ if (!$login->CheckLogin()):
     header('Location: index.php?exe=restrito');
 else:
     $userlogin = $_SESSION['userlogin'];
+    $DadosLoga = ['cont_acesso' => $userlogin['cont_acesso'] + 1, 'ip' => $_SERVER['REMOTE_ADDR']];
+    $Update = new Update;
+    $Update->ExeUpdate('usuarios', $DadosLoga, "WHERE id = :id", "id={$userlogin['id']}");
 endif;
 
 if ($logoff):
+    $Update->ExeUpdate('usuarios', ['ultimo_acesso' => Check::Data(date('d/m/Y'))], "WHERE id = :id", "id={$userlogin['id']}");
     unset($_SESSION['userlogin']);
     header('Location: index.php?exe=logoff');
 endif;

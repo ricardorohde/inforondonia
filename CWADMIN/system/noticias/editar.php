@@ -43,113 +43,124 @@
                 <div class="box box-primary">
                     <div class="box-header"><h3 class="box-title">Dados da Notícia</h3></div>
                     <div class="box-body">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6 col-xs-8">
-                                    <label for="categoria">Categoria</label>
-                                    <select name="categoria" class="form-control" id="categoria">
-                                        <option value="">Selecione...</option>
-                                        <?php
-                                        $readCat = new Read;
-                                        $readCat->ExeRead("noticias_categoria", "ORDER BY categoria ASC");
-                                        if ($readCat->getRowCount() >= 1):
-                                            foreach ($readCat->getResult() as $cat):
-                                                echo "<option ";
-                                                if ($dados['categoria'] == $cat['cat_url']):
-                                                    echo "selected=\"selected\" ";
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="categoria">Categoria</label>
+                                            <select name="categoria" class="form-control" id="categoria">
+                                                <option value="">Selecione...</option>
+                                                <?php
+                                                $readCat = new Read;
+                                                $readCat->ExeRead("noticias_categoria", "ORDER BY categoria ASC");
+                                                if ($readCat->getRowCount() >= 1):
+                                                    foreach ($readCat->getResult() as $cat):
+                                                        echo "<option ";
+                                                        if ($dados['categoria'] == $cat['cat_url']):
+                                                            echo "selected=\"selected\" ";
+                                                        endif;
+                                                        echo "value=\"{$cat['cat_url']}\"> &raquo;&raquo; {$cat['categoria']}</option>";
+                                                    endforeach;
                                                 endif;
-                                                echo "value=\"{$cat['cat_url']}\"> &raquo;&raquo; {$cat['categoria']}</option>";
-                                            endforeach;
-                                        endif;
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6 col-xs-12">
-                                    <label for="titulo">Titulo</label>
-                                    <input type="text" name="titulo" class="form-control" id="titulo" value="<?= isset($dados['titulo']) ? $dados['titulo'] : ''; ?>" placeholder="Informe o Titulo da Notícia">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6 col-xs-12">
-                                    <label for="subtitulo">Sub-titulo</label>
-                                    <input type="text" name="subtitulo" class="form-control" id="subtitulo" value="<?= isset($dados['subtitulo']) ? $dados['subtitulo'] : ''; ?>" placeholder="Informe o Sub-Titulo da Notícia">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6 col-xs-12">
-                                    <label for="colunista">Colunista / Autor</label>
-                                    <input type="text" name="colunista" class="form-control" id="colunista" value="<?= isset($dados['colunista']) ? $dados['colunista'] : ''; ?>" placeholder="Informe o Autor da Notícia">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6 col-xs-12">
-                                    <label for="fonte">Fonte</label>
-                                    <input type="text" name="fonte" class="form-control" id="fonte" value="<?= isset($dados['fonte']) ? $dados['fonte'] : ''; ?>" placeholder="Informe a Fonte da Notícia">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-2 col-xs-8">
-                                    <label for="destaque">Em Destaque</label>
-                                    <select name="destaque" class="form-control" id="sexo">
-                                        <option value="" <?= ($dados['destaque'] == '') ? ' selected="selected"' : ''; ?>>Selecione...</option>
-                                        <option value="sim" <?= ($dados['destaque'] == 'sim') ? ' selected="selected"' : ''; ?>>Sim</option>
-                                        <option value="nao" <?= ($dados['destaque'] == 'nao') ? ' selected="selected"' : ''; ?>>Não</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-2 col-xs-8">
-                                    <label for="coluna">É Coluna?</label>
-                                    <select name="coluna" class="form-control" id="sexo">
-                                        <option value="nao" <?= ($dados['coluna'] == 'nao') ? ' selected="selected"' : ''; ?>>Não</option>
-                                        <option value="sim" <?= ($dados['coluna'] == 'sim') ? ' selected="selected"' : ''; ?>>Sim</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6 col-xs-12">
-                                    <label for="foto">Foto Capa</label>
-                                    <input type="file" name="foto" class="form-control" id="foto">
-                                    <p class="help-block">Selecione a foto cada da notícia.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6 col-xs-12">
-                                    <label for="video">Url do Video do YouTube</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-youtube-play"></i>
+                                                ?>
+                                            </select>
                                         </div>
-                                        <input type="text" name="video" class="form-control" id="video" value="<?= isset($dados['video']) ? $dados['video'] : ''; ?>" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="titulo">Titulo</label>
+                                            <input type="text" name="titulo" class="form-control" id="titulo" value="<?= isset($dados['titulo']) ? $dados['titulo'] : ''; ?>" placeholder="Informe o Titulo da Notícia">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="subtitulo">Sub-titulo</label>
+                                            <input type="text" name="subtitulo" class="form-control" id="subtitulo" value="<?= isset($dados['subtitulo']) ? $dados['subtitulo'] : ''; ?>" placeholder="Informe o Sub-Titulo da Notícia">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="colunista">Colunista / Autor</label>
+                                            <input type="text" name="colunista" class="form-control" id="colunista" value="<?= isset($dados['colunista']) ? $dados['colunista'] : ''; ?>" placeholder="Informe o Autor da Notícia">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="fonte">Fonte</label>
+                                            <input type="text" name="fonte" class="form-control" id="fonte" value="<?= isset($dados['fonte']) ? $dados['fonte'] : ''; ?>" placeholder="Informe a Fonte da Notícia">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="destaque">Em Destaque</label>
+                                            <select name="destaque" class="form-control" id="sexo">
+                                                <option value="nao" <?= ($dados['destaque'] == 'nao') ? ' selected="selected"' : ''; ?>>Não</option>
+                                                <option value="sim" <?= ($dados['destaque'] == 'sim') ? ' selected="selected"' : ''; ?>>Sim</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="coluna">É Coluna?</label>
+                                            <select name="coluna" class="form-control" id="sexo">
+                                                <option value="nao" <?= ($dados['coluna'] == 'nao') ? ' selected="selected"' : ''; ?>>Não</option>
+                                                <option value="sim" <?= ($dados['coluna'] == 'sim') ? ' selected="selected"' : ''; ?>>Sim</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="video">Url do Video do YouTube</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-youtube-play"></i>
+                                                </div>
+                                                <input type="text" name="video" class="form-control" id="video" value="<?= isset($dados['video']) ? $dados['video'] : ''; ?>" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="foto">Foto Capa</label>
+                                            <div class="help-image"><img src="../uploads/<?= $dados['foto']; ?>" class="img-thumbnail img-responsive"></div>
+                                            <input type="file" name="foto" class="form-control" id="foto">
+                                            <p class="help-block">Selecione a foto cada da notícia.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-8 col-xs-12">
-                                    <label for="noticia">Notícia</label>
-                                    <textarea name="noticia" rows="10" class="form-control" id="editor">
-                                        <?= isset($dados['noticia']) ? $dados['noticia'] : ''; ?>
-                                    </textarea>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="noticia">Notícia</label>
+                                            <textarea name="noticia" rows="10" class="form-control" id="editor">
+                                                <?= isset($dados['noticia']) ? $dados['noticia'] : ''; ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
