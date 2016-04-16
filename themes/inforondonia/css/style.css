@@ -323,6 +323,8 @@ section#slide ul li span{ width: 97%; background: #37384e; display: table; paddi
     .main_blc_acessadas{ width: 100%; margin-bottom: 10px;}
     .main_blc_tempo{ display: none;}
     .banner_mainright_small{ width: 49%; margin-left: 1%;}
+    /*=== VIDEO ===*/
+    .box_video{ width: 49%; margin: 0 0.5% 1% 0.5%; padding-bottom: 3px; border-bottom: 1px solid #cbcbcb; float: left;}
 }
 @media (max-width: 480px){
     /*=== TOPO ===*/
@@ -362,6 +364,8 @@ section#slide ul li span{ width: 97%; background: #37384e; display: table; paddi
     .box_colunista{ width: 100%; margin-bottom: 2%;}
     /*=== EVENTOS ===*/
     .box_eventos{ width: 100%; margin-bottom: 2%;}
+    /*=== VIDEOS ===*/
+    .box_video{ width: 100%; margin-bottom: 2%;}
     /*=== DENUNCIA ===*/
     .denuncia_form .form_input .denuncia_cidade{ width: 100%; display: block;}
     .denuncia_form .form_input .denuncia_uf{ width: 35%; display: block;}
