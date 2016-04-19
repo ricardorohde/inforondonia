@@ -13,7 +13,26 @@ endif;
                 <h1 class="header_title"><?= $titulo; ?></h1>
                 <p class="header_subtitle"><?= $subtitulo; ?></p>
                 <span class="header_line"></span>
-                <div class="banner banner_news_full"></div>
+                <?php
+                //Banner Noticia Ler 1
+                $banners->setPlaces("idtipo=13");
+                if ($banners->getResult()):
+                    ?>
+                    <div class="banner_news_full slide">
+                        <?php
+                        foreach ($banners->getResult() as $bnr):
+                            echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
+                            echo "<picture>";
+                            echo "<source srcset=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=635&h=95\" media=\"(max-width:1200px)\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140\" class=\"banner\" />";
+                            echo "</picture>";
+                            echo "</a>";
+                        endforeach;
+                        ?>
+                    </div>
+                    <?php
+                endif;
+                ?>
                 <div class="header_social">
                     <a href="https://www.facebook.com/sharer/sharer.php?u=<?= HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Facebook" class="rds_facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
                     <a href="https://twitter.com/home?status=<?= HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Twitter" class="rds_twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
@@ -29,7 +48,26 @@ endif;
                     </a>
                 </figure>
                 <div class="article_news_chars"><?= $noticia; ?></div>
-                <div class="banner banner_news_full"></div>
+                <?php
+                //Banner Noticia Ler 2
+                $banners->setPlaces("idtipo=14");
+                if ($banners->getResult()):
+                    ?>
+                    <div class="banner_news_full slide">
+                        <?php
+                        foreach ($banners->getResult() as $bnr):
+                            echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
+                            echo "<picture>";
+                            echo "<source srcset=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=635&h=95\" media=\"(max-width:1200px)\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140\" class=\"banner\" />";
+                            echo "</picture>";
+                            echo "</a>";
+                        endforeach;
+                        ?>
+                    </div>
+                    <?php
+                endif;
+                ?>
                 <div class="article_news_moreimg">
                     <?php
                     $OutrasFotos = new Read;

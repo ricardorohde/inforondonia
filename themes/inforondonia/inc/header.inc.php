@@ -9,8 +9,45 @@
             </div>
         </div>
         <div class="box_header_banners">
-            <div class="banner main_header_banner"></div>
-            <div class="banner main_header_banner"></div>
+            <?php
+            $banners = new Read;
+            //Banner Topo 1
+            $banners->ExeRead("banners", "WHERE tipo = :idtipo ORDER BY rand()", "idtipo=2");
+            if ($banners->getResult()):
+                ?>
+                <div class=" main_header_banner slide">
+                    <?php
+                    foreach ($banners->getResult() as $bnr):
+                        echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
+                        echo "<picture>";
+                        echo "<source srcset=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=635&h=95\" media=\"(max-width:1200px)\" />";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=745&h=95\" class=\"banner\" />";
+                        echo "</picture>";
+                        echo "</a>";
+                    endforeach;
+                    ?>
+                </div>
+                <?php
+            endif;
+            //Banner Topo 2
+            $banners->setPlaces("idtipo=3");
+            if ($banners->getResult()):
+                ?>
+                <div class="banner main_header_banner slide">
+                    <?php
+                    foreach ($banners->getResult() as $bnr):
+                        echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
+                        echo "<picture>";
+                        echo "<source srcset=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=635&h=95\" media=\"(max-width:1200px)\" />";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=745&h=95\" class=\"banner\" />";
+                        echo "</picture>";
+                        echo "</a>";
+                    endforeach;
+                    ?>
+                </div>
+                <?php
+            endif;
+            ?>
         </div>
     </div>
 
