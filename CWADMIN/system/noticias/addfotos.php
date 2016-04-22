@@ -16,7 +16,6 @@
             $idTipo = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
             $tipo = filter_input(INPUT_GET, 'tipo', FILTER_SANITIZE_STRING);
             if (isset($dados) && $dados['SendPostForm']):
-                #$dados['foto'] = ($_FILES['foto']['tmp_name'] ? $_FILES['foto'] : null);
                 unset($dados['SendPostForm']);
 
                 require('_models/AdminNoticia.class.php');
