@@ -25,8 +25,7 @@
                 if (!$cadastra->getResult()):
                     WSErro($cadastra->getError()[0], $cadastra->getError()[1]);
                 else:
-                    var_dump($cadastra);
-                #header("Location: painel.php?exe=eventos/listar&acao=cadastrar&id={$cadastra->getResult()}");
+                    header("Location: painel.php?exe=eventos/listar&acao=cadastrar&id={$cadastra->getResult()}");
                 endif;
             endif;
             ?>
