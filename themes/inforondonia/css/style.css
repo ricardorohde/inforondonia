@@ -70,7 +70,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .main_header_menu ul{ width: 100%;}
 .main_header_menu .mobmenu{ display: none;}
 .main_header_menu ul li{padding: 15px 0; float: left; font-size: 0.8125em;}
-.main_header_menu ul li a{ color: #34314B; padding: 15px 15px;}
+.main_header_menu ul li a{ color: #34314B; padding: 15px 14px;}
 .main_header_menu ul li a:hover{ color: #FFF; background: #34314B;}
 .main_header_busca{ width: 26%; border-left: 1px solid #E9E9E9; float: right;}
 .main_header_busca .busca_input{ width: 86%; padding: 14px 5px; margin-top: 1px; float: left; border: none;}

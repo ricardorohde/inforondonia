@@ -36,6 +36,7 @@
                     header("Location: painel.php?exe=noticias/listar");
                 else:
                     $dados = $read->getResult()[0];
+                    $dados['data'] = date('d/m/Y', strtotime($dados['data']));
                 endif;
             endif;
             ?>
@@ -65,6 +66,19 @@
                                                 endif;
                                                 ?>
                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="data">Data da Notícia</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" name="data" class="form-control" id="titulo" value="<?= isset($dados['data']) ? $dados['data'] : date('d/m/Y'); ?>" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

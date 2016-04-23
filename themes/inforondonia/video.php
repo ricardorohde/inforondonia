@@ -22,7 +22,7 @@ endif;
             </header>
             <article class="content_pag">
                 <div class="frameBox">
-                    <div class="ratio4">
+                    <div class="ratio16">
                         <iframe class="ratio_element" width="100%" src="https://www.youtube.com/embed/<?= $link; ?>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <p><b>Autor:</b> <?= $autor; ?></p>

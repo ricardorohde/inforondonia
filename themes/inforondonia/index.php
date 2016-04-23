@@ -19,7 +19,7 @@
                     </section>
                     <ul>
                         <?php
-                        $ReadMain->ExeRead("noticias", "WHERE titulo != :tit AND destaque = :dest ORDER BY id DESC LIMIT :limit OFFSET :offset", "tit=''&dest=sim&limit=5&offset=0");
+                        $ReadMain->ExeRead("noticias", "WHERE titulo != :tit AND destaque = :dest ORDER BY data DESC LIMIT :limit OFFSET :offset", "tit=''&dest=sim&limit=5&offset=0");
                         if ($ReadMain->getResult()):
                             foreach ($ReadMain->getResult() as $sNews):
                                 ?>
@@ -167,7 +167,7 @@
                 </header>
                 <div class="main_grp_eventos">
                     <?php
-                    $ReadMain->ExeRead("eventos", "WHERE evento != :evento AND destaque = :dest ORDER BY id DESC LIMIT 8", "evento=''&dest=sim");
+                    $ReadMain->ExeRead("eventos", "WHERE evento != :evento AND destaque = :dest ORDER BY data DESC LIMIT 8", "evento=''&dest=sim");
                     if ($ReadMain->getResult()):
                         foreach ($ReadMain->getResult() as $eventos):
                             $eventos['evento'] = Check::Words($eventos['evento'], 20);

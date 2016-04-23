@@ -16,7 +16,7 @@
                 $Colunista->FullRead(" SELECT c.id, c.nome, c.foto, c.url_name"
                         . " FROM usuarios c "
                         . " WHERE c.nome != :nome AND c.url_name != :url AND c.colunista = :col"
-                        . " ORDER BY c.id DESC"
+                        . " ORDER BY c.nome DESC"
                         . " LIMIT :limit OFFSET :offset", "nome=''&url=''&col=sim&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
                 if (!$Colunista->getResult()):
                     WSErro('Desculpe, ainda não há nenhum <b>COLUNISTA</b> cadastrado!', WS_INFOR);

@@ -13,7 +13,7 @@
                 $Pager->ExePager($getPage, 12);
 
                 $eventos = new Read;
-                $eventos->ExeRead("eventos", "WHERE evento != :e ORDER BY id DESC LIMIT :limit OFFSET :offset", "e=''&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
+                $eventos->ExeRead("eventos", "WHERE evento != :e ORDER BY data DESC LIMIT :limit OFFSET :offset", "e=''&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
                 if (!$eventos->getResult()):
                     WSErro('Desculpe, ainda não há nenhum <b>EVENTO</b> cadastrado!', WS_INFOR);
                 else:

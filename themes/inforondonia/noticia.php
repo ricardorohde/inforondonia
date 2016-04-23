@@ -67,20 +67,34 @@ endif;
                     </div>
                     <?php
                 endif;
-                ?>
-                <div class="article_news_moreimg">
-                    <?php
-                    $OutrasFotos = new Read;
-                    $OutrasFotos->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = :tipo", "idtipo={$id}&tipo=N");
-                    if ($OutrasFotos->getResult()):
+                //Outras Fotos
+                $OutrasFotos = new Read;
+                $OutrasFotos->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = :tipo", "idtipo={$id}&tipo=N");
+                if ($OutrasFotos->getResult()):
+                    ?>
+                    <div class="article_news_moreimg">
+                        <?php
                         foreach ($OutrasFotos->getResult() as $fotos):
                             echo '<div class="boxfotos">';
                             echo '<img alt="' . $titulo . '" title="' . $titulo . '" src="' . HOME . '/tim.php?src=' . HOME . '/uploads/' . $fotos['foto'] . '&w=870"/>';
                             echo '</div>';
                         endforeach;
-                    endif;
+                        ?>
+                    </div>
+                    <?php
+                endif;
+                //Video
+                if (!empty($video)):
                     ?>
-                </div>
+                    <div class="article_news_moreimg">
+                        <div class="frameBox">
+                            <div class="ratio16">
+                                <iframe class="ratio_element"  width="100%" height="100%" src="https://www.youtube.com/embed/<?= Check::ytVideo($video); ?>" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
                 <div class="article_news_morenews">
                     <header class="header_morenews">
                         <h1 class="header_morenews_vin">Outras Notícias</h1>
