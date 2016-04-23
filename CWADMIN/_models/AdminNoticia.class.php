@@ -207,6 +207,7 @@ class AdminNoticia {
         $this->Data['foto'] = $capa;
         $this->Data['noticia'] = $notic;
         $this->Data['url_name'] = Check::Name($this->Data['titulo']);
+        $this->Data['data'] = Check::Data($this->Data['data']);
     }
 
     //Excluir a Foto

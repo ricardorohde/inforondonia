@@ -54,7 +54,7 @@
                         <tbody>
                             <?php
                             $readUser = new Read;
-                            $readUser->ExeRead("noticias", "WHERE titulo != :l", "l= ''");
+                            $readUser->ExeRead("noticias", "WHERE titulo != :l ORDER BY id DESC", "l= ''");
                             if (!$readUser->getResult()):
 
                             else:
