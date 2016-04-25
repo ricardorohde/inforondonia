@@ -46,7 +46,8 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Titulo</th>
-                                <th>Cadastrado em</th>
+                                <th>Views</th>
+                                <th>Cadastrada</th>
                                 <th>Destaque</th>
                                 <th>Ação</th>
                             </tr>
@@ -62,8 +63,9 @@
                                     ?>
                                     <tr>
                                         <td><?= $reg['id']; ?></td>
-                                        <td><?= Check::Words($reg['titulo'], 10 ); ?></td>
-                                        <td><?= date('d/m/Y H:m:s', strtotime($reg['data'])); ?></td>
+                                        <td><?= Check::Words($reg['titulo'], 10); ?></td>
+                                        <td><?= !empty($reg['contador']) ? $reg['contador'] : 0; ?></td>
+                                        <td><?= date('d/m/Y', strtotime($reg['data'])); ?></td>
                                         <td><?= $reg['destaque']; ?></td>
                                         <td>
                                             <div class="btn-group">
