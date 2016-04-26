@@ -78,10 +78,11 @@ class Cotacao {
 
     //Obtem a variação down ou up.
     private function getVariacao($variation) {
-        if (strpos($variation, "+")):
-            return "up";
+        $var = floatval($variation);
+        if ($var < 0):
+            return 'down';
         else:
-            return "down";
+            return 'up';
         endif;
     }
 
