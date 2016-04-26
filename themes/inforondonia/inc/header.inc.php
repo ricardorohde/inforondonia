@@ -19,10 +19,7 @@
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                        echo "<picture>";
-                        echo "<source srcset=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=635&h=95\" media=\"(max-width:1200px)\" />";
-                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=745&h=95\" class=\"banner\" />";
-                        echo "</picture>";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=745&h=95&zc=0\" class=\"banner\" />";
                         echo "</a>";
                     endforeach;
                     ?>
@@ -33,14 +30,11 @@
             $banners->setPlaces("idtipo=3");
             if ($banners->getResult()):
                 ?>
-                <div class="banner main_header_banner slide">
+                <div class="main_header_banner slide">
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                        echo "<picture>";
-                        echo "<source srcset=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=635&h=95\" media=\"(max-width:1200px)\" />";
-                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=745&h=95\" class=\"banner\" />";
-                        echo "</picture>";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=745&h=95&zc=0\" class=\"banner\" />";
                         echo "</a>";
                     endforeach;
                     ?>

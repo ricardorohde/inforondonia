@@ -17,7 +17,8 @@ body{ background-color: #F1F1F1; }
 .btn_maiscolunas{ background: #663366; color: #FFF;}
 .btn_maiscolunas:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
 .margin_bottom{ margin-bottom: 10px;}
-.banner{ border: 1px solid #CCC; border-radius: 0.3em; background: #FFF;}
+.banner{ width: 100%; border: 1px solid #CCC; border-radius: 0.3em; background: #FFF; float: left;}
+.banner_border{ width: 100%; padding: 5px; border: 1px solid #CCC; border-radius: 0.3em; background: #FFF; float: left;}
 .ratio4{  width: 100%; height: 0; padding-bottom: 75%; position: relative; float: left;}
 .ratio16{  width: 100%; height: 0; padding-bottom: 56.25%; position: relative; float: left;}
 .ratio_element{ width: 100%; height: 100%; left: 0; top: 0; position: absolute;}
@@ -98,7 +99,8 @@ section#slide ul li span{ width: 97%; background: #37384e; display: table; paddi
 .main_box_lastnews_cat{ width: 100%; color: #2A8B53;  margin-top: 6px; text-decoration: underline; float: left;}
 .main_box_lastnews_tit{ width: 100%; color: #000000; font-size: 0.875em; margin-top: 6px; float: left;}
 .main_box_lastnews_dat{ width: 100%; color: #A8ACAF; font-size: 0.75em;  margin-top: 6px; float: left;}
-.banner_mainright_full{ width: 100%; padding: 1%; float: left;}
+.banner_mainright_full{ width: 100%; float: left;}
+.slide{ width: 100%; float: left;}
 .likebox_facebook{ width: 100%; margin-top: 10px; float: left;}
 .main_blc_outnews{ width: 42%; float: left;}
 .main_blc_outnews header{ width: 100%; float: left; padding-left: 1%; border-top: 0.3125em solid #2A8B53; background: #FFF;}
@@ -178,7 +180,7 @@ section#slide ul li span{ width: 97%; background: #37384e; display: table; paddi
 .box_tempo_umid{ width: 100%; font-size: 0.75em; float: left;}
 .box_tempo_vent{ width: 100%; font-size: 0.75em; float: left;}
 .main_right_tv{ width: 100%; margin-bottom: 10px; float: left;}
-.banner_mainright_small{ width: 100%; padding: 1%; margin-top: 10px; float: left;}
+.banner_mainright_small{ width: 100%; float: left;}
 .banner_main_full{ width: 100%; margin-top: 10px; float: left;}
 .banner_news_full{ width: 100%; margin-top: 10px; float: left;}
 /*=== RODAPE ===*/
