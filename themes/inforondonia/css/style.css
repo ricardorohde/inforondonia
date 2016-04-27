@@ -148,8 +148,8 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .main_grp_colunas{ width: 100%; float: left;}
 .main_box_colunas{width: 49%; margin: 2% 0.5%; float: left;}
 .main_box_colunas_imgname{ width: 40%; float: left;}
-.main_box_colunas_img{ width: 100%; float: left; background: #FFF;}
-.main_box_colunas_nom{ width: 100%; float: left; font-size: 0.70em; font-weight: bold;}
+.main_box_colunas_img{ width: 100%; background: #FFF; float: left;}
+.main_box_colunas_nom{ width: 100%; color: #663366; font-size: 0.70em; font-weight: bold; float: left; }
 .main_box_colunas_inf{ width: 59%; margin-left: 1%; float: left;}
 .main_box_colunas_tit{ width: 100%; color: #000000; font-size: 0.75em; font-weight: bold; float: left;}
 .main_box_colunas_pre{ width: 100%; color: #000000; font-size: 0.75em; float: left;}
