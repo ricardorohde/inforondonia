@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <input type="submit" name="SendPostForm" value="Cadastrar" class="btn btn-flat btn-primary"/>
+                        <input type="submit" name="SendPostForm" value="Editar" class="btn btn-flat btn-primary"/>
                     </div>
                 </div>
             </form>
