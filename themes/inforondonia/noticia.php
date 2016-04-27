@@ -18,7 +18,7 @@ endif;
                 $banners->setPlaces("idtipo=13");
                 if ($banners->getResult()):
                     ?>
-                    <div class="banner_news_full slide">
+                    <div class="banner_news_full cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -53,7 +53,7 @@ endif;
                 $banners->setPlaces("idtipo=14");
                 if ($banners->getResult()):
                     ?>
-                    <div class="banner_news_full slide">
+                    <div class="banner_news_full cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";

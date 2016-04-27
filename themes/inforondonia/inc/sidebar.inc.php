@@ -6,7 +6,7 @@
         if ($banners->getResult()):
             ?>
             <div class="banner_border">
-                <div class="banner_mainright_full slide">
+                <div class="banner_mainright_full cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -27,7 +27,7 @@
         if ($banners->getResult()):
             ?>
             <div class="banner_border margin_bottom">
-                <div class="banner_mainright_full slide">
+                <div class="banner_mainright_full cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -45,7 +45,7 @@
         if ($banners->getResult()):
             ?>
             <div class="banner_border">
-                <div class="banner_mainright_small slide">
+                <div class="banner_mainright_small cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";

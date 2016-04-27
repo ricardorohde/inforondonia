@@ -47,6 +47,7 @@
                                 <th>Id</th>
                                 <th>Titulo</th>
                                 <th>Tipo</th>
+                                <th>Expira em</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
@@ -63,6 +64,7 @@
                                         <td><?= $reg['id']; ?></td>
                                         <td><?= $reg['titulo']; ?></td>
                                         <td><?= $reg['tipo']; ?></td>
+                                        <td><?= date('d/m/Y', strtotime($reg['data_final'])); ?></td>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="painel.php?exe=banners/editar&id=<?= $reg['id']; ?>" class="btn btn-flat btn-primary btn-sm"><b class="fa fa-edit"></b> Editar</a>
