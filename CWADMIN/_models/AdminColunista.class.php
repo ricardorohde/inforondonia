@@ -70,41 +70,30 @@ class AdminColunista {
     }
 
     /**
-     * <b>Remover Usuário:</b> Informe o ID do usuário que deseja remover. Este método não permite deletar
+     * <b>Remover Colunista:</b> Informe o ID do colunista que deseja remover. Este método não permite deletar
      * o próprio perfil ou ainda remover todos os ADMIN'S do sistema!
-     * @param INT $UserId = Id do usuário
+     * @param INT $ColunistaId = Id do colunista
      */
-    public function ExeDelete($UserId) {
-        $this->User = (int) $UserId;
+    public function ExeDelete($ColunistaId) {
+        $this->Id = (int) $ColunistaId;
 
         $readUser = new Read;
-        $readUser->ExeRead(self::Entity, "WHERE id = :id", "id={$this->User}");
+        $readUser->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
 
         if (!$readUser->getResult()):
-            $this->Error = [ 'Oppsss, você tentou remover um usuário que não existe no sistema!', WS_ERROR];
-            $this->Result = false;
-        elseif ($this->User == $_SESSION['userlogin']['id']):
-            $this->Error = [ 'Oppsss, você tentou remover seu usuário. Essa ação não é permitida!!!', WS_INFOR];
+            $this->Error = [ 'Oppsss, você tentou remover um colunista que não existe no sistema!', WS_ERROR];
             $this->Result = false;
         else:
-            if ($readUser->getResult()[0]['nivel'] == 1):
+            $readColuna = $readUser;
+            $readColuna->ExeRead('noticias', "WHERE colunista = :idcol", "idcol={$this->Id}");
 
-                $readAdmin = $readUser;
-                $readAdmin->ExeRead(self:: Entity, "WHERE id != :id AND nivel = :lv", "id={$this->User}&lv=1");
-
-                if (!$readAdmin->getRowCount()):
-                    $this->Error = [ 'Oppsss, você está tentando remover o único ADMIN do sistema. Para remover cadastre outro antes!!!', WS_ERROR];
-                    $this->Result = false;
-                else:
-                    $this->fotoDelete($this->User);
-                    $this->Delete();
-                endif;
-
+            if ($readColuna->getRowCount()):
+                $this->Error = [ 'Oppsss, você está tentando remover um colunista porém ele tem coluna cadastrada. Para remover delete a coluna antes!!!', WS_ERROR];
+                $this->Result = false;
             else:
-                $this->fotoDelete($this->User);
+                $this->fotoDelete($this->Id);
                 $this->Delete();
             endif;
-
         endif;
     }
 
@@ -191,9 +180,9 @@ class AdminColunista {
     //Remove Usuário
     private function Delete() {
         $Delete = new Delete;
-        $Delete->ExeDelete(self::Entity, "WHERE id = :id", "id={$this->User}");
+        $Delete->ExeDelete(self::Entity, "WHERE id = :id", "id={$this->Id}");
         if ($Delete->getResult()):
-            $this->Error = [ "Usuário removido com sucesso do sistema!", WS_ACCEPT];
+            $this->Error = [ "Colunista removido com sucesso do sistema!", WS_ACCEPT];
             $this->Result = true;
         endif;
     }
