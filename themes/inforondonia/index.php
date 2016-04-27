@@ -272,20 +272,44 @@
                     </header>
                     <div class="main_grp_colunas">
                         <?php
-                        for ($l = 1; $l <= 4; $l++):
-                            ?>
-                            <div class="main_box_colunas">
-                                <div class="main_box_colunas_imgname">
-                                    <div class="main_box_colunas_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/01.jpg' . '&w=170&h=100'; ?>" alt="Titulo" title="Titulo"></div>
-                                    <div class="main_box_colunas_nom">Everaldo Lins</div>
-                                </div>
-                                <div class="main_box_colunas_inf">
-                                    <div class="main_box_colunas_tit">Sobre o Coração</div>
-                                    <div class="main_box_colunas_pre">A ciência ensina que é o cérebro o órgão por excelência que...</div>
-                                    <div class="main_box_colunas_dat"><i class="fa fa-clock-o"></i> 17/03/2016 01:37 hrs</div>
-                                </div>
-                            </div>
-                        <?php endfor; ?>
+                        $ReadMain->ExeRead('colunistas', "WHERE nome != :nome ORDER BY RAND() LIMIT :limit", "nome=''&limit=4");
+                        foreach ($ReadMain->getResult() as $col):
+
+                            $ReadMain->ExeRead('noticias', "WHERE colunista = :idcol ORDER BY id DESC LIMIT 1", "idcol={$col['id']}");
+                            if (!empty($ReadMain->getResult()[0])):
+                                $News = $ReadMain->getResult()[0];
+                                ?>
+                                <a href="<?= HOME . '/colunista/' . $col['url_name']; ?>" title="<?= $col['nome']; ?>">
+                                    <div class="main_box_colunas">
+                                        <div class="main_box_colunas_imgname">
+                                            <div class="main_box_colunas_img"><?= Check::Image('uploads/' . $col['foto'], $col['nome'], 170, 100); ?></div>
+                                            <div class="main_box_colunas_nom"><?= Check::Words($col['nome'], 3); ?></div>
+                                        </div>
+                                        <div class="main_box_colunas_inf">
+                                            <div class="main_box_colunas_tit"><?= Check::Words($News['titulo'], 8); ?></div>
+                                            <div class="main_box_colunas_pre"><?= Check::Words($News['noticia'], 5); ?></div>
+                                            <div class="main_box_colunas_dat"><i class="fa fa-clock-o"></i> <?= date('d/m/Y H:i', strtotime($News['data'])); ?> hrs</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <?php
+                            else:
+                                ?>
+                                <a href="<?= HOME . '/colunista/' . $col['url_name']; ?>" title="<?= $col['nome']; ?>">
+                                    <div class="main_box_colunas">
+                                        <div class="main_box_colunas_imgname">
+                                            <div class="main_box_colunas_img"><?= Check::Image('uploads/' . $col['foto'], $col['nome'], 170, 100); ?></div>
+                                            <div class="main_box_colunas_nom"><?= Check::Words($col['nome'], 3); ?></div>
+                                        </div>
+                                        <div class="main_box_colunas_inf">
+                                            <div class="main_box_colunas_tit">Nenhum post ainda...</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php
+                            endif;
+                        endforeach;
+                        ?>
                     </div>
                 </div>
                 <div class="main_blc_tempo">
