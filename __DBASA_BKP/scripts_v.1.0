@@ -1,0 +1,32 @@
+ALTER TABLE `banners`
+	DROP FOREIGN KEY `fk_banners_tipo`;
+ALTER TABLE `banners`
+	ADD CONSTRAINT `fk_banners_banners_tipo` FOREIGN KEY (`tipo`) REFERENCES `banners_tipo` (`id`);
+
+
+ALTER TABLE `banners_tipo`
+	CHANGE COLUMN `id_tipo` `id` INT(11) NOT NULL AUTO_INCREMENT FIRST,
+	ADD INDEX `tipo` (`tipo`);
+
+ALTER TABLE `colunistas`
+	ADD INDEX `nome` (`nome`),
+	ADD CONSTRAINT `fk_colunistas_usuarios_qm_cadastr` FOREIGN KEY (`qm_cadastr`) REFERENCES `usuarios` (`id`),
+	ADD CONSTRAINT `fk_colunistas_usuarios_qm_alterou` FOREIGN KEY (`qm_alterou`) REFERENCES `usuarios` (`id`);
+
+ALTER TABLE `eventos`
+	ALTER `evento` DROP DEFAULT,
+	ALTER `data` DROP DEFAULT,
+	ALTER `local` DROP DEFAULT,
+	ALTER `cidadeuf` DROP DEFAULT,
+	ALTER `foto` DROP DEFAULT,
+	ALTER `qm_cadastr` DROP DEFAULT;
+ALTER TABLE `eventos`
+	CHANGE COLUMN `evento` `evento` VARCHAR(50) NOT NULL AFTER `url_name`,
+	CHANGE COLUMN `data` `data` TIMESTAMP NOT NULL AFTER `evento`,
+	CHANGE COLUMN `local` `local` VARCHAR(150) NOT NULL AFTER `data`,
+	CHANGE COLUMN `cidadeuf` `cidadeuf` VARCHAR(100) NOT NULL AFTER `local`,
+	CHANGE COLUMN `foto` `foto` VARCHAR(100) NOT NULL AFTER `cidadeuf`,
+	CHANGE COLUMN `qm_cadastr` `qm_cadastr` INT(11) NOT NULL AFTER `fotografo`,
+	ADD CONSTRAINT `fk_eventos_usuarios_qm_cadastr` FOREIGN KEY (`qm_cadastr`) REFERENCES `usuarios` (`id`),
+	ADD CONSTRAINT `fk_eventos_usuarios_qm_alterou` FOREIGN KEY (`qm_alterou`) REFERENCES `usuarios` (`id`);
+	
