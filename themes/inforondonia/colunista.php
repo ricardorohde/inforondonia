@@ -20,7 +20,7 @@ endif;
                 $Pager->ExePager($getPage, 10);
 
                 $ReadNewsAll = new Read;
-                $ReadNewsAll->ExeRead('noticias n, noticias_categoria nc', "WHERE titulo != :titulo AND n.categoria = nc.cat_url AND n.qm_cadastr = :colunista ORDER BY id DESC LIMIT :limit OFFSET :offset", "titulo=''&colunista={$id}&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
+                $ReadNewsAll->ExeRead('noticias n, noticias_categoria nc', "WHERE titulo != :titulo AND n.categoria = nc.cat_url AND n.colunista = :colunista ORDER BY n.data DESC LIMIT :limit OFFSET :offset", "titulo=''&colunista={$id}&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
 
                 if (!$ReadNewsAll->getResult()):
                     WSErro('Desculpe, ainda não há nenhuma <b>NOTICIA</b> cadastrada!', WS_INFOR);
@@ -36,7 +36,7 @@ endif;
                     endforeach;
 
                     echo '<nav>';
-                    $Pager->ExePaginator('noticias', "WHERE titulo != :t AND qm_cadastr = :colunista ORDER BY id DESC", "t=''&colunista={$id}");
+                    $Pager->ExePaginator('noticias', "WHERE titulo != :t AND colunista = :colunista ORDER BY data DESC", "t=''&colunista={$id}");
                     echo $Pager->getPaginator();
                     echo '</nav>';
                 endif;

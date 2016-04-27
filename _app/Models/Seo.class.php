@@ -98,7 +98,7 @@ class Seo {
 
             //SEO:: COLUNISTA (LER)
             case 'colunista':
-                $ReadSeo->ExeRead("usuarios", "WHERE url_name = :link", "link={$this->Link}");
+                $ReadSeo->ExeRead("colunistas", "WHERE url_name = :link", "link={$this->Link}");
                 if (!$ReadSeo->getResult()):
                     $this->seoData = null;
                     $this->seoTags = null;
