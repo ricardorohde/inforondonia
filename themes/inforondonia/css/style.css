@@ -56,6 +56,7 @@ body{ background-color: #F1F1F1; }
 pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10px; font-size: 13px; line-height: 1.42857143; color: #333; word-break: break-all; word-wrap: break-word; background-color: #f5f5f5; border: 1px solid #ccc; border-radius: 4px;}
 .down{ color: #ff0000;}
 .up{ color: #3c763d;}
+.hide{display: none;}
 /*=== TOPO ===*/
 .main_header{ width: 100%; border-top: 0.3125em solid #35314E; float: left; background: url(../images/bg-topo.jpg) center top no-repeat;}
 .main_header .box_header_logords{ width: 30%; padding: 2% 1%; float: left;}
@@ -199,6 +200,7 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .box_news{ width: 100%; padding: 1%; border-bottom: 1px solid #cbcbcb; margin-bottom: 10px; float: left; background: #f4f4f4;}
 .box_news .news_image{ width: 27.9%; float: left;}
 .box_news .news_dados{ width: 72.1%; padding-left: 1%; float: left;}
+.box_news .news_dadosfull{ width: 100%; padding-left: 1%; float: left;}
 .box_news .news_dadosdate{ width: 100%; font-size: 0.75em; color: #333; float: left;}
 .box_news .news_dadoscateg{ width: 100%; font-size: 0.875em; color: #2A8B53; font-weight: bold; padding-top: 5px; float: left;}
 .box_news .news_dadostitle{ width: 100%; font-size: 1.1em; color: #333; font-weight: 500; padding-top: 3px; float: left;}

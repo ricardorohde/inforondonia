@@ -22,10 +22,7 @@ endif;
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<picture>";
-                            echo "<source srcset=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=635&h=95\" media=\"(max-width:1200px)\" />";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140\" class=\"banner\" />";
-                            echo "</picture>";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140&zc=0\" class=\"banner\" />";
                             echo "</a>";
                         endforeach;
                         ?>
@@ -42,11 +39,13 @@ endif;
                 </div>
             </header>
             <article class="content_pag">
-                <figure class="article_news_image">
-                    <a href="<?= HOME . '/uploads/' . $foto; ?>" rel="shadowbox">
-                        <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $foto . '&w=870&h=480'; ?>"/>
-                    </a>
-                </figure>
+                <?php if (!empty($foto)): ?>
+                    <figure class="article_news_image">
+                        <a href="<?= HOME . '/uploads/' . $foto; ?>">
+                            <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $foto . '&w=870&h=480'; ?>"/>
+                        </a>
+                    </figure>
+                <?php endif; ?>
                 <div class="article_news_chars"><?= $noticia; ?></div>
                 <?php
                 //Banner Noticia Ler 2
@@ -57,10 +56,7 @@ endif;
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<picture>";
-                            echo "<source srcset=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=635&h=95\" media=\"(max-width:1200px)\" />";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140\" class=\"banner\" />";
-                            echo "</picture>";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140&zc=0\" class=\"banner\" />";
                             echo "</a>";
                         endforeach;
                         ?>
