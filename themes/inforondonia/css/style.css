@@ -65,7 +65,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .main_header_rds a.rds_twitter {color: #55ACEE;}
 .main_header_rds a.rds_googleplus {color: #E02E2E;}
 .main_header .box_header_banners{ width: 67%; float: right;}
-.main_header_banner{ width: 100%; max-width: 745px; height: 95px; margin: 0.5%; float: right;}
+.main_header_banner{ width: 100%; max-width: 745px; margin: 0.5%; float: right;}
 .main_header_menu{ width: 100%; float: left; background: #FFF; box-shadow: 0.2em 0.2em 0.3em #E9E9E9; border-radius: 0.2em;}
 .main_header_grpmenu{ width: 74%; float: left;}
 .main_header_menu ul{ width: 100%;}
@@ -85,12 +85,12 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 /*=== SLIDE ===*/
 section#slide{ width: 100%; max-width: 885px; height: 380px; background: #FFF; display: block; overflow: hidden;}
 section#slide section#buttons{ display: none; position: absolute; margin: 5px; z-index: 9; }
-section#slide section#buttons a{ background: #37384e; width: 50px; height: 40px; display: inline-block; text-align: center; line-height: 35px; color: #FFF; font-size: 1.6em; text-decoration: none;}
+section#slide section#buttons a{ width: 50px; height: 40px; display: inline-block; text-align: center; line-height: 35px; color: #FFF; font-size: 1.6em; text-decoration: none; background: #37384e;}
 section#slide section#buttons a:hover{ background: #35314e;}
 section#slide ul{ list-style: none; display: table; position: relative;}
-section#slide ul li{  width: 100%; max-width: 885px; display: inline-block; position: relative;}
+section#slide ul li{  width: 100%; max-width: 885px; height: 100%; display: inline-block; position: relative;}
 section#slide ul li img{ width: 100%; height: 100%;}
-section#slide ul li span{ width: 97%; background: #37384e; display: table; padding: 2%; position: absolute; bottom: 0; margin: 10px 0 10px 5%; font-size: 1.1em; color: #FFF; border-left: 10px solid #35314e;}
+section#slide ul li span{ width: 97%; display: table; padding: 2%; position: absolute; bottom: 0; margin: 10px 0 10px 5%; font-size: 1.1em; color: #FFF; border-left: 10px solid #35314e; background: #37384e;}
 /*=== CONT MEIO ===*/
 .banner_mainleft_full{ width: 100%; margin-top: 5px; float: left;}
 .main_blc_lastnews{ width: 100%; margin-top: 10px; float: left; background: #FFF;}
@@ -272,6 +272,12 @@ section#slide ul li span{ width: 97%; background: #37384e; display: table; paddi
 .denuncia_form .form_input .denuncia_send{ width: 39%; font-size: 1.0em; color: #FFF; border: none; border-radius: 3px; margin-top: 1%; background: #35314E;}
 .denuncia_form .form_input .denuncia_send:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
 
+@media (max-width: 1367px){
+    /*=== SLIDE ===*/
+    section#slide{ height: 320px;}
+    section#slide ul li{ height: 320px;}
+}
+
 @media (max-width: 1280px){
     .main_header_menu ul li a{ color: #34314B; padding: 15px 7px;}
 }
@@ -311,9 +317,12 @@ section#slide ul li span{ width: 97%; background: #37384e; display: table; paddi
     /*=== TOPO ===*/
     .box_header_logords{ width: 100% !important;}
     .main_header_rds{ margin: 10% 2%; float: right;}
-    .box_header_banners{ display: none;}
+    .box_header_banners{ width: 100% !important; margin-bottom: 5px;}
     .main_header_menu ul li a{ padding: 15px 20px;}
     .main_header_busca{ width: 50%; right: 10%;}
+    /*=== SLIDE ===*/
+    section#slide{ height: 240px;}
+    section#slide ul li{ height: 240px;}
     /*=== MEIO ===*/
     .main_left{ width: 100%;}
     .main_right{ width: 100%;}
