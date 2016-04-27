@@ -6,6 +6,7 @@ else:
     header('Location: ' . HOME . DIRECTORY_SEPARATOR . '404');
 endif;
 ?>
+
 <div class="content">
     <div class="main_left">
         <div class="main_content">
@@ -63,6 +64,25 @@ endif;
                     </div>
                     <?php
                 endif;
+
+                //Video
+                if (!empty($video)):
+                    ?>
+                    <div class="article_news_morenews">
+                        <header class="header_morenews">
+                            <h1 class="header_morenews_vin">Veja o vídeo abaixo:</h1>
+                        </header>
+                        <div class="content_morenews">
+                            <div class="frameBox">
+                                <div class="ratio16">
+                                    <iframe class="ratio_element"  width="100%" height="100%" src="https://www.youtube.com/embed/<?= Check::ytVideo($video); ?>" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                endif;
+
                 //Outras Fotos
                 $OutrasFotos = new Read;
                 $OutrasFotos->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = :tipo", "idtipo={$id}&tipo=N");
@@ -79,18 +99,7 @@ endif;
                     </div>
                     <?php
                 endif;
-                //Video
-                if (!empty($video)):
-                    ?>
-                    <div class="article_news_moreimg">
-                        <div class="frameBox">
-                            <div class="ratio16">
-                                <iframe class="ratio_element"  width="100%" height="100%" src="https://www.youtube.com/embed/<?= Check::ytVideo($video); ?>" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                <?php endif; ?>
-
+                ?>
                 <div class="article_news_morenews">
                     <header class="header_morenews">
                         <h1 class="header_morenews_vin">Outras Notícias</h1>
