@@ -50,6 +50,7 @@
             <div class="main_header_grpmenu">
                 <a class="mobmenu" href="#" title="Mobile Nav"><i class="fa fa-bars"></i> MENU</a>
                 <ul>
+                    <li><a href="<?= HOME; ?>">INICIO</a></li>
                     <li><a href="<?= HOME . '/noticias'; ?>">NOTÍCIAS</a></li>
                     <li><a href="<?= HOME . '/colunistas'; ?>">COLUNISTAS</a></li>
                     <li><a href="<?= HOME . '/tv-inforondonia'; ?>">TV <?= SITENAME; ?></a></li>

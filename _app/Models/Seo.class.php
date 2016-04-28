@@ -167,8 +167,9 @@ class Seo {
 
             //SEO:: 404
             default :
-                $this->Data = [SITENAME . ' - 404 Oppsss, Nada encontrado!', SITEDESC, HOME . '/404', INCLUDE_PATH . '/images/logo-topo.png'];
-
+                $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo_topo.png'];
+                #$this->Data = [SITENAME . ' - 404 Oppsss, Nada encontrado!', SITEDESC, HOME . '/404', INCLUDE_PATH . '/images/logo-topo.png'];
+                break;
         endswitch;
 
         if ($this->Data):

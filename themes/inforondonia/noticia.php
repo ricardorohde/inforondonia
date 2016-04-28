@@ -6,7 +6,6 @@ else:
     header('Location: ' . HOME . DIRECTORY_SEPARATOR . '404');
 endif;
 ?>
-
 <div class="content">
     <div class="main_left">
         <div class="main_content">
@@ -37,6 +36,11 @@ endif;
                     <a href="https://plus.google.com/share?url=<?= HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Google+" class="rds_googleplus" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
                     <a href="whatsapp://send?text=<?= $titulo . ' ' . HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Whatsapp" class="rds_whatsapp"><i class="fa fa-whatsapp fa-2x"></i></a>
                     <a href="" title="Imprimir Notícia" id="print" class="rds_print"><i class="fa fa-print fa-2x"></i> Imprimir</a>
+                </div>
+                <div class="header_infonews">
+                    <?php if (!empty($data)) : ?><div class="data"><b>Data:</b> <?= $data; ?> hrs</div><?php endif; ?>
+                    <?php if (!empty($fonte)) : ?><div class="fonte"><b>Fonte:</b> <?= $fonte; ?></div><?php endif; ?>
+                    <?php if (!empty($autor)) : ?><div class="autor"><b>Autor:</b> <?= $autor; ?></div><?php endif; ?>
                 </div>
             </header>
             <article class="content_pag">

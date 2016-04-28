@@ -72,7 +72,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .main_header_menu ul{ width: 100%;}
 .main_header_menu .mobmenu{ display: none;}
 .main_header_menu ul li{padding: 15px 0; float: left; font-size: 0.8125em;}
-.main_header_menu ul li a{ color: #34314B; padding: 15px 14px;}
+.main_header_menu ul li a{ color: #34314B; padding: 15px 10px;}
 .main_header_menu ul li a:hover{ color: #FFF; background: #34314B;}
 .main_header_busca{ width: 26%; border-left: 1px solid #E9E9E9; float: right;}
 .main_header_busca .busca_input{ width: 86%; padding: 14px 5px; margin-top: 1px; float: left; border: none;}
@@ -217,6 +217,10 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .header_social a.rds_whatsapp{ color: #FFF; float: left; display: none; }
 .header_social a.rds_whatsapp i { padding: 1.5px 4px; margin-top: 2px; background: #5BBE4A; border-radius: 3px; font-size: 1.5em;}
 .header_social a.rds_print{ color: #34314B; float: right;}
+.header_infonews{ width: 100%; margin-top: 5px; float: left; font-size: 0.875em;}
+.header_infonews .data{ width: 100%; float: left;}
+.header_infonews .fonte{ width: 100%; float: left;}
+.header_infonews .autor{ width: 100%; float: left;}
 .article_news_image{ width: 100%; float: left;}
 .article_news_chars{ width: 100%; float: left; text-align: justify;}
 .article_news_chars p { margin-bottom: 10px;}
