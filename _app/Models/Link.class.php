@@ -55,7 +55,7 @@ class Link {
         elseif (file_exists(REQUIRE_PATH . DIRECTORY_SEPARATOR . $this->File . DIRECTORY_SEPARATOR . $this->Link . '.php')):
             $this->Patch = REQUIRE_PATH . DIRECTORY_SEPARATOR . $this->File . DIRECTORY_SEPARATOR . $this->Link . '.php';
         else:
-            $this->Patch = REQUIRE_PATH . DIRECTORY_SEPARATOR . '404.php';
+            $this->Patch = REQUIRE_PATH . DIRECTORY_SEPARATOR . 'index.php';
         endif;
     }
 

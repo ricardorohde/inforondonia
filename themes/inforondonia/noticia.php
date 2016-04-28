@@ -3,7 +3,7 @@ if ($Link->getData()):
     extract($Link->getData());
     $data = date('d/m/Y H:i', strtotime($data));
 else:
-    header('Location: ' . HOME . DIRECTORY_SEPARATOR . '404');
+    header('Location: ' . HOME);
 endif;
 ?>
 <div class="content">

@@ -168,7 +168,6 @@ class Seo {
             //SEO:: 404
             default :
                 $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo_topo.png'];
-                #$this->Data = [SITENAME . ' - 404 Oppsss, Nada encontrado!', SITEDESC, HOME . '/404', INCLUDE_PATH . '/images/logo-topo.png'];
                 break;
         endswitch;
 
@@ -190,7 +189,7 @@ class Seo {
         $this->Data = null;
 
         //NORMAL PAGE
-        $this->seoTags = '<link rel="shortcut icon" type="image/x-icon" href="http://www.creativewebsites.com.br/midia/favicon.ico" />' . "\n";
+        $this->seoTags = '<link rel="shortcut icon" type="image/x-icon" href="'.INCLUDE_PATH.'/images/favicon.ico" />' . "\n";
         $this->seoTags .= '<title>' . $this->Tags['Title'] . '</title> ' . "\n";
         $this->seoTags .= '<meta name="description" content="' . $this->Tags['Content'] . '"/>' . "\n";
         $this->seoTags .= '<meta name="robots" content="index, follow" />' . "\n";
