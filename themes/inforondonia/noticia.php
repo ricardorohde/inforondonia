@@ -47,7 +47,7 @@ endif;
                 <?php if (!empty($foto)): ?>
                     <figure class="article_news_image">
                         <a href="<?= HOME . '/uploads/' . $foto; ?>">
-                            <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $foto . '&w=870&h=480'; ?>"/>
+                            <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $foto . '&w=870&h=480&zc=0'; ?>"/>
                         </a>
                     </figure>
                 <?php endif; ?>
@@ -111,7 +111,7 @@ endif;
                     <div class="content_morenews">
                         <?php
                         $ReadMoreNews = new Read;
-                        $ReadMoreNews->ExeRead('noticias', "WHERE titulo != :titulo AND categoria = :categoria AND id <> :id ORDER BY id DESC LIMIT :limit", "titulo=''&categoria={$categoria}&id={$id}&limit=4");
+                        $ReadMoreNews->ExeRead('noticias', "WHERE titulo != :titulo AND categoria = :categoria AND id != :id AND foto != :foto ORDER BY id DESC LIMIT :limit", "titulo=''&categoria={$categoria}&id={$id}&foto=''&limit=4");
                         if ($ReadMoreNews->getResult()):
                             foreach ($ReadMoreNews->getResult() as $n):
                                 $n['titulo'] = Check::Words($n['titulo'], 16);
@@ -133,6 +133,23 @@ endif;
                         ?>
                     </div>
                 </div>
+                <?php
+                //Banner Noticia Ler 3
+                $banners->setPlaces("idtipo=15");
+                if ($banners->getResult()):
+                    ?>
+                    <div class="banner_news_full cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                        <?php
+                        foreach ($banners->getResult() as $bnr):
+                            echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140&zc=0\" class=\"banner\" />";
+                            echo "</a>";
+                        endforeach;
+                        ?>
+                    </div>
+                    <?php
+                endif;
+                ?>                
             </article>
         </div>
     </div>

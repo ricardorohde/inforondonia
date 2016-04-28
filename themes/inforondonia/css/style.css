@@ -224,6 +224,7 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .article_news_image{ width: 100%; float: left;}
 .article_news_chars{ width: 100%; float: left; text-align: justify;}
 .article_news_chars p { margin-bottom: 10px;}
+.article_news_chars p img{ padding: 5px 15px;}
 .article_news_chars ul{ width: 100%; float: left;}
 .article_news_chars ul li { margin-bottom: 5px;}
 .article_news_moreimg{ width: 100%; float: left;}
