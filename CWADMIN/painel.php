@@ -31,25 +31,23 @@ endif;
         <title> CW ADMIN v.4.0 - Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
         <!-- Font Awesome Icons -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
         <!-- Ionicons -->
-        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" />
         <!-- Morris chart -->
-        <link href="plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="plugins/morris/morris.css" />
         <!-- jvectormap -->
-        <link href="plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-        <!-- Daterange picker -->
-        <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-        <!-- DATA TABLES -->
-        <link href="plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css" />
+        <!-- Datepicker -->
+        <link type="text/css" rel="stylesheet" href="plugins/datepicker/datepicker3.css" />
+        <!-- Data Tables -->
+        <link type="text/css" rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css" />
         <!-- Theme style -->
-        <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-        <!-- AdminLTE Skins. Choose a skin from the css/skins 
-             folder instead of downloading all of them to reduce the load. -->
-        <link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-
+        <link type="text/css" rel="stylesheet" href="dist/css/AdminLTE.min.css" />
+        <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+        <link type="text/css" rel="stylesheet" href="dist/css/skins/_all-skins.min.css" />
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -91,40 +89,40 @@ endif;
         </div><!-- ./wrapper -->
 
         <!-- jQuery 2.1.3 -->
-        <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- Bootstrap 3.3.2 JS -->
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <!-- InputMask -->
-        <script src="plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-        <script src="plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
-        <script src="plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
-        <!-- DATA TABES SCRIPT -->
-        <script src="plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/input-mask/jquery.inputmask.js"></script>
+        <script type="text/javascript" src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+        <script type="text/javascript" src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+        <!-- Data Tables -->
+        <script type="text/javascript" src="plugins/datatables/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="plugins/datatables/dataTables.bootstrap.js"></script>
         <!-- CKEditor-->
-        <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/ckeditor/ckeditor.js"></script>
         <!-- FastClick -->
-        <script src='plugins/fastclick/fastclick.min.js'></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/app.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src='plugins/fastclick/fastclick.min.js'></script>
         <!-- Sparkline -->
-        <script src="plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/sparkline/jquery.sparkline.min.js"></script>
         <!-- jvectormap -->
-        <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-        <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
         <!-- daterangepicker -->
-        <script src="plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/daterangepicker/daterangepicker.js"></script>
         <!-- datepicker -->
-        <script src="plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/datepicker/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js"></script>
         <!-- iCheck -->
-        <script src="plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/iCheck/icheck.min.js"></script>
         <!-- SlimScroll 1.3.0 -->
-        <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- ChartJS 1.0.1 -->
-        <script src="plugins/chartjs/Chart.min.js" type="text/javascript"></script>
-
+        <script type="text/javascript" src="plugins/chartjs/Chart.min.js"></script>
+        <!-- AdminLTE App -->
+        <script type="text/javascript" src="dist/js/app.min.js"></script>
         <!-- Page script -->
-        <script src="plugins/custom.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/custom.js"></script>
     </body>
 </html>
 <?php

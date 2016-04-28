@@ -73,7 +73,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" name="data" class="form-control" id="data" value="<?= isset($dados['data']) ? $dados['data'] : ''; ?>" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+                                                <input type="text" name="data" class="form-control datepicker" id="data" value="<?= isset($dados['data']) ? $dados['data'] : ''; ?>" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
                                             </div>
                                         </div>
                                     </div>

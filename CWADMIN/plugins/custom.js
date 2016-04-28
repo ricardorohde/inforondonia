@@ -31,6 +31,11 @@ $(document).ready(function () {
 
     /*Esconde dados de acesso*/
     $('.dadosAcess').hide();
+    
+    /*Iniciar o DatePicker*/
+    $('.datepicker').datepicker({
+        language: 'pt-BR'
+    });
 });
 
 $(function () {
