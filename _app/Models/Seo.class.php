@@ -65,12 +65,12 @@ class Seo {
         switch ($this->File):
             //SEO:: INDEX
             case 'index':
-                $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
 
             //SEO:: NOTICIAS
             case 'noticias':
-                $this->Data = [SITENAME . " - Notícias", "Notícias de Rondônia, Brasil e do mundo.", HOME . '/noticias', INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - Notícias", "Notícias de Rondônia, Brasil e do mundo.", HOME . '/noticias', INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
 
             //SEO:: NOTICIA (LER)
@@ -93,7 +93,7 @@ class Seo {
 
             //SEO:: COLUNISTAS
             case 'colunistas':
-                $this->Data = [SITENAME . " - Colunistas", "Colunistas INFORONDONIA, veja os posts de nossos colunistas.", HOME . '/noticias', INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - Colunistas", "Colunistas INFORONDONIA, veja os posts de nossos colunistas.", HOME . '/noticias', INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
 
             //SEO:: COLUNISTA (LER)
@@ -111,12 +111,12 @@ class Seo {
 
             //SEO:: TV INFORONDONIA
             case 'tv-inforondonia':
-                $this->Data = [SITENAME . " - TV INFORONDONIA", "Acompanhe ao vivo a transmissão da TV INFORONDONIA", HOME . '/tv-inforondonia', INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - TV INFORONDONIA", "Acompanhe ao vivo a transmissão da TV INFORONDONIA", HOME . '/tv-inforondonia', INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
 
             //SEO:: EVENTOS
             case 'eventos':
-                $this->Data = [SITENAME . " - Cobertura de Eventos", "Nossa galeria de eventos INFORONDONIA", HOME . '/eventos', INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - Cobertura de Eventos", "Nossa galeria de eventos INFORONDONIA", HOME . '/eventos', INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
 
             //SEO:: EVENTO (EXIBIR)
@@ -134,7 +134,7 @@ class Seo {
 
             //SEO:: VIDEOS
             case 'videos':
-                $this->Data = [SITENAME . " - Galeria de Videos", "Nossa galeria de vídeos INFORONDONIA", HOME . '/videos', INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - Galeria de Videos", "Nossa galeria de vídeos INFORONDONIA", HOME . '/videos', INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
 
             //SEO:: VIDEO (PLAYER)
@@ -152,22 +152,22 @@ class Seo {
 
             //SEO:: MIDIA KIT
             case 'midia-kit':
-                $this->Data = [SITENAME . " - Mídia KIT", "Kit de mídia para divulgação no INFORONDONIA", HOME . '/midia-kit', INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - Mídia KIT", "Kit de mídia para divulgação no INFORONDONIA", HOME . '/midia-kit', INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
 
             //SEO:: DENUNCIA
             case 'denuncia':
-                $this->Data = [SITENAME . " - Faça sua Denúncia", "Faça sua denúncia, envie fotos e videos, nossa equipe esta levantando a verícidade dos fatos", HOME . '/denuncia', INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - Faça sua Denúncia", "Faça sua denúncia, envie fotos e videos, nossa equipe esta levantando a verícidade dos fatos", HOME . '/denuncia', INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
 
             //SEO:: QUEM SOMOS
             case 'quem-somos':
-                $this->Data = [SITENAME . " - Quem Somos", "Um pouco sobre nós, a história do INFORONDONIA", HOME . '/quem-somos', INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - Quem Somos", "Um pouco sobre nós, a história do INFORONDONIA", HOME . '/quem-somos', INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
 
             //SEO:: 404
             default :
-                $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo_topo.png'];
+                $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
         endswitch;
 
@@ -194,7 +194,6 @@ class Seo {
         $this->seoTags .= '<meta name="description" content="' . $this->Tags['Content'] . '"/>' . "\n";
         $this->seoTags .= '<meta name="robots" content="index, follow" />' . "\n";
         $this->seoTags .= '<link rel="canonical" href="' . $this->Tags['Link'] . '">' . "\n";
-        $this->seoTags .= '<meta name="author" content="Creative Websites" />' . "\n";
         $this->seoTags .= '<meta name="reply-to" content="contato@creativewebsites.com.br"/>' . "\n";
         $this->seoTags .= '<meta name="copyright" content="Creative Websites" />' . "\n";
         $this->seoTags .= "\n";
@@ -207,6 +206,8 @@ class Seo {
         $this->seoTags .= '<meta property="og:image" content="' . $this->Tags['Image'] . '" />' . "\n";
         $this->seoTags .= '<meta property="og:url" content="' . $this->Tags['Link'] . '" />' . "\n";
         $this->seoTags .= '<meta property="og:type" content="article" />' . "\n";
+        $this->seoTags .= '<meta property="fb:app_id" content="1540165802953123" />' . "\n";
+        $this->seoTags .= '<meta property="article:author" content="https://www.facebook.com/ricardo.barrossilva" />' . "\n";
         $this->seoTags .= "\n";
 
         //ITEM GROUP (TWITTER)
