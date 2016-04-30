@@ -62,6 +62,13 @@
                 </ul>
             </div>
             <div class="main_header_busca">
+                <?php
+                $search = filter_input(INPUT_POST, 's', FILTER_DEFAULT);
+                if (!empty($search)):
+                    $search = strip_tags(trim(urlencode($search)));
+                    header('Location: ' . HOME . '/busca/' . $search);
+                endif;
+                ?>
                 <form name="busca" action="" method="post">
                     <input type="search" name="s" class="busca_input" placeholder="Digite sua busca...">
                     <button type="submit" name="sendsearch" class="busca_btn"><i class="fa fa-search fa-2x"></i></button>

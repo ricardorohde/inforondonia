@@ -67,7 +67,19 @@ class Seo {
             case 'index':
                 $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
-
+            
+            //SEO:: BUSCA
+            case 'busca':
+                $ReadSeo->ExeRead("noticias", "WHERE (titulo LIKE '%' :link '%' OR noticia LIKE '%' :link '%')", "link={$this->Link}");
+                if (!$ReadSeo->getResult()):
+                    $this->seoData = null;
+                    $this->seoTags = null;
+                else:
+                    $this->seoData['count'] = $ReadSeo->getRowCount();
+                    $this->Data = ["Pesquisa por: {$this->Link}" . ' - ' . SITENAME, "Sua pesquisa por {$this->Link} retornou {$this->seoData['count']} resultados!", HOME . "/busca/{$this->Link}", INCLUDE_PATH . '/images/logo-topo.png'];
+                endif;
+                break;
+                
             //SEO:: NOTICIAS
             case 'noticias':
                 $this->Data = [SITENAME . " - Notícias", "Notícias de Rondônia, Brasil e do mundo.", HOME . '/noticias', INCLUDE_PATH . '/images/logo_midia.jpg'];
@@ -189,7 +201,7 @@ class Seo {
         $this->Data = null;
 
         //NORMAL PAGE
-        $this->seoTags = '<link rel="shortcut icon" type="image/x-icon" href="'.INCLUDE_PATH.'/images/favicon.ico" />' . "\n";
+        $this->seoTags = '<link rel="shortcut icon" type="image/x-icon" href="' . INCLUDE_PATH . '/images/favicon.ico" />' . "\n";
         $this->seoTags .= '<title>' . $this->Tags['Title'] . '</title> ' . "\n";
         $this->seoTags .= '<meta name="description" content="' . $this->Tags['Content'] . '"/>' . "\n";
         $this->seoTags .= '<meta name="robots" content="index, follow" />' . "\n";
