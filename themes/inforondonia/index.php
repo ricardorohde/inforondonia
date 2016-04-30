@@ -111,9 +111,10 @@
             </header>
             <div class="main_grp_outrasnoticias">
                 <?php
-                $ReadMain->setPlaces("tit=''&dest=nao&limit=14&offset=0");
-                if ($ReadMain->getResult()):
-                    foreach ($ReadMain->getResult() as $nOutras):
+                $OutrasNews = new Read;
+                $OutrasNews->ExeRead('noticias', "WHERE titulo != :tit AND coluna = :col ORDER BY data DESC LIMIT :limit OFFSET :offset", "tit=''&col=nao&limit=14&offset=0");
+                if ($OutrasNews->getResult()):
+                    foreach ($OutrasNews->getResult() as $nOutras):
                         $nOutras['titulo'] = Check::Words($nOutras['titulo'], 20);
                         $nOutras['data'] = date('d/m/Y H:i', strtotime($nOutras['data']));
                         ?>
@@ -312,36 +313,13 @@
                         ?>
                     </div>
                 </div>
-                <div class="main_blc_tempo">
+                <div class="main_blc_enquete">
                     <header>
-                        <h1>TEMPO</h1>
-                    </header>
-                    <div class="main_grp_tempo">
-                        <?php
-                        $uf = UF;
-                        $city = strtoupper(CIDADE);
+                        <h1>ENQUETE</h1>
 
-                        $city_url = rawurlencode(strtolower($city . '-' . $uf));
-                        $file_temp = 'http://developers.agenciaideias.com.br/tempo/json/' . $city_url;
-                        $file_tempget = file_get_contents($file_temp);
-                        $file_tempread = json_decode($file_tempget, true);
-                        $tempo = $file_tempread["agora"];
-                        ?>
-                        <div class="box_tempo">
-                            <div class="box_tempo_date">Em <?= $tempo['data_hora']; ?> hrs</div>
-                            <div class="box_tempo_city"><?= $city . ' - ' . $uf; ?></div>
-                            <div class="box_tempo_info">
-                                <div class="box_tempo_img"><img src="<?= $tempo['imagem']; ?>"></div>
-                                <div class="box_tempo_tempdesc">
-                                    <div class="box_tempo_temp"><?= $tempo['temperatura']; ?>º C</div>
-                                    <div class="box_tempo_desc"><?= $tempo['descricao']; ?></div>
-                                </div>
-                            </div>
-                            <div class="box_tempo_demais">
-                                <div class="box_tempo_umid">Umidade: <?= $tempo['umidade']; ?></div>
-                                <div class="box_tempo_vent">Vento: <?= $tempo['vento_velocidade']; ?></div>
-                            </div>
-                        </div>
+                    </header>
+                    <div class="main_grp_enquete">
+
                     </div>
                 </div>
             </div>
@@ -375,16 +353,38 @@
                         ?>
                     </div>
                 </div>
-                <div class="main_blc_enquete">
+                <div class="main_blc_tempo">
                     <header>
-                        <h1>ENQUETE</h1>
-
+                        <h1>TEMPO</h1>
                     </header>
-                    <div class="main_grp_enquete">
+                    <div class="main_grp_tempo">
+                        <?php
+                        $uf = UF;
+                        $city = strtoupper(CIDADE);
 
+                        $city_url = rawurlencode(strtolower($city . '-' . $uf));
+                        $file_temp = 'http://developers.agenciaideias.com.br/tempo/json/' . $city_url;
+                        $file_tempget = file_get_contents($file_temp);
+                        $file_tempread = json_decode($file_tempget, true);
+                        $tempo = $file_tempread["agora"];
+                        ?>
+                        <div class="box_tempo">
+                            <div class="box_tempo_date">Em <?= $tempo['data_hora']; ?> hrs</div>
+                            <div class="box_tempo_city"><?= $city . ' - ' . $uf; ?></div>
+                            <div class="box_tempo_info">
+                                <div class="box_tempo_img"><img src="<?= $tempo['imagem']; ?>"></div>
+                                <div class="box_tempo_tempdesc">
+                                    <div class="box_tempo_temp"><?= $tempo['temperatura']; ?>º C</div>
+                                    <div class="box_tempo_desc"><?= $tempo['descricao']; ?></div>
+                                </div>
+                            </div>
+                            <div class="box_tempo_demais">
+                                <div class="box_tempo_umid">Umidade: <?= $tempo['umidade']; ?></div>
+                                <div class="box_tempo_vent">Vento: <?= $tempo['vento_velocidade']; ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
