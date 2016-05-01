@@ -233,6 +233,7 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .boxfotos{ width: 100%; margin-bottom: 10px; float: left;}
 .header_morenews{ width: 100%; float: left; }
 .header_morenews_vin{ width: 100%; float: left; padding-left: 5px; color: #34314B}
+.header_infocoment{ width: 100%; float: left; padding-left: 5px; text-align: center; color: #34314B}
 .content_morenews{ width: 100%; padding: 5px; float: left;}
 .box_morenews{ width: 24.2%; margin-right: 1%; float: left;}
 .box_morenews:nth-child(4n+0){ margin-right: 0;}

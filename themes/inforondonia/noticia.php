@@ -86,7 +86,6 @@ endif;
                     </div>
                     <?php
                 endif;
-
                 //Outras Fotos
                 $OutrasFotos = new Read;
                 $OutrasFotos->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = :tipo", "idtipo={$id}&tipo=N");
@@ -104,6 +103,21 @@ endif;
                     <?php
                 endif;
                 ?>
+                
+                <div class="article_news_morenews">
+                    <header class="header_morenews">
+                        <h1 class="header_morenews_vin">Comente</h1>
+                        <p class="header_infocoment">
+                            <b>COMUNICADO:</b> Atenção caros internautas: recomenda-se critérios nas postagens de comentários abaixo, uma vez que seu autor poderá ser responsabilizado judicialmente caso denigra a imagem de terceiros. <br>
+                            O aviso serve, em especial, aos que utilizam ferramentas de postagens ocultas ou falsas, pois podem ser facilmente identificadas pelo rastreamento do IP da máquina de origem, como já ocorreu.
+                            A DIREÇÃO
+                        </p>
+                    </header>
+                    <div class="content_morenews">
+                        <div class="fb-comments" data-href="<?= HOME . '/noticia/' . $url_name; ?>" data-width="100%" data-numposts="5"></div>
+                    </div>
+                </div>
+                
                 <div class="article_news_morenews">
                     <header class="header_morenews">
                         <h1 class="header_morenews_vin">Outras Notícias</h1>
