@@ -13,24 +13,27 @@
 <!-- Main content -->
 <section class="content">
     <?php
-    $Today = date('Y-m-d');    
+    $Today = date('Y-m-d');
     $ReadDash = new Read;
     ?>
-    
     <div class="row">
         <div class="col-md-3">
             <div class="info-box">
                 <?php
                 $Views = $ReadDash;
                 $Views->ExeRead('ws_siteviews', "WHERE siteviews_date = :today", "today={$Today}");
-                $CountViews = $Views->getResult()[0];
+                if ($Views->getResult()):
+                    $CountViews = $Views->getResult()[0];
+                else:
+                    $CountViews['siteviews_users'] = 0;
+                endif;
                 ?>
                 <div class="info-box-icon bg-yellow">
                     <i class="fa fa-line-chart"></i>
                 </div>
                 <div class="info-box-content">
                     <span class="info-box-text">Visitas Hoje</span>
-                    <span class="info-box-number"><?= $CountViews['siteviews_users'];?></span>                    
+                    <span class="info-box-number"><?= $CountViews['siteviews_users']; ?></span>                    
                 </div>
             </div>
         </div>
@@ -46,7 +49,7 @@
                 </div>
                 <div class="info-box-content">
                     <span class="info-box-text">Noticias Cadastradas</span>
-                    <span class="info-box-number"><?= $CountNews['count'];?></span>                    
+                    <span class="info-box-number"><?= $CountNews['count']; ?></span>                    
                 </div>
             </div>
         </div>
@@ -62,7 +65,7 @@
                 </div>
                 <div class="info-box-content">
                     <span class="info-box-text">Eventos Cadastrados</span>
-                    <span class="info-box-number"><?= $CountEvents['count'];?></span>                    
+                    <span class="info-box-number"><?= $CountEvents['count']; ?></span>                    
                 </div>
             </div>
         </div>
@@ -78,7 +81,7 @@
                 </div>
                 <div class="info-box-content">
                     <span class="info-box-text">Vídeos Cadastrados</span>
-                    <span class="info-box-number"><?= $CountVideos['count'];?></span>                    
+                    <span class="info-box-number"><?= $CountVideos['count']; ?></span>                    
                 </div>
             </div>
         </div>
