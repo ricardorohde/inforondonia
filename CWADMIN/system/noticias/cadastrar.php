@@ -25,6 +25,16 @@
                 if (!$cadastra->getResult()):
                     WSErro($cadastra->getError()[0], $cadastra->getError()[1]);
                 else:
+                    //Atualiza o Sitemap
+                    $SiteMap = new Sitemap;
+                    $SiteMap->ExeSitemap();
+                    $SiteMap->ExeRss();
+
+                    if (!file_exists('../../sitemap.xml')):
+                        $SiteMap->ExeSitemapGz();
+                        $SiteMap->Ping();
+                    endif;
+
                     header("Location: painel.php?exe=noticias/listar&acao=cadastrar&id={$cadastra->getResult()}");
                 endif;
             endif;

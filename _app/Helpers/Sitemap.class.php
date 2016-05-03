@@ -16,7 +16,7 @@ class Sitemap {
     public function ExeRss() {
         $this->setRss(); //Função que cria os códigos XML so Sitemap
 
-        $fp = fopen(BACK . 'rss.xml', 'w+'); //Cria o rss.xml
+        $fp = fopen('../rss.xml', 'w+'); //Cria o rss.xml
         fwrite($fp, $this->Format); //Escreve os códigos no rss.xml
         fclose($fp); //Fecha o rss.xml para não corromper os arquivos
     }
@@ -27,7 +27,7 @@ class Sitemap {
     public function ExeSitemap() {
         $this->setSitemap(); //Função que cria os códigos XML so Sitemap
 
-        $fp = fopen(BACK . 'sitemap.xml', 'w+'); //Cria o sitemap.xml
+        $fp = fopen('../sitemap.xml', 'w+'); //Cria o sitemap.xml
         fwrite($fp, $this->Format); //Escreve os códigos no sitemap.xml
         fclose($fp); //Fecha o sitemap.xml para não corromper os arquivos
         unlink(BACK . 'sitemap.xml.gz'); //Exclui o sitemap.xml.gz para que seja atualizado
@@ -37,7 +37,7 @@ class Sitemap {
      * <b>ExeSitemapGz</b>: Cria o sitemap.xml.gz
      */
     public function ExeSitemapGz() {
-        $gZip = gzopen(BACK . 'sitemap.xml.gz', 'w9'); //Cria o sitemap.xml.gz
+        $gZip = gzopen('../sitemap.xml.gz', 'w9'); //Cria o sitemap.xml.gz
         $gMap = file_get_contents(BACK . 'sitemap.xml'); //Carrega o conteúdo do sitemap.xml
 
         gzwrite($gZip, $gMap); //Escreve no sitemap.xml.gz o conteúdo da sitemap.xml
@@ -68,6 +68,8 @@ class Sitemap {
         endforeach;
     }
 
+    //TODO Configurar sitemap.xml
+    
     //Formata o Arquivo sitemap.xml
     private function setSitemap() {
         $this->Format = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
@@ -116,21 +118,21 @@ class Sitemap {
         $this->Format .= '<channel>' . "\n";
 
         //RSS INICIAL
-        $this->Format .= '<title>' . SITE_NAME . '</title>' . "\n";
+        $this->Format .= '<title>' . SITENAME . '</title>' . "\n";
         $this->Format .= '<link>' . HOME . '/</link>' . "\n";
-        $this->Format .= '<description>' . SITE_DESC . '</description>' . "\n";
+        $this->Format .= '<description>' . SITEDESC . '</description>' . "\n";
         $this->Format .= '<language>pt-br</language>' . "\n";
 
         //RSS POSTS
-        $ReadPosts = $this->Read(DB_POSTS, "WHERE post_status = :st AND post_date <= NOW() AND post_type = :tp", "st=1&tp=post");
+        $ReadPosts = $this->Read('noticias', "WHERE destaque = :dest AND data <= NOW() ORDER BY data DESC LIMIT :limit", "dest=sim&limit=10");
         foreach ($ReadPosts as $Post):
             $this->Format .= '<item>' . "\n";
-            $this->Format .= '<title>' . $Post['post_title'] . '</title>' . "\n";
-            $this->Format .= '<link>' . HOME . '/post/' . $Post['post_name'] . '<link>' . "\n";
-            $this->Format .= '<pubDate>' . date('D, d M Y H:i:s O', strtotime($Post['post_date'])) . '<pubDate>' . "\n";
+            $this->Format .= '<title>' . $Post['titulo'] . '</title>' . "\n";
+            $this->Format .= '<link>' . HOME . '/noticia/' . $Post['url_name'] . '</link>' . "\n";
+            $this->Format .= '<pubDate>' . date('D, d M Y H:i:s O', strtotime($Post['data'])) . '</pubDate>' . "\n";
             $this->Format .= '<description>';
-            $this->Format .= Check::Words($Post['post_content'], 30, '[...]');
-            $this->Format .= '<description>';
+            $this->Format .= htmlentities(Check::Words($Post['noticia'], 30, '[...]'));
+            $this->Format .= '</description>';
             $this->Format .= '</item>' . "\n";
         endforeach;
 
