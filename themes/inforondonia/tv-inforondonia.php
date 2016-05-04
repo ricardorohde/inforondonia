@@ -8,7 +8,7 @@
             </header>
             <article class="content_pag">
                 <div class="play_tv">
-                    <div class="ratio16"><iframe class="ratio_element" src="http://iframe.dacast.com/b/20748/c/80089" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe></div>
+                    <div class="ratio16"><iframe class="ratio_element" src="http://www.tvjornet.com/parceiros/iframe.asp?id=10" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe></div>
                 </div>
             </article>
         </div>

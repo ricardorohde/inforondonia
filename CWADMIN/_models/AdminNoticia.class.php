@@ -206,8 +206,9 @@ class AdminNoticia {
         $this->Data = array_map('trim', $this->Data);
         $this->Data['foto'] = $capa;
         $this->Data['noticia'] = $notic;
-        $this->Data['url_name'] = Check::Name($this->Data['titulo']);
+        $this->Data['url_name'] = Check::Name($this->Data['titulo']);        
         $this->Data['data'] = Check::Data($this->Data['data']);
+        $this->Data['data_fslide'] = Check::Data(Check::DataDias($this->Data['data'], $this->Data['data_fslide'], 'data'));
     }
 
     //Excluir a Foto

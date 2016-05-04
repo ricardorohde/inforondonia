@@ -105,6 +105,26 @@ class Check {
     }
 
     /**
+     * <b>Data por intervalo:</b> Adiciona um intervalo de dias e cria uma data válida!
+     * @param STRING $Data = String de data para converter
+     * @param INT $Dias = Integer de dias do intervalo
+     */
+    public static function DataDias($Data, $Dias, $Tipo) {
+        if ($Tipo === 'data'):
+            self::$Data = trim($Data);
+            $timestamp = strtotime(self::$Data . '+' . $Dias . ' days');
+            $Result = date('d/m/Y H:i:s', $timestamp);
+        elseif ($Tipo === 'dias'):
+            $DataIni = strtotime($Data);
+            $DataFim = strtotime($Dias);
+            $diferenca = $DataFim - $DataIni;
+            $dias = (int) floor($diferenca / (60 * 60 * 24));
+            $Result = $dias > 0 ? $dias : 0;
+        endif;
+        return $Result;
+    }
+
+    /**
      * <b>Limita os Palavras:</b> Limita a quantidade de palavras a serem exibidas em uma string!
      * @param STRING $String = Uma string qualquer
      * @return INT = $Limite = String limitada pelo $Limite

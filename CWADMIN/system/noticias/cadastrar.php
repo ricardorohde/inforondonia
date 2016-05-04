@@ -12,7 +12,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <?php
+            <?php            
             $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
             if (isset($dados) && $dados['SendPostForm']):
                 $dados['foto'] = ($_FILES['foto']['tmp_name'] ? $_FILES['foto'] : null);
@@ -132,6 +132,14 @@
                                                 <option value="slide" <?= ($dados['destaque_tipo'] == 'slide') ? ' selected="selected"' : ''; ?>>Slide</option>
                                                 <option value="smallnews" <?= ($dados['destaque_tipo'] == 'smallnews') ? ' selected="selected"' : ''; ?>>Small News</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="data_fslide">Quantos dias no Slide?</label>
+                                            <input type="number" name="data_fslide" class="form-control" id="data_fslide" value="<?= isset($dados['data_fslide']) ? $dados['data_fslide'] : ''; ?>" placeholder="Quantos dias no Slide?" <?= ($dados['destaque_tipo'] == 'slide') ? '' : 'disabled="disabled"'; ?>>
                                         </div>
                                     </div>
                                 </div>

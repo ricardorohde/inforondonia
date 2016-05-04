@@ -62,20 +62,31 @@ $(function () {
             $(".dadosAcess").show();
         } else {
             $(".dadosAcess").hide();
-        };
+        }
+        ;
     });
 });
 
 //Desabilita campos 
 $(function checkDestaque() {
     var campoCheck = "#destaque";
-    var campoCDisable = '#destaque_tipo';
+    var campoDisable = '#destaque_tipo';
+    var campoDiaSlide = '#data_fslide';
     $(campoCheck).change(function () {
         if ($(campoCheck).val() === 'sim') {
-            $(campoCDisable).removeAttr("disabled");
+            $(campoDisable).removeAttr("disabled");
+            $(campoDiaSlide).removeAttr("disabled");
+            $(campoDisable).change(function () {
+                if ($(campoDisable).val() === 'slide') {
+                    $(campoDiaSlide).removeAttr("disabled");
+                } else {
+                    $(campoDiaSlide).attr("disabled", "disabled");
+                };
+            });
         } else {
-            $(campoCDisable).attr("disabled", "disabled");
-        };
+            $(campoDisable).attr("disabled", "disabled");
+        }
+        ;
     });
 });
 
@@ -87,7 +98,8 @@ $(function checkColunista() {
             $(campoCDisable).removeAttr("disabled");
         } else {
             $(campoCDisable).attr("disabled", "disabled");
-        };
+        }
+        ;
     });
 });
 

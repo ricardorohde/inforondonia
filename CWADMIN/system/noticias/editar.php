@@ -36,7 +36,7 @@
                         $SiteMap->ExeSitemapGz();
                         $SiteMap->Ping();
                     endif;
-                    
+
                     header("Location: painel.php?exe=noticias/listar&acao=editar&id={$idEdit}");
                 endif;
             else:
@@ -46,6 +46,7 @@
                     header("Location: painel.php?exe=noticias/listar");
                 else:
                     $dados = $read->getResult()[0];
+                    $dados['data_fslide'] = Check::DataDias($dados['data'], $dados['data_fslide'], 'dias');
                     $dados['data'] = date('d/m/Y', strtotime($dados['data']));
                 endif;
             endif;
@@ -143,6 +144,14 @@
                                                 <option value="slide" <?= ($dados['destaque_tipo'] == 'slide') ? ' selected="selected"' : ''; ?>>Slide</option>
                                                 <option value="smallnews" <?= ($dados['destaque_tipo'] == 'smallnews') ? ' selected="selected"' : ''; ?>>Small News</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="data_fslide">Quantos dias no Slide?</label>
+                                            <input type="number" name="data_fslide" class="form-control" id="data_fslide" value="<?= isset($dados['data_fslide']) ? $dados['data_fslide'] : ''; ?>" placeholder="Quantos dias no Slide?" <?= ($dados['destaque_tipo'] == 'slide') ? '' : 'disabled="disabled"'; ?>>
                                         </div>
                                     </div>
                                 </div>
