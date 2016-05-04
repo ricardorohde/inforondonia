@@ -58,48 +58,46 @@ $(function () {
 $(function () {
     var chkalt = "input[name='altDadosAcess']";
     $(chkalt).change(function () {
-        if ($(chkalt).is(":checked")) {
+        if ($(this).is(":checked")) {
             $(".dadosAcess").show();
         } else {
             $(".dadosAcess").hide();
         }
-        ;
     });
 });
 
 //Desabilita campos 
 $(function checkDestaque() {
-    var campoCheck = "#destaque";
-    var campoDisable = '#destaque_tipo';
-    var campoDiaSlide = '#data_fslide';
-    $(campoCheck).change(function () {
-        if ($(campoCheck).val() === 'sim') {
-            $(campoDisable).removeAttr("disabled");
-            $(campoDiaSlide).removeAttr("disabled");
-            $(campoDisable).change(function () {
-                if ($(campoDisable).val() === 'slide') {
-                    $(campoDiaSlide).removeAttr("disabled");
+    var cDestaque = "#destaque";
+    var cDestaqueTipo = '#destaque_tipo';
+    var cDataFSlide = '#data_fslide';
+    $(cDestaque).change(function () {
+        if ($(this).val() === 'sim') {
+            $(cDestaqueTipo).removeAttr("disabled");
+            $(cDataFSlide).removeAttr("disabled");
+            $(cDestaqueTipo).change(function () {
+                if ($(cDestaqueTipo).val() === 'slide') {
+                    $(cDataFSlide).removeAttr("disabled");
                 } else {
-                    $(campoDiaSlide).attr("disabled", "disabled");
-                };
+                    $(cDataFSlide).attr("disabled", "disabled");
+                }
             });
         } else {
-            $(campoDisable).attr("disabled", "disabled");
+            $(cDestaqueTipo).attr("disabled", "disabled");
+            $(cDataFSlide).attr("disabled", "disabled");
         }
-        ;
     });
 });
 
 $(function checkColunista() {
-    var campoCheck = "#coluna";
-    var campoCDisable = '#colunista';
-    $(campoCheck).change(function () {
-        if ($(campoCheck).val() === 'sim') {
-            $(campoCDisable).removeAttr("disabled");
+    var cColuna = "#coluna";
+    var cColunista = '#colunista';
+    $(cColuna).change(function () {
+        if ($(this).val() === 'sim') {
+            $(cColunista).removeAttr("disabled");
         } else {
-            $(campoCDisable).attr("disabled", "disabled");
+            $(cColunista).attr("disabled", "disabled");
         }
-        ;
     });
 });
 
