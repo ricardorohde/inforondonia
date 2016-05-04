@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     /*Esconde dados de acesso*/
     $('.dadosAcess').hide();
-    
+
     /*Iniciar o DatePicker*/
     $('.datepicker').datepicker({
         language: 'pt-BR'
@@ -62,8 +62,32 @@ $(function () {
             $(".dadosAcess").show();
         } else {
             $(".dadosAcess").hide();
-        }
-        ;
+        };
+    });
+});
+
+//Desabilita campos 
+$(function checkDestaque() {
+    var campoCheck = "#destaque";
+    var campoCDisable = '#destaque_tipo';
+    $(campoCheck).change(function () {
+        if ($(campoCheck).val() === 'sim') {
+            $(campoCDisable).removeAttr("disabled");
+        } else {
+            $(campoCDisable).attr("disabled", "disabled");
+        };
+    });
+});
+
+$(function checkColunista() {
+    var campoCheck = "#coluna";
+    var campoCDisable = '#colunista';
+    $(campoCheck).change(function () {
+        if ($(campoCheck).val() === 'sim') {
+            $(campoCDisable).removeAttr("disabled");
+        } else {
+            $(campoCDisable).attr("disabled", "disabled");
+        };
     });
 });
 

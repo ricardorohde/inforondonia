@@ -6,6 +6,11 @@
 <description>As principais notícias de Rondônia, Brasil e Mundo. Coberturas de Eventos e Videos você encontra aqui. INFORONDONIA - Informação é a nossa prioridade! </description>
 <language>pt-br</language>
 <item>
+<title>Titulo</title>
+<link>http://localhost/servidor/inforondonia/2016/noticia/titulo</link>
+<pubDate>Tue, 03 May 2016 20:45:53 -0400</pubDate>
+<description>teste</description></item>
+<item>
 <title>Maurão reforça pedido de prefeito Luizão por mais uma Vara em Rolim de Moura</title>
 <link>http://localhost/servidor/inforondonia/2016/noticia/maurao-reforca-pedido-de-prefeito-luizao-por-mais-uma-vara-em-rolim-de-moura</link>
 <pubDate>Tue, 26 Apr 2016 16:46:18 -0400</pubDate>
@@ -50,10 +55,5 @@
 <link>http://localhost/servidor/inforondonia/2016/noticia/rolim-de-moura-contrato-com-consorcio-intermunicipal-gera-economia-na-coleta-de-lixo</link>
 <pubDate>Thu, 21 Apr 2016 18:22:53 -0400</pubDate>
 <description>Ap&amp;oacute;s entrar em vigor a Lei n&amp;ordm; 12.305/10, que instituiu a Pol&amp;iacute;tica Nacional de Res&amp;iacute;duos S&amp;oacute;lidos (PNRS), o munic&amp;iacute;pio de Rolim de Moura (RO) fez a adequa&amp;ccedil;&amp;atilde;o ao plano, pois [...]</description></item>
-<item>
-<title>Edital de Licitação da Merenda escolar das Escolas CEEJA e JK de Santa Luzia‏</title>
-<link>http://localhost/servidor/inforondonia/2016/noticia/edital-de-licitacao-da-merenda-escolar-das-escolas-ceeja-e-jk-de-santa-luzia</link>
-<pubDate>Mon, 18 Apr 2016 18:30:37 -0400</pubDate>
-<description></description></item>
 </channel>
 </rss>
