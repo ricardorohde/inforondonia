@@ -12,7 +12,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <?php
+            <?php            
             $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
             if (isset($dados) && $dados['SendPostForm']):
                 $dados['foto'] = ($_FILES['foto']['tmp_name'] ? $_FILES['foto'] : null);
@@ -117,7 +117,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label for="destaque">Em Destaque</label>
-                                            <select name="destaque" class="form-control" id="sexo">
+                                            <select name="destaque" class="form-control" id="destaque">
                                                 <option value="nao" <?= ($dados['destaque'] == 'nao') ? ' selected="selected"' : ''; ?>>Não</option>
                                                 <option value="sim" <?= ($dados['destaque'] == 'sim') ? ' selected="selected"' : ''; ?>>Sim</option>
                                             </select>
@@ -127,8 +127,27 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4">
+                                            <label for="destaque_tipo">Tipo de Destaque</label>
+                                            <select name="destaque_tipo" class="form-control" id="destaque_tipo" <?= ($dados['destaque'] == 'sim') ? '' : 'disabled="disabled"'; ?>>
+                                                <option value="slide" <?= ($dados['destaque_tipo'] == 'slide') ? ' selected="selected"' : ''; ?>>Slide</option>
+                                                <option value="smallnews" <?= ($dados['destaque_tipo'] == 'smallnews') ? ' selected="selected"' : ''; ?>>Small News</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="data_fslide">Quantos dias no Slide?</label>
+                                            <input type="number" name="data_fslide" class="form-control" id="data_fslide" value="<?= isset($dados['data_fslide']) ? $dados['data_fslide'] : ''; ?>" placeholder="Quantos dias no Slide?" <?= ($dados['destaque_tipo'] == 'slide') ? '' : 'disabled="disabled"'; ?>>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
                                             <label for="coluna">É Coluna?</label>
-                                            <select name="coluna" class="form-control" id="sexo">
+                                            <select name="coluna" class="form-control" id="coluna">
                                                 <option value="nao" <?= ($dados['coluna'] == 'nao') ? ' selected="selected"' : ''; ?>>Não</option>
                                                 <option value="sim" <?= ($dados['coluna'] == 'sim') ? ' selected="selected"' : ''; ?>>Sim</option>
                                             </select>
@@ -139,7 +158,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label for="colunista">Colunista</label>
-                                            <select name="colunista" class="form-control" id="categoria">
+                                            <select name="colunista" class="form-control" id="colunista"  <?= ($dados['coluna'] == 'sim') ? '' : 'disabled="disabled"'; ?>>
                                                 <option value="">Selecione...</option>
                                                 <?php
                                                 $readCol = new Read;

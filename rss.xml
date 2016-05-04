@@ -6,20 +6,15 @@
 <description>As principais notícias de Rondônia, Brasil e Mundo. Coberturas de Eventos e Videos você encontra aqui. INFORONDONIA - Informação é a nossa prioridade! </description>
 <language>pt-br</language>
 <item>
+<title>Titulo</title>
+<link>http://localhost/servidor/inforondonia/2016/noticia/titulo</link>
+<pubDate>Tue, 03 May 2016 22:41:35 -0400</pubDate>
+<description>teste</description></item>
+<item>
 <title>Maurão reforça pedido de prefeito Luizão por mais uma Vara em Rolim de Moura</title>
 <link>http://localhost/servidor/inforondonia/2016/noticia/maurao-reforca-pedido-de-prefeito-luizao-por-mais-uma-vara-em-rolim-de-moura</link>
 <pubDate>Tue, 26 Apr 2016 16:46:18 -0400</pubDate>
 <description>A implanta&amp;ccedil;&amp;atilde;o de mais uma Vara na Comarca de Rolim de Moura foi solicitada pelo prefeito, Luiz&amp;atilde;o do Trento (PSDB), durante audi&amp;ecirc;ncia, na manh&amp;atilde; desta ter&amp;ccedil;a-feira (26), com o presidente [...]</description></item>
-<item>
-<title>PM prende suspeito com várias joias sem procedência em Rolim de Moura</title>
-<link>http://localhost/servidor/inforondonia/2016/noticia/pm-prende-suspeito-com-varias-joias-sem-procedencia-em-rolim-de-moura</link>
-<pubDate>Tue, 26 Apr 2016 13:54:12 -0400</pubDate>
-<description>Policiais Militares da segunda se&amp;ccedil;&amp;atilde;o (P2) de Rolim de Moura abordaram nesta segunda-feira,25,&amp;nbsp;a tarde (16h)&amp;nbsp;no cruzamento da Avenida Cuiab&amp;aacute; com a Rua Bar&amp;atilde;o de Melga&amp;ccedil;o - A.S.O de 26 anos,&amp;nbsp;vulgo [...]</description></item>
-<item>
-<title>Pastor suspeito de ter matado taxista a tiros em Cacoal é preso em São Paulo</title>
-<link>http://localhost/servidor/inforondonia/2016/noticia/pastor-suspeito-de-ter-matado-taxista-a-tiros-em-cacoal-e-preso-em-sao-paulo</link>
-<pubDate>Tue, 26 Apr 2016 13:45:10 -0400</pubDate>
-<description>Uma opera&amp;ccedil;&amp;atilde;o realizada entre a Pol&amp;iacute;cia Civil de&amp;nbsp;Cacoal&amp;nbsp;(RO), e o Departamento de Homic&amp;iacute;dios e de Prote&amp;ccedil;&amp;atilde;o &amp;agrave; Pessoa (DHPP) de S&amp;atilde;o Paulo (SP), resultou na pris&amp;atilde;o do pastor e funcion&amp;aacute;rio [...]</description></item>
 <item>
 <title>Mulher de ministro do Turismo tem vídeo em portal pornô Xvideos</title>
 <link>http://localhost/servidor/inforondonia/2016/noticia/mulher-de-ministro-do-turismo-tem-video-em-portal-porno-xvideos</link>
@@ -55,5 +50,10 @@
 <link>http://localhost/servidor/inforondonia/2016/noticia/edital-de-licitacao-da-merenda-escolar-das-escolas-ceeja-e-jk-de-santa-luzia</link>
 <pubDate>Mon, 18 Apr 2016 18:30:37 -0400</pubDate>
 <description></description></item>
+<item>
+<title>Alunos de Rondônia se preparam para a 12ª Olimpíadas Brasileira de Matemática</title>
+<link>http://localhost/servidor/inforondonia/2016/noticia/alunos-de-rondonia-se-preparam-para-a-12-olimpiadas-brasileira-de-matematica</link>
+<pubDate>Mon, 18 Apr 2016 17:38:51 -0400</pubDate>
+<description>A Olimp&amp;iacute;ada Brasileira de Matem&amp;aacute;tica das Escolas P&amp;uacute;blicas (Obmep) &amp;eacute; um projeto nacional dirigido &amp;agrave;s escolas p&amp;uacute;blicas brasileiras, municipais, estaduais e federais, e tem como objetivo estimular o estudo da [...]</description></item>
 </channel>
 </rss>

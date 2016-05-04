@@ -19,7 +19,7 @@
                     </section>
                     <ul>
                         <?php
-                        $ReadMain->ExeRead("noticias", "WHERE titulo != :tit AND destaque = :dest ORDER BY data DESC LIMIT :limit OFFSET :offset", "tit=''&dest=sim&limit=5&offset=0");
+                        $ReadMain->ExeRead("noticias", "WHERE data_fslide >= :datafim AND titulo != :tit AND destaque = :dest AND destaque_tipo = :desttipo ORDER BY data DESC LIMIT :limit OFFSET :offset", "datafim={$data_atual}&tit=''&dest=sim&desttipo=slide&limit=5&offset=0");
                         if ($ReadMain->getResult()):
                             foreach ($ReadMain->getResult() as $sNews):
                                 ?>
@@ -55,7 +55,7 @@
             ?>
             <div class="main_blc_lastnews">
                 <?php
-                $ReadMain->setPlaces("tit=''&dest=sim&limit=3&offset=5");
+                $ReadMain->ExeRead("noticias", "WHERE titulo != :tit AND destaque = :dest AND destaque_tipo = :desttipo ORDER BY data DESC LIMIT :limit OFFSET :offset", "tit=''&dest=sim&desttipo=smallnews&limit=3&offset=0");
                 if ($ReadMain->getResult()):
                     foreach ($ReadMain->getResult() as $nDest):
                         $nDest['categoria'] = strtoupper($nDest['categoria']);
@@ -389,7 +389,7 @@
         </div>
 
         <div class="main_right">
-            <div class="main_right_tv ratio4"><iframe class="ratio_element" src="http://iframe.dacast.com/b/20748/c/80089" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe></div>
+            <div class="main_right_tv ratio4"><iframe class="ratio_element" src="http://www.tvjornet.com/parceiros/iframe.asp?id=10" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe></div>
             <?php
             //Banner Capa Lateral 4
             $banners->setPlaces("idtipo=11");
