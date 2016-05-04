@@ -19,7 +19,7 @@
                     </section>
                     <ul>
                         <?php
-                        $ReadMain->ExeRead("noticias", "WHERE titulo != :tit AND destaque = :dest ORDER BY data DESC LIMIT :limit OFFSET :offset", "tit=''&dest=sim&limit=5&offset=0");
+                        $ReadMain->ExeRead("noticias", "WHERE titulo != :tit AND destaque = :dest AND destaque_tipo = :desttipo ORDER BY data DESC LIMIT :limit OFFSET :offset", "tit=''&dest=sim&desttipo=slide&limit=5&offset=0");
                         if ($ReadMain->getResult()):
                             foreach ($ReadMain->getResult() as $sNews):
                                 ?>
@@ -55,7 +55,7 @@
             ?>
             <div class="main_blc_lastnews">
                 <?php
-                $ReadMain->setPlaces("tit=''&dest=sim&limit=3&offset=5");
+                $ReadMain->setPlaces("tit=''&dest=sim&desttipo=smallnews&limit=3&offset=0");
                 if ($ReadMain->getResult()):
                     foreach ($ReadMain->getResult() as $nDest):
                         $nDest['categoria'] = strtoupper($nDest['categoria']);
