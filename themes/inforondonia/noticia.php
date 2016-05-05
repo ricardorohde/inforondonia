@@ -35,7 +35,7 @@ endif;
                     <a href="https://twitter.com/home?status=<?= HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Twitter" class="rds_twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
                     <a href="https://plus.google.com/share?url=<?= HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Google+" class="rds_googleplus" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
                     <a href="whatsapp://send?text=<?= $titulo . ' ' . HOME . '/noticia/' . $url_name; ?>" title="Compartilhar no Whatsapp" class="rds_whatsapp"><i class="fa fa-whatsapp fa-2x"></i></a>
-                    <a href="" title="Imprimir Notícia" id="print" class="rds_print"><i class="fa fa-print fa-2x"></i> Imprimir</a>
+                    <a href="<?= INCLUDE_PATH.'/print.php?url_name='.$url_name?>" target="_blank" title="Imprimir Notícia" id="print" class="rds_print"><i class="fa fa-print fa-2x"></i> Imprimir</a>
                 </div>
                 <div class="header_infonews">
                     <?php if (!empty($data)) : ?><div class="data"><b>Data:</b> <?= $data; ?> hrs</div><?php endif; ?>
@@ -103,7 +103,7 @@ endif;
                     <?php
                 endif;
                 ?>
-                
+
                 <div class="article_news_morenews">
                     <header class="header_morenews">
                         <h1 class="header_morenews_vin">Comente</h1>
@@ -117,7 +117,7 @@ endif;
                         <div class="fb-comments" data-href="<?= HOME . '/noticia/' . $url_name; ?>" data-width="100%" data-numposts="5"></div>
                     </div>
                 </div>
-                
+
                 <div class="article_news_morenews">
                     <header class="header_morenews">
                         <h1 class="header_morenews_vin">Outras Notícias</h1>

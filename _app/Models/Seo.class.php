@@ -219,7 +219,7 @@ class Seo {
         $this->seoTags .= '<meta property="og:url" content="' . $this->Tags['Link'] . '" />' . "\n";
         $this->seoTags .= '<meta property="og:type" content="article" />' . "\n";
         $this->seoTags .= '<meta property="fb:app_id" content="1540165802953123" />' . "\n";
-        $this->seoTags .= '<meta property="article:author" content="https://www.facebook.com/ricardo.barrossilva" />' . "\n";
+        $this->seoTags .= '<meta property="article:author" content="https://www.facebook.com/inforondon" />' . "\n";
         $this->seoTags .= "\n";
 
         //ITEM GROUP (TWITTER)
