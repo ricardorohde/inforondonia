@@ -389,7 +389,7 @@
         </div>
 
         <div class="main_right">
-            <div class="main_right_tv ratio4"><iframe class="ratio_element" src="http://www.tvjornet.com/parceiros/iframe.asp?id=10" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe></div>
+            <div class="main_right_tv ratio4"></div>
             <?php
             //Banner Capa Lateral 4
             $banners->setPlaces("idtipo=11");
