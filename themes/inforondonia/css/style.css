@@ -170,14 +170,14 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .main_blc_tempo header h1{ font-size: 1.2em; color: #37384E; text-decoration: underline;}
 .main_grp_tempo{ width: 100%; float: left;}
 .box_tempo{ width: 98%; padding: 1%; float: left;}
-.box_tempo_date{ width: 100%; font-size: 0.75em; color: #333; float: left;}
-.box_tempo_city{ width: 100%; font-weight: 500; color: #333; float: left;}
+.box_tempo_date{ width: 100%; margin-top: 5px; font-size: 0.9375em; color: #333; float: left;}
+.box_tempo_city{ width: 100%; margin-top: 10px; font-size: 1.0625em; text-align: center; font-weight: bold; color: #333; float: left;}
 .box_tempo_info{ width: 100%; margin-top: 10px; float: left;}
-.box_tempo_img{ width: 40%; float: left; text-align: center;}
-.box_tempo_tempdesc{ width: 59%; float: right;}
-.box_tempo_temp{ width: 100%; font-size: 2.0em; font-weight: 500; color: #37384E; float: left;}
+.box_tempo_img{ width: 50%; float: left; text-align: center;}
+.box_tempo_tempdesc{ width: 50%; float: right; text-align: center;}
+.box_tempo_temp{ width: 100%; margin-top: 5px; font-size: 2.0em; font-weight: 500; color: #37384E; float: left;}
 .box_tempo_desc{ width: 100%; font-size: 0.9375em; color: #37384E; float: left;}
-.box_tempo_demais{ width: 100%; margin-top: 10px; color: #333; float: left;}
+.box_tempo_demais{ width: 100%; margin-top: 50px; color: #333; float: left;}
 .box_tempo_umid{ width: 100%; font-size: 0.75em; float: left;}
 .box_tempo_vent{ width: 100%; font-size: 0.75em; float: left;}
 .main_right_tv{ width: 100%; margin-bottom: 10px; float: left;}
