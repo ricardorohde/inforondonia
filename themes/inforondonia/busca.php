@@ -15,7 +15,7 @@ endif;
                 <span class="header_line"></span>
             </header>
             <article class="content_pag">
-                <?php
+                <span class="fa fa-television"></span><?php
                 $getPage = (!empty($Link->getLocal()[2]) ? $Link->getLocal()[2] : 1);
                 $Pager = new Pager(HOME . '/busca/' . $search . '/');
                 $Pager->ExePager($getPage, 10);

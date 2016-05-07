@@ -20,8 +20,17 @@
         endif;
         ?>
         <div class="likebox_facebook"><div class="fb-page" data-href="https://www.facebook.com/inforondonia" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/inforondonia"><a href="https://www.facebook.com/inforondonia">InfoRondonia</a></blockquote></div></div></div>
-        <div class="main_right_tv ratio4"></div>
         <?php
+        //TV Lateral
+        $ReadTv = new Read;
+        $ReadTv->ExeRead("tv", "WHERE url != :url AND lateral = :lat", "url=''&lat=true");
+        if ($ReadTv->getResult()):
+            $Tv = $ReadTv->getResult()[0];
+            ?>
+            <div class="main_right_tv ratio4"><iframe class="ratio_element" src="<?= $Tv['url']; ?>" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe></div>
+            <?php
+        endif;
+        
         //Banner Capa Lateral 4
         $banners->setPlaces("idtipo=11");
         if ($banners->getResult()):

@@ -389,8 +389,17 @@
         </div>
 
         <div class="main_right">
-            <div class="main_right_tv ratio4"></div>
             <?php
+            //TV Lateral
+            $ReadTv = new Read;
+            $ReadTv->ExeRead("tv", "WHERE url != :url AND lateral = :lat", "url=''&lat=true");
+            if ($ReadTv->getResult()):
+                $Tv = $ReadTv->getResult()[0];
+                ?>
+                <div class="main_right_tv ratio4"><iframe class="ratio_element" src="<?= $Tv['url']; ?>" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe></div>
+                <?php
+            endif;
+            
             //Banner Capa Lateral 4
             $banners->setPlaces("idtipo=11");
             if ($banners->getResult()):

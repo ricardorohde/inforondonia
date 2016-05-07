@@ -7,9 +7,21 @@
                 <span class="header_line"></span>
             </header>
             <article class="content_pag">
-                <div class="play_tv">
-                    <div class="ratio16"><iframe class="ratio_element" src="http://www.tvjornet.com/parceiros/iframe.asp?id=10" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe></div>
-                </div>
+                <?php
+                //TV Lateral
+                $ReadTv = new Read;
+                $ReadTv->ExeRead("tv", "WHERE url != :url AND tv = :tv", "url=''&tv=true");
+                if ($ReadTv->getResult()):
+                    $Tv = $ReadTv->getResult()[0];
+                    ?>
+                    <div class="play_tv">    
+                        <div class="ratio16">
+                            <iframe class="ratio_element" src="<?= $Tv['url']; ?>" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                    <?php
+                endif;
+                ?>
             </article>
         </div>
     </div>
