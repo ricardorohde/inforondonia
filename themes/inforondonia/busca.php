@@ -1,6 +1,10 @@
 <?php
-$search = $Link->getLocal()[1];
-$count = ($Link->getData()['count'] ? $Link->getData()['count'] : '0');
+if ($Link->getLocal()[1]):
+    $search = $Link->getLocal()[1];
+    $count = ($Link->getData()['count'] ? $Link->getData()['count'] : '0');
+else:
+    header('Location: ' . HOME);
+endif;
 ?>
 <div class="content">
     <div class="main_left">
@@ -26,7 +30,7 @@ $count = ($Link->getData()['count'] ? $Link->getData()['count'] : '0');
                     $tpl_noticias = $View->Load('noticias');
 
                     foreach ($ReadNewsAll->getResult() as $n):
-                       $n['titulo'] = Check::Words($n['titulo'], 16);
+                        $n['titulo'] = Check::Words($n['titulo'], 16);
                         $n['noticia'] = Check::Words(strip_tags($n['noticia']), 36);
                         $n['data'] = date('d/m/Y H:i', strtotime($n['data']));
                         $n['hide'] = empty($n['foto']) ? 'hide' : '';
