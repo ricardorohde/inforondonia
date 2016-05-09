@@ -35,14 +35,16 @@ class Cotacao {
     //Get Dados DOLAR
     public function getCotacao($Tipo) {
         $this->Tipo = (string) $Tipo;
-        if ($this->Tipo === 'dolar'):
-            $this->setCotacao();
-            $cotacao = 'Dólar R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
-        elseif ($this->Tipo === 'euro'):
-            $this->setCotacao();
-            $cotacao = 'Euro R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
+        if ($this->Result):
+            if ($this->Tipo === 'dolar'):
+                $this->setCotacao();
+                $cotacao = 'Dólar R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
+            elseif ($this->Tipo === 'euro'):
+                $this->setCotacao();
+                $cotacao = 'Euro R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
+            endif;
+            return $cotacao;
         endif;
-        return $cotacao;
     }
 
     /**
