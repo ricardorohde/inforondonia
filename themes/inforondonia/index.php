@@ -4,9 +4,11 @@
         $ReadMain = new Read;
 
         $data_atual = date('Y-m-d');
-        $Dolar = new Cotacao;
-        $Euro = new Cotacao;
-        echo '<b>' . CIDADE . ' - ' . UF . ',  ' . Check::DataExt($data_atual) . ' - ' . $Dolar->getDolar() . ' - ' . $Euro->getEuro() . '</b>';
+        $Cotacao = new Cotacao;
+        #echo '<b>' . CIDADE . ' - ' . UF . ',  ' . Check::DataExt($data_atual) . ' - ' . $Cotacao->getCotacao('dolar') . ' - ' . $Cotacao->getCotacao('euro') . '</b>';
+        echo "<pre>";
+        var_dump($Cotacao->getCotacao('euro'), $Cotacao->getCotacao('dolar'));
+        echo "</pre>";
         ?>
     </span>
     <div class="main_content">

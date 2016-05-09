@@ -33,23 +33,15 @@ class Cotacao {
     }
 
     //Get Dados DOLAR
-    public function getDolar() {
-        $this->setDolar();
-        $cotacao = 'Dólar R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
-        return $cotacao;
-    }
-
-    //Get Dados EURO
-    public function getEuro() {
-        $this->setEuro();
-        $cotacao = 'Euro R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
-        return $cotacao;
-    }
-
-    //Get Dados Bovespa
-    public function getBovespa() {
-        $this->setBovespa();
-        $cotacao = 'Bovespa R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
+    public function getCotacao($Tipo) {
+        $this->Tipo = (string) $Tipo;
+        if ($this->Tipo === 'dolar'):
+            $this->setCotacao();
+            $cotacao = 'Dólar R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
+        elseif ($this->Tipo === 'euro'):
+            $this->setCotacao();
+            $cotacao = 'Euro R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
+        endif;
         return $cotacao;
     }
 
@@ -86,56 +78,21 @@ class Cotacao {
         endif;
     }
 
-    //Converte contação para real
-    private function setCotacao($cotacao) {
-        $convMoeda = (str_replace('.', ',', $cotacao));
-        return $convMoeda;
-    }
-
     //Converte a Data de Atualização para dd/mm/aaaa.
     private function setAtualizado() {
         $this->Data['atualizacao'] = explode(' ', $this->Data['atualizacao']);
         $this->Data['atualizacao'] = date('d/m/Y', strtotime(Check::Data($this->Data['atualizacao'][0])));
     }
 
-    //Set Dados DOLAR.
-    private function setDolar() {
-        $this->Data['dolar']['cotacao'] = $this->setCotacao($this->Data['dolar']['cotacao']);
-        $this->Tipo = 'dolar';
+    //Set Dados Cotacao.
+    private function setCotacao() {
         $this->setAtualizado();
+        $this->Data[$this->Tipo]['cotacao'] = str_replace('.', ',', $this->Data[$this->Tipo]['cotacao']);
         $this->Data = [
             "tipo" => $this->Tipo,
-            "cotacao" => $this->Data['dolar']['cotacao'],
-            "variacao" => $this->Data['dolar']['variacao'],
-            "status" => $this->getVariacao($this->Data['dolar']['variacao']),
-            "atualizado" => $this->Data['atualizacao']
-        ];
-    }
-
-    //Set Dados EURO.
-    private function setEuro() {
-        $this->Data['euro']['cotacao'] = $this->setCotacao($this->Data['euro']['cotacao']);
-        $this->Tipo = 'euro';
-        $this->setAtualizado();
-        $this->Data = [
-            "tipo" => $this->Tipo,
-            "cotacao" => $this->Data['euro']['cotacao'],
-            "variacao" => $this->Data['euro']['variacao'],
-            "status" => $this->getVariacao($this->Data['euro']['variacao']),
-            "atualizado" => $this->Data['atualizacao']
-        ];
-    }
-
-    //Set Dados BOVESPA.
-    private function setBovespa() {
-        $this->Data['bovespa']['cotacao'] = $this->setCotacao($this->Data['bovespa']['cotacao']);
-        $this->Tipo = 'bovespa';
-        $this->setAtualizado();
-        $this->Data = [
-            "tipo" => $this->Tipo,
-            "cotacao" => $this->Data['bovespa']['cotacao'],
-            "variacao" => $this->Data['bovespa']['variacao'],
-            "status" => $this->getVariacao($this->Data['bovespa']['variacao']),
+            "cotacao" => $this->Data[$this->Tipo]['cotacao'],
+            "variacao" => $this->Data[$this->Tipo]['variacao'],
+            "status" => $this->getVariacao($this->Data[$this->Tipo]['variacao']),
             "atualizado" => $this->Data['atualizacao']
         ];
     }
