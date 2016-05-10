@@ -20,7 +20,9 @@ class Cotacao {
     const Entity = 'cotacao';
 
     /**
-     * <b>Inciar Dados:</b> Iniciar GET dos dados!
+     * <b>Iniciar Classe:</b> Captura as informações vinda da API.
+     * Armazena no Array $Data.
+     * @param STRING $Tipo = Tipo de cotação. 
      */
     function __construct($Tipo) {
         $this->Data = file_get_contents(self::ApiUrl);
@@ -34,10 +36,17 @@ class Cotacao {
         endif;
     }
 
+    /**
+     * <b>Seta o Tipo:</b> Altera o tipo conforme o valor informando no param.
+     * @param STRING $Tipo = Tipo de cotação. 
+     */
     public function setTipo($Tipo) {
         $this->Tipo = $Tipo;
     }
 
+    /**
+     * <b>Obtem Cotação:</b> Lê a cotação e executa Create. 
+     */
     public function getCotacao() {
         if ($this->Result):
             $this->Data[$this->Tipo]['cotacao'] = $this->toReal($this->Data[$this->Tipo]['cotacao']);
@@ -51,10 +60,6 @@ class Cotacao {
             ];
             $this->Create();
         endif;
-    }
-
-    function getDate() {
-        return $this->Date;
     }
 
     /**
@@ -90,7 +95,7 @@ class Cotacao {
         endif;
     }
 
-    //Converte contação para real
+    //Converte cotacao para real
     private function toReal($valor) {
         $convMoeda = number_format($valor, 2, '.', ',');
         return $convMoeda;
@@ -103,7 +108,7 @@ class Cotacao {
         $this->Date = $this->Data['atualizacao'];
     }
 
-    //Cadastrar Banner
+    //Cadastrar Cotacao
     private function Create() {
         $Read = new Read;
         $Read->ExeRead(self::Entity, "WHERE tipo =  :tipo", "tipo={$this->Tipo}");
@@ -119,7 +124,7 @@ class Cotacao {
         endif;
     }
 
-    //Atualiza Banner
+    //Atualiza Cotacao
     private function Update() {
         $Update = new Update;
         $Update->ExeUpdate(self::Entity, $this->Data, "WHERE tipo = :tipo", "tipo={$this->Tipo}");
