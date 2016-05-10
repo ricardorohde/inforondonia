@@ -124,7 +124,7 @@ class Sitemap {
         $this->Format .= '<language>pt-br</language>' . "\n";
 
         //RSS POSTS
-        $ReadPosts = $this->Read('noticias', "WHERE destaque = :dest AND data <= NOW() AND categoria != :catpol AND categoria != :catacid ORDER BY data DESC LIMIT :limit", "dest=sim&catpol=policial&catacid=acidentes&limit=10");
+        $ReadPosts = $this->Read('noticias', "WHERE destaque = :dest AND data <= NOW() AND categoria != :catpol AND categoria != :catacid AND categoria != :catpub ORDER BY data DESC LIMIT :limit", "dest=sim&catpol=policial&catacid=acidentes&catpub=publicidade&limit=10");
         foreach ($ReadPosts as $Post):
             $this->Format .= '<item>' . "\n";
             $this->Format .= '<title>' . $Post['titulo'] . '</title>' . "\n";
