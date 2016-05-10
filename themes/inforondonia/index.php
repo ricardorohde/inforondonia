@@ -4,9 +4,16 @@
         $ReadMain = new Read;
 
         $data_atual = date('Y-m-d');
-        $Dolar = new Cotacao;
-        $Euro = new Cotacao;
-        echo '<b>' . CIDADE . ' - ' . UF . ',  ' . Check::DataExt($data_atual) . ' - ' . $Dolar->getDolar() . ' - ' . $Euro->getEuro() . '</b>';
+        $Cotacao = $ReadMain;
+        $Cotacao->ExeRead('cotacao');
+        echo '<b>' . CIDADE . ' - ' . UF . ',  ' . Check::DataExt($data_atual);
+        if ($Cotacao->getResult()):
+            foreach ($Cotacao->getResult() as $cot):
+                $tipo = $cot['tipo'] == 'dolar' ? 'Dólar' : 'Euro';
+                echo ' - ' . $tipo . ' R$ ' . $cot['cotacao'] . ' <i class="' . $cot['status'] . ' fa fa-long-arrow-' . $cot['status'] . '"></i> ';
+            endforeach;
+        endif;
+        echo '</b>';
         ?>
     </span>
     <div class="main_content">
@@ -353,21 +360,22 @@
                         ?>
                     </div>
                 </div>
+                <!--
                 <div class="main_blc_tempo">
                     <header>
                         <h1>TEMPO</h1>
                     </header>
                     <div class="main_grp_tempo">
-                        <?php
-                        $uf = UF;
-                        $city = strtoupper(CIDADE);
+                <?php /* $uf = UF;
+                  $city = strtoupper(CIDADE);
 
-                        $city_url = rawurlencode(strtolower($city . '-' . $uf));
-                        $file_temp = 'http://developers.agenciaideias.com.br/tempo/json/' . $city_url;
-                        $file_tempget = file_get_contents($file_temp);
-                        $file_tempread = json_decode($file_tempget, true);
-                        $tempo = $file_tempread["agora"];
-                        ?>
+                  $city_url = rawurlencode(strtolower($city . '-' . $uf));
+                  $file_temp = 'http://developers.agenciaideias.com.br/tempo/json/' . $city_url;
+                  $file_tempget = file_get_contents($file_temp);
+                  $file_tempread = json_decode($file_tempget, true);
+                  $tempo = $file_tempread["agora"];
+
+                 */ ?>
                         <div class="box_tempo">
                             <div class="box_tempo_date">Em <?= $tempo['data_hora']; ?> hrs</div>
                             <div class="box_tempo_city"><?= $city . ' - ' . $uf; ?></div>
@@ -385,6 +393,7 @@
                         </div>
                     </div>
                 </div>
+                -->
             </div>
         </div>
 
@@ -399,7 +408,7 @@
                 <div class="main_right_tv ratio4"><iframe class="ratio_element" src="<?= $Tv['url']; ?>" width="100%" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe></div>
                 <?php
             endif;
-            
+
             //Banner Capa Lateral 4
             $banners->setPlaces("idtipo=11");
             if ($banners->getResult()):

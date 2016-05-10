@@ -10,6 +10,7 @@ class Cotacao {
 
     private $Data;
     private $Tipo;
+    private $Date;
     private $Error;
     private $Result;
 
@@ -21,8 +22,9 @@ class Cotacao {
     /**
      * <b>Inciar Dados:</b> Iniciar GET dos dados!
      */
-    function __construct() {
+    function __construct($Tipo) {
         $this->Data = file_get_contents(self::ApiUrl);
+        $this->Tipo = $Tipo;
         if (!$this->Data):
             $this->Error = ["Não foi possivel estabelecer conexão com a API.", WS_ALERT];
             $this->Result = false;
@@ -32,25 +34,27 @@ class Cotacao {
         endif;
     }
 
-    //Get Dados DOLAR
-    public function getDolar() {
-        $this->setDolar();
-        $cotacao = 'Dólar R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
-        return $cotacao;
+    public function setTipo($Tipo) {
+        $this->Tipo = $Tipo;
     }
 
-    //Get Dados EURO
-    public function getEuro() {
-        $this->setEuro();
-        $cotacao = 'Euro R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
-        return $cotacao;
+    public function getCotacao() {
+        if ($this->Result):
+            $this->Data[$this->Tipo]['cotacao'] = $this->toReal($this->Data[$this->Tipo]['cotacao']);
+            $this->setDate();
+            $this->Data = [
+                "tipo" => $this->Tipo,
+                "cotacao" => $this->Data[$this->Tipo]['cotacao'],
+                "variacao" => $this->Data[$this->Tipo]['variacao'],
+                "status" => $this->getVariacao($this->Data[$this->Tipo]['variacao']),
+                "atualizado" => $this->Date
+            ];
+            $this->Create();
+        endif;
     }
 
-    //Get Dados Bovespa
-    public function getBovespa() {
-        $this->setBovespa();
-        $cotacao = 'Bovespa R$ ' . $this->Data['cotacao'] . ' <i class="' . $this->Data['status'] . ' fa fa-long-arrow-' . $this->Data['status'] . '"></i>';
-        return $cotacao;
+    function getDate() {
+        return $this->Date;
     }
 
     /**
@@ -87,57 +91,42 @@ class Cotacao {
     }
 
     //Converte contação para real
-    private function setCotacao($cotacao) {
-        $convMoeda = (str_replace('.', ',', $cotacao));
+    private function toReal($valor) {
+        $convMoeda = number_format($valor, 2, '.', ',');
         return $convMoeda;
     }
 
     //Converte a Data de Atualização para dd/mm/aaaa.
-    private function setAtualizado() {
+    private function setDate() {
         $this->Data['atualizacao'] = explode(' ', $this->Data['atualizacao']);
-        $this->Data['atualizacao'] = date('d/m/Y', strtotime(Check::Data($this->Data['atualizacao'][0])));
+        $this->Data['atualizacao'] = Check::Data($this->Data['atualizacao'][0]);
+        $this->Date = $this->Data['atualizacao'];
     }
 
-    //Set Dados DOLAR.
-    private function setDolar() {
-        $this->Data['dolar']['cotacao'] = $this->setCotacao($this->Data['dolar']['cotacao']);
-        $this->Tipo = 'dolar';
-        $this->setAtualizado();
-        $this->Data = [
-            "tipo" => $this->Tipo,
-            "cotacao" => $this->Data['dolar']['cotacao'],
-            "variacao" => $this->Data['dolar']['variacao'],
-            "status" => $this->getVariacao($this->Data['dolar']['variacao']),
-            "atualizado" => $this->Data['atualizacao']
-        ];
+    //Cadastrar Banner
+    private function Create() {
+        $Read = new Read;
+        $Read->ExeRead(self::Entity, "WHERE tipo =  :tipo", "tipo={$this->Tipo}");
+        if (!$Read->getResult()):
+            $Create = new Create;
+            $Create->ExeCreate(self::Entity, $this->Data);
+            if ($Create->getResult()):
+                $this->Error = ["Cotação de <b>{$this->Data['tipo']}</b> foi cadastrada com sucesso no sistema!", WS_ACCEPT];
+                $this->Result = $Create->getResult();
+            endif;
+        else:
+            $this->Update();
+        endif;
     }
 
-    //Set Dados EURO.
-    private function setEuro() {
-        $this->Data['euro']['cotacao'] = $this->setCotacao($this->Data['euro']['cotacao']);
-        $this->Tipo = 'euro';
-        $this->setAtualizado();
-        $this->Data = [
-            "tipo" => $this->Tipo,
-            "cotacao" => $this->Data['euro']['cotacao'],
-            "variacao" => $this->Data['euro']['variacao'],
-            "status" => $this->getVariacao($this->Data['euro']['variacao']),
-            "atualizado" => $this->Data['atualizacao']
-        ];
-    }
-
-    //Set Dados BOVESPA.
-    private function setBovespa() {
-        $this->Data['bovespa']['cotacao'] = $this->setCotacao($this->Data['bovespa']['cotacao']);
-        $this->Tipo = 'bovespa';
-        $this->setAtualizado();
-        $this->Data = [
-            "tipo" => $this->Tipo,
-            "cotacao" => $this->Data['bovespa']['cotacao'],
-            "variacao" => $this->Data['bovespa']['variacao'],
-            "status" => $this->getVariacao($this->Data['bovespa']['variacao']),
-            "atualizado" => $this->Data['atualizacao']
-        ];
+    //Atualiza Banner
+    private function Update() {
+        $Update = new Update;
+        $Update->ExeUpdate(self::Entity, $this->Data, "WHERE tipo = :tipo", "tipo={$this->Tipo}");
+        if ($Update->getResult()):
+            $this->Error = ["Cotação de <b>{$this->Data['tipo']}</b> foi atualizada com sucesso!", WS_ACCEPT];
+            $this->Result = true;
+        endif;
     }
 
 }
