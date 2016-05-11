@@ -101,11 +101,12 @@
             url: "system/bancofotos/sendfotos.php",
             addRemoveLinks: false,
             maxFileSize: 10,
-            acceptedFles: 'image/*,.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF',
+            acceptedFles: "image/*",
             dictDefaultMessage: "CLIQUE ou ARRASTE <br> os arquivos que deseja enviar.",
             dictRemoveFile: "Excluir",
             dictMaxFilesExceeded: "Arquivo Maior que 10MB, por favor selecione outro arquivo.",
-            dictResponseError: "Desculpe ocorreu um erro!"
+            dictResponseError: "Desculpe ocorreu um erro!",
+            headers: {'tipo': '<?= $tipo; ?>', 'id_tipo': '<?= $idTipo; ?>'}
         });
     });
 </script>
