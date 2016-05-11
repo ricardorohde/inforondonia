@@ -44,6 +44,8 @@ endif;
         <link type="text/css" rel="stylesheet" href="plugins/datepicker/datepicker3.css" />
         <!-- Data Tables -->
         <link type="text/css" rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css" />
+        <!-- DropZone -->
+        <link type="text/css" rel="stylesheet" href="plugins/dropzone/dropzone.css" />
         <!-- Theme style -->
         <link type="text/css" rel="stylesheet" href="dist/css/AdminLTE.min.css" />
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
@@ -54,6 +56,10 @@ endif;
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
+        <!-- jQuery 2.1.3 -->
+        <script type="text/javascript" src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+        <!-- DropZone -->
+        <script type="text/javascript" src="plugins/dropzone/dropzone.js"></script>
     </head>
     <body class="skin-blue">
         <div class="wrapper">
@@ -87,9 +93,6 @@ endif;
             include(__DIR__ . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'footer.inc.php');
             ?>
         </div><!-- ./wrapper -->
-
-        <!-- jQuery 2.1.3 -->
-        <script type="text/javascript" src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
         <!-- Bootstrap 3.3.2 JS -->
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <!-- InputMask -->

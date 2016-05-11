@@ -32,25 +32,21 @@
                 endif;
             endif;
             ?>
-            <form role="form" name="UserCreateForm" action="" method="post" enctype="multipart/form-data">
-                <div class="box box-primary">
-                    <div class="box-header"><h3 class="box-title">Adicionar Mais Fotos</h3></div>
-                    <div class="box-body">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-12 col-xs-12">
-                                    <label for="foto">Selecione as Fotos</label>
-                                    <input type="file" name="fotos[]" multiple class="form-control" id="foto">
-                                    <p class="help-block">Pode ser enviado mais de uma imagem.</p>
-                                </div>
+            <!-- Form -->
+            <div class="box box-primary">
+                <div class="box-header"><h3 class="box-title">Adicionar Mais Fotos</h3></div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div id="dropzone" class="dropzone"></div>
+
                             </div>
                         </div>
                     </div>
-                    <div class="box-footer">
-                        <input type="submit" name="SendPostForm" value="Adicionar Fotos" class="btn btn-flat btn-primary"/>
-                    </div>
                 </div>
-            </form>
+            </div>
+            <!-- View -->
             <div class="box box-primary">
                 <div class="box-header"><h3 class="box-title">Fotos da galeria</h3></div>
                 <div class="box-body" id="foco">
@@ -63,7 +59,7 @@
 
                         WSErro($delete->getError()[0], $delete->getError()[1]);
                     endif;
-                    
+
                     $gbi = 0;
                     $foto = new Read;
                     $foto->ExeRead("banco_fotos", "WHERE id_tipo = :id", "id={$idTipo}");
@@ -98,3 +94,18 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function () {
+        Dropzone.autoDiscover = false;
+        $("#dropzone").dropzone({
+            url: "system/bancofotos/sendfotos.php",
+            addRemoveLinks: false,
+            maxFileSize: 10,
+            acceptedFles: 'image/*,.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF',
+            dictDefaultMessage: "CLIQUE ou ARRASTE <br> os arquivos que deseja enviar.",
+            dictRemoveFile: "Excluir",
+            dictMaxFilesExceeded: "Arquivo Maior que 10MB, por favor selecione outro arquivo.",
+            dictResponseError: "Desculpe ocorreu um erro!"
+        });
+    });
+</script>
