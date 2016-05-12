@@ -12,25 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <?php
-            $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
             $idTipo = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
             $tipo = filter_input(INPUT_GET, 'tipo', FILTER_SANITIZE_STRING);
-            if (isset($dados) && $dados['SendPostForm']):
-                #$dados['foto'] = ($_FILES['foto']['tmp_name'] ? $_FILES['foto'] : null);
-                unset($dados['SendPostForm']);
-
-                require('_models/AdminEvento.class.php');
-                if (!empty($_FILES['fotos']['tmp_name'])):
-                    $sendFotos = new AdminEvento;
-                    $sendFotos->gbSend($_FILES['fotos'], $tipo, $idTipo);
-
-                    if (!$sendFotos->getResult()):
-                        WSErro($sendFotos->getError()[0], $sendFotos->getError()[1]);
-                    else:
-                        WSErro($sendFotos->getError()[0], $sendFotos->getError()[1]);
-                    endif;
-                endif;
-            endif;
             ?>
             <!-- Form -->
             <div class="box box-primary">
@@ -99,14 +82,44 @@
         Dropzone.autoDiscover = false;
         $("#dropzone").dropzone({
             url: "system/bancofotos/sendfotos.php",
-            addRemoveLinks: false,
+            addRemoveLinks: true,
             maxFileSize: 10,
-            acceptedFles: "image/*",
+            acceptedFles: "image/*,.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
             dictDefaultMessage: "CLIQUE ou ARRASTE <br> os arquivos que deseja enviar.",
             dictRemoveFile: "Excluir",
             dictMaxFilesExceeded: "Arquivo Maior que 10MB, por favor selecione outro arquivo.",
             dictResponseError: "Desculpe ocorreu um erro!",
-            headers: {'tipo': '<?= $tipo; ?>', 'id_tipo': '<?= $idTipo; ?>'}
+            sending: function (file, xhr, formData) {
+                formData.append('tipo', '<?= $tipo; ?>');
+                formData.append('id_tipo', <?= $idTipo; ?>);
+            },
+            complete: function (file) {
+                if (file.status === "success") {
+                    console.log("Enviado com sucesso: " + file.name);
+                }
+            },
+            queuecomplete: function () {
+                alert("Arquivos enviados com sucesso!");
+            },
+            error: function (file) {
+                console.log("Erro ao enviar o arquivo: " + file.name);
+            },
+            removedfile: function (file) {
+                var name = file.name;
+                $.ajax({
+                    type: 'POST',
+                    url: "system/bancofotos/sendfotos.php?delete=true",
+                    data: "filename=" + name,
+                    success: function (data) {
+                        var json = JSON.parse(data);
+                        if (json.res === true) {
+                            var element;
+                            (element = file.previewElement) !== null ? element.parentNode.removeChild(file.previewElement) : false;
+                            console.log("Arquivo removido: " + file.name);
+                        }
+                    }
+                });
+            }
         });
     });
 </script>

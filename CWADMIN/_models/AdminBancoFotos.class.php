@@ -1,8 +1,8 @@
 <?php
 
 /**
- * AdminEvento.class [ MODEL ADMIN ]
- * Respnsável por gerenciar os eventos no Admin do sistema!
+ * AdminBanner.class [ MODEL ADMIN ]
+ * Respnsável por gerenciar os banners no Admin do sistema!
  * 
  * @copyright (c) 2014, Gean Marques - CREATIVE WEBSITES
  */
@@ -18,83 +18,71 @@ class AdminBancoFotos {
     const Entity = 'banco_fotos';
 
     /**
-     * <b>Enviar Galeria:</b> Envelope um $_FILES de um input multiple e envie junto a um postID para executar
-     * o upload e o cadastro de galerias!
-     * @param ARRAY $Files = Envie um $_FILES multiple
-     * @param STRING $Tipo = Informe o Tipo
-     * @param INT $TipoId = Informe o ID do tipo
+     * <b>Cadastrar Banners:</b> Envelopa os dados em um array atribuitivo e execute este método
+     * para cadastrar o mesmo no sistema. Validações serão feitas!
+     * @param ARRAY $Data = Atribuitivo 
      */
-    public function gbSend(array $Images, $Tipo, $TipoId) {
-        $this->Id = (int) $TipoId;
-        $this->Tipo = (string) $Tipo;
-        $this->Data = $Images;
+    public function ExeCreate(array $Data) {
+        $this->Data = $Data;
+        $this->Tipo = $this->Data['tipo'];
+        $this->checkData();
 
-        $ImageName = new Read;
-        $ImageName->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
+        if ($this->Data['banner']):
+            $upload = new Upload;
+            $upload->Image($this->Data['foto'], $this->Data['titulo'], NULL, 'banners');
+        endif;
 
-        if (!$ImageName->getResult()):
-            $this->Error = ["Erro ao enviar fotos do evento. O indice {$this->Id} não foi encontrado no banco de dados!", WS_ERROR];
-            $this->getResult = false;
+        if (isset($upload) && $upload->getResult()):
+            $this->Data['banner'] = $upload->getResult();
+            $this->Create();
         else:
-            $ImageName = $ImageName->getResult()[0]['evento'];
-
-            $gbFiles = array();
-            $gbCount = count($this->Data['tmp_name']);
-            $gbKeys = array_keys($this->Data);
-
-            for ($gb = 0; $gb < $gbCount; $gb++):
-                foreach ($gbKeys as $keys):
-                    $gbFiles[$gb][$keys] = $this->Data[$keys][$gb];
-                endforeach;
-            endfor;
-
-            $gbSend = new Upload;
-            $i = 0;
-            $u = 0;
-
-            foreach ($gbFiles as $gbUpload):
-                $i++;
-                $ImgName = "tipo-{$this->Tipo}-id-{$this->Id}-" . (substr(md5(time() + $i), 0, 5));
-                $gbSend->Image($gbUpload, $ImgName, 640, "banco_fotos");
-
-                if ($gbSend->getResult()):
-                    $gbImage = $gbSend->getResult();
-                    $gbCreate = ['id_tipo' => $this->Id, 'tipo' => $this->Tipo, 'foto' => $gbImage, 'data' => date('Y-m-d H:i:s')];
-                    $insertGb = new Create;
-                    $insertGb->ExeCreate('banco_fotos', $gbCreate);
-                    $u++;
-                endif;
-            endforeach;
-
-            if ($u > 1):
-                $this->Error = ["Galeria Atualizada: Foram enviadas {$u} imagens para esta galeria!", WS_ACCEPT];
-                $this->Result = true;
-            endif;
+            $this->Data['banner'] = NULL;
+            $this->Create();
         endif;
     }
 
     /**
-     * <b>Deletar Imagem da galeria:</b> Informe apenas o id da imagem na galeria para que esse método leia e remova
-     * a imagem da pasta e delete o registro do banco!
-     * @param INT $GbImageId = Id da imagem da galleria
+     * <b>Atualizar Banner:</b> Envelope os dados em uma array atribuitivo e informe o id de um
+     * registro para atualiza-lo no sistema!
+     * @param INT $BannerId = Id do banner
+     * @param ARRAY $Data = Atribuitivo
      */
-    public function gbRemove($GbImageId) {
-        $this->Id = (int) $GbImageId;
-        $readGb = new Read;
-        $readGb->ExeRead("banco_fotos", "WHERE id = :gb", "gb={$this->Id}");
-        if ($readGb->getResult()):
-            $Imagem = '../uploads/' . $readGb->getResult()[0]['foto'];
-            if (file_exists($Imagem) && !is_dir($Imagem)):
-                unlink($Imagem);
-            endif;
+    public function ExeUpdate($BannerId, array $Data) {
+        $this->Id = (int) $BannerId;
+        $this->Data = $Data;
+        $this->checkData();
+        $this->setData();
+        if (is_array($this->Data['banner'])):
+            $this->fotoDelete($this->Id);
+            $upload = new Upload;
+            $upload->Image($this->Data['banner'], $this->Data['titulo'], NULL, 'banners');
+        endif;
 
-            $Deleta = new Delete;
-            $Deleta->ExeDelete("banco_fotos", "WHERE id = :id", "id={$this->Id}");
-            if ($Deleta->getResult()):
-                $this->Error = ["A imagem foi removida com sucesso da galeria!", WS_ACCEPT];
-                $this->Result = true;
-            endif;
+        if (isset($upload) && $upload->getResult()):
+            $this->Data['banner'] = $upload->getResult();
+            $this->Update();
+        else:
+            unset($this->Data['banner']);
+            $this->Update();
+        endif;
+    }
 
+    /**
+     * <b>Remover Banner:</b> Informe o ID do registro que deseja remover.
+     * @param INT $BannerId = Id da revista
+     */
+    public function ExeDelete($BannerId) {
+        $this->Id = (int) $BannerId;
+
+        $readVideo = new Read;
+        $readVideo->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
+
+        if (!$readVideo->getResult()):
+            $this->Error = ['Oppsss, você tentou remover um banner que não existe no sistema!', WS_ERROR];
+            $this->Result = false;
+        else:
+            $this->fotoDelete($this->Id);
+            $this->Delete();
         endif;
     }
 
@@ -103,7 +91,7 @@ class AdminBancoFotos {
      * Para verificar erros execute um getError();
      * @return BOOL $Var = True or False
      */
-    public function getResult() {
+    function getResult() {
         return $this->Result;
     }
 
@@ -111,7 +99,7 @@ class AdminBancoFotos {
      * <b>Obter Erro:</b> Retorna um array associativo com um erro e um tipo.
      * @return ARRAY $Error = Array associatico com o erro
      */
-    public function getError() {
+    function getError() {
         return $this->Error;
     }
 
@@ -121,6 +109,72 @@ class AdminBancoFotos {
      * ***************************************
      */
 
-    
+    //Checa os dados
+    private function checkData() {
+        if (in_array('', $this->Data)):
+            $this->Error = ["Existem campos em branco. Favor preencha todos os campos!", WS_ALERT];
+            $this->Result = false;
+        else:
+            $this->Result = true;
+        endif;
+    }
+
+    //Seta os Dados
+    private function setData() {
+        $capa = $this->Data['banner'];
+        unset($this->Data['banner']);
+        $this->Data = array_map('strip_tags', $this->Data);
+        $this->Data = array_map('trim', $this->Data);
+        $this->Data['banner'] = $capa;
+        $this->Data['data_inicial'] = Check::Data($this->Data['data_inicial']);
+        $this->Data['data_final'] = Check::Data($this->Data['data_final']);
+    }
+
+    //Excluir a Foto
+    private function fotoDelete($Id) {
+        $this->Id = (int) $Id;
+
+        $readFoto = new Read;
+        $readFoto->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
+        $foto = "../uploads/{$readFoto->getResult()[0]['banner']}";
+        if (file_exists($foto) && !is_dir($foto)):
+            unlink($foto);
+        endif;
+    }
+
+    //Cadastrar Banner
+    private function Create() {
+        $Create = new Create;
+        $this->setData();
+        $this->Data['qm_cadastr'] = $_SESSION['userlogin']['id'];
+
+        $Create->ExeCreate(self::Entity, $this->Data);
+        if ($Create->getResult()):
+            $this->Error = ["O Banner <b>{$this->Data['titulo']}</b> foi cadastrado com sucesso no sistema!", WS_ACCEPT];
+            $this->Result = $Create->getResult();
+        endif;
+    }
+
+    //Atualiza Banner
+    private function Update() {
+        $Update = new Update;
+        $this->Data['qm_alterou'] = $_SESSION['userlogin']['id'];
+
+        $Update->ExeUpdate(self::Entity, $this->Data, "WHERE id = :id", "id={$this->Id}");
+        if ($Update->getResult()):
+            $this->Error = ["O Banner <b>{$this->Data['titulo']}</b> foi atualizado com sucesso!", WS_ACCEPT];
+            $this->Result = true;
+        endif;
+    }
+
+    //Excluir Banner
+    private function Delete() {
+        $Delete = new Delete;
+        $Delete->ExeDelete(self::Entity, "WHERE id = :id", "id={$this->Id}");
+        if ($Delete->getResult()):
+            $this->Error = ["Banner removido com sucesso do sistema!", WS_ACCEPT];
+            $this->Result = true;
+        endif;
+    }
 
 }

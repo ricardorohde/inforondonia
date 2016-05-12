@@ -1,15 +1,30 @@
 <?php
 
-$upload_dir = 'uploads';
-if (isset($del) && $del === true):
-    $name = filter_input(INPUT_POST, 'filename');
-    unlink($upload_dir . '/' . $name);
-    echo json_encode(array("res" => true));
-else:
-    $file = $_FILES['file'];
-    $tempFile = $file['tmp_name'];
-    $nameFile = $file['name'];
-    $targetPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . $upload_dir . DIRECTORY_SEPARATOR;
-    $mainFile = $targetPath . time() . '-' . $nameFile;
-    move_uploaded_file($tempFile, $mainFile);
-endif;
+require('../../../_app/Config.inc.php');
+$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    if (isset($_GET["delete"]) && $_GET["delete"] == true) {
+        $name = $_POST["filename"];
+        if (file_exists('./uploads/' . $name)) {
+            unlink('./uploads/' . $name);
+            echo json_encode(array("res" => true));
+        } else {
+            echo json_encode(array("res" => false));
+        }
+    } else {
+        if (isset($dados)):
+            require('../../_models/AdminBancoFotos.class.php');
+            $dados['foto'] = ($_FILES['file']['tmp_name'] ? $_FILES['file'] : null);
+
+            if (!empty($dados['foto'])):
+                $sendFotos = new AdminBancoFotos;
+                $sendFotos->gbSend($_FILES['file'], $dados['tipo'], $dados['id_tipo']);
+                if (!$sendFotos->getResult()):
+                    WSErro($sendFotos->getError()[0], $sendFotos->getError()[1]);
+                else:
+                    WSErro($sendFotos->getError()[0], $sendFotos->getError()[1]);
+                endif;
+            endif;
+        endif;
+    }
+}
