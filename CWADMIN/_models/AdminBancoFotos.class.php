@@ -4,7 +4,7 @@
  * AdminBanner.class [ MODEL ADMIN ]
  * Respnsável por gerenciar os banners no Admin do sistema!
  * 
- * @copyright (c) 2014, Gean Marques - CREATIVE WEBSITES
+ * @copyright (c) 2016, Gean Marques - CREATIVE WEBSITES
  */
 class AdminBancoFotos {
 
@@ -27,43 +27,18 @@ class AdminBancoFotos {
         $this->Tipo = $this->Data['tipo'];
         $this->checkData();
 
-        if ($this->Data['banner']):
+        if ($this->Data['foto']):
+            $ImgName = "tipo-{$this->Tipo}-id-{$this->Id}-" . (substr(md5(time()), 0, 5));
             $upload = new Upload;
-            $upload->Image($this->Data['foto'], $this->Data['titulo'], NULL, 'banners');
+            $upload->Image($this->Data['foto'], $ImgName, 640, 'banco_fotos');
         endif;
 
         if (isset($upload) && $upload->getResult()):
-            $this->Data['banner'] = $upload->getResult();
+            $this->Data['foto'] = $upload->getResult();
             $this->Create();
         else:
-            $this->Data['banner'] = NULL;
-            $this->Create();
-        endif;
-    }
-
-    /**
-     * <b>Atualizar Banner:</b> Envelope os dados em uma array atribuitivo e informe o id de um
-     * registro para atualiza-lo no sistema!
-     * @param INT $BannerId = Id do banner
-     * @param ARRAY $Data = Atribuitivo
-     */
-    public function ExeUpdate($BannerId, array $Data) {
-        $this->Id = (int) $BannerId;
-        $this->Data = $Data;
-        $this->checkData();
-        $this->setData();
-        if (is_array($this->Data['banner'])):
-            $this->fotoDelete($this->Id);
-            $upload = new Upload;
-            $upload->Image($this->Data['banner'], $this->Data['titulo'], NULL, 'banners');
-        endif;
-
-        if (isset($upload) && $upload->getResult()):
-            $this->Data['banner'] = $upload->getResult();
-            $this->Update();
-        else:
-            unset($this->Data['banner']);
-            $this->Update();
+            $this->Error = ['Oppsss, Não foi possivel enviar!', WS_ERROR];
+            $this->Result = false;
         endif;
     }
 
@@ -119,17 +94,6 @@ class AdminBancoFotos {
         endif;
     }
 
-    //Seta os Dados
-    private function setData() {
-        $capa = $this->Data['banner'];
-        unset($this->Data['banner']);
-        $this->Data = array_map('strip_tags', $this->Data);
-        $this->Data = array_map('trim', $this->Data);
-        $this->Data['banner'] = $capa;
-        $this->Data['data_inicial'] = Check::Data($this->Data['data_inicial']);
-        $this->Data['data_final'] = Check::Data($this->Data['data_final']);
-    }
-
     //Excluir a Foto
     private function fotoDelete($Id) {
         $this->Id = (int) $Id;
@@ -145,25 +109,10 @@ class AdminBancoFotos {
     //Cadastrar Banner
     private function Create() {
         $Create = new Create;
-        $this->setData();
-        $this->Data['qm_cadastr'] = $_SESSION['userlogin']['id'];
-
         $Create->ExeCreate(self::Entity, $this->Data);
         if ($Create->getResult()):
-            $this->Error = ["O Banner <b>{$this->Data['titulo']}</b> foi cadastrado com sucesso no sistema!", WS_ACCEPT];
+            $this->Error = ["Foto enviada com sucesso!", WS_ACCEPT];
             $this->Result = $Create->getResult();
-        endif;
-    }
-
-    //Atualiza Banner
-    private function Update() {
-        $Update = new Update;
-        $this->Data['qm_alterou'] = $_SESSION['userlogin']['id'];
-
-        $Update->ExeUpdate(self::Entity, $this->Data, "WHERE id = :id", "id={$this->Id}");
-        if ($Update->getResult()):
-            $this->Error = ["O Banner <b>{$this->Data['titulo']}</b> foi atualizado com sucesso!", WS_ACCEPT];
-            $this->Result = true;
         endif;
     }
 
