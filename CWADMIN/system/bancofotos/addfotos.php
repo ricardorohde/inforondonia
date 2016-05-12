@@ -58,7 +58,7 @@
                                         <li class="thumbnail">
                                             <?= Check::Image('../uploads/' . $gb['foto'], $gbi, 146, 100, true); ?>
                                             <div class="text-center">
-                                                <a href="painel.php?exe=eventos/addfotos&id=<?= $idTipo; ?>&tipo=<?= $tipo; ?>&delfoto=<?= $gb['id']; ?>#foco" class="btn btn-sm btn-danger"><b class="fa fa-trash-o"></b> Deletar</a>
+                                                <a href="painel.php?exe=bancofotos/addfotos&id=<?= $idTipo; ?>&tipo=<?= $tipo; ?>&delfoto=<?= $gb['id']; ?>#foco" class="btn btn-sm btn-danger"><b class="fa fa-trash-o"></b> Deletar</a>
                                             </div>
                                         </li>
                                     </div>

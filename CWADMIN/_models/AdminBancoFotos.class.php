@@ -28,7 +28,7 @@ class AdminBancoFotos {
         $this->checkData();
 
         if ($this->Data['foto']):
-            $ImgName = "tipo-{$this->Tipo}-id-{$this->Id}-" . (substr(md5(time()), 0, 5));
+            $ImgName = "tipo-{$this->Tipo}-id-{$this->Id}-" . rand();
             $upload = new Upload;
             $upload->Image($this->Data['foto'], $ImgName, 640, 'banco_fotos');
         endif;
@@ -100,7 +100,7 @@ class AdminBancoFotos {
 
         $readFoto = new Read;
         $readFoto->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
-        $foto = "../uploads/{$readFoto->getResult()[0]['banner']}";
+        $foto = "../uploads/{$readFoto->getResult()[0]['foto']}";
         if (file_exists($foto) && !is_dir($foto)):
             unlink($foto);
         endif;
