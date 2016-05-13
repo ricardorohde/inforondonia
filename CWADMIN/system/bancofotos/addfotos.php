@@ -14,7 +14,9 @@
             <?php
             $idTipo = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
             $tipo = filter_input(INPUT_GET, 'tipo', FILTER_SANITIZE_STRING);
+            $url_refresh = HOME . "/CWADMIN/painel.php?exe=bancofotos/addfotos&id={$idTipo}&tipo={$tipo}";
             ?>
+
             <!-- Form -->
             <div class="box box-primary">
                 <div class="box-header"><h3 class="box-title">Adicionar Mais Fotos</h3></div>
@@ -23,7 +25,6 @@
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
                                 <div id="dropzone" class="dropzone"></div>
-
                             </div>
                         </div>
                     </div>
@@ -36,16 +37,16 @@
                     <?php
                     $delFoto = filter_input(INPUT_GET, 'delfoto', FILTER_VALIDATE_INT);
                     if ($delFoto):
-                        require_once('_models/AdminEvento.class.php');
-                        $delete = new AdminEvento;
-                        $delete->gbRemove($delFoto);
+                        require_once('_models/AdminBancoFotos.class.php');
+                        $delete = new AdminBancoFotos;
+                        $delete->ExeDelete($delFoto);
 
                         WSErro($delete->getError()[0], $delete->getError()[1]);
                     endif;
 
                     $gbi = 0;
                     $foto = new Read;
-                    $foto->ExeRead("banco_fotos", "WHERE id_tipo = :id", "id={$idTipo}");
+                    $foto->ExeRead("banco_fotos", "WHERE id_tipo = :id AND tipo = :tipo", "id={$idTipo}&tipo={$tipo}");
                     if ($foto->getResult()):
                         ?>
                         <div class="row">
@@ -82,7 +83,7 @@
         Dropzone.autoDiscover = false;
         $("#dropzone").dropzone({
             url: "system/bancofotos/sendfotos.php",
-            addRemoveLinks: true,
+            addRemoveLinks: false,
             maxFileSize: 10,
             acceptedFles: "image/*,.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
             dictDefaultMessage: "CLIQUE ou ARRASTE <br> os arquivos que deseja enviar.",
@@ -93,13 +94,9 @@
                 formData.append('tipo', '<?= $tipo; ?>');
                 formData.append('id_tipo', <?= $idTipo; ?>);
             },
-            complete: function (file) {
-                if (file.status === "success") {
-                    console.log("Enviado com sucesso: " + file.name);
-                }
-            },
             queuecomplete: function () {
                 alert("Arquivos enviados com sucesso!");
+                refresh(1000);
             },
             error: function (file) {
                 console.log("Erro ao enviar o arquivo: " + file.name);
@@ -121,5 +118,13 @@
                 });
             }
         });
+
+        //Função Refresh
+        function refresh(tempo) {
+            setTimeout(function () {
+                var redireciona = "<?= $url_refresh; ?>";
+                $(window.document.location).attr('href', redireciona);
+            }, tempo);
+        };
     });
 </script>

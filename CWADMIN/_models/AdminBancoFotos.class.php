@@ -1,8 +1,8 @@
 <?php
 
 /**
- * AdminBanner.class [ MODEL ADMIN ]
- * Respnsável por gerenciar os banners no Admin do sistema!
+ * AdminBancoFotos.class [ MODEL ADMIN ]
+ * Respnsável por gerenciar as fotos dos albuns no Admin do sistema!
  * 
  * @copyright (c) 2016, Gean Marques - CREATIVE WEBSITES
  */
@@ -18,7 +18,7 @@ class AdminBancoFotos {
     const Entity = 'banco_fotos';
 
     /**
-     * <b>Cadastrar Banners:</b> Envelopa os dados em um array atribuitivo e execute este método
+     * <b>Cadastrar Foto:</b> Envelopa os dados em um array atribuitivo e execute este método
      * para cadastrar o mesmo no sistema. Validações serão feitas!
      * @param ARRAY $Data = Atribuitivo 
      */
@@ -29,7 +29,7 @@ class AdminBancoFotos {
 
         if ($this->Data['foto']):
             $ImgName = "tipo-{$this->Tipo}-id-{$this->Id}-" . rand();
-            $upload = new Upload;
+            $upload = new Upload('../../../uploads/');
             $upload->Image($this->Data['foto'], $ImgName, 640, 'banco_fotos');
         endif;
 
@@ -43,7 +43,7 @@ class AdminBancoFotos {
     }
 
     /**
-     * <b>Remover Banner:</b> Informe o ID do registro que deseja remover.
+     * <b>Remover Foto:</b> Informe o ID do registro que deseja remover.
      * @param INT $BannerId = Id da revista
      */
     public function ExeDelete($BannerId) {
@@ -106,7 +106,7 @@ class AdminBancoFotos {
         endif;
     }
 
-    //Cadastrar Banner
+    //Cadastrar Foto
     private function Create() {
         $Create = new Create;
         $Create->ExeCreate(self::Entity, $this->Data);
@@ -116,14 +116,13 @@ class AdminBancoFotos {
         endif;
     }
 
-    //Excluir Banner
+    //Excluir Foto
     private function Delete() {
         $Delete = new Delete;
         $Delete->ExeDelete(self::Entity, "WHERE id = :id", "id={$this->Id}");
         if ($Delete->getResult()):
-            $this->Error = ["Banner removido com sucesso do sistema!", WS_ACCEPT];
+            $this->Error = ["Foto removida com sucesso!", WS_ACCEPT];
             $this->Result = true;
         endif;
     }
-
 }

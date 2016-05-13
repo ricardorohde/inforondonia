@@ -15,9 +15,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         if (isset($dados)):
             require('../../_models/AdminBancoFotos.class.php');
             $dados['foto'] = ($_FILES['file']['tmp_name'] ? $_FILES['file'] : null);
-
-            if (!empty($dados['foto'])):
-                
+            if (!empty($dados['foto'])):                
                 $sendFotos = new AdminBancoFotos;
                 $sendFotos->ExeCreate($dados);
                 if (!$sendFotos->getResult()):
@@ -25,7 +23,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 else:
                     WSErro($sendFotos->getError()[0], $sendFotos->getError()[1]);
                 endif;
-                
             endif;
         endif;
     endif;
