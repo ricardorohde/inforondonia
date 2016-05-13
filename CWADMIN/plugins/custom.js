@@ -28,22 +28,18 @@ $(document).ready(function () {
     });
     /*Esconde avisos*/
     $('.alert').delay(5000).fadeOut(1000);
-
     /*Esconde dados de acesso*/
     $('.dadosAcess').hide();
-
     /*Iniciar o DatePicker*/
     $('.datepicker').datepicker({
         language: 'pt-BR'
     });
 });
-
 $(function () {
     $("[data-mask]").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/aaaa"});
     $("[datetime-mask]").inputmask("datetime");
     $("[phone-mask]").inputmask("(99) 9999-9999");
 });
-
 //Exibi ou Esconde os dados de acesso
 $(function () {
     var chkalt = "input[name='altDadosAcess']";
@@ -55,7 +51,6 @@ $(function () {
         }
     });
 });
-
 //Desabilita campos 
 $(function checkDestaque() {
     var cDestaque = "#destaque";
@@ -78,7 +73,6 @@ $(function checkDestaque() {
         }
     });
 });
-
 $(function checkColunista() {
     var cColuna = "#coluna";
     var cColunista = '#colunista';
@@ -90,6 +84,5 @@ $(function checkColunista() {
         }
     });
 });
-
 //CKEditor
 CKEDITOR.replaceAll();
