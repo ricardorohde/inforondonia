@@ -119,7 +119,7 @@
             <div class="main_grp_outrasnoticias">
                 <?php
                 $OutrasNews = new Read;
-                $OutrasNews->ExeRead('noticias', "WHERE titulo != :tit AND coluna = :col ORDER BY data DESC LIMIT :limit OFFSET :offset", "tit=''&col=nao&limit=14&offset=0");
+                $OutrasNews->ExeRead('noticias', "WHERE titulo != :tit AND coluna = :col ORDER BY data DESC LIMIT :limit OFFSET :offset", "tit=''&col=nao&limit=13&offset=0");
                 if ($OutrasNews->getResult()):
                     foreach ($OutrasNews->getResult() as $nOutras):
                         $nOutras['titulo'] = Check::Words($nOutras['titulo'], 20);
@@ -226,7 +226,7 @@
                             <div class="main_box_videos">
                                 <a href="<?= HOME . '/video/' . $videos['url_name']; ?>" title="<?= $videos['titulo']; ?>">
                                     <div class="main_box_videos_img"><img src="<?= $videos['foto']; ?>" alt="<?= $videos['titulo'] ?>" title="<?= $videos['titulo'] ?>"></div>
-                                    <div class="main_box_videos_tit"><?= $videos['titulo'] ?></div>
+                                    <div class="main_box_videos_tit"><?= Check::Words($videos['titulo'], 8); ?></div>
                                 </a>
                             </div>
                             <?php
