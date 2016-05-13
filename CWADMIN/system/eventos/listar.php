@@ -67,7 +67,7 @@
                                         <td><?= $reg['destaque']; ?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="painel.php?exe=eventos/addfotos&id=<?= $reg['id']; ?>&tipo=E" class="btn btn-flat btn-sm btn-success "><b class="fa fa-camera"></b> Add Fotos</a>
+                                                <a href="painel.php?exe=bancofotos/addfotos&id=<?= $reg['id']; ?>&tipo=E" class="btn btn-flat btn-sm btn-success "><b class="fa fa-camera"></b> Add Fotos</a>
                                                 <a href="painel.php?exe=eventos/editar&id=<?= $reg['id']; ?>" class="btn btn-flat btn-sm btn-primary "><b class="fa fa-edit"></b> Editar</a>
                                                 <a href="painel.php?exe=eventos/listar&acao=excluir&id=<?= $reg['id']; ?>" class="btn btn-flat btn-sm btn-danger "><b class="fa fa-trash-o"></b> Excluir</a>
                                             </div>                                           

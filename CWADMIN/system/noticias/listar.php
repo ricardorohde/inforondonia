@@ -69,7 +69,7 @@
                                         <td><?= $reg['destaque']; ?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="painel.php?exe=noticias/addfotos&id=<?= $reg['id']; ?>&tipo=N" class="btn btn-flat btn-sm btn-success "><b class="fa fa-camera"></b> Add Fotos</a>
+                                                <a href="painel.php?exe=bancofotos/addfotos&id=<?= $reg['id']; ?>&tipo=N" class="btn btn-flat btn-sm btn-success "><b class="fa fa-camera"></b> Add Fotos</a>
                                                 <a href="painel.php?exe=noticias/editar&id=<?= $reg['id']; ?>" class="btn btn-flat btn-sm btn-primary "><b class="fa fa-edit"></b> Editar</a>
                                                 <a href="painel.php?exe=noticias/listar&acao=excluir&id=<?= $reg['id']; ?>" class="btn btn-flat btn-sm btn-danger "><b class="fa fa-trash-o"></b> Excluir</a>
                                             </div>                                           
