@@ -178,7 +178,7 @@
                                 <a href="<?= HOME . '/evento/' . $eventos['url_name']; ?>" title="<?= $eventos['evento']; ?>">
                                     <div class="main_box_eventos_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $eventos['foto'] . '&w=425&h=175'; ?>" alt="<?= $eventos['evento']; ?>" title="<?= $eventos['evento']; ?>" ></div>
                                     <div class="main_box_eventos_dat"><i class="fa fa-calendar"></i> <?= $eventos['data']; ?></div>
-                                    <div class="main_box_eventos_tit"><?= $eventos['evento']; ?></div>
+                                    <div class="main_box_eventos_tit"><?= Check::Words($eventos['evento'],6); ?></div>
                                 </a>
                             </div>
                             <?php

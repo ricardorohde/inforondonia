@@ -24,6 +24,7 @@ class AdminBancoFotos {
      */
     public function ExeCreate(array $Data) {
         $this->Data = $Data;
+        $this->Id = $this->Data['id_tipo'];
         $this->Tipo = $this->Data['tipo'];
         $this->checkData();
 
