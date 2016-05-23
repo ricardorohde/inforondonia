@@ -123,7 +123,7 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .main_blc_eventos header hgroup h1{ font-size: 1.2em; color: #0D75FF; text-decoration: underline;}
 .main_blc_eventos header hgroup h2{ font-size: 0.8125em; color: #000000;}
 .main_grp_eventos{ width: 100%; float: left;}
-.main_box_eventos{width: 24%; min-height: 135px; margin: 2% 0.5%; float: left;}
+.main_box_eventos{width: 24%; min-height: 140px; margin: 2% 0.5%; float: left;}
 .main_box_eventos_img{ width: 100%; float: left; background: #FFF;}
 .main_box_eventos_dat{ width: 100%; color: #A8ACAF; font-size: 0.75em;  margin-top: 6px; float: left;}
 .main_box_eventos_tit{ width: 100%; color: #000000; font-size: 0.75em; margin-top: 6px; float: left;}
