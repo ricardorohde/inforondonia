@@ -67,7 +67,7 @@ class Seo {
             case 'index':
                 $this->Data = [SITENAME . " - A informação é a nossa prioridade", SITEDESC, HOME, INCLUDE_PATH . '/images/logo_midia.jpg'];
                 break;
-            
+
             //SEO:: BUSCA
             case 'busca':
                 $ReadSeo->ExeRead("noticias", "WHERE (titulo LIKE '%' :link '%' OR noticia LIKE '%' :link '%')", "link={$this->Link}");
@@ -79,7 +79,7 @@ class Seo {
                     $this->Data = ["Pesquisa por: {$this->Link}" . ' - ' . SITENAME, "Sua pesquisa por {$this->Link} retornou {$this->seoData['count']} resultados!", HOME . "/busca/{$this->Link}", INCLUDE_PATH . '/images/logo-topo.png'];
                 endif;
                 break;
-                
+
             //SEO:: NOTICIAS
             case 'noticias':
                 $this->Data = [SITENAME . " - Notícias", "Notícias de Rondônia, Brasil e do mundo.", HOME . '/noticias', INCLUDE_PATH . '/images/logo_midia.jpg'];
@@ -215,7 +215,7 @@ class Seo {
         $this->seoTags .= '<meta property="og:locale" content="pt_BR" />' . "\n";
         $this->seoTags .= '<meta property="og:title" content="' . $this->Tags['Title'] . '" />' . "\n";
         $this->seoTags .= '<meta property="og:description" content="' . $this->Tags['Content'] . '" />' . "\n";
-        $this->seoTags .= '<meta property="og:image" content="' . $this->Tags['Image'] . '" />' . "\n";
+        $this->seoTags .= '<meta property="og:image" content="' . HOME . '/uploads/' . $this->Tags['Image'] . '" />' . "\n";
         $this->seoTags .= '<meta property="og:url" content="' . $this->Tags['Link'] . '" />' . "\n";
         $this->seoTags .= '<meta property="og:type" content="article" />' . "\n";
         $this->seoTags .= '<meta property="fb:app_id" content="1540165802953123" />' . "\n";
