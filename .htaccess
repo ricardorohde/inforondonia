@@ -5,10 +5,6 @@ RewriteRule ^(.*)$ index.php?url=$1
 #Redirecionamentos: sem www para com www.
 #RewriteCond %{HTTP_HOST} ^inforondonia.com.br$
 #RewriteRule ^/?$ "http\:\/\/www\.inforondonia\.com\.br\/" [R=301,L]
-#Redirecionamentos: inforondonia.com
-RewriteCond %{HTTP_HOST} ^inforondonia\.com$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.inforondonia\.com$
-RewriteRule ^/?$ "http\:\/\/www\.inforondonia\.com\.br\/" [R=301,L]
 #Redirecionamentos: portalinforondonia.com.br 
 RewriteCond %{HTTP_HOST} ^portalinforondonia\.com\.br$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.portalinforondonia\.com\.br$
@@ -16,4 +12,8 @@ RewriteRule ^/?$ "http\:\/\/www\.inforondonia\.com\.br" [R=301,L]
 #Redirecionamentos: informarondonia.com
 RewriteCond %{HTTP_HOST} ^informarondonia\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.informarondonia\.com$
-RewriteRule ^/?$ "http\:\/\/www\.inforondonia\.com\.br\/" [R=301,L]
+RewriteRule ^/?$ "http\:\/\/www\.inforondonia\.com\.br" [R=301,L]
+#Redirecionamentos: inforondonia.com
+RewriteCond %{HTTP_HOST} ^inforondonia\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.inforondonia\.com$
+RewriteRule ^/?$ "http\:\/\/www\.inforondonia\.com\.br" [R=301,L]
