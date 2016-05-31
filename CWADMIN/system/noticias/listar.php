@@ -47,25 +47,25 @@
                                 <th>Id</th>
                                 <th>Titulo</th>
                                 <th>Views</th>
-                                <th>Cadastrada</th>
+                                <th>Cadastrada por</th>
                                 <th>Destaque</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $readUser = new Read;
-                            $readUser->ExeRead("noticias", "WHERE titulo != :l ORDER BY id DESC", "l= ''");
-                            if (!$readUser->getResult()):
-
-                            else:
-                                foreach ($readUser->getResult() as $reg):
+                            $readReg = new Read;
+                            $readReg->ExeRead("noticias n, usuarios u", "WHERE n.titulo != :l AND n.qm_cadastr = u.id ORDER BY n.id DESC", "l= ''");                            
+                            if (!$readReg->getResult()):
+                                #Não retornou nenhum registro.
+                            else:                                
+                                foreach ($readReg->getResult() as $reg):
                                     ?>
                                     <tr>
                                         <td><?= $reg['id']; ?></td>
-                                        <td><?= Check::Words($reg['titulo'], 10); ?></td>
+                                        <td><?= Check::Words($reg['titulo'], 6); ?></td>
                                         <td><?= !empty($reg['contador']) ? $reg['contador'] : 0; ?></td>
-                                        <td><?= date('d/m/Y', strtotime($reg['data'])); ?></td>
+                                        <td><?= '<b>'.Check::Words($reg['nome'],1,' ').'</b> em '.date('d/m/Y', strtotime($reg['data'])); ?></td>
                                         <td><?= $reg['destaque']; ?></td>
                                         <td>
                                             <div class="btn-group">
