@@ -11,7 +11,7 @@ endif;
         <div class="main_content">
             <header class="header_content">
                 <h1 class="header_title"><i class="fa fa-camera"></i> <?= $evento; ?> </h1>
-                <p class="header_subtitle"><i class="fa fa-calendar"></i>  <?= $data; ?> - <i class="fa fa-map-marker"></i> <?= $local; ?> - <i class="fa fa-globe"></i> <?= $cidadeuf; ?></p>
+                <p class="header_subtitle"><i class="fa fa-calendar"></i>  <?= $data; ?> - <i class="fa fa-camera-retro"></i> <?= $fotografo; ?> - <i class="fa fa-map-marker"></i> <?= $local; ?> - <i class="fa fa-globe"></i> <?= $cidadeuf; ?></p>
                 <span class="header_line"></span>
                 <div class="header_social">
                     <a href="https://www.facebook.com/sharer/sharer.php?u=<?= HOME . '/evento/' . $url_name; ?>" title="Compartilhar no Facebook" class="rds_facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
