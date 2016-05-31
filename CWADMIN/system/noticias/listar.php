@@ -55,7 +55,7 @@
                         <tbody>
                             <?php
                             $readReg = new Read;
-                            $readReg->ExeRead("noticias n, usuarios u", "WHERE n.titulo != :l AND n.qm_cadastr = u.id ORDER BY n.id DESC", "l= ''");                            
+                            $readReg->FullRead("SELECT n.*, u.nome FROM noticias n, usuarios u WHERE n.titulo != :l AND n.qm_cadastr = u.id ORDER BY n.id DESC", "l= ''");
                             if (!$readReg->getResult()):
                                 #Não retornou nenhum registro.
                             else:                                
