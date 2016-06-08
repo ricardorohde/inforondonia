@@ -36,18 +36,6 @@ Check::UserOnline();
         </script>
         <!-- End Google Tag Manager -->
 
-        <?php
-        //Topo
-        require(REQUIRE_PATH . '/inc/header.inc.php');
-
-        //Capa
-        if (!require($Link->getPatch())):
-            WSErro('Erro ao incluir arquivo de navegação!', WS_ERROR, true);
-        endif;
-
-        //Rodape
-        require(REQUIRE_PATH . '/inc/footer.inc.php');
-        ?>
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -65,6 +53,19 @@ Check::UserOnline();
             ga('send', 'pageview');
 
         </script>
+
+        <?php
+        //Topo
+        require(REQUIRE_PATH . '/inc/header.inc.php');
+
+        //Capa
+        if (!require($Link->getPatch())):
+            WSErro('Erro ao incluir arquivo de navegação!', WS_ERROR, true);
+        endif;
+
+        //Rodape
+        require(REQUIRE_PATH . '/inc/footer.inc.php');
+        ?>
     </body>
     <!-- JS -->
     <script src="<?= HOME; ?>/_cdn/jquery.js"></script>
