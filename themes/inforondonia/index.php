@@ -178,7 +178,7 @@
                                 <a href="<?= HOME . '/evento/' . $eventos['url_name']; ?>" title="<?= $eventos['evento']; ?>">
                                     <div class="main_box_eventos_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $eventos['foto'] . '&w=425&h=175'; ?>" alt="<?= $eventos['evento']; ?>" title="<?= $eventos['evento']; ?>" ></div>
                                     <div class="main_box_eventos_dat"><i class="fa fa-calendar"></i> <?= $eventos['data']; ?></div>
-                                    <div class="main_box_eventos_tit"><?= Check::Words($eventos['evento'],6); ?></div>
+                                    <div class="main_box_eventos_tit"><?= Check::Words($eventos['evento'], 6); ?></div>
                                 </a>
                             </div>
                             <?php
@@ -295,7 +295,7 @@
                                         </div>
                                         <div class="main_box_colunas_inf">
                                             <div class="main_box_colunas_tit"><?= Check::Words($News['titulo'], 8); ?></div>
-                                            <div class="main_box_colunas_pre"><?= Check::Words($News['noticia'], 5); ?></div>
+                                            <div class="main_box_colunas_pre"><?= Check::Words(ucfirst(mb_strtolower($News['noticia'], 5), 'UTF-8')); ?></div>
                                             <div class="main_box_colunas_dat"><i class="fa fa-clock-o"></i> <?= date('d/m/Y H:i', strtotime($News['data'])); ?> hrs</div>
                                         </div>
                                     </div>
