@@ -15,7 +15,7 @@
             $banners->ExeRead("banners", "WHERE tipo = :idtipo ORDER BY rand()", "idtipo=2");
             if ($banners->getResult()):
                 ?>
-                <div class=" main_header_banner cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                <div class=" main_header_banner cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -30,7 +30,7 @@
             $banners->setPlaces("idtipo=3");
             if ($banners->getResult()):
                 ?>
-                <div class="main_header_banner cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                <div class="main_header_banner cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";

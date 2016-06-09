@@ -48,7 +48,7 @@
             $banners->setPlaces("idtipo=4");
             if ($banners->getResult()):
                 ?>
-                <div class="banner_mainleft_full cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                <div class="banner_mainleft_full cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -91,7 +91,7 @@
             if ($banners->getResult()):
                 ?>
                 <div class="banner_border">
-                    <div class="banner_mainright_full cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                    <div class="banner_mainright_full cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -146,7 +146,7 @@
             $banners->setPlaces("idtipo=9");
             if ($banners->getResult()):
                 ?>
-                <div class="banner_mainright_meio cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                <div class="banner_mainright_meio cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -192,7 +192,7 @@
             $banners->setPlaces("idtipo=10");
             if ($banners->getResult()):
                 ?>
-                <div class="banner_mainright_meio cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                <div class="banner_mainright_meio cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -241,7 +241,7 @@
                 $banners->setPlaces("idtipo=5");
                 if ($banners->getResult()):
                     ?>
-                    <div class="banner_mainleft_small cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                    <div class="banner_mainleft_small cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -256,7 +256,7 @@
                 $banners->setPlaces("idtipo=6");
                 if ($banners->getResult()):
                     ?>
-                    <div class="banner_mainleft_small cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                    <div class="banner_mainleft_small cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -295,7 +295,7 @@
                                         </div>
                                         <div class="main_box_colunas_inf">
                                             <div class="main_box_colunas_tit"><?= Check::Words($News['titulo'], 8); ?></div>
-                                            <div class="main_box_colunas_pre"><?= Check::Words(ucfirst(mb_strtolower($News['noticia'], 5), 'UTF-8')); ?></div>
+                                            <div class="main_box_colunas_pre"><?= ucfirst(strtolower(Check::Words($News['noticia'], 5))); ?></div>
                                             <div class="main_box_colunas_dat"><i class="fa fa-clock-o"></i> <?= date('d/m/Y H:i', strtotime($News['data'])); ?> hrs</div>
                                         </div>
                                     </div>
@@ -414,7 +414,7 @@
             if ($banners->getResult()):
                 ?>
                 <div class="banner_border margin_bottom">
-                    <div class="banner_mainright_full cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                    <div class="banner_mainright_full cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -432,7 +432,7 @@
             if ($banners->getResult()):
                 ?>
                 <div class="banner_border">
-                    <div class="banner_mainright_small cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+                    <div class="banner_mainright_small cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
@@ -451,7 +451,7 @@
         $banners->setPlaces("idtipo=7");
         if ($banners->getResult()):
             ?>
-            <div class="banner_main_full cycle-slideshow" data-cycle-timeout="5000" data-cycle-slides="> a">
+            <div class="banner_main_full cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
                 <?php
                 foreach ($banners->getResult() as $bnr):
                     echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";

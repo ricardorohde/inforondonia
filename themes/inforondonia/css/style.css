@@ -75,8 +75,9 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .main_header_menu ul li a{ color: #34314B; padding: 15px 10px;}
 .main_header_menu ul li a:hover{ color: #FFF; background: #34314B;}
 .main_header_busca{ width: 26%; border-left: 1px solid #E9E9E9; float: right;}
-.main_header_busca .busca_input{ width: 86%; padding: 14px 5px; margin-top: 1px; float: left; border: none;}
-.main_header_busca .busca_btn{ width: 14%; padding: 10px 0; float: left; background: #FFF; border: none; cursor: pointer;}
+.main_header_busca .busca_input{ width: 75%; padding: 14px 5px; margin-top: 1px; float: left; border: none;}
+.main_header_busca .busca_input:focus{ outline: none;}
+.main_header_busca .busca_btn{ width: 14%; padding: 10px 0; float: right; background: #FFF; border: none; cursor: pointer;}
 /*=== MEIO ===*/
 .main_contacao { width: 100%; padding-top: 1% ; font-size: 0.8125em;  float: left; }
 .main_content{ width: 100%; padding-top: 10px; float: left;}
@@ -149,7 +150,7 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .main_box_colunas{width: 49%; margin: 2% 0.5%; float: left;}
 .main_box_colunas_imgname{ width: 40%; float: left;}
 .main_box_colunas_img{ width: 100%; background: #FFF; float: left;}
-.main_box_colunas_nom{ width: 100%; color: #663366; font-size: 0.70em; font-weight: bold; float: left; }
+.main_box_colunas_nom{ width: 100%; color: #663366; font-size: 0.70em; font-weight: bold; float: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .main_box_colunas_inf{ width: 59%; margin-left: 1%; float: left;}
 .main_box_colunas_tit{ width: 100%; color: #000000; font-size: 0.75em; font-weight: bold; float: left;}
 .main_box_colunas_pre{ width: 100%; color: #000000; font-size: 0.75em; float: left;}
@@ -327,7 +328,7 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
     .main_header_rds{ margin: 10% 2%; float: right;}
     .box_header_banners{ width: 100% !important; margin-bottom: 5px;}
     .main_header_menu ul li a{ padding: 15px 20px;}
-    .main_header_busca{ width: 50%; right: 10%;}
+    .main_header_busca{ width: 55%; right: 10%;}
     /*=== SLIDE ===*/
     section#slide{ height: 240px;}
     section#slide ul li{ height: 240px;}
