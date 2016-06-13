@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Servidor:                     localhost
--- Versão do servidor:           10.1.8-MariaDB - mariadb.org binary distribution
+-- Servidor:                     127.0.0.1
+-- Versão do servidor:           5.6.21 - MySQL Community Server (GPL)
 -- OS do Servidor:               Win32
--- HeidiSQL Versão:              9.3.0.5086
+-- HeidiSQL Versão:              9.3.0.5093
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -11,6 +11,19 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- Copiando estrutura para tabela _inforondonia_2016.institucional
+DROP TABLE IF EXISTS `institucional`;
+CREATE TABLE IF NOT EXISTS `institucional` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `instituicao` varchar(100) NOT NULL,
+  `sobre` text,
+  `qm_cadastr` int(11) DEFAULT NULL,
+  `qm_alterou` int(11) DEFAULT NULL,
+  `data_alterou` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Armazena informações institucional do site.';
+
+-- Exportação de dados foi desmarcado.
 -- Copiando estrutura para tabela _inforondonia_2016.menu
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
@@ -25,20 +38,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   CONSTRAINT `fk_menu_id_menu_tipo` FOREIGN KEY (`id_menu_tipo`) REFERENCES `menu_tipo` (`id_menu_tipo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='Menu';
 
--- Copiando dados para a tabela _inforondonia_2016.menu: ~8 rows (aproximadamente)
-/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-REPLACE INTO `menu` (`id_menu`, `id_menu_tipo`, `titulo`, `case`, `pagina`, `ico_menu`) VALUES
-	(1, 1, 'Usuários', 'usuarios', '#', 'fa-users'),
-	(2, 1, 'Eventos', 'eventos', '#', 'fa-camera'),
-	(5, 1, 'Videos', 'videos', '#', 'fa-video-camera'),
-	(6, 1, 'Notícias', 'noticias', '#', 'fa-bullhorn'),
-	(7, 1, 'Colunistas', 'colunistas', '#', 'fa-comments'),
-	(8, 1, 'TVs', 'tvs', '#', 'fa-desktop'),
-	(9, 1, 'Institucional', 'institucional', '#', 'fa-bookmark'),
-	(14, 1, 'Banners', 'banners', '#', 'fa-photo'),
-	(15, 1, 'Enquete', 'enquete', '#', 'fa-bar-chart');
-/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
-
+-- Exportação de dados foi desmarcado.
 -- Copiando estrutura para tabela _inforondonia_2016.menu_sub
 DROP TABLE IF EXISTS `menu_sub`;
 CREATE TABLE IF NOT EXISTS `menu_sub` (
@@ -52,31 +52,33 @@ CREATE TABLE IF NOT EXISTS `menu_sub` (
   KEY `fkmenu_sub_id_menu` (`id_menu`),
   KEY `idx_menu_sub_titulo` (`titulo`),
   CONSTRAINT `fk_menu_sub_id_menu` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='Menu Sub';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='Menu Sub';
 
--- Copiando dados para a tabela _inforondonia_2016.menu_sub: ~14 rows (aproximadamente)
-/*!40000 ALTER TABLE `menu_sub` DISABLE KEYS */;
-REPLACE INTO `menu_sub` (`id_menu_sub`, `id_menu`, `titulo`, `case`, `pagina`, `ico_menu`) VALUES
-	(1, 1, 'Novo Cadastro', 'usuarios', 'cadastrar', 'fa-angle-double-right'),
-	(2, 1, 'Listar Cadastros', 'usuarios', 'listar', 'fa-angle-double-right'),
-	(3, 2, 'Novo Cadastro', 'eventos', 'cadastrar', 'fa-angle-double-right'),
-	(4, 2, 'Listar Cadastros', 'eventos', 'listar', 'fa-angle-double-right'),
-	(5, 6, 'Novo Cadastro', 'noticias', 'cadastrar', 'fa-angle-double-right'),
-	(6, 6, 'Listar Cadastros', 'noticias', 'listar', 'fa-angle-double-right'),
-	(7, 5, 'Novo Cadastro', 'videos', 'cadastrar', 'fa-angle-double-right'),
-	(8, 5, 'Listar Cadastros', 'videos', 'listar', 'fa-angle-double-right'),
-	(9, 14, 'Novo Cadastro', 'banners', 'cadastrar', 'fa-angle-double-right'),
-	(10, 14, 'Listar Cadastros', 'banners', 'listar', 'fa-angle-double-right'),
-	(11, 15, 'Novo Cadastro', 'enquete', 'cadastrar', 'fa-angle-double-right'),
-	(12, 15, 'Listar Cadastros', 'enquete', 'listar', 'fa-angle-double-right'),
-	(13, 7, 'Novo Cadastro', 'colunistas', 'cadastrar', 'fa-angle-double-right'),
-	(14, 7, 'Listar Cadastros', 'colunistas', 'listar', 'fa-angle-double-right'),
-	(15, 8, 'Novo Cadastro', 'tvs', 'cadastrar', 'fa-angle-double-right'),
-	(16, 8, 'Listar Cadastros', 'tvs', 'listar', 'fa-angle-double-right'),
-	(17, 9, 'Novo Cadastro', 'institucional', 'cadastrar', 'fa-angle-double-right'),
-	(18, 9, 'Listar Cadastros', 'institucional', 'listar', 'fa-angle-double-right');
-/*!40000 ALTER TABLE `menu_sub` ENABLE KEYS */;
+-- Exportação de dados foi desmarcado.
+-- Copiando estrutura para tabela _inforondonia_2016.menu_sub_nav
+DROP TABLE IF EXISTS `menu_sub_nav`;
+CREATE TABLE IF NOT EXISTS `menu_sub_nav` (
+  `id_menu_sub_nav` int(11) NOT NULL AUTO_INCREMENT,
+  `id_menu_sub` int(11) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `case` varchar(100) NOT NULL,
+  `pagina` varchar(150) NOT NULL,
+  `ico_menu` varchar(50) NOT NULL DEFAULT 'fa-angle-double-right',
+  PRIMARY KEY (`id_menu_sub_nav`),
+  KEY `fkmenu_sub_id_menu_sub` (`id_menu_sub`),
+  CONSTRAINT `fk_menu_sub_id_menu_sub` FOREIGN KEY (`id_menu_sub`) REFERENCES `menu_sub` (`id_menu_sub`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Menu Sub Nav';
 
+-- Exportação de dados foi desmarcado.
+-- Copiando estrutura para tabela _inforondonia_2016.menu_tipo
+DROP TABLE IF EXISTS `menu_tipo`;
+CREATE TABLE IF NOT EXISTS `menu_tipo` (
+  `id_menu_tipo` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_menu_tipo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Menu Tipo';
+
+-- Exportação de dados foi desmarcado.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
