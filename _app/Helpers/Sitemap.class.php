@@ -131,7 +131,7 @@ class Sitemap {
             $this->Format .= '<link>' . HOME . '/noticia/' . $Post['url_name'] . '</link>' . "\n";
             $this->Format .= '<pubDate>' . date('D, d M Y H:i:s O', strtotime($Post['data'])) . '</pubDate>' . "\n";
             $this->Format .= '<description>';
-            $this->Format .= htmlentities(Check::Words($Post['noticia'], 30, '[...]'));
+            $this->Format .= '<img style="float:right" width="512" height="384" src="'. HOME . '/uploads/'.$Post['foto'].'" alt="'.$Post['titulo'].'" title="'.$Post['titulo'].'" /> '.htmlentities(Check::Words($Post['noticia'], 30, '[...]'), ENT_NOQUOTES, 'UTF-8');
             $this->Format .= '</description>';
             $this->Format .= '</item>' . "\n";
         endforeach;
