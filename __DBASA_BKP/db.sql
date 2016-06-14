@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
--- Servidor:                     127.0.0.1
--- Versão do servidor:           5.6.21 - MySQL Community Server (GPL)
--- OS do Servidor:               Win32
+-- Servidor:                     inforondonia.com.br
+-- Versão do servidor:           5.5.50-cll - MySQL Community Server (GPL)
+-- OS do Servidor:               Linux
 -- HeidiSQL Versão:              9.3.0.5093
 -- --------------------------------------------------------
 
@@ -11,7 +11,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Copiando estrutura para tabela _inforondonia_2016.institucional
+-- Copiando estrutura para tabela inforobr_cw_db2016.institucional
 DROP TABLE IF EXISTS `institucional`;
 CREATE TABLE IF NOT EXISTS `institucional` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -21,64 +21,14 @@ CREATE TABLE IF NOT EXISTS `institucional` (
   `qm_alterou` int(11) DEFAULT NULL,
   `data_alterou` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Armazena informações institucional do site.';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Armazena informações institucional do site.';
 
--- Exportação de dados foi desmarcado.
--- Copiando estrutura para tabela _inforondonia_2016.menu
-DROP TABLE IF EXISTS `menu`;
-CREATE TABLE IF NOT EXISTS `menu` (
-  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
-  `id_menu_tipo` int(11) NOT NULL,
-  `titulo` varchar(100) NOT NULL,
-  `case` varchar(100) NOT NULL,
-  `pagina` varchar(150) NOT NULL,
-  `ico_menu` varchar(50) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id_menu`),
-  KEY `fk_menu_id_menutipo` (`id_menu_tipo`),
-  CONSTRAINT `fk_menu_id_menu_tipo` FOREIGN KEY (`id_menu_tipo`) REFERENCES `menu_tipo` (`id_menu_tipo`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='Menu';
+-- Copiando dados para a tabela inforobr_cw_db2016.institucional: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `institucional` DISABLE KEYS */;
+REPLACE INTO `institucional` (`id`, `instituicao`, `sobre`, `qm_cadastr`, `qm_alterou`, `data_alterou`) VALUES
+	(1, 'INFORONDONIA', '<p>Ol&aacute;!<br />\r\nPrimeiramente, obrigado por visitar nosso site...<br />\r\nSomos uma equipe s&eacute;ria, que trabalha em conjunto para levar at&eacute; voc&ecirc;,&nbsp;informa&ccedil;&atilde;o de qualidade, n&atilde;o s&oacute; do estado de Rond&ocirc;nia mais do mundo todo.<br />\r\nNosso site disp&otilde;e de noticias, coberturas de eventos e os nossos&nbsp;colunistas que trazem sempre uma tema que abrange o debate.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3>Contatos</h3>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Ricardo Barros: 69 - 8449 - 4515</p>\r\n\r\n<p>E-mail: <a href="mailto:barrosjornalista@gmail.com" target="_blank">barrosjornalista@gmail.com</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Luiz Alberto: 69 - 8425 - 9695<br />\r\nE-mail: <a href="mailto:luiz_bad@hotmail.com" target="_blank">luiz_bad@hotmail.com</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href="mailto:contato@inforondonia.com.br" target="_blank">contato@inforondonia.com.br</a></p>\r\n\r\n<p><a href="mailto:contatoinforondonia@gmail.com" target="_blank">contatoinforondonia@gmail.com</a></p>\r\n', 1, NULL, '2016-06-13 21:05:24');
+/*!40000 ALTER TABLE `institucional` ENABLE KEYS */;
 
--- Exportação de dados foi desmarcado.
--- Copiando estrutura para tabela _inforondonia_2016.menu_sub
-DROP TABLE IF EXISTS `menu_sub`;
-CREATE TABLE IF NOT EXISTS `menu_sub` (
-  `id_menu_sub` int(11) NOT NULL AUTO_INCREMENT,
-  `id_menu` int(11) NOT NULL,
-  `titulo` varchar(100) NOT NULL,
-  `case` varchar(100) NOT NULL,
-  `pagina` varchar(150) NOT NULL,
-  `ico_menu` varchar(50) NOT NULL DEFAULT 'fa-angle-double-right',
-  PRIMARY KEY (`id_menu_sub`),
-  KEY `fkmenu_sub_id_menu` (`id_menu`),
-  KEY `idx_menu_sub_titulo` (`titulo`),
-  CONSTRAINT `fk_menu_sub_id_menu` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='Menu Sub';
-
--- Exportação de dados foi desmarcado.
--- Copiando estrutura para tabela _inforondonia_2016.menu_sub_nav
-DROP TABLE IF EXISTS `menu_sub_nav`;
-CREATE TABLE IF NOT EXISTS `menu_sub_nav` (
-  `id_menu_sub_nav` int(11) NOT NULL AUTO_INCREMENT,
-  `id_menu_sub` int(11) NOT NULL,
-  `titulo` varchar(100) NOT NULL,
-  `case` varchar(100) NOT NULL,
-  `pagina` varchar(150) NOT NULL,
-  `ico_menu` varchar(50) NOT NULL DEFAULT 'fa-angle-double-right',
-  PRIMARY KEY (`id_menu_sub_nav`),
-  KEY `fkmenu_sub_id_menu_sub` (`id_menu_sub`),
-  CONSTRAINT `fk_menu_sub_id_menu_sub` FOREIGN KEY (`id_menu_sub`) REFERENCES `menu_sub` (`id_menu_sub`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Menu Sub Nav';
-
--- Exportação de dados foi desmarcado.
--- Copiando estrutura para tabela _inforondonia_2016.menu_tipo
-DROP TABLE IF EXISTS `menu_tipo`;
-CREATE TABLE IF NOT EXISTS `menu_tipo` (
-  `id_menu_tipo` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_menu_tipo`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Menu Tipo';
-
--- Exportação de dados foi desmarcado.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
