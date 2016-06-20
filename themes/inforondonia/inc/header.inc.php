@@ -12,7 +12,7 @@
             <?php
             $banners = new Read;
             //Banner Topo 1
-            $banners->ExeRead("banners", "WHERE tipo = :idtipo ORDER BY rand()", "idtipo=2");
+            $banners->ExeRead("banners", "WHERE tipo = :idtipo AND data_inicial <= CURRENT_DATE AND data_final >= CURRENT_DATE ORDER BY rand()", "idtipo=2");
             if ($banners->getResult()):
                 ?>
                 <div class=" main_header_banner cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
