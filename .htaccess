@@ -3,8 +3,8 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1
 #Redirecionamentos: sem www para com www.
-#RewriteCond %{HTTP_HOST} ^inforondonia.com.br$
-#RewriteRule ^/?$ "http\:\/\/www\.inforondonia\.com\.br\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^inforondonia.com.br$
+RewriteRule ^/?$ "http\:\/\/www\.inforondonia\.com\.br\/" [R=301,L]
 #Redirecionamentos: portalinforondonia.com.br 
 RewriteCond %{HTTP_HOST} ^portalinforondonia\.com\.br$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.portalinforondonia\.com\.br$
