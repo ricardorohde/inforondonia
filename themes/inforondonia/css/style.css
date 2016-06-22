@@ -6,7 +6,7 @@ img, object, embed, video,iframe, iframe[style] { max-width: 100%; height: auto;
 /*=== PADRÃO ===*/
 body{ background-color: #F1F1F1; }
 .container{ width: 100%; float: left;}
-.content{ width: 80%; margin: 0 10%;}
+.content{ width: 80%; margin: 0 10%; float: left;}
 .btn_mais{ margin-top: 10px; margin-right: 5px; text-align: center; float: right; padding: 5px; border-radius: 0.2em;}
 .btn_maisnoticias{ background: #2A8B53; color: #FFF;}
 .btn_maisnoticias:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
