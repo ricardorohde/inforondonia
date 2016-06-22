@@ -111,7 +111,7 @@
         <div class="main_blc_outnews">
             <header>
                 <hgroup>
-                    <h1>Notícias</h1>
+                    <h1>NOTÍCIAS</h1>
                     <h2>Veja outras notícias</h2>
                 </hgroup>
                 <a href="<?= HOME . '/noticias'; ?>" class="btn_mais btn_maisnoticias">Mais Notícias</a>
@@ -161,7 +161,7 @@
             <div class="main_blc_eventos">
                 <header>
                     <hgroup>
-                        <h1>Eventos</h1>
+                        <h1>EVENTOS</h1>
                         <h2>Cobertura de Eventos</h2>
                     </hgroup>
                     <a href="<?= HOME . '/eventos'; ?>" class="btn_mais btn_maiseventos">Mais Eventos</a>
