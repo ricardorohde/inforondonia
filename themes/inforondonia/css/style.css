@@ -159,6 +159,16 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .main_blc_enquete header{ padding-left: 1%; border-top: 0.3125em solid #CC0066; }
 .main_blc_enquete header h1{ font-size: 1.2em; color: #CC0066; text-decoration: underline;}
 .main_grp_enquete{ width: 100%; height: 220px; float: left;}
+.main_box_enquete{ width: 100%; padding: 3%; float: left;}
+.box_enquete_perg{ width: 100%; margin-bottom: 10px; font-size: 0.875em; float: left;}
+.box_enquete_resp{ width: 100%; margin-bottom: 5px; font-size: 0.875em; float: left;}
+.box_enquete_resp input[type="radio"]:hover+label {cursor: pointer;}
+.box_enquete_resp input[type="radio"]:checked+label {font-weight:bold;}
+.box_enquete_btns{ width: 100%; margin-top: 15px; float: left;}
+.btn_enq{ width: 45%; text-align: center; padding: 3px; color: #FFF; background: #CC0066; border-radius: 0.2em;}
+.btn_enq:hover{ background: #990066; cursor: pointer; box-shadow: inset 0px 0px 2px #000;;}
+.btn_enq_vote{ float: left;}
+.btn_enq_result{ float: right;}
 .main_blc_acessadastempo{ width: 100%; padding-top: 10px; float: left;}
 .main_blc_acessadas{width: 69%; float: left; background: #FFF;}
 .main_blc_acessadas header{ width: 100%; float: left; padding-left: 1%; border-top: 0.3125em solid #2A8B53; background: #FFF;}
