@@ -19,7 +19,7 @@
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=745&h=95&zc=0\" class=\"banner\" />";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=745&h=95&zc=0\" class=\"banner\" />";
                         echo "</a>";
                     endforeach;
                     ?>
@@ -34,7 +34,7 @@
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=745&h=95&zc=0\" class=\"banner\" />";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=745&h=95&zc=0\" class=\"banner\" />";
                         echo "</a>";
                     endforeach;
                     ?>

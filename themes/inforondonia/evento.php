@@ -33,7 +33,7 @@ endif;
                 else:
                     foreach ($FotosGal->getResult() as $fotos):
                         echo '<div class="boxfotos">';
-                        echo '<img alt="' . $evento . '" title="' . $evento . '" src="' . HOME . '/tim.php?src=' . HOME . '/uploads/' . $fotos['foto'] . '&w=870"/>';
+                        echo '<img alt="' . $evento . '" title="' . $evento . '" src="' . HOME . '/tim.php?src=uploads/' . $fotos['foto'] . '&w=870"/>';
                         echo '</div>';
                     endforeach;
                 endif;

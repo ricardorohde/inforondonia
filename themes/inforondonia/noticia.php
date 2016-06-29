@@ -22,7 +22,7 @@ endif;
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140&zc=0\" class=\"banner\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=870&h=140&zc=0\" class=\"banner\" />";
                             echo "</a>";
                         endforeach;
                         ?>
@@ -47,7 +47,7 @@ endif;
                 <?php if (!empty($foto)): ?>
                     <figure class="article_news_image">
                         <a href="<?= HOME . '/uploads/' . $foto; ?>">
-                            <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $foto . '&w=870&h=480&zc=0'; ?>"/>
+                            <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=uploads/' . $foto . '&w=870&h=480&zc=0'; ?>"/>
                         </a>
                     </figure>
                 <?php endif; ?>
@@ -61,7 +61,7 @@ endif;
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140&zc=0\" class=\"banner\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=870&h=140&zc=0\" class=\"banner\" />";
                             echo "</a>";
                         endforeach;
                         ?>
@@ -95,7 +95,7 @@ endif;
                         <?php
                         foreach ($OutrasFotos->getResult() as $fotos):
                             echo '<div class="boxfotos">';
-                            echo '<img alt="' . $titulo . '" title="' . $titulo . '" src="' . HOME . '/tim.php?src=' . HOME . '/uploads/' . $fotos['foto'] . '&w=870"/>';
+                            echo '<img alt="' . $titulo . '" title="' . $titulo . '" src="' . HOME . '/tim.php?src=uploads/' . $fotos['foto'] . '&w=870"/>';
                             echo '</div>';
                         endforeach;
                         ?>
@@ -134,7 +134,7 @@ endif;
                                 ?>
                                 <div class="box_morenews">
                                     <a href="<?= HOME . '/noticia/' . $n['url_name']; ?>">
-                                        <div class="morenews_img"><img alt="<?= $n['titulo']; ?>" title="<?= $n['titulo']; ?>" src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $n['foto'] . '&w=380&h=180'; ?>"/></div>
+                                        <div class="morenews_img"><img alt="<?= $n['titulo']; ?>" title="<?= $n['titulo']; ?>" src="<?= HOME . '/tim.php?src=uploads/' . $n['foto'] . '&w=380&h=180'; ?>"/></div>
                                         <div class="morenews_dados">
                                             <div class="morenews_datetime"><i class="fa fa-calendar"></i> <?= $n['data']; ?> hrs</div>
                                             <div class="morenews_title"><?= $n['titulo']; ?></div>
@@ -156,7 +156,7 @@ endif;
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=870&h=140&zc=0\" class=\"banner\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=870&h=140&zc=0\" class=\"banner\" />";
                             echo "</a>";
                         endforeach;
                         ?>

@@ -33,7 +33,7 @@
                                 <li>
                                     <a href="<?= HOME . '/noticia/' . $sNews['url_name']; ?>" title="<?= $sNews['titulo']; ?>">
                                         <span><?= $sNews['titulo']; ?></span>
-                                        <img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $sNews['foto'] . '&w=890&h=380'; ?>" title="<?= $sNews['titulo']; ?>" alt="<?= $sNews['titulo']; ?>">
+                                        <img src="<?= HOME . '/tim.php?src=uploads/' . $sNews['foto'] . '&w=890&h=380'; ?>" title="<?= $sNews['titulo']; ?>" alt="<?= $sNews['titulo']; ?>">
                                     </a>
                                 </li>     
                                 <?php
@@ -52,7 +52,7 @@
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=887&h=140&zc=0\" class=\"banner\" />";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=887&h=140&zc=0\" class=\"banner\" />";
                         echo "</a>";
                     endforeach;
                     ?>
@@ -72,7 +72,7 @@
                         <div class="main_box_lastnews">
                             <a href="<?= HOME . '/noticia/' . $nDest['url_name']; ?>" title="<?= $nDest['titulo']; ?>">
                                 <div class="main_box_lastnews_img">
-                                    <img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $nDest['foto'] . '&w=425&h=175'; ?>" title="<?= $nDest['titulo']; ?>" alt="<?= $nDest['titulo']; ?>"></div>
+                                    <img src="<?= HOME . '/tim.php?src=uploads/' . $nDest['foto'] . '&w=425&h=175'; ?>" title="<?= $nDest['titulo']; ?>" alt="<?= $nDest['titulo']; ?>"></div>
                                 <div class="main_box_lastnews_cat"><b><?= $nDest['categoria']; ?></b></div>
                                 <div class="main_box_lastnews_tit"><?= $nDest['titulo']; ?></div>
                                 <div class="main_box_lastnews_dat"><i class="fa fa-clock-o"></i>  <?= $nDest['data']; ?> hrs</div>
@@ -95,7 +95,7 @@
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=346&h=438&zc=0\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=346&h=438&zc=0\" />";
                             echo "</a>";
                         endforeach;
                         ?>
@@ -150,7 +150,7 @@
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=722&h=130&zc=0\" class=\"banner\" />";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=722&h=130&zc=0\" class=\"banner\" />";
                         echo "</a>";
                     endforeach;
                     ?>
@@ -176,7 +176,7 @@
                             ?>
                             <div class="main_box_eventos">
                                 <a href="<?= HOME . '/evento/' . $eventos['url_name']; ?>" title="<?= $eventos['evento']; ?>">
-                                    <div class="main_box_eventos_img"><img src="<?= HOME . '/tim.php?src=' . HOME . '/uploads/' . $eventos['foto'] . '&w=425&h=175'; ?>" alt="<?= $eventos['evento']; ?>" title="<?= $eventos['evento']; ?>" ></div>
+                                    <div class="main_box_eventos_img"><img src="<?= HOME . '/tim.php?src=uploads/' . $eventos['foto'] . '&w=425&h=175'; ?>" alt="<?= $eventos['evento']; ?>" title="<?= $eventos['evento']; ?>" ></div>
                                     <div class="main_box_eventos_dat"><i class="fa fa-calendar"></i> <?= $eventos['data']; ?></div>
                                     <div class="main_box_eventos_tit"><?= Check::Words($eventos['evento'], 6); ?></div>
                                 </a>
@@ -196,7 +196,7 @@
                     <?php
                     foreach ($banners->getResult() as $bnr):
                         echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=722&h=130&zc=0\" class=\"banner\" />";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=722&h=130&zc=0\" class=\"banner\" />";
                         echo "</a>";
                     endforeach;
                     ?>
@@ -245,7 +245,7 @@
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=439&h=140&zc=0\" class=\"banner\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=439&h=140&zc=0\" class=\"banner\" />";
                             echo "</a>";
                         endforeach;
                         ?>
@@ -260,7 +260,7 @@
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=439&h=140&zc=0\" class=\"banner\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=439&h=140&zc=0\" class=\"banner\" />";
                             echo "</a>";
                         endforeach;
                         ?>
@@ -418,7 +418,7 @@
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=346&h=438&zc=0\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=346&h=438&zc=0\" />";
                             echo "</a>";
                         endforeach;
                         ?>
@@ -436,7 +436,7 @@
                         <?php
                         foreach ($banners->getResult() as $bnr):
                             echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=346&h=210&zc=0\" />";
+                            echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=346&h=210&zc=0\" />";
                             echo "</a>";
                         endforeach;
                         ?>
@@ -455,7 +455,7 @@
                 <?php
                 foreach ($banners->getResult() as $bnr):
                     echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
-                    echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=" . HOME . "/uploads/{$bnr['banner']}&w=1267&h=140&zc=0\" class=\"banner\" />";
+                    echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=1267&h=140&zc=0\" class=\"banner\" />";
                     echo "</a>";
                 endforeach;
                 ?>
