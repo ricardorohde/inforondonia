@@ -254,7 +254,7 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 /*=== COLUNISTAS ===*/
 .box_colunista{ width: 32.33%; margin: 0 0.5% 1% 0.5%; padding-bottom: 3px; border-bottom: 1px solid #cbcbcb; float: left;}
 .box_colunista .colunista_image{ width: 100%; float: left;}
-.box_colunista .colunista_dados{ width: 100%; float: left;}
+.box_colunista .colunista_dados{ width: 100%; min-height: 75px; float: left;}
 .box_colunista .colunista_dadosnome{ width: 100%; font-size: 0.9375em; font-weight: bold; float: left; color: #000;}
 .box_colunista .colunista_dadosultpost{ width: 100%; font-size: 0.875em; padding-top: 3px; float: left; color: #999;}
 .box_colunista .colunista_dadosdate{ width: 100%; font-size: 0.75em; font-style: italic; padding-top: 3px; float: left; color: #333;}

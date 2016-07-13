@@ -50,23 +50,25 @@
                     if ($foto->getResult()):
                         ?>
                         <div class="row">
-                            <ul>
-                                <?php
-                                foreach ($foto->getResult() as $gb):
-                                    $gbi++;
-                                    ?>
-                                    <div class="col-md-2">
-                                        <li class="thumbnail">
-                                            <?= Check::Image('../uploads/' . $gb['foto'], $gbi, 146, 100, true); ?>
-                                            <div class="text-center">
-                                                <a href="painel.php?exe=bancofotos/addfotos&id=<?= $idTipo; ?>&tipo=<?= $tipo; ?>&delfoto=<?= $gb['id']; ?>#foco" class="btn btn-sm btn-danger"><b class="fa fa-trash-o"></b> Deletar</a>
-                                            </div>
-                                        </li>
-                                    </div>
-                                    <?php
-                                endforeach;
+                            <?php
+                            foreach ($foto->getResult() as $gb):
+                                $gbi++;
                                 ?>
-                            </ul>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <div class="action-image">
+                                            <label><input type="checkbox" class="chkimage"> Selecionar</label>
+                                            <a class="btn btn-sm btn-danger" href="painel.php?exe=bancofotos/addfotos&id=<?= $idTipo; ?>&tipo=<?= $tipo; ?>&delfoto=<?= $gb['id']; ?>#foco"><b class="fa fa-trash-o"></b> Deletar</a>
+                                        </div>
+                                        <div class="box-image">
+                                            <a href="#"><?= Check::Image('uploads/' . $gb['foto'], $gbi, 320, 180, true); ?></a>
+                                            <input type="text" name="legenda" class="form-control" placeholder="Digite a legenda dessa foto" value="<?= !empty($gb['legenda']) ? $gb['legenda'] : '' ?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            endforeach;
+                            ?>
                         </div>
                         <?php
                     else:
@@ -125,6 +127,7 @@
                 var redireciona = "<?= $url_refresh; ?>";
                 $(window.document.location).attr('href', redireciona);
             }, tempo);
-        };
+        }
+        ;
     });
 </script>

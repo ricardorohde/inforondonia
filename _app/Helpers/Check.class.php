@@ -178,16 +178,25 @@ class Check {
      * uploads. Se existir retorna a imagem redimensionada!
      * @return HTML = imagem redimencionada!
      */
-    public static function Image($ImageUrl, $ImageDesc, $ImageW = null, $ImageH = null) {
+    public static function Image($ImageUrl, $ImageDesc, $ImageW = null, $ImageH = null, $CWAdmin = null) {
 
         self::$Data = $ImageUrl;
+        $patch = HOME;
 
-        if (file_exists(self::$Data) && !is_dir(self::$Data)):
-            $patch = HOME;
-            $imagem = self::$Data;
-            return "<img src=\"{$patch}/tim.php?src={$imagem}&w={$ImageW}&h={$ImageH}\" alt=\"{$ImageDesc}\" title=\"{$ImageDesc}\"/>";
+        if ($CWAdmin):
+            if (file_exists('../' . self::$Data) && !is_dir('../' . self::$Data)):
+                $imagem = self::$Data;
+                return "<img src=\"{$patch}/tim.php?src={$imagem}&w={$ImageW}&h={$ImageH}\" alt=\"{$ImageDesc}\" title=\"{$ImageDesc}\"/>";
+            else:
+                return false;
+            endif;
         else:
-            return false;
+            if (file_exists(self::$Data) && !is_dir(self::$Data)):
+                $imagem = self::$Data;
+                return "<img src=\"{$patch}/tim.php?src={$imagem}&w={$ImageW}&h={$ImageH}\" alt=\"{$ImageDesc}\" title=\"{$ImageDesc}\"/>";
+            else:
+                return false;
+            endif;
         endif;
     }
 
