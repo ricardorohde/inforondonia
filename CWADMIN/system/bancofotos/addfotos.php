@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="box-image">
                                             <a href="#"><?= Check::Image('uploads/' . $gb['foto'], $gbi, 320, 180, true); ?></a>
-                                            <input type="text" name="legenda" class="form-control" placeholder="Digite a legenda dessa foto" value="<?= !empty($gb['legenda']) ? $gb['legenda'] : '' ?>">
+                                            <input type="text" name="legenda" id="<?= $gb['id']; ?>" class="form-control legenda" placeholder="Digite a legenda dessa foto" value="<?= !empty($gb['legenda']) ? $gb['legenda'] : '' ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -70,11 +70,11 @@
                             endforeach;
                             ?>
                         </div>
-                        <?php
-                    else:
-                        WSErro("Não há nenhuma imagem cadastrada!", WS_ERROR);
-                    endif;
-                    ?>
+                            <?php
+                        else:
+                            WSErro("Não há nenhuma imagem cadastrada!", WS_ERROR);
+                        endif;
+                        ?>
                 </div>
             </div>
         </div>

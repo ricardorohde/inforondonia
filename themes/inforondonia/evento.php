@@ -34,6 +34,7 @@ endif;
                     foreach ($FotosGal->getResult() as $fotos):
                         echo '<div class="boxfotos">';
                         echo '<img alt="' . $evento . '" title="' . $evento . '" src="' . HOME . '/tim.php?src=uploads/' . $fotos['foto'] . '&w=870"/>';
+                        echo '<p>' . $fotos['legenda'] . '</p>';
                         echo '</div>';
                     endforeach;
                 endif;

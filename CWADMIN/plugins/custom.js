@@ -51,7 +51,7 @@ $(function () {
         }
     });
 });
-//Desabilita campos 
+//Desabilita campos
 $(function checkDestaque() {
     var cDestaque = "#destaque";
     var cDestaqueTipo = '#destaque_tipo';
@@ -84,5 +84,20 @@ $(function checkColunista() {
         }
     });
 });
+
+//Banco Fotos = Legenda
+$(function legenda() {
+    $(".legenda").change(function () {
+        var fotoId = $(this).attr("id");
+        var fotoLegenda = $(this).val();
+
+        $.post('system/bancofotos/actionsfotos.php', {
+            action: 'caption',
+            id: fotoId,
+            legenda: fotoLegenda
+        });
+    });
+});
+
 //CKEditor
 CKEDITOR.replaceAll();
