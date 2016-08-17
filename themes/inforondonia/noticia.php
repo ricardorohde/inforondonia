@@ -88,7 +88,7 @@ endif;
                 endif;
                 //Outras Fotos
                 $OutrasFotos = new Read;
-                $OutrasFotos->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = :tipo", "idtipo={$id}&tipo=N");
+                $OutrasFotos->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = :tipo ORDER BY ordem ASC", "idtipo={$id}&tipo=N");
                 if ($OutrasFotos->getResult()):
                     ?>
                     <div class="article_news_moreimg">

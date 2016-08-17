@@ -46,6 +46,8 @@ endif;
         <link type="text/css" rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css" />
         <!-- DropZone -->
         <link type="text/css" rel="stylesheet" href="plugins/dropzone/dropzone.css" />
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <!-- Theme style -->
         <link type="text/css" rel="stylesheet" href="dist/css/AdminLTE.min.css" />
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
@@ -122,6 +124,8 @@ endif;
         <script type="text/javascript" src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- ChartJS 1.0.1 -->
         <script type="text/javascript" src="plugins/chartjs/Chart.min.js"></script>
+        <!-- jQuery-UI 1.10.3 -->
+        <script type="text/javascript" src="plugins/jQueryUI/jquery-ui-1.10.3.min.js"></script>
         <!-- AdminLTE App -->
         <script type="text/javascript" src="dist/js/app.min.js"></script>
         <!-- Page script -->

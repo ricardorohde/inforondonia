@@ -35,11 +35,16 @@ $(document).ready(function () {
         language: 'pt-BR'
     });
 });
+
+//CKEditor
+CKEDITOR.replaceAll();
+
 $(function () {
     $("[data-mask]").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/aaaa"});
     $("[datetime-mask]").inputmask("datetime");
     $("[phone-mask]").inputmask("(99) 9999-9999");
 });
+
 //Exibi ou Esconde os dados de acesso
 $(function () {
     var chkalt = "input[name='altDadosAcess']";
@@ -51,7 +56,8 @@ $(function () {
         }
     });
 });
-//Desabilita campos
+
+//=== Desabilita campos === //
 $(function checkDestaque() {
     var cDestaque = "#destaque";
     var cDestaqueTipo = '#destaque_tipo';
@@ -85,7 +91,14 @@ $(function checkColunista() {
     });
 });
 
-//Banco Fotos = Legenda
+//:::::: Banco Fotos ::::::
+//SlideOut
+function slideout() {
+    setTimeout(function () {
+        $(".cw-alert").slideUp("slow");
+    }, 2000);
+}
+//Legenda
 $(function legenda() {
     $(".legenda").change(function () {
         var fotoId = $(this).attr("id");
@@ -99,5 +112,23 @@ $(function legenda() {
     });
 });
 
-//CKEditor
-CKEDITOR.replaceAll();
+//DragDrop
+$(function () {
+    $("#sortable").sortable({
+        cursor: 'move',
+        placeholder: "ui-state-highlight",
+        onChange: function () {
+            serialEsq = $.SortSerialize('drop-esquerda');
+            serialDir = $.SortSerialize('drop-direita');
+        },
+        update: function () {
+            var setPost = $(this).sortable("serialize") + '&action=dragdrop';
+            $.post("system/bancofotos/actionsfotos.php", setPost, function (theResponse) {
+                $(".cw-alert").html(theResponse);
+                $(".cw-alert").slideDown('slow');
+                slideout();
+            });
+        }
+    });
+    $("#sortable").disableSelection();
+});

@@ -27,7 +27,7 @@ endif;
                 $Pager->ExePager($getPage, 10);
 
                 $FotosGal = new Read;
-                $FotosGal->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = 'E' ORDER BY id ASC LIMIT :limit OFFSET :offset", "idtipo={$id}&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
+                $FotosGal->ExeRead("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = 'E' ORDER BY ordem ASC LIMIT :limit OFFSET :offset", "idtipo={$id}&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
                 if (!$FotosGal->getResult()):
                     WSErro('Desculpe, ainda não há nenhuma <br><b>FOTO PARA ESTA GALARIA</b>!', WS_INFOR);
                 else:
@@ -40,7 +40,7 @@ endif;
                 endif;
 
                 echo '<nav style="margin-left:15px;">';
-                $Pager->ExePaginator("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = 'E' ORDER BY id ASC", "idtipo={$id}");
+                $Pager->ExePaginator("banco_fotos", "WHERE id_tipo = :idtipo AND tipo = 'E' ORDER BY ordem ASC", "idtipo={$id}");
                 echo $Pager->getPaginator();
                 echo '</nav>';
                 ?>
