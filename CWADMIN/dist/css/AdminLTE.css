@@ -4072,12 +4072,13 @@ Gradient Background colors
 .action-image{ width: 100%; margin-bottom: 5px; position: relative;}
 .action-image label{ margin-top: 5px;}
 .action-image .chkimage{ margin: 5px 5px 0 0; float: left;}
-.action-image a {  float: right;}
+.action-image button {  float: right;}
 .box-image{ width: 100%; position: relative;}
 .box-image input[type='text']{ text-align: center;}
-#foco ul  { float: left; position: relative; padding: 0;}
+.bar-action{ float: right;}
+#foco ul  { width: 100%; float: left; position: relative; padding: 0;}
 #foco ul li{ height: 230px; float: left; list-style: none; cursor: move;}
 
 
 /*:: ALERTS SOBRE CONTENT::*/
-.cw-alert{ width: 20%; top: 0;  right: 0; padding: 1.2%; color: #FFF; text-align: center; position: fixed; z-index: 9999; background: #00a65a; display: none;}
+.cw-alert{ width: 25%; top: 0;  right: 0; padding: 1.2%; color: #FFF; text-align: center; position: fixed; z-index: 9999; background: #00a65a; display: none;}

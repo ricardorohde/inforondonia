@@ -35,12 +35,12 @@
                                         <span><?= $sNews['titulo']; ?></span>
                                         <img src="<?= HOME . '/tim.php?src=uploads/' . $sNews['foto'] . '&w=890&h=380'; ?>" title="<?= $sNews['titulo']; ?>" alt="<?= $sNews['titulo']; ?>">
                                     </a>
-                                </li>     
+                                </li>
                                 <?php
                             endforeach;
                         endif;
                         ?>
-                    </ul>    
+                    </ul>
                 </section>
             </div>
             <?php
@@ -320,23 +320,30 @@
                         ?>
                     </div>
                 </div>
-                <div class="main_blc_enquete">
-                    <header><h1>ENQUETE</h1></header>
-                    <div class="main_grp_enquete">
-                        <div class="main_box_enquete">
-                            <div class="box_enquete_perg">O que estão achando do novo site?</div>
-                            <div class="box_enquete_resp"><input type="radio" name="resp" id="resp1" value="" /> <label for="resp1">Muito Bom </label></div>
-                            <div class="box_enquete_resp"><input type="radio" name="resp" id="resp2" value="" /> <label for="resp2">Muito Bom </label></div>
-                            <div class="box_enquete_resp"><input type="radio" name="resp" id="resp3" value="" /> <label for="resp3">Muito Bom </label></div>
-                            <div class="box_enquete_resp"><input type="radio" name="resp" id="resp4" value="" /> <label for="resp4">Muito Bom </label></div>
-                            
-                            <div class="box_enquete_btns">
-                                <div class="btn_enq btn_enq_vote">Votar</div>
-                                <div class="btn_enq btn_enq_result">Resultado</div>
+                <?php
+                $ReadMain->ExeRead('enquete', "WHERE status = :status ORDER BY id DESC LIMIT 1", "status=A");
+                if (!empty($ReadMain->getResult()[0])):
+                    $Enquete = $ReadMain->getResult()[0];
+                    ?>
+                    <div class="main_blc_enquete">
+                        <header><h1>ENQUETE</h1></header>
+                        <div class="main_grp_enquete">
+                            <div class="main_box_enquete">
+
+                                <div class="box_enquete_perg"><?= $Enquete['pergunta']; ?></div>
+                                <div class="box_enquete_resp"><input type="radio" name="resp" id="resp1" value="" /> <label for="resp1"><?= $Enquete['resp1']; ?></label></div>
+                                <div class="box_enquete_resp"><input type="radio" name="resp" id="resp2" value="" /> <label for="resp2"><?= $Enquete['resp2']; ?></label></div>
+                                <div class="box_enquete_resp"><input type="radio" name="resp" id="resp3" value="" /> <label for="resp3"><?= $Enquete['resp3']; ?></label></div>
+                                <div class="box_enquete_resp"><input type="radio" name="resp" id="resp4" value="" /> <label for="resp4"><?= $Enquete['resp4']; ?></label></div>
+
+                                <div class="box_enquete_btns">
+                                    <div class="btn_enq btn_enq_vote">Votar</div>
+                                    <div class="btn_enq btn_enq_result">Resultado</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
             <div class="main_blc_acessadastempo">
                 <div class="main_blc_acessadas">

@@ -19,19 +19,19 @@
             $acao = filter_input(INPUT_GET, 'acao', FILTER_SANITIZE_STRING);
             $acaoId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-            require('_models/AdminVideo.class.php');
-            $readAcao = new AdminVideo;
+            require('_models/AdminEnquete.class.php');
+            $readAcao = new AdminEnquete;
 
             $readMsg = new Read;
-            $readMsg->ExeRead('videos', "WHERE id = :id", "id={$acaoId}");
+            $readMsg->ExeRead('enquete', "WHERE id = :id", "id={$acaoId}");
             switch ($acao):
                 case 'cadastrar':
                     $msg = $readMsg->getResult()[0];
-                    WSErro("O video <b>{$msg['titulo']}</b> foi cadastrado com sucesso!", WS_ACCEPT);
+                    WSErro("A enquete <b>{$msg['pergunta']}</b> foi cadastrada com sucesso!", WS_ACCEPT);
                     break;
                 case 'editar':
                     $msg = $readMsg->getResult()[0];
-                    WSErro("O video <b>{$msg['titulo']}</b> foi atualizado com sucesso!", WS_ACCEPT);
+                    WSErro("A enquete <b>{$msg['pergunta']}</b> foi atualizada com sucesso!", WS_ACCEPT);
                     break;
                 case 'excluir':
                     $readAcao->ExeDelete($acaoId);
@@ -45,16 +45,16 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Titulo</th>
-                                <th>Cadastrado em</th>
-                                <th>Destaque</th>
+                                <th>Pergunta</th>
+                                <th>Cadastrada em</th>
+                                <th>Status</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $readUser = new Read;
-                            $readUser->ExeRead("videos", "WHERE titulo != :l", "l= ''");
+                            $readUser->ExeRead("enquete", "WHERE pergunta != :l", "l= ''");
                             if (!$readUser->getResult()):
 
                             else:
@@ -62,14 +62,14 @@
                                     ?>
                                     <tr>
                                         <td><?= $reg['id']; ?></td>
-                                        <td><?= $reg['titulo']; ?></td>
+                                        <td><?= $reg['pergunta']; ?></td>
                                         <td><?= date('d/m/Y H:i:s', strtotime($reg['data'])); ?></td>
-                                        <td><?= $reg['destaque']; ?></td>
+                                        <td><?= $reg['status'] === 'A' ? '<span class="label bg-green">Ativa</span>' : '<span class="label bg-red">Inativa</span>'; ?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="painel.php?exe=videos/editar&id=<?= $reg['id']; ?>" class="btn btn-flat btn-primary btn-sm"><b class="fa fa-edit"></b> Editar</a>
-                                                <a href="painel.php?exe=videos/listar&acao=excluir&id=<?= $reg['id']; ?>" class="btn btn-flat btn-danger btn-sm"><b class="fa fa-trash-o"></b> Excluir</a>
-                                            </div>                                           
+                                                <a href="painel.php?exe=enquete/editar&id=<?= $reg['id']; ?>" class="btn btn-flat btn-primary btn-sm"><b class="fa fa-edit"></b> Editar</a>
+                                                <a href="painel.php?exe=enquete/listar&acao=excluir&id=<?= $reg['id']; ?>" class="btn btn-flat btn-danger btn-sm"><b class="fa fa-trash-o"></b> Excluir</a>
+                                            </div>
                                         </td>
                                     </tr>
                                     <?php

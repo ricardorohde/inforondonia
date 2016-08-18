@@ -3,7 +3,7 @@
 /**
  * AdminBancoFotos.class [ MODEL ADMIN ]
  * Respnsável por gerenciar as fotos dos albuns no Admin do sistema!
- * 
+ *
  * @copyright (c) 2016, Gean Marques - CREATIVE WEBSITES
  */
 class AdminBancoFotos {
@@ -20,7 +20,7 @@ class AdminBancoFotos {
     /**
      * <b>Cadastrar Foto:</b> Envelopa os dados em um array atribuitivo e execute este método
      * para cadastrar o mesmo no sistema. Validações serão feitas!
-     * @param ARRAY $Data = Atribuitivo 
+     * @param ARRAY $Data = Atribuitivo
      */
     public function ExeCreate(array $Data) {
         $this->Data = $Data;
@@ -31,7 +31,7 @@ class AdminBancoFotos {
         if ($this->Data['foto']):
             $ImgName = "tipo-{$this->Tipo}-id-{$this->Id}-" . rand();
             $upload = new Upload('../../../uploads/');
-            $upload->Image($this->Data['foto'], $ImgName, 640, 'banco_fotos');
+            $upload->Image($this->Data['foto'], $ImgName, 1024, 'banco_fotos');
         endif;
 
         if (isset($upload) && $upload->getResult()):
@@ -50,11 +50,11 @@ class AdminBancoFotos {
     public function ExeDelete($BannerId) {
         $this->Id = (int) $BannerId;
 
-        $readVideo = new Read;
-        $readVideo->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
+        $Read = new Read;
+        $Read->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
 
-        if (!$readVideo->getResult()):
-            $this->Error = ['Oppsss, você tentou remover um banner que não existe no sistema!', WS_ERROR];
+        if (!$Read->getResult()):
+            $this->Error = ['Oppsss, você tentou remover uma foto que não existe no sistema!', WS_ERROR];
             $this->Result = false;
         else:
             $this->fotoDelete($this->Id);
@@ -101,9 +101,14 @@ class AdminBancoFotos {
 
         $readFoto = new Read;
         $readFoto->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
-        $foto = "../uploads/{$readFoto->getResult()[0]['foto']}";
+        $foto = "../../../uploads/{$readFoto->getResult()[0]['foto']}";
+
         if (file_exists($foto) && !is_dir($foto)):
             unlink($foto);
+            $this->Result = true;
+        else:
+            $this->Error = ["Não foi localizada a foto para deletar", WS_ALERT];
+            $this->Result = false;
         endif;
     }
 
@@ -126,4 +131,5 @@ class AdminBancoFotos {
             $this->Result = true;
         endif;
     }
+
 }

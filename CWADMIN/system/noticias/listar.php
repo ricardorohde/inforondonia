@@ -57,23 +57,23 @@
                             $readReg = new Read;
                             $readReg->FullRead("SELECT n.*, u.nome FROM noticias n, usuarios u WHERE n.titulo != :l AND n.qm_cadastr = u.id ORDER BY n.id DESC", "l= ''");
                             if (!$readReg->getResult()):
-                                #Não retornou nenhum registro.
-                            else:                                
+                            #Não retornou nenhum registro.
+                            else:
                                 foreach ($readReg->getResult() as $reg):
                                     ?>
                                     <tr>
                                         <td><?= $reg['id']; ?></td>
                                         <td><?= Check::Words($reg['titulo'], 6); ?></td>
                                         <td><?= !empty($reg['contador']) ? $reg['contador'] : 0; ?></td>
-                                        <td><?= '<b>'.Check::Words($reg['nome'],1,' ').'</b> em '.date('d/m/Y', strtotime($reg['data'])); ?></td>
+                                        <td><?= '<b>' . Check::Words($reg['nome'], 1, ' ') . '</b> em ' . date('d/m/Y', strtotime($reg['data'])); ?></td>
                                         <td><?= $reg['destaque']; ?></td>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="painel.php?exe=bancofotos/addfotos&id=<?= $reg['id']; ?>&tipo=N" class="btn btn-flat btn-sm btn-success "><b class="fa fa-camera"></b> Fotos</a>
-                                                <a href="painel.php?exe=bancofiles/addfiles&id=<?= $reg['id']; ?>&tipo=N" class="btn btn-flat btn-sm btn-warning "><b class="fa fa-file-pdf-o"></b> Arquivos</a>
+                                                <!--<a href="painel.php?exe=bancofiles/addfiles&id=<?= $reg['id']; ?>&tipo=N" class="btn btn-flat btn-sm btn-warning "><b class="fa fa-file-pdf-o"></b> Arquivos</a>-->
                                                 <a href="painel.php?exe=noticias/editar&id=<?= $reg['id']; ?>" class="btn btn-flat btn-sm btn-primary "><b class="fa fa-edit"></b> Editar</a>
                                                 <a href="painel.php?exe=noticias/listar&acao=excluir&id=<?= $reg['id']; ?>" class="btn btn-flat btn-sm btn-danger "><b class="fa fa-trash-o"></b> Excluir</a>
-                                            </div>                                           
+                                            </div>
                                         </td>
                                     </tr>
                                     <?php

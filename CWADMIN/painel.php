@@ -130,6 +130,7 @@ endif;
         <script type="text/javascript" src="dist/js/app.min.js"></script>
         <!-- Page script -->
         <script type="text/javascript" src="plugins/custom.js"></script>
+        <script type="text/javascript" src="plugins/app_bancofotos.js"></script>
     </body>
 </html>
 <?php

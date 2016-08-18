@@ -1,0 +1,3 @@
+[28-Jun-2016 22:37:07 America/Manaus] PHP Fatal error:  Call to a member function setPlaces() on a non-object in /home/inforobr/public_html/themes/inforondonia/index.php on line 48
+[28-Jun-2016 22:37:24 America/Manaus] PHP Fatal error:  Call to a member function setPlaces() on a non-object in /home/inforobr/public_html/themes/inforondonia/noticia.php on line 18
+[28-Jun-2016 22:41:02 America/Manaus] PHP Fatal error:  Call to a member function setPlaces() on a non-object in /home/inforobr/public_html/themes/inforondonia/noticia.php on line 18

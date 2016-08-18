@@ -62,15 +62,15 @@
                                     ?>
                                     <tr>
                                         <td><?= $reg['id']; ?></td>
-                                        <td><?= Check::Words($reg['evento'], 10 ); ?></td>
+                                        <td><?= Check::Words($reg['evento'], 10); ?></td>
                                         <td><?= date('d/m/Y H:m:s', strtotime($reg['data'])); ?></td>
                                         <td><?= $reg['destaque']; ?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="painel.php?exe=bancofotos/addfotos&id=<?= $reg['id']; ?>&tipo=E" class="btn btn-flat btn-sm btn-success "><b class="fa fa-camera"></b> Add Fotos</a>
+                                                <a href="painel.php?exe=bancofotos/addfotos&id=<?= $reg['id']; ?>&tipo=E" class="btn btn-flat btn-sm btn-success "><b class="fa fa-camera"></b> Fotos</a>
                                                 <a href="painel.php?exe=eventos/editar&id=<?= $reg['id']; ?>" class="btn btn-flat btn-sm btn-primary "><b class="fa fa-edit"></b> Editar</a>
                                                 <a href="painel.php?exe=eventos/listar&acao=excluir&id=<?= $reg['id']; ?>" class="btn btn-flat btn-sm btn-danger "><b class="fa fa-trash-o"></b> Excluir</a>
-                                            </div>                                           
+                                            </div>
                                         </td>
                                     </tr>
                                     <?php
