@@ -12,6 +12,41 @@ $(function () {
     });
 });
 
+$(function () {
+    //Enquete
+    $('.j_formajax').submit(function () {
+        var enq = $('.main_box_enquete');
+        var form = $(this);
+        var data = form.serialize();
+
+        $.ajax({
+            url: '_cdn/ajax/enquete.php',
+            data: data,
+            type: 'POST',
+            dataType: 'json',
+            beforeSend: function () {
+                enq.find('.spinload').slideDown();
+                enq.find('.alert').fadeOut(500, function () {
+                    $(this).remove();
+                });
+            },
+            success: function (resposta) {
+                console.log(resposta);
+                if (resposta.error) {
+                    enq.find('.trigger-box').html('<div class="alert alert-danger">' + resposta.error + '</div>');
+                    enq.find('.alert-danger').fadeIn();
+                } else {
+                    enq.find('.box_enq_perg').fadeOut();
+                    enq.find('.trigger-box').html('<div class="alert alert-success">' + resposta.success + '</div>');
+                    enq.find('.alert-success').fadeIn();
+                }
+                enq.find('.spinload').slideUp();
+            }
+        });
+        return false;
+    });
+});
+
 //::: Facebook :::
 window.fbAsyncInit = function () {
     FB.init({

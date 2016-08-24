@@ -324,22 +324,54 @@
                 $ReadMain->ExeRead('enquete', "WHERE status = :status ORDER BY id DESC LIMIT 1", "status=A");
                 if (!empty($ReadMain->getResult()[0])):
                     $Enquete = $ReadMain->getResult()[0];
+                    $IpUser = $_SERVER['REMOTE_ADDR'];
                     ?>
                     <div class="main_blc_enquete">
                         <header><h1>ENQUETE</h1></header>
                         <div class="main_grp_enquete">
                             <div class="main_box_enquete">
-
                                 <div class="box_enquete_perg"><?= $Enquete['pergunta']; ?></div>
-                                <div class="box_enquete_resp"><input type="radio" name="resp" id="resp1" value="" /> <label for="resp1"><?= $Enquete['resp1']; ?></label></div>
-                                <div class="box_enquete_resp"><input type="radio" name="resp" id="resp2" value="" /> <label for="resp2"><?= $Enquete['resp2']; ?></label></div>
-                                <div class="box_enquete_resp"><input type="radio" name="resp" id="resp3" value="" /> <label for="resp3"><?= $Enquete['resp3']; ?></label></div>
-                                <div class="box_enquete_resp"><input type="radio" name="resp" id="resp4" value="" /> <label for="resp4"><?= $Enquete['resp4']; ?></label></div>
+                                <p class="trigger-box"></p>
 
-                                <div class="box_enquete_btns">
-                                    <div class="btn_enq btn_enq_vote">Votar</div>
-                                    <div class="btn_enq btn_enq_result">Resultado</div>
-                                </div>
+                                <div class="spinload"><span class="fa fa-circle-o-notch fa-spin"></span> Processando...</div>
+                                <?php
+                                $CheckUser = new Read;
+                                $CheckUser->ExeRead("enquete_usuario", "WHERE id_enquete = :idenq AND ip = :ipuser", "idenq={$Enquete['id']}&ipuser={$IpUser}");
+                                if (empty($CheckUser->getResult()[0])):
+                                    ?>
+                                    <div class="box_enq_perg">
+                                        <form name="form_enquete" class="j_formajax" method="post" action="">
+                                            <input type="hidden" name="id_enquete" value="<?= $Enquete['id']; ?>">
+                                            <div class="box_enquete_resp"><input type="radio" name="resp" id="resp1" value="<?= $Enquete['resp1']; ?>" /> <label for="resp1"><?= $Enquete['resp1']; ?></label></div>
+                                            <div class="box_enquete_resp"><input type="radio" name="resp" id="resp2" value="<?= $Enquete['resp2']; ?>" /> <label for="resp2"><?= $Enquete['resp2']; ?></label></div>
+                                            <div class="box_enquete_resp"><input type="radio" name="resp" id="resp3" value="<?= $Enquete['resp3']; ?>" /> <label for="resp3"><?= $Enquete['resp3']; ?></label></div>
+                                            <div class="box_enquete_resp"><input type="radio" name="resp" id="resp4" value="<?= $Enquete['resp4']; ?>" /> <label for="resp4"><?= $Enquete['resp4']; ?></label></div>
+
+                                            <div class="box_enquete_btns">
+                                                <button type="submit" name="sendFormEnquete" class="btn_enq btn_enq_vote">Votar</button>
+                                                <!--<div class="btn_enq btn_enq_result">Resultado</div>-->
+                                            </div>
+                                        </form>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="box_enq_resul">
+                                        <div class="box_enquete_resp">
+                                            <?= $Enquete['resp1'] . ' - ' . '<b>' . ceil((($Enquete['voto1'] * 100) / $Enquete['total'])) . ' %</b>'; ?>
+                                        </div>
+                                        <div class="box_enquete_resp">
+                                            <?= $Enquete['resp2'] . ' - ' . '<b>' . ceil((($Enquete['voto2'] * 100) / $Enquete['total'])) . ' %</b>'; ?>
+                                        </div>
+                                        <div class="box_enquete_resp">
+                                            <?= $Enquete['resp3'] . ' - ' . '<b>' . ceil((($Enquete['voto3'] * 100) / $Enquete['total'])) . ' %</b>'; ?>
+                                        </div>
+                                        <div class="box_enquete_resp">
+                                            <?= $Enquete['resp4'] . ' - ' . '<b>' . ceil((($Enquete['voto4'] * 100) / $Enquete['total'])) . ' %</b>'; ?>
+                                        </div>
+                                        <div class="box_enquete_resp">
+                                            <?= ' <b>Total  de Votos - ' . $Enquete['total'] . ' Votos</b>'; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -409,6 +441,7 @@
                     </div>
                 </div>
                 -->
+
             </div>
         </div>
 
