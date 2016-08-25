@@ -9,8 +9,8 @@
         echo '<b>' . CIDADE . ' - ' . UF . ',  ' . Check::DataExt($data_atual);
         if ($Cotacao->getResult()):
             foreach ($Cotacao->getResult() as $cot):
-                $tipo = $cot['tipo'] == 'dolar' ? 'Dólar' : 'Euro';
-                echo ' - ' . $tipo . ' R$ ' . $cot['cotacao'] . ' <i class="' . $cot['status'] . ' fa fa-long-arrow-' . $cot['status'] . '"></i> ';
+                $tipo = $cot['tipo'] == 'USD' ? 'Dólar' : 'Euro';
+                echo ' - ' . $tipo . ' R$ ' . $cot['cotacao'];
             endforeach;
         endif;
         echo '</b>';
