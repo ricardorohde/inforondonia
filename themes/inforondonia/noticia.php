@@ -44,14 +44,14 @@ endif;
                 </div>
             </header>
             <article class="content_pag">
+                <div class="article_news_chars"><?= $noticia; ?></div>
                 <?php if (!empty($foto)): ?>
                     <figure class="article_news_image">
                         <a href="<?= HOME . '/uploads/' . $foto; ?>">
-                            <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=uploads/' . $foto . '&w=870&h=480&zc=0'; ?>"/>
+                            <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=uploads/' . $foto . '&w=870&zc=0'; ?>"/>
                         </a>
                     </figure>
                 <?php endif; ?>
-                <div class="article_news_chars"><?= $noticia; ?></div>
                 <?php
                 //Banner Noticia Ler 2
                 $banners->setPlaces("idtipo=14");
