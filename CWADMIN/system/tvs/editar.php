@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-        Cadastrar TVs 
+        Cadastrar TVs
         <small>Cadastros de Novos Iframe de TV</small>
     </h1>
     <ol class="breadcrumb">
@@ -66,12 +66,7 @@
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" class="chkbool" name="tv" value="true" <?= $dados['tv']=='true' ? 'checked="checked"' : ''; ?>> Exibir na página TV
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" class="chkbool" name="lateral" value="true" <?= $dados['lateral']=='true' ? 'checked="checked"' : ''; ?>> Exibir na Lateral
+                                        <input type="checkbox" class="chkbool" name="tv" value="true" <?= $dados['tv'] == 'true' ? 'checked="checked"' : ''; ?>> Exibir na página TV
                                     </label>
                                 </div>
                             </div>
