@@ -349,7 +349,6 @@
 
                                             <div class="box_enquete_btns">
                                                 <button type="submit" name="sendFormEnquete" class="btn_enq btn_enq_vote">Votar</button>
-                                                <!--<div class="btn_enq btn_enq_result">Resultado</div>-->
                                             </div>
                                         </form>
                                     </div>
@@ -407,40 +406,38 @@
                         ?>
                     </div>
                 </div>
-                <!--
+
                 <div class="main_blc_tempo">
                     <header>
                         <h1>TEMPO</h1>
+                        <div class="box_tempo_date">TERÇA-FEIRA - 06/09/2016</div>
                     </header>
                     <div class="main_grp_tempo">
-                <?php /* $uf = UF;
-                  $city = strtoupper(CIDADE);
-
-                  $city_url = rawurlencode(strtolower($city . '-' . $uf));
-                  $file_temp = 'http://developers.agenciaideias.com.br/tempo/json/' . $city_url;
-                  $file_tempget = file_get_contents($file_temp);
-                  $file_tempread = json_decode($file_tempget, true);
-                  $tempo = $file_tempread["agora"];
-
-                 */ ?>
                         <div class="box_tempo">
-                            <div class="box_tempo_date">Em <?= $tempo['data_hora']; ?> hrs</div>
-                            <div class="box_tempo_city"><?= $city . ' - ' . $uf; ?></div>
                             <div class="box_tempo_info">
-                                <div class="box_tempo_img"><img src="<?= $tempo['imagem']; ?>"></div>
                                 <div class="box_tempo_tempdesc">
-                                    <div class="box_tempo_temp"><?= $tempo['temperatura']; ?>º C</div>
-                                    <div class="box_tempo_desc"><?= $tempo['descricao']; ?></div>
+                                    <div class="box_tempo_city">Rolim de Moura</div>
+                                    <div class="box_tempo_desc">Parcialmente Nublado</div>
                                 </div>
+                                <div class="box_tempo_img"><img src="<?= INCLUDE_PATH . '/images/clima/par_nublado.png' ?>" alt="Parcialmente Nublado"></div>
                             </div>
-                            <div class="box_tempo_demais">
-                                <div class="box_tempo_umid">Umidade: <?= $tempo['umidade']; ?></div>
-                                <div class="box_tempo_vent">Vento: <?= $tempo['vento_velocidade']; ?></div>
+                            <div class="box_tempo_temp">
+                                <div class="box_tempo_temp_val">32</div>
+                                <div class="box_tempo_temp_cel"><img src="<?= INCLUDE_PATH . '/images/clima/temp_grau.png' ?>" alt="Temperatura"></div>
                             </div>
                         </div>
+                        <ul class="box_tempo_calendar">
+                            <li class="active">DOM</li>
+                            <li>SEG</li>
+                            <li>TER</li>
+                            <li>QUA</li>
+                            <li>QUI</li>
+                            <li>SEX</li>
+                            <li>SÁB</li>
+                        </ul>
                     </div>
                 </div>
-                -->
+
 
             </div>
         </div>

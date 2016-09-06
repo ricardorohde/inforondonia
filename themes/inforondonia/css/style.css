@@ -183,21 +183,29 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .main_blc_acessadas header hgroup h1{ font-size: 1.2em; color: #2A8B53; text-decoration: underline;}
 .main_blc_acessadas header hgroup h2{ font-size: 0.8125em; color: #000000;}
 .main_grp_acessadas{ width: 100%; padding-top: 3px; float: left;}
+
 .main_blc_tempo{ width: 30%; margin-left: 1%; float: left; background: #FFF;}
 .main_blc_tempo header{ padding-left: 1%; border-top: 0.3125em solid #37384E; }
-.main_blc_tempo header h1{ font-size: 1.2em; color: #37384E; text-decoration: underline;}
+.main_blc_tempo header h1{ font-size: 0.75em; color: #2579A6; padding: 5px 0 0 5px; float: left;}
+.main_blc_tempo header .box_tempo_date{ font-size: 0.75em; color: #6D6E70; border-left: 1px solid #CCC; margin-top: 5px; padding: 0 5px 0 20px; float: right;}
 .main_grp_tempo{ width: 100%; float: left;}
 .box_tempo{ width: 98%; padding: 1%; float: left;}
-.box_tempo_date{ width: 100%; margin-top: 5px; font-size: 0.9375em; color: #333; float: left;}
-.box_tempo_city{ width: 100%; margin-top: 10px; font-size: 1.0625em; text-align: center; font-weight: bold; color: #333; float: left;}
+.box_tempo_tempdesc{ width: 60%; margin-top: 10px; float: left;}
+.box_tempo_city{ width: 100%; font-size: 0.8125em; font-weight: bold; color: #2579A6; float: left;}
+.box_tempo_desc{ width: 100%; font-size: 0.8125em; color: #37384E; float: left;}
+
+.box_tempo_img{ width: 30%; float: right; text-align: center;}
+
 .box_tempo_info{ width: 100%; margin-top: 10px; float: left;}
-.box_tempo_img{ width: 50%; float: left; text-align: center;}
-.box_tempo_tempdesc{ width: 50%; float: right; text-align: center;}
-.box_tempo_temp{ width: 100%; margin-top: 5px; font-size: 2.0em; font-weight: 500; color: #37384E; float: left;}
-.box_tempo_desc{ width: 100%; font-size: 0.9375em; color: #37384E; float: left;}
-.box_tempo_demais{ width: 100%; margin-top: 50px; color: #333; float: left;}
-.box_tempo_umid{ width: 100%; font-size: 0.75em; float: left;}
-.box_tempo_vent{ width: 100%; font-size: 0.75em; float: left;}
+.box_tempo_temp{ width: 100%; margin-top: 13px; padding-bottom: 12px; border-bottom: 1px solid #F1F1F1; float: left;}
+.box_tempo_temp_val{ width: 60%; font-size: 5.0em; color: #2579A6; text-align: right; float: left;}
+.box_tempo_temp_cel{ width: 40%; font-size: 1.5em; font-weight: bold; text-align: left;  float: left;}
+.box_tempo_calendar{ width: 100%; padding: 9px; float: left;}
+.box_tempo_calendar li { color: #2579A6; padding: 10px 5px; font-size: 0.6875em; display: inline; float: left;}
+.box_tempo_calendar li:hover{ background: #EAEAEA; color: #333; border-radius: 2px; cursor: pointer;}
+.box_tempo_calendar li.active{ background: #2579A6; color: #FFF; border-radius: 2px;}
+
+
 .main_right_tv{ width: 100%; margin-bottom: 10px; float: left;}
 .banner_mainright_small{ width: 100%; float: left;}
 .banner_main_full{ width: 100%; margin-top: 10px; float: left;}
