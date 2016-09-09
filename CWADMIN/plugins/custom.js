@@ -1,28 +1,29 @@
 $(document).ready(function () {
     /*Table de Grid*/
     $('#tableView').dataTable({
-        "aaSorting": [[0, 'desc']],
-        "oLanguage": {
-            "sEmptyTable": "Nenhum registro encontrado",
-            "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-            "sInfoFiltered": "(Filtrados de _MAX_ registros)",
-            "sInfoPostFix": "",
-            "sInfoThousands": ".",
-            "sLengthMenu": "_MENU_  Resultados por página",
-            "sLoadingRecords": "Carregando...",
-            "sProcessing": "Processando...",
-            "sZeroRecords": "Nenhum registro encontrado",
-            "sSearch": "Buscar",
-            "oPaginate": {
-                "sNext": "Próximo",
-                "sPrevious": "Anterior",
-                "sFirst": "Primeiro",
-                "sLast": "Último"
+        responsive: true,
+        sorting: [[0, 'desc']],
+        language: {
+            emptyTable: "Nenhum registro encontrado",
+            info: "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            infoEmpty: "Mostrando 0 até 0 de 0 registros",
+            infoFiltered: "(Filtrados de _MAX_ registros)",
+            infoPostFix: "",
+            infoThousands: ".",
+            lengthMenu: "_MENU_  Resultados por página",
+            loadingRecords: "Carregando...",
+            processing: "Processando...",
+            zeroRecords: "Nenhum registro encontrado",
+            search: "Buscar",
+            paginate: {
+                next: "Próximo",
+                previous: "Anterior",
+                first: "Primeiro",
+                last: "Último"
             },
-            "oAria": {
-                "sSortAscending": ": Ordenar colunas de forma ascendente",
-                "sSortDescending": ": Ordenar colunas de forma descendente"
+            aria: {
+                sortAscending: ": Ordenar colunas de forma ascendente",
+                sortDescending: ": Ordenar colunas de forma descendente"
             }
         }
     });

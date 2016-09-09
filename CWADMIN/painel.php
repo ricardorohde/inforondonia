@@ -43,7 +43,8 @@ endif;
         <!-- Datepicker -->
         <link type="text/css" rel="stylesheet" href="plugins/datepicker/datepicker3.css" />
         <!-- Data Tables -->
-        <link type="text/css" rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="plugins/datatables/datatables.min.css" />
+        <link type="text/css" rel="stylesheet" href="plugins/datatables/responsive/css/responsive.dataTables.min.css" />
         <!-- DropZone -->
         <link type="text/css" rel="stylesheet" href="plugins/dropzone/dropzone.css" />
 
@@ -102,8 +103,8 @@ endif;
         <script type="text/javascript" src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
         <script type="text/javascript" src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
         <!-- Data Tables -->
-        <script type="text/javascript" src="plugins/datatables/jquery.dataTables.js"></script>
-        <script type="text/javascript" src="plugins/datatables/dataTables.bootstrap.js"></script>
+        <script type="text/javascript" src="plugins/datatables/datatables.min.js"></script>
+        <script type="text/javascript" src="plugins/datatables/responsive/js/dataTables.responsive.min.js"></script>
         <!-- CKEditor-->
         <script type="text/javascript" src="plugins/ckeditor/ckeditor.js"></script>
         <!-- FastClick -->
@@ -131,6 +132,7 @@ endif;
         <!-- Page script -->
         <script type="text/javascript" src="plugins/custom.js"></script>
         <script type="text/javascript" src="plugins/app_bancofotos.js"></script>
+        <script type="text/javascript" src="plugins/app_noticias.js"></script>
     </body>
 </html>
 <?php
