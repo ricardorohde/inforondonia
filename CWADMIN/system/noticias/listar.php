@@ -39,19 +39,42 @@
             ?>
             <div class="box box-primary">
                 <div class="box-body">
-                    <div class="table-responsive">
-                        <table id="viewNews" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Titulo</th>
-                                    <th>Views</th>
-                                    <th>Cadastrada por</th>
-                                    <th>Destaque</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                        </table>
+                    <div class="row">
+                        <div class="col-xs-2 col-md-2">
+                            <a href="#" class="btn btn-success btn-new"><span class="fa fa-file"></span></a>
+                        </div>
+                        <div class="hidden-xs col-md-6"><input type="text" class="form-control"></div>
+                        <div class="col-xs-offset-5 col-xs-5 col-md-offset-2 col-md-2 ">
+                            <div class="elem-right">
+                                <a href="#" class="btn btn-default"><span class="fa fa-list-ul"></span></a>
+                                <a href="#" class="btn btn-default"><span class="fa fa-th"></span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="view-list">
+                                imagem
+                                boxdados
+                                titulo
+                                data
+
+                                actions
+
+
+
+                            </div>
+
+                            <div class="view-grid">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">Total</div>
+                        <div class="col-md-offset-6 col-md-4">Paginação</div>
                     </div>
                 </div>
             </div>
