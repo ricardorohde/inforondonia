@@ -51,53 +51,153 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <br>
-                              <hr>
-                            <div class="view-list"> 
-                                <ul class="products-list product-list-in-box">
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title">Noticia 1
-                                                <span class="label label-warning pull-right">Fulano do Cliclado</span></a>
-                                            <span class="product-description">
-                                                Homem invade.
-                                            </span>
-                                        </div>
-                                    </li>                                 
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title">Bicycle
-                                                <span class="label label-info pull-right">$700</span></a>
-                                            <span class="product-description">
-                                                26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                                            </span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="box box-default">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="chart-responsive">
+                                        <img class=" img-responsive " src="dist/img/indsp.gif" alt="User profile picture">
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="view-grid">
-
+                        </div>
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#"><b>Titulo da Noticia cadastrada...</b></a>
+                                <li><a href="#"><b></b>Livia Andrade<span class="pull-right text-green"><i class="fa fa-calendar"></i> 01/01/2016</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 col-md-pull-1">
+                                <ul class="btn-group">
+                                    <a href="#" class="btn btn-success btn-sm"><b>Fotos</b></a>
+                                    <a href="#" class="btn btn-default btn-sm"><b>Arquivos</b></a>
+                                    <a href="#" class="btn btn-primary btn-sm"><b>Editar</b></a>
+                                    <a href="#" class="btn btn-danger btn-sm"><b>Excluir</b></a>
+                                </ul>
                             </div>
                         </div>
                     </div>
-
+                </div>
+                <div class="col-md-3">
+                    <div class="box box-default">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="chart-responsive">
+                                        <img class=" img-responsive " src="dist/img/indsp.gif" alt="User profile picture">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#"><b>Titulo da Noticia cadastrada...</b></a>
+                                <li><a href="#"><b></b>Livia Andrade<span class="pull-right text-green"><i class="fa fa-calendar"></i> 01/01/2016</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 col-md-pull-1">
+                                <ul class="btn-group">
+                                    <a href="#" class="btn btn-success btn-sm"><b>Fotos</b></a>
+                                    <a href="#" class="btn btn-default btn-sm"><b>Arquivos</b></a>
+                                    <a href="#" class="btn btn-primary btn-sm"><b>Editar</b></a>
+                                    <a href="#" class="btn btn-danger btn-sm"><b>Excluir</b></a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="box box-default">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="chart-responsive">
+                                        <img class=" img-responsive " src="dist/img/indsp.gif" alt="User profile picture">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#"><b>Titulo da Noticia cadastrada...</b></a>
+                                <li><a href="#"><b></b>Livia Andrade<span class="pull-right text-green"><i class="fa fa-calendar"></i> 01/01/2016</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 col-md-pull-1">
+                                <ul class="btn-group">
+                                    <a href="#" class="btn btn-success btn-sm"><b>Fotos</b></a>
+                                    <a href="#" class="btn btn-default btn-sm"><b>Arquivos</b></a>
+                                    <a href="#" class="btn btn-primary btn-sm"><b>Editar</b></a>
+                                    <a href="#" class="btn btn-danger btn-sm"><b>Excluir</b></a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="box box-default">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="chart-responsive">
+                                        <img class=" img-responsive " src="dist/img/indsp.gif" alt="User profile picture">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#"><b>Titulo da Noticia cadastrada...</b></a>
+                                <li><a href="#"><b></b>Livia Andrade<span class="pull-right text-green"><i class="fa fa-calendar"></i> 01/01/2016</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 col-md-pull-1">
+                                <ul class="btn-group">
+                                    <a href="#" class="btn btn-success btn-sm"><b>Fotos</b></a>
+                                    <a href="#" class="btn btn-default btn-sm"><b>Arquivos</b></a>
+                                    <a href="#" class="btn btn-primary btn-sm"><b>Editar</b></a>
+                                    <a href="#" class="btn btn-danger btn-sm"><b>Excluir</b></a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class="box box-default">
+                <div class="box-body">
                     <div class="row">
-                        <div class="col-md-2">Total</div>
-                        <div class="col-md-offset-6 col-md-4">Paginação</div>
+                        <div class="col-md-12">
+                            <ul class="pagination pagination-sm no-margin pull-right">
+                                <li><a href="#">«</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">»</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 </section>

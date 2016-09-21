@@ -2149,14 +2149,16 @@ a:focus {
     float: left;
 }
 .products-list .product-img img {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 100px;
 }
 .products-list .product-info {
     margin-left: 61px;
 }
 .products-list .product-title {
     font-weight: 600;
+    margin: 10px;
+    font-size: 18px;
 }
 .products-list .product-description {
     display: block;
@@ -2164,6 +2166,7 @@ a:focus {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin-left: 10px;
 }
 .product-list-in-box > .item {
     -webkit-box-shadow: none;
