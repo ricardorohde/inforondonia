@@ -2144,18 +2144,21 @@ a:focus {
 .products-list > .item:after {
     clear: both;
 }
+
 .products-list .product-img {
     float: left;
 }
 .products-list .product-img img {
-    width: 50px;
-    height: 50px;
+    width: 120px;
+    height: 100px;
 }
 .products-list .product-info {
-    margin-left: 60px;
+    margin-left: 61px;
 }
 .products-list .product-title {
     font-weight: 600;
+    margin: 10px;
+    font-size: 18px;
 }
 .products-list .product-description {
     display: block;
@@ -2163,6 +2166,7 @@ a:focus {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin-left: 10px;
 }
 .product-list-in-box > .item {
     -webkit-box-shadow: none;
@@ -4086,6 +4090,7 @@ Gradient Background colors
 @media (min-width: 63.9375em) {
     .btn-new:after{ content: ' Novo Cadastro';}
 }
-
+/*::BOX CONTEUDO::*/
+.box-default { border-bottom: 1px solid #eaeaea; border-left: 1px solid #eaeaea; border-right:  1px solid #eaeaea; }
 /*:: ALERTS SOBRE CONTENT::*/
 .cw-alert{ width: 25%; top: 0;  right: 0; padding: 1.2%; color: #FFF; text-align: center; position: fixed; z-index: 9999; background: #00a65a; display: none;}

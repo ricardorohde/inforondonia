@@ -91,3 +91,7 @@ $(function checkColunista() {
         }
     });
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
