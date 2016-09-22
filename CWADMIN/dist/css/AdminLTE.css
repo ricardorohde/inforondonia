@@ -4088,8 +4088,6 @@ Gradient Background colors
 .box-default { border-bottom: 1px solid #eaeaea; border-left: 1px solid #eaeaea; border-right:  1px solid #eaeaea; }
 .titreg{ height: 82px;}
 .star{ right: 20px; top: 25px; float: right; position: absolute; color: #ffcc00;}
-.color-pink{ color: #ff66ff;}
-.color-blue{ color: #0072b1;}
 /*Resolucao 1024px*/
 @media (min-width: 63.9375em) {
     .btn-new:after{ content: ' Novo Cadastro';}
