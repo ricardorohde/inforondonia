@@ -18,82 +18,108 @@
             $acaoId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
             require('_models/AdminNoticia.class.php');
-            $readAcao = new AdminNoticia;
+            $readClass = new AdminNoticia;
 
-            $readMsg = new Read;
-            $readMsg->ExeRead('noticias', "WHERE id = :id", "id={$acaoId}");
+            $readRows = new Read;
+            $readRows->ExeRead('noticias', "WHERE id = :id", "id={$acaoId}");
             switch ($acao):
                 case 'cadastrar':
-                    $msg = $readMsg->getResult()[0];
+                    $msg = $readRows->getResult()[0];
                     WSErro("A Notícia <b>{$msg['titulo']}</b> foi cadastrada com sucesso!", WS_ACCEPT);
                     break;
                 case 'editar':
-                    $msg = $readMsg->getResult()[0];
+                    $msg = $readRows->getResult()[0];
                     WSErro("A Notícia <b>{$msg['titulo']}</b> foi atualizada com sucesso!", WS_ACCEPT);
                     break;
                 case 'excluir':
-                    $readAcao->ExeDelete($acaoId);
-                    WSErro($readAcao->getError()[0], $readAcao->getError()[1]);
+                    $readClass->ExeDelete($acaoId);
+                    WSErro($readClass->getError()[0], $readClass->getError()[1]);
                     break;
             endswitch;
             ?>
             <div class="box box-primary">
-                <!-- == HEADER ==  -->
                 <div class="box-header">
                     <div class="row">
                         <div class="col-xs-2 col-md-2">
-                            <a href="#" class="btn btn-success btn-new"><span class="fa fa-file"></span>  </a>
+                            <a href="painel.php?exe=noticias/cadastrar" class="btn btn-success btn-new"><span class="fa fa-file"></span>  </a>
                         </div>
-                        <div class="input-group col-md-3 col-sm-9 col-xs-9">
-                            <input type="email" class="form-control" placeholder="Email">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <div class="col-xs-10 col-md-6 col-md-offset-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Faça a busca dos registros">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            </div>
                         </div>
                     </div>
                     <hr>
                 </div>
-                <!-- == FIM HEADER ==  -->
-                <!-- == BOX CONTEUDO ==  -->
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="box box-default">
-                                <div class="box-body">
-                                    <div class="row">
-                                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-4  col-xs-8 col-xs-offset-2">
-                                            <img class="img-responsive" src="dist/img/indsp.gif" alt="User profile picture">
+                        <?php
+                        $readRows->FullRead(
+                                "  SELECT n.id, n.foto, n.titulo, n.data, n.coluna, n.destaque, n.contador, u.nome, u.sexo"
+                                . "  FROM noticias n "
+                                . "  LEFT JOIN usuarios u ON n.qm_cadastr=u.id"
+                                . " WHERE n.titulo != :t"
+                                . " ORDER BY id DESC "
+                                . " LIMIT :limit", "t=''&limit=12");
+                        if (!$readRows->getResult()):
+                            WSErro('Ainda não há nenhum registro...', WS_INFOR);
+                        else:
+                            foreach ($readRows->getResult() as $reg):
+                                ?>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="box box-default">
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                                    <?php
+                                                    if ($reg['destaque'] === 'sim'):
+                                                        echo '<div class="star" data-toggle="tooltip" data-placement="top" title="Destaque"><i class="fa fa-star fa-2x"></i></div>';
+                                                    endif;
+                                                    ?>
+
+                                                    <span class="label label-default"><i class="fa fa-eye"></i> <?= isset($reg['contador']) ? $reg['contador'] : 0; ?></span>
+                                                    <?php
+                                                    if (!empty($reg['foto'])):
+                                                        ?>
+                                                        <img class="img-responsive" src="<?= HOME . "/tim.php?src=uploads/" . $reg['foto'] . "&w=380&h=150"; ?>" alt="<?= $reg["titulo"]; ?>">
+                                                    <?php else: ?>
+                                                        <img class="img-responsive" src="<?= HOME . "/tim.php?src=CWADMIN/dist/img/indsp.gif&w=380&h=150"; ?>" alt="<?= $reg["titulo"]; ?>">
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                            <ul class = "list-group">
+                                                <li class="list-group-item titreg"><?= Check::Words($reg['titulo'], 9); ?></li>
+                                                <li class="list-group-item"><i class="fa fa-user"></i> <?= Check::Words($reg['nome'], 1); ?> <span class="pull-right text-green"><i class="fa fa-calendar"></i> <?= date('d/m/Y', strtotime($reg['data'])); ?></span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-12">
+                                                <ul>
+                                                    <a href="painel.php?exe=bancofotos/addfotos&id=<?= $reg['id']; ?>&tipo=N" class="btn btn-success " data-toggle="tooltip" data-placement="top" title="Carregar Fotos"><i class="fa fa-camera"></i></a>
+                                                    <a href="painel.php?exe=bancofiles/addfiles&id=<?= $reg['id']; ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Carregar Arquivos"><i class="fa fa-cloud-upload"></i></a>
+                                                    <a href="painel.php?exe=noticias/editar&id=<?= $reg['id']; ?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a>
+                                                    <a href="painel.php?exe=noticias/listar&acao=excluir&id=<?= $reg['id']; ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="box-footer no-padding">
-                                    <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="#"><b>Titulo da Noticia cadastrada...</b></a>
-                                        <li><a href="#"><b></b>Livia Andrade<span class="pull-right text-green"><i class="fa fa-calendar"></i> 01/01/2016</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-12 col-md-offset-0  col-xs-offset-1">
-                                        <ul class="btn-block">
-                                            <button class="btn btn-success " data-toggle="tooltip" data-placement="top" title="Carregar Fotos"><b class="fa fa-camera"></b></button>
-                                            <button class="btn btn-warning"data-toggle="tooltip" data-placement="top" title="Carregar Arquivos"><b class="fa fa-cloud-upload"></b></button>
-                                            <button  class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"><b class="fa fa-pencil"></b></button>
-                                            <button  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir"><b class="fa fa-trash-o"></b></button>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
+                                <?php
+                            endforeach;
+                        endif;
+                        ?>
                     </div>
                 </div>
-                <!-- == BOX CONTEUDO ==  -->
-                <!-- == PAGINAÇÃO ==  -->
                 <div class="box-footer">
                     <div class="row">
-                        <div class="col-md-12">
-                            <ul class="pagination pagination-sm no-margin pull-right">
+                        <div class="col-md-6">
+                            <p>Mostrando de <b>1</b> até <b>12</b> de <b>3000</b> registros</p>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="pagination no-margin pull-right">
                                 <li><a href="#">«</a></li>
-                                <li><a href="#">1</a></li>
+                                <li class="active"><a href="#">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
                                 <li><a href="#">»</a></li>
@@ -101,7 +127,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- == FIM PAGINAÇÃO ==  -->
             </div>
         </div>
     </div>
