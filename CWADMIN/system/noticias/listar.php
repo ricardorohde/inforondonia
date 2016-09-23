@@ -1,12 +1,18 @@
+<?php
+//Configurações
+$exe = filter_input(INPUT_GET, 'exe');
+$case = explode('/', $exe);
+$tipo = ['N', 'Notícias'];
+?>
 <section class="content-header">
     <h1>
-        Listar Notícias
-        <small>Lista os cadastros de notícias</small>
+        <?= 'Listar ' . $tipo[1] ?>
+        <small>Lista os Cadastros de <?= $tipo[1] ?></small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="painel.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="painel.php?exe=noticias/listar">Notícias</a></li>
-        <li class="active">Listar Notícias</li>
+        <li><a href="painel.php?exe=<?= $exe; ?>"><?= $tipo[1]; ?></a></li>
+        <li class="active"><?= 'Listar ' . $tipo[1] ?></li>
     </ol>
 </section>
 
@@ -41,13 +47,15 @@
                 <div class="box-header">
                     <div class="row">
                         <div class="col-xs-2 col-md-2">
-                            <a href="painel.php?exe=noticias/cadastrar" class="btn btn-success btn-new"><span class="fa fa-file"></span>  </a>
+                            <a href="painel.php?exe=<?= $case[0]; ?>/cadastrar" class="btn btn-success btn-new"><span class="fa fa-file"></span>  </a>
                         </div>
                         <div class="col-xs-10 col-md-6 col-md-offset-4">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Faça a busca dos registros">
-                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            </div>
+                            <form name="FrmBusca" method="get" action="">
+                                <div class="input-group">
+                                    <input type="text" name="search" id="busca" class="form-control" placeholder="Faça a busca dos registros">
+                                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <hr>
@@ -96,10 +104,10 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12">
                                                 <ul>
-                                                    <a href="painel.php?exe=bancofotos/addfotos&id=<?= $reg['id']; ?>&tipo=N" class="btn btn-success " data-toggle="tooltip" data-placement="top" title="Carregar Fotos"><i class="fa fa-camera"></i></a>
+                                                    <a href="painel.php?exe=bancofotos/addfotos&id=<?= $reg['id']; ?>&tipo=<?= $tipo[0]; ?>" class="btn btn-success " data-toggle="tooltip" data-placement="top" title="Carregar Fotos"><i class="fa fa-camera"></i></a>
                                                     <a href="painel.php?exe=bancofiles/addfiles&id=<?= $reg['id']; ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Carregar Arquivos"><i class="fa fa-cloud-upload"></i></a>
-                                                    <a href="painel.php?exe=noticias/editar&id=<?= $reg['id']; ?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a>
-                                                    <a href="painel.php?exe=noticias/listar&acao=excluir&id=<?= $reg['id']; ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="painel.php?exe=<?= $case[0]; ?>/editar&id=<?= $reg['id']; ?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a>
+                                                    <a href="painel.php?exe=<?= $exe; ?>&acao=excluir&id=<?= $reg['id']; ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir"><i class="fa fa-trash-o"></i></a>
                                                 </ul>
                                             </div>
                                         </div>

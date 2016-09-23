@@ -4068,8 +4068,6 @@ Gradient Background colors
         white-space: normal!important;
     }
 }
-
-
 /*=== CUSTOM ===*/
 .help-image{ width: 100%; float: left; margin-bottom: 10px;}
 /*:: addfotos.php ::*/
@@ -4088,6 +4086,10 @@ Gradient Background colors
 .box-default { border-bottom: 1px solid #eaeaea; border-left: 1px solid #eaeaea; border-right:  1px solid #eaeaea; }
 .titreg{ height: 82px;}
 .star{ right: 20px; top: 25px; float: right; position: absolute; color: #ffcc00;}
+
+.ui-menu .ui-menu-item{ padding: 5px;}
+.ui-menu .ui-menu-item a{width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 5px;}
+.ui-state-focus{ width: 100%; border-radius: 0;}
 /*Resolucao 1024px*/
 @media (min-width: 63.9375em) {
     .btn-new:after{ content: ' Novo Cadastro';}

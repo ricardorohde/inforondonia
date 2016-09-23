@@ -27,6 +27,7 @@ $(document).ready(function () {
             }
         }
     });
+
     /*Esconde avisos*/
     $('.alert').delay(5000).fadeOut(1000);
     /*Esconde dados de acesso*/
@@ -80,6 +81,7 @@ $(function checkDestaque() {
         }
     });
 });
+
 $(function checkColunista() {
     var cColuna = "#coluna";
     var cColunista = '#colunista';
@@ -93,5 +95,5 @@ $(function checkColunista() {
 });
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+    $('[data-toggle="tooltip"]').tooltip();
+});
