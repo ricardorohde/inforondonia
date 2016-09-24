@@ -395,7 +395,7 @@
                                     <a href="<?= HOME . '/noticia/' . $Rank['url_name']; ?>" title="<?= $Rank['titulo']; ?>">
                                         <div class="main_box_outrasnoticias_ico"><i class="fa fa-newspaper-o"></i></div>
                                         <div class="main_box_outrasnoticias_inf">
-                                            <div class="main_box_outrasnoticias_dat"><i class="fa fa-clock-o"></i> <?= $Rank['data']; ?> hrs</div>
+                                            <div class="main_box_outrasnoticias_dat"><i class="fa fa-clock-o"></i> <?= $Rank['data']; ?> hrs - Acessos <b><?= $Rank['contador']; ?></b></div>
                                             <div class="main_box_outrasnoticias_tit"><?= $Rank['titulo']; ?></div>
                                         </div>
                                     </a>
