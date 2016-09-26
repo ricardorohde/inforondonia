@@ -419,7 +419,7 @@
                                     <div class="box_tempo_city">Rolim de Moura</div>
                                     <div class="box_tempo_desc">Parcialmente Nublado</div>
                                 </div>
-                                <div class="box_tempo_img"><img src="<?= INCLUDE_PATH . '/images/clima/par_nublado.png' ?>" alt="Parcialmente Nublado"></div>
+                                <div class="box_tempo_img"><img src="<?= INCLUDE_PATH . '/images/clima/pn.png' ?>" alt="Parcialmente Nublado"></div>
                             </div>
                             <div class="box_tempo_temp">
                                 <div class="box_tempo_temp_val">32</div>
