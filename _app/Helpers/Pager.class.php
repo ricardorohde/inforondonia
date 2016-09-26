@@ -3,7 +3,7 @@
 /**
  * Pager.class [ HELPER ]
  * Realização a gestão e a paginação de resultados do sistema!
- * 
+ *
  * @copyright (c) 2014, Robson V. Leite UPINSIDE TECNOLOGIA
  */
 class Pager {
@@ -134,7 +134,7 @@ class Pager {
             $Paginas = ceil($this->Rows / $this->Limit);
             $MaxLinks = $this->MaxLinks;
 
-            $this->Paginator = "<ul class=\"pagination\">";
+            $this->Paginator = "<ul class=\"pagination no-margin pull-right\">";
             $this->Paginator .= "<li ><a title=\"{$this->First}\" href=\"{$this->Link}1\" aria-label=\"Previous\">{$this->First}</a></li>";
 
             for ($iPag = $this->Page - $MaxLinks; $iPag <= $this->Page - 1; $iPag ++):

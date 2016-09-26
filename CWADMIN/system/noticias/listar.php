@@ -63,13 +63,17 @@ $tipo = ['N', 'Notícias'];
                 <div class="box-body">
                     <div class="row">
                         <?php
+                        $getPage = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
+                        $Pager = new Pager("painel.php?exe={$exe}&page=");
+                        $Pager->ExePager($getPage, 12);
+
                         $readRows->FullRead(
-                                "  SELECT n.id, n.foto, n.titulo, n.data, n.coluna, n.destaque, n.contador, u.nome, u.sexo"
+                                "  SELECT n.id, n.url_name, n.foto, n.titulo, n.data, n.coluna, n.destaque, n.contador, u.nome, u.sexo"
                                 . "  FROM noticias n "
                                 . "  LEFT JOIN usuarios u ON n.qm_cadastr=u.id"
                                 . " WHERE n.titulo != :t"
                                 . " ORDER BY id DESC "
-                                . " LIMIT :limit", "t=''&limit=12");
+                                . " LIMIT :limit OFFSET :offset", "t=''&limit={$Pager->getLimit()}&offset={$Pager->getOffset()}");
                         if (!$readRows->getResult()):
                             WSErro('Ainda não há nenhum registro...', WS_INFOR);
                         else:
@@ -87,13 +91,15 @@ $tipo = ['N', 'Notícias'];
                                                     ?>
 
                                                     <span class="label label-default"><i class="fa fa-eye"></i> <?= isset($reg['contador']) ? $reg['contador'] : 0; ?></span>
-                                                    <?php
-                                                    if (!empty($reg['foto'])):
-                                                        ?>
-                                                        <img class="img-responsive" src="<?= HOME . "/tim.php?src=uploads/" . $reg['foto'] . "&w=380&h=150"; ?>" alt="<?= $reg["titulo"]; ?>">
-                                                    <?php else: ?>
-                                                        <img class="img-responsive" src="<?= HOME . "/tim.php?src=CWADMIN/dist/img/indsp.gif&w=380&h=150"; ?>" alt="<?= $reg["titulo"]; ?>">
-                                                    <?php endif; ?>
+                                                    <a href="<?= HOME . '/noticia/' . $reg['url_name']; ?>" target="_blank" data-toggle="tooltip" data-placement="top" title="Ver no site">
+                                                        <?php
+                                                        if (!empty($reg['foto'])):
+                                                            ?>
+                                                            <img class="img-responsive" src="<?= HOME . "/tim.php?src=uploads/" . $reg['foto'] . "&w=380&h=150"; ?>" alt="<?= $reg["titulo"]; ?>">
+                                                        <?php else: ?>
+                                                            <img class="img-responsive" src="<?= HOME . "/tim.php?src=CWADMIN/dist/img/indsp.gif&w=380&h=150"; ?>" alt="<?= $reg["titulo"]; ?>">
+                                                        <?php endif; ?>
+                                                    </a>
                                                 </div>
                                             </div>
                                             <ul class = "list-group">
@@ -121,17 +127,14 @@ $tipo = ['N', 'Notícias'];
                 </div>
                 <div class="box-footer">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <p>Mostrando de <b>1</b> até <b>12</b> de <b>3000</b> registros</p>
                         </div>
-                        <div class="col-md-6">
-                            <ul class="pagination no-margin pull-right">
-                                <li><a href="#">«</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">»</a></li>
-                            </ul>
+                        <div class="col-md-7">
+                            <?php
+                            $Pager->ExePaginator("noticias");
+                            echo $Pager->getPaginator();
+                            ?>
                         </div>
                     </div>
                 </div>
