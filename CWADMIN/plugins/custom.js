@@ -27,7 +27,6 @@ $(document).ready(function () {
             }
         }
     });
-
     /*Esconde avisos*/
     $('.alert').delay(5000).fadeOut(1000);
     /*Esconde dados de acesso*/
@@ -36,17 +35,46 @@ $(document).ready(function () {
     $('.datepicker').datepicker({
         language: 'pt-BR'
     });
-});
 
+    //Campos de Videos Dinâmicos.
+    var campos_max = 4;
+    var i = $(".group-videos .boxvideo").size();
+
+    $('.addvideo').click(function (e) {
+        e.preventDefault();
+        if (i < campos_max) {
+            $('.group-videos').append('\
+            <div class="boxvideo">\
+                <br>\
+                <div class="input-group">\
+                    <div class="input-group-addon">\
+                        <i class="fa fa-youtube-play"></i>\
+                    </div>\
+                    <input type="text" name="video[]" class="form-control" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">\
+                    <div class="input-group-btn">\
+                        <a href="#" title="Remover Video" class="remove btn btn-danger">&nbsp;-</a>\
+                    </div>\
+                </div>\
+            </div>');
+            i++;
+        }
+        ;
+    });
+    $('.group-videos').on('click', '.remove', function (e) {
+        e.preventDefault();
+        $(this).parents('.boxvideo').remove();
+        i--;
+    });
+
+
+});
 //CKEditor
 CKEDITOR.replaceAll();
-
 $(function () {
     $("[data-mask]").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/aaaa"});
     $("[datetime-mask]").inputmask("datetime");
     $("[phone-mask]").inputmask("(99) 9999-9999");
 });
-
 //Exibi ou Esconde os dados de acesso
 $(function () {
     var chkalt = "input[name='altDadosAcess']";
@@ -58,7 +86,6 @@ $(function () {
         }
     });
 });
-
 //=== Desabilita campos === //
 $(function checkDestaque() {
     var cDestaque = "#destaque";
@@ -81,7 +108,6 @@ $(function checkDestaque() {
         }
     });
 });
-
 $(function checkColunista() {
     var cColuna = "#coluna";
     var cColunista = '#colunista';
@@ -93,7 +119,6 @@ $(function checkColunista() {
         }
     });
 });
-
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });

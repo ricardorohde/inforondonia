@@ -12,7 +12,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <?php            
+            <?php
             $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
             if (isset($dados) && $dados['SendPostForm']):
                 $dados['foto'] = ($_FILES['foto']['tmp_name'] ? $_FILES['foto'] : null);
@@ -34,7 +34,6 @@
                         $SiteMap->ExeSitemapGz();
                         $SiteMap->Ping();
                     endif;
-
                     header("Location: painel.php?exe=noticias/listar&acao=cadastrar&id={$cadastra->getResult()}");
                 endif;
             endif;
@@ -185,7 +184,29 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-youtube-play"></i>
                                                 </div>
-                                                <input type="text" name="video" class="form-control" id="video" value="<?= isset($dados['video']) ? $dados['video'] : ''; ?>" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
+                                                <input type="text" name="video[]" class="form-control" id="video" value="<?= isset($dados['video']) ? $dados['video'] : ''; ?>" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
+                                                <div class="input-group-btn">
+                                                    <a href="#" title="Adicionar Mais Videos" class="addvideo btn btn-success">+</a>
+                                                </div>
+                                            </div>
+                                            <div class="group-videos">
+
+                                                <?php
+                                                //Irá mostrar os videos cadastrados.
+                                                ?>
+                                                <div class="boxvideo">
+                                                    <br>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-youtube-play"></i>
+                                                        </div>
+                                                        <input type="text" name="video[]" class="form-control" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
+                                                        <div class="input-group-btn">
+                                                            <a href="#" title="Remover Video" class="remove btn btn-danger">&nbsp;-</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -202,7 +223,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>    
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
