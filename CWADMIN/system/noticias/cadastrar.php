@@ -16,7 +16,8 @@
             $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
             if (isset($dados) && $dados['SendPostForm']):
                 $dados['foto'] = ($_FILES['foto']['tmp_name'] ? $_FILES['foto'] : null);
-                unset($dados['SendPostForm']);
+                $videos = $dados['video'];
+                unset($dados['SendPostForm'], $dados['video']);
 
                 require('_models/AdminNoticia.class.php');
                 $cadastra = new AdminNoticia;
@@ -25,6 +26,8 @@
                 if (!$cadastra->getResult()):
                     WSErro($cadastra->getError()[0], $cadastra->getError()[1]);
                 else:
+
+
                     //Atualiza o Sitemap
                     $SiteMap = new Sitemap;
                     $SiteMap->ExeSitemap();
@@ -34,7 +37,7 @@
                         $SiteMap->ExeSitemapGz();
                         $SiteMap->Ping();
                     endif;
-                    header("Location: painel.php?exe=noticias/listar&acao=cadastrar&id={$cadastra->getResult()}");
+                # header("Location: painel.php?exe=noticias/listar&acao=cadastrar&id={$cadastra->getResult()}");
                 endif;
             endif;
             ?>
