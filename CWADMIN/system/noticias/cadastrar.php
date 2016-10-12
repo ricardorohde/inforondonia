@@ -21,23 +21,23 @@
 
                 require('_models/AdminNoticia.class.php');
                 $cadastra = new AdminNoticia;
-                $cadastra->ExeCreate($dados);
 
+                $cadastra->ExeCreate($dados);
                 if (!$cadastra->getResult()):
                     WSErro($cadastra->getError()[0], $cadastra->getError()[1]);
                 else:
+                    require('_models/AdminNoticiaVideo.class.php');
+                    $cadVideo = new AdminNoticiaVideo;
 
+                    foreach ($videos AS $video):
+                        $cadVideo->ExeCreate($cadastra->getResult(), $video);
+                    endforeach;
 
                     //Atualiza o Sitemap
                     $SiteMap = new Sitemap;
-                    $SiteMap->ExeSitemap();
                     $SiteMap->ExeRss();
 
-                    if (!file_exists('../../sitemap.xml')):
-                        $SiteMap->ExeSitemapGz();
-                        $SiteMap->Ping();
-                    endif;
-                # header("Location: painel.php?exe=noticias/listar&acao=cadastrar&id={$cadastra->getResult()}");
+                    header("Location: painel.php?exe=noticias/listar&acao=cadastrar&id={$cadastra->getResult()}");
                 endif;
             endif;
             ?>
@@ -193,23 +193,6 @@
                                                 </div>
                                             </div>
                                             <div class="group-videos">
-
-                                                <?php
-                                                //Irá mostrar os videos cadastrados.
-                                                ?>
-                                                <div class="boxvideo">
-                                                    <br>
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-youtube-play"></i>
-                                                        </div>
-                                                        <input type="text" name="video[]" class="form-control" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
-                                                        <div class="input-group-btn">
-                                                            <a href="#" title="Remover Video" class="remove btn btn-danger">&nbsp;-</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                             </div>
                                         </div>
                                     </div>

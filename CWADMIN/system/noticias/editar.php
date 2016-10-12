@@ -29,13 +29,7 @@
                 else:
                     //Atualiza o Sitemap
                     $SiteMap = new Sitemap;
-                    $SiteMap->ExeSitemap();
                     $SiteMap->ExeRss();
-
-                    if (!file_exists('../../sitemap.xml')):
-                        $SiteMap->ExeSitemapGz();
-                        $SiteMap->Ping();
-                    endif;
 
                     header("Location: painel.php?exe=noticias/listar&acao=editar&id={$idEdit}");
                 endif;
@@ -193,11 +187,45 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label for="video">Url do Video do YouTube</label>
+
+                                            <?php
+                                            $ReadVideo = new Read;
+                                            $ReadVideo->ExeRead('noticias_videos', "WHERE id_noticia = :idnews LIMIT :limit OFFSET :offset", "idnews={$idEdit}&limit=1&offset=0");
+                                            $VideoP = $ReadVideo->getResult()[0];
+                                            ?>
+
                                             <div class="input-group">
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-youtube-play"></i>
                                                 </div>
-                                                <input type="text" name="video" class="form-control" id="video" value="<?= isset($dados['video']) ? $dados['video'] : ''; ?>" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
+                                                <input type="text" name="video[]" class="form-control" id="video" value="<?= isset($VideoP['video']) ? "https://www.youtube.com/watch?v={$VideoP['video']}" : ''; ?>" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
+                                                <div class="input-group-btn">
+                                                    <a href="#" title="Adicionar Mais Videos" class="addvideo btn btn-success">+</a>
+                                                </div>
+                                            </div>
+                                            <div class="group-videos">
+                                                <?php
+                                                $ReadVideo = new Read;
+                                                $ReadVideo->ExeRead('noticias_videos', "WHERE id_noticia = :idnews ORDER BY id ASC LIMIT :limit OFFSET :offset", "idnews={$idEdit}&limit=4&offset=1");
+                                                if ($ReadVideo->getResult()):
+                                                    foreach ($ReadVideo->getResult() as $videos):
+                                                        ?>
+                                                        <div class="boxvideo">
+                                                            <br>
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon">
+                                                                    <i class="fa fa-youtube-play"></i>
+                                                                </div>
+                                                                <input type="text" name="video[]" class="form-control" value="<?= isset($videos['video']) ? "https://www.youtube.com/watch?v={$videos['video']}" : ''; ?>" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
+                                                                <div class="input-group-btn">
+                                                                    <a href="#" title="Remover Video" class="remove btn btn-danger">&nbsp;-</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php
+                                                    endforeach;
+                                                endif;
+                                                ?>
                                             </div>
                                         </div>
                                     </div>

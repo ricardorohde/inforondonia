@@ -14,9 +14,12 @@ AUTO_INCREMENT=8;
 
 -- Migra Videos para tabela noticias_videos
 INSERT noticias_videos (id_noticia, video, capa)
-SELECT 
+SELECT
   n.id,
   REPLACE(SUBSTR(n.video, LOCATE('v=', n.video)+2),'&featur','') AS video,
   CONCAT('http://i1.ytimg.com/vi/', REPLACE(SUBSTR(n.video, LOCATE('v=', n.video)+2),'&featur',''), '/hqdefault.jpg') as capa
   FROM noticias n
  WHERE n.video != '';
+
+ALTER TABLE `noticias`
+ DROP COLUMN `video`;
