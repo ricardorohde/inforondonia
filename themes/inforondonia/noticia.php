@@ -104,7 +104,7 @@ endif;
                     <?php
                 endif;
                 ?>
-                <!--
+
                 <div class="article_news_morenews">
                     <header class="header_morenews">
                         <h1 class="header_morenews_vin">Comente</h1>
@@ -118,7 +118,7 @@ endif;
                         <div class="fb-comments" data-href="<?= HOME . '/noticia/' . $url_name; ?>" data-width="100%" data-numposts="5"></div>
                     </div>
                 </div>
-                -->
+
                 <div class="article_news_morenews">
                     <header class="header_morenews">
                         <h1 class="header_morenews_vin">Outras Notícias</h1>
