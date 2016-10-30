@@ -306,6 +306,16 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .denuncia_form .form_input .denuncia_captcha{ width: 100%; float: left;}
 .denuncia_form .form_input .denuncia_send{ width: 39%; font-size: 1.0em; color: #FFF; border: none; border-radius: 3px; margin-top: 1%; background: #35314E;}
 .denuncia_form .form_input .denuncia_send:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
+/*=== QUEM SOMOS ===*/
+.contato_form{ width: 100%; margin-top: 10px; float: left;}
+.header_contato_form{ width: 100%; float: left;}
+
+.contato_form .form_input{ width: 100%; margin-bottom: 10px; float: left;}
+.contato_form .form_input label{ color: #35314E; font-weight: bold;}
+.contato_form .form_input input{ width: 100%; font-size: 0.875em; padding: 8px; float: left;}
+.contato_form .form_input textarea{ width: 100%; font-size: 0.875em; padding: 8px; margin-bottom: 10px; float: left;}
+.contato_form .form_input .contato_send{ width: 39%; font-size: 1.0em; color: #FFF; border: none; border-radius: 3px; margin-top: 1%; background: #35314E;}
+.contato_form .form_input .contato_send:hover{ cursor: pointer; opacity: 0.9; filter: alpha(opacity=90);}
 
 @media (max-width: 1367px){
     /*=== SLIDE ===*/

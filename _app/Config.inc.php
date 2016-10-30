@@ -11,14 +11,14 @@ define('PASS', '1234');
 define('DBSA', '_inforondonia_2016');
 
 // DEFINE SERVIDOR DE E-MAIL ################
-define('MAILUSER', 'email@dominio.com.br');
-define('MAILPASS', 'senhadoemail');
-define('MAILPORT', 'postadeenvio');
-define('MAILHOST', 'servidordeenvio');
+define('MAILUSER', 'noreply@inforondonia.com.br');
+define('MAILPASS', 'd4pUvvIhIqLg');
+define('MAILPORT', '587');
+define('MAILHOST', 'mail.inforondonia.com.br');
 
 // DEFINE IDENTIDADE DO SITE ################
 define('SITENAME', 'INFORONDONIA');
-define('SITEDESC', 'As principais notícias de Rondônia, Brasil e Mundo. Coberturas de Eventos e Videos você encontra aqui. INFORONDONIA - Informação é a nossa prioridade! ');
+define('SITEDESC', 'As principais notícias de Rondônia, Brasil e Mundo. Coberturas de Eventos e Videos você encontra aqui. INFORONDONIA - Informação é a nossa prioridade!');
 define('CIDADE', 'Rolim de Moura');
 define('UF', 'RO');
 
