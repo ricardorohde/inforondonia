@@ -10,7 +10,6 @@ class Cotacao {
 
     private $Data;
     private $Tipo;
-    private $Date;
     private $Error;
     private $Result;
 

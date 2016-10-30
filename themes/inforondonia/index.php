@@ -408,37 +408,35 @@
                 </div>
 
                 <div class="main_blc_tempo">
-                    <header>
-                        <h1>TEMPO</h1>
-                        <div class="box_tempo_date">TERÇA-FEIRA - 06/09/2016</div>
-                    </header>
-                    <div class="main_grp_tempo">
-                        <div class="box_tempo">
-                            <div class="box_tempo_info">
-                                <div class="box_tempo_tempdesc">
-                                    <div class="box_tempo_city">Rolim de Moura</div>
-                                    <div class="box_tempo_desc">Parcialmente Nublado</div>
+
+                    <?php
+                    $Now = date('Y-m-d');
+                    $Read = new Read;
+                    $Read->ExeRead("clima_dados", "WHERE data_previsao = :date LIMIT :limit", "date={$Now}&limit=1");
+                    if ($Read->getResult()):
+                        $Clima = $Read->getResult()[0];
+                        ?>
+                        <header>
+                            <h1>TEMPO</h1>
+                            <div class="box_tempo_date"><?= date('d/m/Y', strtotime($Clima['data_previsao'])); ?></div>
+                        </header>
+                        <div class="main_grp_tempo">
+                            <div class="box_tempo">
+                                <div class="box_tempo_info">
+                                    <div class="box_tempo_tempdesc">
+                                        <div class="box_tempo_city"><?= $Clima['cidade']; ?></div>
+                                        <div class="box_tempo_desc"><?= $Clima['descricao']; ?></div>
+                                    </div>
+                                    <div class="box_tempo_img"><img src="<?= INCLUDE_PATH . '/images/clima/' . $Clima['id_sigla'] . '.png' ?>" alt="<?= $Clima['descricao']; ?>"></div>
                                 </div>
-                                <div class="box_tempo_img"><img src="<?= INCLUDE_PATH . '/images/clima/pn.png' ?>" alt="Parcialmente Nublado"></div>
-                            </div>
-                            <div class="box_tempo_temp">
-                                <div class="box_tempo_temp_val">32</div>
-                                <div class="box_tempo_temp_cel"><img src="<?= INCLUDE_PATH . '/images/clima/temp_grau.png' ?>" alt="Temperatura"></div>
+                                <div class="box_tempo_temp">
+                                    <div class="box_tempo_temp_val"><?= $Clima['temp_max']; ?></div>
+                                    <div class="box_tempo_temp_cel"><img src="<?= INCLUDE_PATH . '/images/clima/temp_grau.png' ?>" alt="Temperatura"></div>
+                                </div>
                             </div>
                         </div>
-                        <ul class="box_tempo_calendar">
-                            <li class="active">DOM</li>
-                            <li>SEG</li>
-                            <li>TER</li>
-                            <li>QUA</li>
-                            <li>QUI</li>
-                            <li>SEX</li>
-                            <li>SÁB</li>
-                        </ul>
-                    </div>
+                    <?php endif; ?>
                 </div>
-
-
             </div>
         </div>
 
