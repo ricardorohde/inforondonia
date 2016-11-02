@@ -60,7 +60,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 /*=== TOPO ===*/
 .main_header{ width: 100%; border-top: 0.3125em solid #35314E; float: left; background: url(../images/bg-topo.jpg) center top no-repeat;}
 .main_header .box_header_logords{ width: 30%; padding: 2% 1%; float: left;}
-.main_header_logo{ width: 100%; max-width: 337px; height: 137px; font-size: 0; float: left; background: url(../images/logo_outubro.png) center center no-repeat; background-size: 100% auto;}
+.main_header_logo{ width: 100%; max-width: 337px; height: 137px; font-size: 0; float: left; background: url(../images/logo_topo.png) center center no-repeat; background-size: 100% auto;}
 .main_header_rds{ padding: 0.5% 2.0%; background: #FFF; float: left; border-radius: 0.3125em;}
 .main_header_rds a.rds_facebook {color: #3B5998;}
 .main_header_rds a.rds_twitter {color: #55ACEE;}
