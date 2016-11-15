@@ -70,18 +70,22 @@ endif;
                 endif;
 
                 //Video
-                if (!empty($video)):
+                $Videos = new Read;
+                $Videos->ExeRead("noticias_videos", "WHERE id_noticia = :idnews", "idnews={$id}");
+                if ($Videos->getResult()):
                     ?>
                     <div class="article_news_morenews">
                         <header class="header_morenews">
                             <h1 class="header_morenews_vin">Veja o vídeo abaixo:</h1>
                         </header>
                         <div class="content_morenews">
-                            <div class="frameBox">
-                                <div class="ratio16">
-                                    <iframe class="ratio_element"  width="100%" height="100%" src="https://www.youtube.com/embed/<?= Check::ytVideo($video); ?>" frameborder="0" allowfullscreen></iframe>
+                            <?php foreach ($Videos->getResult() as $video): ?>
+                                <div class="frameBox">
+                                    <div class="ratio16">
+                                        <iframe class="ratio_element"  width="100%" height="100%" src="https://www.youtube.com/embed/<?= $video['video']; ?>" frameborder="0" allowfullscreen></iframe>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <?php

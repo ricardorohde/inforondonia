@@ -1,6 +1,7 @@
 CREATE TABLE `noticias_videos` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`id_noticia` INT(11) NOT NULL,
+	`id_field` INT(11) NOT NULL,
 	`video` VARCHAR(100) NULL DEFAULT NULL,
 	`capa` VARCHAR(100) NULL DEFAULT NULL,
 	PRIMARY KEY (`id`),
@@ -9,8 +10,9 @@ CREATE TABLE `noticias_videos` (
 )
 COMMENT='Videos vinculados as noticias'
 COLLATE='utf8_general_ci'
-ENGINE=InnoDB
-AUTO_INCREMENT=8;
+ENGINE=InnoDB;
+
+
 
 -- Migra Videos para tabela noticias_videos
 INSERT noticias_videos (id_noticia, video, capa)

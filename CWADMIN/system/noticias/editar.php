@@ -18,7 +18,8 @@
 
             if (isset($dados) && $dados['SendPostForm']):
                 $dados['foto'] = ($_FILES['foto']['tmp_name'] ? $_FILES['foto'] : null);
-                unset($dados['SendPostForm']);
+                $videosArr = $dados['video'];
+                unset($dados['SendPostForm'], $dados['video']);
 
                 require('_models/AdminNoticia.class.php');
                 $cadastra = new AdminNoticia;
@@ -27,6 +28,10 @@
                 if (!$cadastra->getResult()):
                     WSErro($cadastra->getError()[0], $cadastra->getError()[1]);
                 else:
+                    if (!empty($videosArr)):
+                        $sendVideos = new AdminNoticia;
+                        $sendVideos->videoSend($videosArr, $idEdit);
+                    endif;
                     //Atualiza o Sitemap
                     $SiteMap = new Sitemap;
                     $SiteMap->ExeRss();
@@ -62,11 +67,7 @@
                                                 $readCat->ExeRead("noticias_categoria", "ORDER BY categoria ASC");
                                                 if ($readCat->getRowCount() >= 1):
                                                     foreach ($readCat->getResult() as $cat):
-                                                        echo "<option ";
-                                                        if ($dados['categoria'] == $cat['cat_url']):
-                                                            echo "selected=\"selected\" ";
-                                                        endif;
-                                                        echo "value=\"{$cat['cat_url']}\"> &raquo;&raquo; {$cat['categoria']}</option>";
+                                                        echo "<option " . ($dados['categoria'] == $cat['cat_url'] ? "selected=\"selected\"" : '') . "value = \"{$cat['cat_url']}\"> &raquo;&raquo; {$cat['categoria']}</option>";
                                                     endforeach;
                                                 endif;
                                                 ?>
@@ -171,11 +172,7 @@
                                                 $readCol->ExeRead("colunistas", "ORDER BY nome ASC");
                                                 if ($readCol->getRowCount() >= 1):
                                                     foreach ($readCol->getResult() as $col):
-                                                        echo "<option ";
-                                                        if ($dados['colunista'] == $col['id']):
-                                                            echo "selected=\"selected\" ";
-                                                        endif;
-                                                        echo "value=\"{$col['id']}\"> &raquo;&raquo; {$col['nome']}</option>";
+                                                        echo "<option" . ($dados['colunista'] == $col['id'] ? "selected=\"selected\" " : '') . " value=\"{$col['id']}\"> &raquo;&raquo; {$col['nome']}</option>";
                                                     endforeach;
                                                 endif;
                                                 ?>
@@ -191,7 +188,9 @@
                                             <?php
                                             $ReadVideo = new Read;
                                             $ReadVideo->ExeRead('noticias_videos', "WHERE id_noticia = :idnews LIMIT :limit OFFSET :offset", "idnews={$idEdit}&limit=1&offset=0");
-                                            $VideoP = $ReadVideo->getResult()[0];
+                                            if (!empty($ReadVideo->getResult()[0])):
+                                                $VideoP = $ReadVideo->getResult()[0];
+                                            endif;
                                             ?>
 
                                             <div class="input-group">
@@ -218,7 +217,7 @@
                                                                 </div>
                                                                 <input type="text" name="video[]" class="form-control" value="<?= isset($videos['video']) ? "https://www.youtube.com/watch?v={$videos['video']}" : ''; ?>" placeholder="Informe a url do video do YouTube para Adicionar na Noticia">
                                                                 <div class="input-group-btn">
-                                                                    <a href="#" title="Remover Video" class="remove btn btn-danger">&nbsp;-</a>
+                                                                    <a href="#" title="Remover Video" id="<?= $videos['id']; ?>" class="remove btn btn-danger">&nbsp;-</a>
                                                                 </div>
                                                             </div>
                                                         </div>

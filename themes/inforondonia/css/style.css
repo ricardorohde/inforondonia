@@ -255,6 +255,7 @@ section#slide ul li span{ width: 97%; display: table; padding: 2%; position: abs
 .article_news_chars ul li { margin-bottom: 5px;}
 .article_news_moreimg{ width: 100%; float: left;}
 .article_news_morenews{ width: 100%; margin-top: 10px; border: 1px solid #CCC; border-top: 4px solid #34314B; border-radius: 5px; float: left;}
+.article_news_morenews .frameBox{ width: 100%; float: left; margin-bottom: 10px;}
 .article_news_moreimg{ width: 100%; margin-top: 10px; float: left;}
 .boxfotos{ width: 100%; margin-bottom: 5px; float: left;}
 .boxfotos p{ width: 100%; font-size: 0.75em; float: left; margin-bottom: 10px;}

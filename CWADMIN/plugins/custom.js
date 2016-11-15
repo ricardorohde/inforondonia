@@ -62,8 +62,19 @@ $(document).ready(function () {
     });
     $('.group-videos').on('click', '.remove', function (e) {
         e.preventDefault();
-        $(this).parents('.boxvideo').remove();
-        i--;
+        var idvideo = $(this).attr("id");
+        var boxvideo = $(this).parents('.boxvideo');
+        $.ajax({
+            type: 'POST',
+            url: 'system/noticias/actions.php',
+            data: {'action': 'delete', 'id': idvideo},
+            cache: false,
+            success: function (res) {
+                boxvideo.remove();
+                i--;
+            }
+        });
+        return false;
     });
 
 

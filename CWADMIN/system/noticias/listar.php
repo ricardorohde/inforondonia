@@ -24,9 +24,7 @@ $tipo = ['N', 'Notícias'];
             $acaoId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
             require('_models/AdminNoticia.class.php');
-            require('_models/AdminNoticiaVideo.class.php');
             $readClass = new AdminNoticia;
-            $readVideos = new AdminNoticiaVideo;
 
             $readRows = new Read;
             $readRows->ExeRead('noticias', "WHERE id = :id", "id={$acaoId}");
@@ -40,7 +38,7 @@ $tipo = ['N', 'Notícias'];
                     WSErro("A Notícia <b>{$msg['titulo']}</b> foi atualizada com sucesso!", WS_ACCEPT);
                     break;
                 case 'excluir':
-                    $readVideos->ExeDeleteVideos($acaoId);
+                    $readClass->videoRemoveAll($acaoId);
                     $readClass->ExeDelete($acaoId);
                     WSErro($readClass->getError()[0], $readClass->getError()[1]);
                     break;

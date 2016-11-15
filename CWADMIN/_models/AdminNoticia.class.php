@@ -3,7 +3,7 @@
 /**
  * AdminNoticia.class [ MODEL ADMIN ]
  * Respnsável por gerenciar as noticias no Admin do sistema!
- * 
+ *
  * @copyright (c) 2014, Gean Marques - CREATIVE WEBSITES
  */
 class AdminNoticia {
@@ -84,80 +84,84 @@ class AdminNoticia {
     }
 
     /**
-     * <b>Enviar Galeria:</b> Envelope um $_FILES de um input multiple e envie junto a um postID para executar
-     * o upload e o cadastro de galerias!
-     * @param ARRAY $Images = Envie um $_FILES multiple
-     * @param STRING $Tipo = Informe o Tipo
-     * @param INT $TipoId = Informe o ID do tipo
+     * <b>Enviar Videos:</b> Envelope os videos múltiplos em um Array
+     * @param ARRAY $Videos = Envie um Array com os Videos
+     * @param INT $NewsId = Informe o ID da noticia
      */
-    public function gbSend(array $Images, $Tipo, $TipoId) {
-        $this->Id = (int) $TipoId;
-        $this->Tipo = (string) $Tipo;
-        $this->Data = $Images;
+    public function videoSend(array $Videos, $NewsId) {
+        $this->Id = (int) $NewsId;
+        $this->Data['url'] = $Videos;
 
-        $ImageName = new Read;
-        $ImageName->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
+        $ChkNews = new Read;
+        $ChkNews->ExeRead(self::Entity, "WHERE id = :id", "id={$this->Id}");
 
-        if (!$ImageName->getResult()):
-            $this->Error = ["Erro ao enviar fotos da noticia. O indice {$this->Id} não foi encontrado no banco de dados!", WS_ERROR];
+        if (!$ChkNews->getResult()):
+            $this->Error = ["Erro ao enviar os videos da notícia. O indice {$this->Id} não foi encontrado no banco de dados!", WS_ERROR];
             $this->getResult = false;
         else:
-            $ImageName = $ImageName->getResult()[0]['titulo'];
+            $Read = new Read;
+            $Create = new Create;
+            $Update = new Update;
 
-            $gbFiles = array();
-            $gbCount = count($this->Data['tmp_name']);
-            $gbKeys = array_keys($this->Data);
+            foreach ($this->Data['url'] as $key => $video):
+                if (!empty($video)):
+                    $this->trataVideo($video);
+                    $this->Data = ['id_noticia' => $this->Id, 'id_field' => $key, 'video' => $this->Data['video'], 'capa' => $this->Data['capa']];
 
-            for ($gb = 0; $gb < $gbCount; $gb++):
-                foreach ($gbKeys as $keys):
-                    $gbFiles[$gb][$keys] = $this->Data[$keys][$gb];
-                endforeach;
-            endfor;
-
-            $gbSend = new Upload;
-            $i = 0;
-            $u = 0;
-
-            foreach ($gbFiles as $gbUpload):
-                $i++;
-                $ImgName = "tipo-{$this->Tipo}-id-{$this->Id}-" . (substr(md5(time() + $i), 0, 5));
-                $gbSend->Image($gbUpload, $ImgName, 1024, "banco_fotos");
-
-                if ($gbSend->getResult()):
-                    $gbImage = $gbSend->getResult();
-                    $gbCreate = ['id_tipo' => $this->Id, 'tipo' => $this->Tipo, 'foto' => $gbImage, 'data' => date('Y-m-d H:i:s')];
-                    $insertGb = new Create;
-                    $insertGb->ExeCreate('banco_fotos', $gbCreate);
-                    $u++;
+                    $Read->ExeRead('noticias_videos', "WHERE id_noticia = :idnews AND id_field = :idfield", "idnews={$this->Id}&idfield={$key}");
+                    if ($Read->getResult()):
+                        $Update->ExeUpdate('noticias_videos', $this->Data, "WHERE id = :id", "id={$Read->getResult()[0]['id']}");
+                        if ($Update->getResult()):
+                            $this->Error = ["Video Atualizado com sucesso!", WS_ACCEPT];
+                            $this->Result = true;
+                        endif;
+                    else:
+                        $Create->ExeCreate('noticias_videos', $this->Data);
+                        if ($Create->getResult()):
+                            $this->Error = ["Video Cadastrado com sucesso!", WS_ACCEPT];
+                            $this->Result = $Create->getResult();
+                        endif;
+                    endif;
                 endif;
             endforeach;
 
-            if ($u > 1):
-                $this->Error = ["Galeria Atualizada: Foram enviadas {$u} imagens para esta galeria!", WS_ACCEPT];
-                $this->Result = true;
-            endif;
         endif;
     }
 
     /**
-     * <b>Deletar Imagem da galeria:</b> Informe apenas o id da imagem na galeria para que esse método leia e remova
-     * a imagem da pasta e delete o registro do banco!
-     * @param INT $GbImageId = Id da imagem da galleria
+     * <b>Deletar Video:</b> Informe apenas o id do video para que esse método leia
+     * delete o registro do banco!
+     * @param INT $VideoId = Id do vídeo.
      */
-    public function gbRemove($GbImageId) {
-        $this->Id = (int) $GbImageId;
-        $readGb = new Read;
-        $readGb->ExeRead("banco_fotos", "WHERE id = :gb", "gb={$this->Id}");
-        if ($readGb->getResult()):
-            $Imagem = '../uploads/' . $readGb->getResult()[0]['foto'];
-            if (file_exists($Imagem) && !is_dir($Imagem)):
-                unlink($Imagem);
+    public function videoRemove($VideoId) {
+        $this->Id = (int) $VideoId;
+        $readVideo = new Read;
+        $readVideo->ExeRead("noticias_videos", "WHERE id = :id", "id={$this->Id}");
+        if ($readVideo->getResult()):
+            $Deleta = new Delete;
+            $Deleta->ExeDelete("noticias_videos", "WHERE id = :id", "id={$this->Id}");
+            if ($Deleta->getResult()):
+                $this->Error = ["Video removido com sucesso.", WS_ACCEPT];
+                $this->Result = true;
             endif;
 
+        endif;
+    }
+
+    /**
+     * <b>Deletar Videos da Noticia:</b> Informe apenas o id da noticia para que esse método leia
+     * delete o registro do banco!
+     * @param INT $NewsId = Id da notícia
+     */
+    public function videoRemoveAll($NewsId) {
+        $this->Id = (int) $NewsId;
+        $readVideo = new Read;
+        $readVideo->ExeRead("noticias_videos", "WHERE id_noticia = :idnews", "idnews={$this->Id}");
+        if ($readVideo->getResult()):
             $Deleta = new Delete;
-            $Deleta->ExeDelete("banco_fotos", "WHERE id = :id", "id={$this->Id}");
+            $Deleta->ExeDelete("noticias_videos", "WHERE id_noticia = :idnews", "idnews={$this->Id}");
             if ($Deleta->getResult()):
-                $this->Error = ["A imagem foi removida com sucesso da galeria!", WS_ACCEPT];
+                $this->Error = ["Todos os videos removidos da referida notícia.", WS_ACCEPT];
                 $this->Result = true;
             endif;
 
@@ -222,12 +226,20 @@ class AdminNoticia {
         endif;
     }
 
+    //Pega dados do video no youtube
+    private function trataVideo($videoUrl) {
+        $videoId = array();
+        preg_match('/(v=)([^&]+)/', $videoUrl, $videoId);
+        $this->Data['video'] = $videoId[2];
+        $this->Data['capa'] = "http://i1.ytimg.com/vi/{$videoId[2]}/hqdefault.jpg";
+    }
+
     //Cadastrar Notícia
     private function Create() {
         $Create = new Create;
         $this->Data['qm_cadastr'] = $_SESSION['userlogin']['id'];
         $this->Data['url_name'] = Check::Name($this->Data['titulo']);
-        
+
         $Create->ExeCreate(self::Entity, $this->Data);
         if ($Create->getResult()):
             $this->Error = ["A noticia <b>{$this->Data['titulo']}</b> foi cadastrada com sucesso no sistema!", WS_ACCEPT];
@@ -239,10 +251,10 @@ class AdminNoticia {
     private function Update() {
         $Update = new Update;
         $this->Data['qm_alterou'] = $_SESSION['userlogin']['id'];
-        
+
         $Update->ExeUpdate(self::Entity, $this->Data, "WHERE id = :id", "id={$this->Id}");
         if ($Update->getResult()):
-            $this->Error = ["A noticia <b>{$this->Data['nome']}</b> foi atualizada com sucesso!", WS_ACCEPT];
+            $this->Error = ["A noticia <b>{$this->Data['titulo']}</b> foi atualizada com sucesso!", WS_ACCEPT];
             $this->Result = true;
         endif;
     }
