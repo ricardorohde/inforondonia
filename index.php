@@ -18,7 +18,7 @@ Check::UserOnline();
         $Link->getTags();
         ?>
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="<?= INCLUDE_PATH; ?>/css/style.min.css"/>
+        <link rel="stylesheet" type="text/css" href="<?= INCLUDE_PATH; ?>/css/style_layout.min.css"/>
     </head>
     <body>
         <script>
@@ -68,9 +68,9 @@ Check::UserOnline();
     <!-- JS -->
     <script src="<?= HOME; ?>/_cdn/jquery.js"></script>
     <script src="<?= HOME; ?>/_cdn/jcycle2.js"></script>
-    <script src="<?= HOME; ?>/_cdn/slide.js"></script>
+    <script src="<?= HOME; ?>/_cdn/slide_pag.js"></script>
     <script src="<?= HOME; ?>/_cdn/_scripts.conf.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js?hl=pt-BR' async defer></script>    
+    <script src='https://www.google.com/recaptcha/api.js?hl=pt-BR' async defer></script>
 </html>
 <?php
 ob_end_flush();

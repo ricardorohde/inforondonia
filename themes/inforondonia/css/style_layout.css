@@ -85,14 +85,20 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .main_right{ width: 28%; float: right;}
 .slide_content{ width: 100%; float: left;}
 /*=== SLIDE ===*/
-section#slide{ width: 100%; max-width: 885px; height: 380px; background: #FFF; display: block; overflow: hidden;}
-section#slide section#buttons{ display: none; position: absolute; margin: 5px; z-index: 9; }
-section#slide section#buttons a{ width: 50px; height: 40px; display: inline-block; text-align: center; line-height: 35px; color: #FFF; font-size: 1.6em; text-decoration: none; background: #37384e;}
-section#slide section#buttons a:hover{ background: #35314e;}
-section#slide ul{ list-style: none; display: table; position: relative;}
-section#slide ul li{  width: 100%; max-width: 885px; height: 380px; display: inline-block; position: relative;}
-section#slide ul li img{ width: 100%; height: 100%;}
-section#slide ul li span{ width: 97%; display: table; padding: 2%; position: absolute; bottom: 0; margin: 10px 0 10px 5%; font-size: 1.1em; color: #FFF; border-left: 10px solid #35314e; background: #37384e;}
+.slide{ width: 100%; position: relative; float: left;}
+.slide_nav{ width: 100%; left: 0; top: 5%; position: absolute;}
+.slide_nav_item{ position: absolute; padding: 10px 20px; z-index: 99; color: #FFF; background: #37384e;}
+.slide_nav_item:hover{ background: #505077; cursor: pointer;}
+.slide_nav_item.b{ margin-left: 10px;}
+.slide_nav_item.g{ margin-left: 65px;}
+.slide_item{ display: none;}
+.slide_item.first{ display: block;}
+.slide_item_desc{ width: 100%; padding: 2%; left: 0; bottom: 0; position: absolute; color: #fff; background: #37384e;}
+.slide_pager{ position: absolute; top: 5%; right: 15px;}
+.slide_pager span{ padding: 5px 10px; z-index: 99; color: #FFF; background: #37384e;}
+.slide_pager span:hover{ background: #505077; cursor: pointer;}
+.slide_pager .active{ background: #a7a7ce; color: #FFF;}
+
 /*=== CONT MEIO ===*/
 .banner_mainleft_full{ width: 100%; margin-top: 5px; float: left;}
 .main_blc_lastnews{ width: 100%; margin-top: 10px; float: left; background: #FFF;}

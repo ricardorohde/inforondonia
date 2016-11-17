@@ -19,29 +19,38 @@
     <div class="main_content">
         <div class="main_left">
             <div class="slide_content">
-                <section id="slide">
-                    <section id="buttons">
-                        <a href="#" class="prev">&laquo;</a>
-                        <a href="#" class="next">&raquo;</a>
-                    </section>
-                    <ul>
-                        <?php
-                        $ReadMain->ExeRead("noticias", "WHERE data_fslide >= :datafim AND titulo != :tit AND destaque = :dest AND destaque_tipo = :desttipo ORDER BY data DESC LIMIT :limit OFFSET :offset", "datafim={$data_atual}&tit=''&dest=sim&desttipo=slide&limit=5&offset=0");
-                        if ($ReadMain->getResult()):
-                            foreach ($ReadMain->getResult() as $sNews):
-                                ?>
-                                <li>
-                                    <a href="<?= HOME . '/noticia/' . $sNews['url_name']; ?>" title="<?= $sNews['titulo']; ?>">
-                                        <span><?= $sNews['titulo']; ?></span>
-                                        <img src="<?= HOME . '/tim.php?src=uploads/' . $sNews['foto'] . '&w=890&h=380'; ?>" title="<?= $sNews['titulo']; ?>" alt="<?= $sNews['titulo']; ?>">
-                                    </a>
-                                </li>
-                                <?php
-                            endforeach;
-                        endif;
-                        ?>
-                    </ul>
+
+                <section class="slide">
+                    <div class="slide_nav">
+                        <div class="slide_nav_item b">&laquo;</div>
+                        <div class="slide_nav_item g">&raquo;</div>
+                    </div>
+
+                    <?php
+                    $ReadMain->ExeRead("noticias", "WHERE data_fslide >= :datafim AND titulo != :tit AND destaque = :dest AND destaque_tipo = :desttipo ORDER BY data DESC LIMIT :limit OFFSET :offset", "datafim={$data_atual}&tit=''&dest=sim&desttipo=slide&limit=5&offset=0");
+                    if ($ReadMain->getResult()):
+                        $i = 0;
+                        $pagerSlide = [];
+                        foreach ($ReadMain->getResult() as $sNews):
+                            $i++;
+                            $first = ($i == 1 ? ' first' : '');
+                            $active = ($i == 1 ? ' active' : '');
+                            $pagerSlide[$i] = "<span class='{$active}' id='" . ($i - 1) . "'>{$i}</span>"
+                            ?>
+                            <article class="slide_item<?= $first; ?>">
+                                <a href="<?= HOME . '/noticia/' . $sNews['url_name']; ?>" title="<?= $sNews['titulo']; ?>">
+                                    <img src="<?= HOME . '/tim.php?src=uploads/' . $sNews['foto'] . '&w=890&h=380'; ?>" title="<?= $sNews['titulo']; ?>" alt="<?= $sNews['titulo']; ?>">
+                                    <div class="slide_item_desc"><?= $sNews['titulo']; ?></div>
+                                </a>
+                            </article>
+                            <?php
+                        endforeach;
+                        echo "<div class='slide_pager'>" . implode(' ', $pagerSlide) . "</div>";
+                    endif;
+                    ?>
+
                 </section>
+
             </div>
             <?php
             //Banner Capa 1
