@@ -41,6 +41,22 @@
                 </div>
                 <?php
             endif;
+
+            //Banner Topo 3
+            $banners->setPlaces("idtipo=15");
+            if ($banners->getResult()):
+                ?>
+                <div class="main_header_banner cycle-slideshow" data-cycle-log="false" data-cycle-timeout="5000" data-cycle-slides="> a">
+                    <?php
+                    foreach ($banners->getResult() as $bnr):
+                        echo "<a href=\"{$bnr['link']}\" title=\"{$bnr['titulo']}\" target=\"_blank\">";
+                        echo "<img alt=\"{$bnr['titulo']}\" title=\"{$bnr['titulo']}\" src=\"" . HOME . "/tim.php?src=uploads/{$bnr['banner']}&w=745&h=95&zc=0\" class=\"banner\" />";
+                        echo "</a>";
+                    endforeach;
+                    ?>
+                </div>
+                <?php
+            endif;
             ?>
         </div>
     </div>
