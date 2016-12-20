@@ -241,6 +241,26 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="foto_caption">Legenda</label>
+                                            <input type="text" name="foto_caption" class="form-control" id="foto_caption" value="<?= isset($dados['foto_caption']) ? $dados['foto_caption'] : ''; ?>" placeholder="Informe a legenda da foto">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="foto_position">Posição da Foto</label>
+                                            <select name="foto_position" class="form-control" id="foto_position">
+                                                <option value="" <?= ($dados['foto_position'] == '') ? ' selected="selected"' : ''; ?>>Selecione...</option>
+                                                <option value="top" <?= ($dados['foto_position'] == 'top') ? ' selected="selected"' : ''; ?>>Acima da Notícia</option>
+                                                <option value="bottom" <?= ($dados['foto_position'] == 'bottom') ? ' selected="selected"' : ''; ?>>Abaixo da Notícia</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">

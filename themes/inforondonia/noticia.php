@@ -44,12 +44,23 @@ endif;
                 </div>
             </header>
             <article class="content_pag">
-                <div class="article_news_chars"><?= $noticia; ?></div>
-                <?php if (!empty($foto)): ?>
-                    <figure class="article_news_image">
+                <div class="article_news_chars">
+                    <?php if (!empty($foto) && $foto_position == 'top'): ?>
+                        <figure class="article_news_image top">
+                            <a href="<?= HOME . '/uploads/' . $foto; ?>">
+                                <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=uploads/' . $foto . '&w=870&zc=0'; ?>"/>
+                            </a>
+                            <p><?= $foto_caption; ?><p>
+                        </figure>
+                    <?php endif; ?>
+                    <?= $noticia; ?>
+                </div>
+                <?php if (!empty($foto) && $foto_position == 'bottom'): ?>
+                    <figure class="article_news_image bottom">
                         <a href="<?= HOME . '/uploads/' . $foto; ?>">
                             <img alt="<?= $titulo; ?>" title="<?= $titulo; ?>" src="<?= HOME . '/tim.php?src=uploads/' . $foto . '&w=870&zc=0'; ?>"/>
                         </a>
+                        <p><?= $foto_caption; ?><p>
                     </figure>
                 <?php endif; ?>
                 <?php
