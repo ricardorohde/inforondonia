@@ -254,9 +254,8 @@
                                         <div class="col-md-12">
                                             <label for="foto_position">Posição da Foto</label>
                                             <select name="foto_position" class="form-control" id="foto_position">
-                                                <option value="" <?= ($dados['foto_position'] == '') ? ' selected="selected"' : ''; ?>>Selecione...</option>
-                                                <option value="top" <?= ($dados['foto_position'] == 'top') ? ' selected="selected"' : ''; ?>>Acima da Notícia</option>
                                                 <option value="bottom" <?= ($dados['foto_position'] == 'bottom') ? ' selected="selected"' : ''; ?>>Abaixo da Notícia</option>
+                                                <option value="top" <?= ($dados['foto_position'] == 'top') ? ' selected="selected"' : ''; ?>>Acima da Notícia</option>                                                
                                             </select>
                                         </div>
                                     </div>
