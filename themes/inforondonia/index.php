@@ -27,7 +27,7 @@
                     </div>
 
                     <?php
-                    $ReadMain->ExeRead("noticias", "WHERE data_fslide >= :datafim AND titulo != :tit AND destaque = :dest AND destaque_tipo = :desttipo ORDER BY data DESC LIMIT :limit OFFSET :offset", "datafim={$data_atual}&tit=''&dest=sim&desttipo=slide&limit=5&offset=0");
+                    $ReadMain->ExeRead("noticias", "WHERE data_fslide >= :datafim AND titulo != :tit AND destaque = :dest AND destaque_tipo = :desttipo ORDER BY data DESC LIMIT :limit OFFSET :offset", "datafim={$data_atual}&tit=''&dest=sim&desttipo=slide&limit=15&offset=0");
                     if ($ReadMain->getResult()):
                         $i = 0;
                         $pagerSlide = [];
