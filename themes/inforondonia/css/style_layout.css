@@ -264,7 +264,7 @@ pre { width: 100%; float: left; display: block; padding: 9.5px; margin: 5px 0 10
 .article_news_morenews .frameBox{ width: 100%; float: left; margin-bottom: 10px;}
 .article_news_moreimg{ width: 100%; margin-top: 10px; float: left;}
 .boxfotos{ width: 100%; margin-bottom: 5px; float: left;}
-.boxfotos p{ width: 100%; font-size: 0.75em; float: left; margin-bottom: 10px;}
+.boxfotos p{ width: 100%; font-size: 0.875em; color: #666; float: left; margin-bottom: 10px;}
 .header_morenews{ width: 100%; float: left; }
 .header_morenews_vin{ width: 100%; float: left; padding-left: 5px; color: #34314B}
 .header_infocoment{ width: 100%; float: left; padding-left: 5px; color: #34314B}
